@@ -5,3 +5,22 @@ script:
 - npm run build
 - npm run test-coverage
 - npm run codecov
+
+branches:
+  only:
+  - master
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  keep-history: true
+  api-key:
+    secure: $HEROKU_API_KEY
+  app: tkt-ohjaajarekisteri-front
