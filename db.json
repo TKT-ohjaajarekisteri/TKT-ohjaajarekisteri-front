@@ -1,0 +1,19 @@
+{
+  "students": [
+    {
+      "student": "Kalle Kustaa",
+      "course": "Fullstack",
+      "id": 1
+    },
+    {
+      "student": "Maija Meikäläinen",
+      "course": "Ohtu",
+      "id": 2
+    },
+    {
+      "student": "Jaska Jokunen",
+      "course": "Käjä",
+      "id": 3
+    }
+  ]
+}
