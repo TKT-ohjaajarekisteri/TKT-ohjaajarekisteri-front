@@ -29,12 +29,12 @@ Frontend for University of Helsinki's teaching assistant registry.
 * Feature passes Travis CI Server
 
 ## Contributing
-*[Harri Mehtälä](https://github.com/hajame)
-*[Heli Huhtilainen](https://github.com/apndx)
-*[Olli Bisi](https://github.com/obisi)
-*[Jesper Pettersson](https://github.com/stadibo)
-*[Virva Svala](https://github.com/vsvala)
-*[Janne Malin](https://github.com/wood101)
+* [Harri Mehtälä](https://github.com/hajame)
+* [Heli Huhtilainen](https://github.com/apndx)
+* [Olli Bisi](https://github.com/obisi)
+* [Jesper Pettersson](https://github.com/stadibo)
+* [Virva Svala](https://github.com/vsvala)
+* [Janne Malin](https://github.com/wood101)
 
 ## Credits
 
