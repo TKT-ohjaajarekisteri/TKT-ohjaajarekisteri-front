@@ -1,6 +1,8 @@
 # TKT-ohjaajarekisteri-front
 Frontend for University of Helsinki's teaching assistant registry.
 
+[Backend README](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-back)
+
 [Heroku](https://tkt-ohjaajarekisteri-front.herokuapp.com/)
 
 ## Travis
