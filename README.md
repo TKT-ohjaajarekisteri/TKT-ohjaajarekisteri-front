@@ -1,7 +1,7 @@
 # TKT-ohjaajarekisteri-front
-Frontend for University of Helsinki Computer Science department teaching assistant registry. 
+Frontend for University of Helsinki Computer Science department teaching assistant register. 
 
-This registry will be used by students to express their interest to assist on courses. The registry will also be used to choose the students that will be assisting.
+This registry will be used by students to express their interest to assist on courses. The register will also be used to choose the students that will be assisting.
 
 [Heroku](https://tkt-ohjaajarekisteri-front.herokuapp.com/)
 
