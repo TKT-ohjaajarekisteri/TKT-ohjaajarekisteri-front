@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import StudentForm from './components/StudentForm'
 import StudentList from './components/StudentList'
@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <h1>TKT-ohjaajarekisteri</h1>
-        <StudentList /> 
+        <StudentList />
         <StudentForm />
       </div>
     )
