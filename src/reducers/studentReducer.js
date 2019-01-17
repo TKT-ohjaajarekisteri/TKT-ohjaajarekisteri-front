@@ -3,18 +3,18 @@ import studentService from '../services/students'
 
 
 const studentReducer = (store = [], action) => {
-  
-  switch (action.type) {
-    case 'CREATE': 
-      return [...store, action.data]
-   
-    case 'INIT':
-      return action.data
 
-    default:
-      return store
-    }
+  switch (action.type) {
+  case 'CREATE':
+    return [...store, action.data]
+
+  case 'INIT':
+    return action.data
+
+  default:
+    return store
   }
+}
 
 //ACTIONCREATORIT
 export const createStudent=(applicant,course) => {
