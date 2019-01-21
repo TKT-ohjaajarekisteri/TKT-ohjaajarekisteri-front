@@ -17,9 +17,9 @@ const studentReducer = (store = [], action) => {
 }
 
 //ACTIONCREATORIT
-export const createStudent=(applicant,course) => {
+export const createStudent=(applicant)=> {
   return async (dispatch)  => {
-    const student = await studentService.create(applicant,course)
+    const student = await studentService.create(applicant)
     dispatch({
       type:'CREATE',
       data:student
@@ -29,11 +29,11 @@ export const createStudent=(applicant,course) => {
 }
 export const initializeStudents = () => {
   return async (dispatch) => {
-    const s = await studentService.getAll()
-    console.log(s)
+    const content = await studentService.getAll()
+    console.log(content)
     dispatch({
       type: 'INIT',
-      data:s
+      data: content
     })
   }
 }

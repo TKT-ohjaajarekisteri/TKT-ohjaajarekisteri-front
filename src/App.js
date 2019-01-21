@@ -13,7 +13,7 @@ const App=(props) => {
 
   return (
     <div>
-      <h1>TKT-ohjaajarekisteri</h1>
+      <h1>TKT Assistant Register</h1>
       <StudentList />
       <StudentForm />
     </div>

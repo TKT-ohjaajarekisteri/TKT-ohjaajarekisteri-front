@@ -29,6 +29,17 @@
       "student": "testt",
       "course": "test",
       "id": 6
+    },
+    {
+      "student": {
+        "id": "111",
+        "last_name": "bisi",
+        "first_names": "olli",
+        "nickname": "sibbe",
+        "phone_number": "1234",
+        "email": "olc"
+      },
+      "id": 7
     }
   ]
 }
