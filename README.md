@@ -25,6 +25,8 @@ This registry will be used by students to express their interest to assist on co
 * DevOps: Docker
 * Server: students.cs.helsinki.fi
 
+## [Design architecture document](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/architecture.md)
+
 ## Definition of done
 * Features are planned in sprint planning
 * Features documented and tested in appropriate detail
