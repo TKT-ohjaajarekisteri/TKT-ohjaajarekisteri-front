@@ -24,6 +24,11 @@
       "student": "uushakija",
       "course": "OHTU",
       "id": 5
+    },
+    {
+      "student": "testt",
+      "course": "test",
+      "id": 6
     }
   ]
 }
