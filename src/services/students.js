@@ -8,11 +8,9 @@ const getAll = async () => {
   return response.data
 }
 
-const create = async (student,data) => {
+const create = async (student) => {
   const newObject = {
-    student,
-    course:data,
-
+    student
   }
   const response = await axios.post(baseUrl, newObject)
   return response.data

@@ -5,11 +5,11 @@ import courseService from '../services/courses'
 const courseReducer = (store = [], action) => {
 
   switch (action.type) {
-  case 'CREATE':
-    return [...store, action.data]
+  case 'CREATE_COURSE':
+    return [...store, action.course_data]
 
-  case 'INIT':
-    return action.data.s
+  case 'INIT_COURSE':
+    return action.data
 
   default:
     return store
@@ -19,20 +19,21 @@ const courseReducer = (store = [], action) => {
 //ACTIONCREATORIT
 export const createCourse=(course) => {
   return async (dispatch)  => {
+      console.log(course, "create course")
     const course_data = await courseService.create(course)
     dispatch({
-      type:'CREATE',
+      type:'CREATE_COURSE',
       data:course_data
 
     })
   }
 }
-export const initializeStudents = () => {
+export const initializeCourses = () => {
   return async (dispatch) => {
     const s = await courseService.getAll()
     console.log(s)
     dispatch({
-      type: 'INIT',
+      type: 'INIT_COURSE',
       data:s
     })
   }

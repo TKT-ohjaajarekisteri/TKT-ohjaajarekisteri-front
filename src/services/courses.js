@@ -9,10 +9,10 @@ const getAll = async () => {
 }
 
 const create = async (course) => {
-  const newObject = {
+  const newCourse = {
     course
   }
-  const response = await axios.post(baseUrl, newObject)
+  const response = await axios.post(baseUrl, newCourse)
   return response.data
 }
 export default {

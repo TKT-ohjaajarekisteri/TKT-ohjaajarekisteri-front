@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createStudent } from './../reducers/studentReducer'
-import { createCourse } from './../reducers/courseReducer'
+import { createStudent } from './../../reducers/studentReducer'
+import { createCourse } from './../../reducers/courseReducer'
 
 const StudentForm = (props) => {
 

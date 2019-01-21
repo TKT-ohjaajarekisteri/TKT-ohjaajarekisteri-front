@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import StudentForm from './components/StudentForm'
-import StudentList from './components/StudentList'
-import { initializeStudents } from './reducers/studentReducer'
+import StudentForm from './components/student/StudentForm'
+import { initializeCourses } from './reducers/courseReducer'
+import CourseList from './components/course/CourseList'
 
 
 const App=(props) => {
   useEffect(() => {
-    props.initializeStudents()
+    props.initializeCourses()
   }
   )
 
   return (
     <div>
       <h1>TKT Assistant Register</h1>
-      <StudentList />
+      <CourseList />
       <StudentForm />
     </div>
   )
@@ -22,6 +22,6 @@ const App=(props) => {
 
 export default connect(
   null,
-  { initializeStudents }
+  { initializeCourses }
 )(App)
 
