@@ -1,10 +1,15 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import studentReducer from './reducers/studentReducer'
+import courseReducer from './reducers/courseReducer'
+import course_studentsReducer from './reducers/course_studentsReducer'
+
 
 
 const reducer = combineReducers({
-  students: studentReducer
+  applicants: course_studentsReducer,
+  students: studentReducer,
+  courses: courseReducer
 })
 
 const store = createStore(

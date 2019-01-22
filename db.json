@@ -1,34 +1,66 @@
 {
   "students": [
     {
-      "student": "Kalle Kustaa",
-      "course": "Fullstack",
+      "student": {
+        "id": "0111",
+        "last_name": "svala",
+        "first_names": "Virva",
+        "nickname": "Viku",
+        "phone_number": "040-444",
+        "email": "gmail.com"
+      },
       "id": 1
     },
     {
-      "student": "Maija Meikäläinen",
-      "course": "Ohtu",
+      "student": {
+        "id": "222",
+        "last_name": "Bisi",
+        "first_names": "Olli",
+        "nickname": "OB",
+        "phone_number": "333",
+        "email": "gmail.com"
+      },
       "id": 2
     },
     {
-      "student": "Jaska Jokunen",
-      "course": "Käjä",
+      "student": {
+        "id": "444",
+        "last_name": "Jokunen",
+        "first_names": "Jaska Marko",
+        "nickname": "Make",
+        "phone_number": "333",
+        "email": "cs.helsinki.fi"
+      },
       "id": 3
+    }
+  ],
+  "courses": [
+    {
+      "course": {
+        "id": "TKT 101",
+        "name": "KÄJÄ",
+        "year": "2017",
+        "period": "3"
+      },
+      "id": 1
     },
     {
-      "student": "Nakke Nakuttaja",
-      "course": "OHTU",
-      "id": 4
+      "course": {
+        "id": "33 ",
+        "name": "OHTU",
+        "year": "2019",
+        "period": "2"
+      },
+      "id": 2
     },
     {
-      "student": "uushakija",
-      "course": "OHTU",
-      "id": 5
-    },
-    {
-      "student": "testt",
-      "course": "test",
-      "id": 6
+      "course": {
+        "id": "201",
+        "name": "TIRA",
+        "year": "2017",
+        "period": "2"
+      },
+      "id": 3
     }
   ]
 }

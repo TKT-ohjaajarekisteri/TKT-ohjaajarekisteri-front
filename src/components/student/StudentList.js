@@ -5,10 +5,13 @@ import { connect } from 'react-redux'
 const StudentList = (props) => (
 
   <div>
-    <h3>Student, Course</h3>
+    <h2>Students</h2>
     {props.studentsToShow.map(s =>
-      <div key={s.id}>
-        {s.student} ----------{s.course}
+      <div key={s.student.id}>
+        {s.id}
+        {s.student.first_names}
+        {s.student.nickname}
+        {s.student.email}
       </div>
     )}
   </div>
