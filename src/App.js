@@ -6,7 +6,7 @@ import Course_studentList from './components/Course_studentList'
 import CourseList from './components/course/CourseList'
 import { initializeCourses } from './reducers/courseReducer'
 import { initializeStudents } from './reducers/studentReducer'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+//import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 
 const App=(props) => {
