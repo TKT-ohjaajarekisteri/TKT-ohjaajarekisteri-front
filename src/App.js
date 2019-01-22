@@ -17,21 +17,21 @@ const App=(props) => {
   )
 
   return (
-    <div>  
+    <div>
       <h1>TKT Assistant Register</h1>
       <Router>
         <div>
           <div>
-            <Link to="/">form</Link> &nbsp;
-            <Link to="/courses">blogs</Link> &nbsp;
-            <Link to="/students">users</Link> &nbsp;
+            <Link to="/">RegisterForm</Link> &nbsp;
+            <Link to="/students">Students</Link> &nbsp;
+            <Link to="/courses">Courses</Link> &nbsp;
             <Link to="/course_students">StudentsByCourse</Link> &nbsp;
           </div>
 
 
           <Route exact path="/" render={() => <StudentForm />} />
-          <Route path="/courses" render={() => <StudentList />} />
-          <Route path="/students" render={() => <CourseList />} />
+          <Route path="/students" render={() => <StudentList />} />
+          <Route path="/courses" render={() => <CourseList />} />
           <Route path="course_students" render={() => <Course_studentList />} />
         </div>
       </Router>
