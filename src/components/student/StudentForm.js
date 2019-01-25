@@ -6,40 +6,38 @@ import { createCourse } from '../../reducers/courseReducer'
 
 const StudentForm = (props) => {
 
-
   const handleSubmit = async (event) => {
     event.preventDefault()
     const applicant = {
-      id: event.target.student_id.value,
+      student_id: event.target.student_id.value,
+      first_name: event.target.student_firstnames.value,
       last_name: event.target.student_lastname.value,
-      first_names: event.target.student_firstnames.value,
       nickname: event.target.student_nickname.value,
-      phone_number: event.target.student_phonenumber.value,
+      phone: event.target.student_phonenumber.value,
       email: event.target.student_email.value
     }
 
     const course = {
-      id: event.target.course_id.value,
-      name: event.target.course_name.value,
-      year: event.target.course_year.value,
-      period: event.target.course_period.value
+      learningopportunity_id: event.target.course_id.value,
+      course_name: event.target.course_name.value,
+      period: event.target.course_period.value,
+      year: event.target.course_year.value
     }
 
     props.createStudent(applicant)
     props.createCourse(course)
-    //props.notify(`anecdote ${content} created`, 5)
 
     event.target.student_id.value = ''
-    event.target.student_lastname.value = ''
     event.target.student_firstnames.value = ''
+    event.target.student_lastname.value = ''
     event.target.student_nickname.value = ''
     event.target.student_phonenumber.value = ''
     event.target.student_email.value = ''
 
     event.target.course_id.value = ''
     event.target.course_name.value = ''
-    event.target.course_year.value = ''
     event.target.course_period.value = ''
+    event.target.course_year.value = ''
   }
 
   return (
@@ -73,7 +71,6 @@ const StudentForm = (props) => {
     </div>
   )
 }
-
 
 export default connect(
   null,

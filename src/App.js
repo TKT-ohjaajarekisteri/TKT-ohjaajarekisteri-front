@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import StudentForm from './components/student/StudentForm'
 import StudentList from './components/student/StudentList'
-import Course_studentList from './components/Course_studentList'
+import SingleCourse from './components/course/SingleCourse'
+
 import CourseList from './components/course/CourseList'
 import { initializeCourses } from './reducers/courseReducer'
 import { initializeStudents } from './reducers/studentReducer'
@@ -13,8 +14,16 @@ const App=(props) => {
   useEffect(() => {
     props.initializeStudents()
     props.initializeCourses()
-  }
+  },
+  []
   )
+  console.log(props.showCourses, 'propscourses_APPP')
+  const courseById = (id) => {
+    //console.log(id, 'iiiiiiiiiiiiiiiiiiiiiiiiiiiidddddddddddddddddddddddddddddd')
+    return(
+      props.showCourses.find(c => c.id === Number(id))
+    )
+  }
 
   return (
     <div>
@@ -25,30 +34,29 @@ const App=(props) => {
             <Link to="/">RegisterForm</Link> &nbsp;
             <Link to="/students">Students</Link> &nbsp;
             <Link to="/courses">Courses</Link> &nbsp;
-            <Link to="/course_students">StudentsByCourse</Link> &nbsp;
           </div>
 
 
           <Route exact path="/" render={() => <StudentForm />} />
           <Route path="/students" render={() => <StudentList />} />
-          <Route path="/courses" render={() => <CourseList />} />
-          <Route path="course_students" render={() => <Course_studentList />} />
+          <Route exact path="/courses" render={() => <CourseList/>}/>
+          <Route exact path='/courses/:id' render={({ match }) =>
+            <SingleCourse course={courseById(match.params.id) } />}/>
         </div>
       </Router>
-
-
-      <div>
-        {/*  <h1>TKT Assistant Register</h1>
-       <CourseList />
-        <StudentList />
-        <Course_studentList />
-        <StudentForm /> */}
-      </div>
     </div>
   )
 }
 
+//get stuff from store
+const mapStateToProps = (state) => {
+  const showCourses= state.courses
+  return {
+    showCourses
+  }
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   { initializeStudents, initializeCourses }
 )(App)

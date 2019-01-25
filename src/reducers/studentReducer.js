@@ -1,4 +1,3 @@
-//import students from '../services/students'
 import studentService from '../services/students'
 
 
@@ -10,6 +9,10 @@ const studentReducer = (store = [], action) => {
 
   case 'INIT':
     return action.data
+
+  case 'INIT_APPLICANTS':
+    return action.data
+
 
   default:
     return store
@@ -27,6 +30,7 @@ export const createStudent=(applicant) => {
     })
   }
 }
+
 export const initializeStudents = () => {
   return async (dispatch) => {
     const content = await studentService.getAll()
@@ -37,4 +41,17 @@ export const initializeStudents = () => {
     })
   }
 }
+
+export const initializeApplicants = () => {
+  return async (dispatch) => {
+    const content = await studentService.getStudents()
+    ///const content = await courseService.getStudents(id)
+    // console.log(content,'getappplivçan ACTION')
+    dispatch({
+      type: 'INIT_APPLICANTS',
+      data:content
+    })
+  }
+}
+
 export default studentReducer
