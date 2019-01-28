@@ -3,29 +3,29 @@ import { connect } from 'react-redux'
 import { initializeSingleCourse } from '../../reducers/courseReducer'
 import { initializeApplicants } from '../../reducers/studentReducer'
 
-const SingleCourse=({ course, toinen, stu }) => {
+const SingleCourse = ({ course, toinen, stu }) => {
 
-  useEffect(() => {
-    initializeSingleCourse(course.id)
-    //initializeApplicants (course.id)
-    initializeApplicants ()
-    //console.log(course,'initsingleCourseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee' )
-  },
-  []
-  )
-//   const StudentsByCourseId = () => {
-//     return(
-//       stu.filter(student => student.id === (course.id))
-//     )
-//   }
-  return(
+  // useEffect(() => {
+  //   // initializeSingleCourse(course.course_id)
+  //   //initializeApplicants (course.id)
+  //   // initializeApplicants()
+  //   //console.log(course,'initsingleCourseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee' )
+  // },
+  // []
+  // )
+  //   const StudentsByCourseId = () => {
+  //     return(
+  //       stu.filter(student => student.id === (course.id))
+  //     )
+  //   }
+  return (
     <div>
       <div className="content">
-        {console.log(toinen, 'coursesinglepage')}
-        <h2>{course.id} {course.learningopportunity_id}  {course.course_name}  {course.year}  {course.period} </h2>
+        {console.log(course, 'course name')}
+        <h2>{course.course_id} {course.learningopportunity_id}  {course.course_name}  {course.year}  {course.period} </h2>
       </div>
 
-      <div> <h2>Applicants for course:</h2> </div>
+      {/* <div> <h2>Applicants for course:</h2> </div>
       {console.log(stu)}
       {stu.map(student =>
         <div key={student.id}>
@@ -34,7 +34,7 @@ const SingleCourse=({ course, toinen, stu }) => {
           {student.nickname}
           {student.email}
         </div>
-      )}
+      )} */}
       {/*  {StudentsByCourseId().map(student =>
         <div key={s.id}>
           {s.id}
@@ -50,8 +50,8 @@ const SingleCourse=({ course, toinen, stu }) => {
 //get stuff from store //students:state.applicants,
 const mapStateToProps = (state) => {
   return {
-    toinen:state.single,
-    stu:state.applicants
+    toinen: state.single,
+    stu: state.applicants
   }
 }
 

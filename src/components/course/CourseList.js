@@ -9,7 +9,6 @@ const CourseList = (props) => {
       <table>
         <h2>Courses</h2>
         <tr>
-          <th>Number</th>
           <th>Course code/id</th>
           <th>Course name</th>
           <th>Course year</th>
@@ -18,14 +17,14 @@ const CourseList = (props) => {
       </table>
 
       {props.coursesToShow.map(course =>
-        <Course key={course.id}
-          course={course}/>
+        <Course course={course}/>
       )}
     </div>
   )}
 
 const mapStateToProps = (state) => {
   const coursesToShow = state.courses
+  console.log(coursesToShow, 'shownCourses')
   return {
     coursesToShow
   }

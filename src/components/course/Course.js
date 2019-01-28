@@ -14,9 +14,9 @@ const Course = ({ course }) => {
     <div style={courseStyle}>
       <div>
         <tr>
-          <Link to={`/courses/${course.id}`}>
-            <td> {course.number}</td>
-            <td> {course.id}</td>
+          <Link to={`/courses/${course.course_id}`}>
+            <td> {course.course_id}</td>
+            <td> {course.learningopportunity_id}</td>
             <td> {course.course_name}</td>
             <td>{course.year}</td>
             <td>{course.period}</td></Link>

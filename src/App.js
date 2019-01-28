@@ -19,10 +19,13 @@ const App=(props) => {
   )
   console.log(props.showCourses, 'propscourses_APPP')
   const courseById = (id) => {
-    //console.log(id, 'iiiiiiiiiiiiiiiiiiiiiiiiiiiidddddddddddddddddddddddddddddd')
-    return(
-      props.showCourses.find(c => c.id === Number(id))
-    )
+    console.log(id, 'iiiiiiiiiiiiiiiiiiiiiiiiiiiidddddddddddddddddddddddddddddd')
+    console.log(props.showCourses, 'propscourses_APPP')
+    
+    let found = props.showCourses.find(c => Number(c.course_id) === Number(id))
+    console.log('found single course', found)
+    
+    return found
   }
 
   return (
@@ -41,7 +44,7 @@ const App=(props) => {
           <Route path="/students" render={() => <StudentList />} />
           <Route exact path="/courses" render={() => <CourseList/>}/>
           <Route exact path='/courses/:id' render={({ match }) =>
-            <SingleCourse course={courseById(match.params.id) } />}/>
+            <SingleCourse course={courseById(match.params.id)} />}/>
         </div>
       </Router>
     </div>
