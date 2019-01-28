@@ -27,6 +27,8 @@ This registry will be used by students to express their interest to assist on co
 
 ## [Design architecture document](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/architecture.md)
 
+## [Software Requirements Specification](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/SRS.md)
+
 ## Definition of done
 * Features are planned in sprint planning
 * Features documented and tested in appropriate detail
@@ -44,5 +46,5 @@ This registry will be used by students to express their interest to assist on co
 
 ## Credits
 
-## License
+## [License](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/LICENSE)
 =======
