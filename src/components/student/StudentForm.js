@@ -1,8 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createStudent } from '../../reducers/studentReducer'
-import { createCourse } from '../../reducers/courseReducer'
-import { createContent } from '../../reducers/infoReducer'
+import { createContent } from '../../reducers/courseReducer'
 
 
 const StudentForm = (props) => {
@@ -16,7 +14,6 @@ const StudentForm = (props) => {
       nickname: event.target.student_nickname.value,
       phone: event.target.student_phonenumber.value,
       email: event.target.student_email.value,
-    // } const course = {
       learningopportunity_id: event.target.course_id.value,
       course_name: event.target.course_name.value,
       period: event.target.course_period.value,
@@ -24,8 +21,6 @@ const StudentForm = (props) => {
     }
  
     props.createContent(formContent)
-    // props.createStudent(applicant)
-    // props.createCourse(course)
 
     event.target.student_id.value = ''
     event.target.student_firstnames.value = ''
@@ -74,5 +69,5 @@ const StudentForm = (props) => {
 
 export default connect(
   null,
-  { createStudent, createCourse, createContent }
+  { createContent }
 )(StudentForm)

@@ -1,23 +1,24 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { initializeSingleCourse } from '../../reducers/courseReducer'
-import { initializeApplicants } from '../../reducers/studentReducer'
+// import { initializeSingleCourse } from '../../reducers/courseReducer'
+// import { initializeApplicants } from '../../reducers/studentReducer'
 
 const SingleCourse = ({ course, toinen, stu }) => {
 
-  // useEffect(() => {
-  //   // initializeSingleCourse(course.course_id)
-  //   //initializeApplicants (course.id)
-  //   // initializeApplicants()
-  //   //console.log(course,'initsingleCourseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee' )
-  // },
-  // []
-  // )
-  //   const StudentsByCourseId = () => {
-  //     return(
-  //       stu.filter(student => student.id === (course.id))
-  //     )
-  //   }
+  useEffect(() => {
+    // initializeSingleCourse(course.course_id)
+    // initializeApplicants(course.course_id)
+    //console.log(course,'initsingleCourseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee' )
+  },
+  []
+  )
+    // const StudentsByCourseId = () => {
+    //   return(
+    //     stu.filter(student => student.id === (course.id))
+    //   )
+    // }
+
+
   return (
     <div>
       <div className="content">
@@ -57,5 +58,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { initializeSingleCourse, initializeApplicants }
+  // { initializeSingleCourse, initializeApplicants }
 )(SingleCourse)

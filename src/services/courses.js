@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-//const baseUrl = 'http://localhost:3001/courses/'
 const baseUrl = 'http://localhost:3004/api/courses/'
 
 

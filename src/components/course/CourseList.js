@@ -4,27 +4,32 @@ import Course from './Course'
 
 const CourseList = (props) => {
 
-  return(
+  return (
     <div>
+      <h2>Courses</h2>
       <table>
-        <h2>Courses</h2>
-        <tr>
-          <th>Course code/id</th>
-          <th>Course name</th>
-          <th>Course year</th>
-          <th>Course period</th>
-        </tr>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Course code</th>
+            <th>Course name</th>
+            <th>Course year</th>
+            <th>Course period</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.coursesToShow.map(course =>
+            <Course course={course} key={course.course_id}/>
+          )}
+        </tbody>
       </table>
-
-      {props.coursesToShow.map(course =>
-        <Course course={course}/>
-      )}
     </div>
-  )}
+  )
+}
 
 const mapStateToProps = (state) => {
   const coursesToShow = state.courses
-  console.log(coursesToShow, 'shownCourses')
+  // console.log(coursesToShow, 'shownCourses')
   return {
     coursesToShow
   }
