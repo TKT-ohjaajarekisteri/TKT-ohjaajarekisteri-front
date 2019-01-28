@@ -4,6 +4,7 @@ import { initializeSingleCourse } from '../../reducers/courseReducer'
 import { initializeApplicants } from '../../reducers/studentReducer'
 
 const SingleCourse=({ course, toinen, stu }) => {
+
   useEffect(() => {
     initializeSingleCourse(course.id)
     //initializeApplicants (course.id)
@@ -12,6 +13,11 @@ const SingleCourse=({ course, toinen, stu }) => {
   },
   []
   )
+//   const StudentsByCourseId = () => {
+//     return(
+//       stu.filter(student => student.id === (course.id))
+//     )
+//   }
   return(
     <div>
       <div className="content">
@@ -29,17 +35,18 @@ const SingleCourse=({ course, toinen, stu }) => {
           {student.email}
         </div>
       )}
-      {stu.map(s =>
+      {/*  {StudentsByCourseId().map(student =>
         <div key={s.id}>
           {s.id}
           {s.first_name}
           {s.nickname}
           {s.email}
         </div>
-      )}
+      )}*/}
     </div>
   )
 }
+
 //get stuff from store //students:state.applicants,
 const mapStateToProps = (state) => {
   return {

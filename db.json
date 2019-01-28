@@ -7,7 +7,7 @@
       "nickname": "Viku",
       "phone": "040",
       "email": "gmail.com",
-      "id": 3
+      "id": 1
     },
     {
       "student_id": "2001771082",
@@ -16,7 +16,7 @@
       "nickname": "Jakke",
       "phone": "040-5873059",
       "email": "sukka@gmail.com",
-      "id": 4
+      "id": 2
     },
     {
       "student_id": "1o1208230974",
@@ -25,7 +25,7 @@
       "nickname": "Helstsu",
       "phone": "09090",
       "email": "gmail",
-      "id": 5
+      "id": 3
     }
   ],
   "courses": [
@@ -34,21 +34,21 @@
       "course_name": "OHJA",
       "period": "4",
       "year": "2016",
-      "id": 6
+      "id": 1
     },
     {
       "learningopportunity_id": "TKT 301",
       "course_name": "LÄJÄ",
       "period": "6",
       "year": "2018",
-      "id": 7
+      "id": 2
     },
     {
       "learningopportunity_id": "TKT702",
       "course_name": "Pläjä",
       "period": "7",
       "year": "2010",
-      "id": 8
+      "id": 3
     }
   ]
 }

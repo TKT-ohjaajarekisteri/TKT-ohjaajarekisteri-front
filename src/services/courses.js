@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001/courses/'
-//const baseUrl = 'http://localhost:3001/api/courses/'
+//const baseUrl = 'http://localhost:3001/courses/'
+const baseUrl = 'http://localhost:3004/api/courses/'
 
 
 const getAll = async () => {
@@ -10,7 +10,7 @@ const getAll = async () => {
 }
 
 const create = async (course) => {
-  const response = await axios.post(baseUrl, course)
+  const response = await axios.post('http://localhost:3004/api/students', course)
   return response.data
 }
 
