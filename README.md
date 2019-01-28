@@ -1,5 +1,7 @@
 # TKT-ohjaajarekisteri-front
-Frontend for University of Helsinki's teaching assistant registry.
+Frontend for University of Helsinki Computer Science department teaching assistant register. 
+
+This registry will be used by students to express their interest to assist on courses. The register will also be used to choose the students that will be assisting.
 
 [Backend README](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-back)
 
@@ -17,11 +19,15 @@ Frontend for University of Helsinki's teaching assistant registry.
 ## [Product backlog](https://docs.google.com/spreadsheets/d/1anddOjdDCkdAmyJH2gLAUYYbubbZhXSGxku90kQJT9k/edit#gid=0)
 
 ## Technologies
-* Front: React
+* Front: React, Javascript, JSX
 * Back: NodeJS
 * Database: PostgreSQL
 * DevOps: Docker
 * Server: students.cs.helsinki.fi
+
+## [Design architecture document](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/architecture.md)
+
+## [Software Requirements Specification](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/SRS.md)
 
 ## Definition of done
 * Features are planned in sprint planning
@@ -40,5 +46,5 @@ Frontend for University of Helsinki's teaching assistant registry.
 
 ## Credits
 
-## License
+## [License](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/LICENSE)
 =======
