@@ -2,19 +2,12 @@ import courseService from '../services/courses'
 
 
 const courseReducer = (store = [], action) => {
-
   switch (action.type) {
     case 'CREATE_CONTENT':
       return [...store, action.data]
 
     case 'INIT_COURSES':
       return action.data
-
-    case 'INIT_SINGLECOURSE':
-      return action.data
-
-    // case 'INIT_APPLICANTS':
-    //   return action.data
 
     default:
       return store
@@ -34,17 +27,6 @@ export const initializeCourses = () => {
   }
 }
 
-// export const initializeSingleCourse = (id) => {
-//   return async (dispatch) => {
-//     const content = id
-//     // console.log(id,'initsingleääääääääääääääääääääääääääääääääääääääääääääääääää ACTION')
-//     dispatch({
-//       type: 'INIT_SINGLECOURSE',
-//       data: content
-//     })
-//   }
-// }
-
 export const createContent = (content) => {
   return async (dispatch) => {
     console.log(content, 'create course')
@@ -57,16 +39,5 @@ export const createContent = (content) => {
     })
   }
 }
-
-// export const initializeApplicants = (id) => {
-//   return async (dispatch) => {
-//     const content = await courseService.getStudents(id)
-//     console.log(content,'getappplivçan ACTION')
-//     dispatch({
-//       type: 'INIT_APPLICANTS',
-//       data:content
-//     })
-//   }
-// }
 
 export default courseReducer

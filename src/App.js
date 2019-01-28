@@ -12,21 +12,27 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 const App=(props) => {
   useEffect(() => {
+    console.log('tets')
     props.initializeStudents()
     props.initializeCourses()
   },
   []
   )
-  console.log(props.showCourses, 'propscourses_APPP')
+  
   const courseById = (id) => {
     console.log(id, 'iiiiiiiiiiiiiiiiiiiiiiiiiiiidddddddddddddddddddddddddddddd')
     console.log(props.showCourses, 'propscourses_APPP')
+
+    console.log('full state', props.allstate)
     
     let found = props.showCourses.find(c => Number(c.course_id) === Number(id))
     console.log('found single course', found)
     
+
     return found
   }
+
+  console.log('APP RENDER')
 
   return (
     <div>
@@ -55,7 +61,8 @@ const App=(props) => {
 const mapStateToProps = (state) => {
   const showCourses= state.courses
   return {
-    showCourses
+    showCourses,
+    allstate: state
   }
 }
 

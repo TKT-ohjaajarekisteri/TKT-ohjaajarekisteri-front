@@ -1,49 +1,40 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 // import { initializeSingleCourse } from '../../reducers/courseReducer'
-// import { initializeApplicants } from '../../reducers/studentReducer'
+import { initializeCourses } from '../../reducers/courseReducer'
+import { initializeApplicants } from '../../reducers/singleCourseReducer'
 
-const SingleCourse = ({ course, toinen, stu }) => {
+const SingleCourse = ({ course, studs, initializeApplicants }) => {
 
   useEffect(() => {
+    initializeCourses()
     // initializeSingleCourse(course.course_id)
-    // initializeApplicants(course.course_id)
-    //console.log(course,'initsingleCourseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee' )
+    initializeApplicants(course.course_id)
+    //console.log(course,'initsingleCoursee' )
+    console.log('has init applicants')
   },
-  []
+    []
   )
-    // const StudentsByCourseId = () => {
-    //   return(
-    //     stu.filter(student => student.id === (course.id))
-    //   )
-    // }
-
-
   return (
     <div>
+
       <div className="content">
         {console.log(course, 'course name')}
         <h2>{course.course_id} {course.learningopportunity_id}  {course.course_name}  {course.year}  {course.period} </h2>
       </div>
 
-      {/* <div> <h2>Applicants for course:</h2> </div>
-      {console.log(stu)}
-      {stu.map(student =>
-        <div key={student.id}>
-          {student.id}
+      <div> <h2>Applicants for course:</h2> </div>
+      {console.log(studs, 'applicants')}
+      
+      {studs.map(student =>
+        <div key={student.student_id}>
+          {student.student_id}
           {student.first_name}
           {student.nickname}
           {student.email}
         </div>
-      )} */}
-      {/*  {StudentsByCourseId().map(student =>
-        <div key={s.id}>
-          {s.id}
-          {s.first_name}
-          {s.nickname}
-          {s.email}
-        </div>
-      )}*/}
+      )}
+
     </div>
   )
 }
@@ -51,12 +42,11 @@ const SingleCourse = ({ course, toinen, stu }) => {
 //get stuff from store //students:state.applicants,
 const mapStateToProps = (state) => {
   return {
-    toinen: state.single,
-    stu: state.applicants
+    studs: state.applicants
   }
 }
 
 export default connect(
   mapStateToProps,
-  // { initializeSingleCourse, initializeApplicants }
+  { initializeApplicants, initializeCourses }
 )(SingleCourse)
