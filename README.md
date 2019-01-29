@@ -10,6 +10,9 @@ This registry will be used by students to express their interest to assist on co
 ## Travis
 [![Build Status](https://travis-ci.org/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front.svg?branch=master)](https://travis-ci.org/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front)
 
+## Codecov
+[![codecov](https://codecov.io/gh/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/branch/master/graph/badge.svg)](https://codecov.io/gh/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front)
+
 ## Installation
 
 ## Usage
