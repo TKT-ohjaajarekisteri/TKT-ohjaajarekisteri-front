@@ -13,7 +13,7 @@ const SingleCourse = ({ course, studs, initializeApplicants }) => {
     //console.log(course,'initsingleCoursee' )
     console.log('has init applicants')
   },
-    []
+  []
   )
   return (
     <div>
@@ -25,7 +25,7 @@ const SingleCourse = ({ course, studs, initializeApplicants }) => {
 
       <div> <h2>Applicants for course:</h2> </div>
       {console.log(studs, 'applicants')}
-      
+
       {studs.map(student =>
         <div key={student.student_id}>
           {student.student_id}

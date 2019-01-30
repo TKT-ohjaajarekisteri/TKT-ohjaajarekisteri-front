@@ -3,14 +3,14 @@ import courseService from '../services/courses'
 
 const courseReducer = (store = [], action) => {
   switch (action.type) {
-    case 'CREATE_CONTENT':
-      return [...store, action.data]
+  case 'CREATE_CONTENT':
+    return [...store, action.data]
 
-    case 'INIT_COURSES':
-      return action.data
+  case 'INIT_COURSES':
+    return action.data
 
-    default:
-      return store
+  default:
+    return store
   }
 }
 

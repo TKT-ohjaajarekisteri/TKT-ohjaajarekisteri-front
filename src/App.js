@@ -18,16 +18,16 @@ const App=(props) => {
   },
   []
   )
-  
+
   const courseById = (id) => {
     console.log(id, 'iiiiiiiiiiiiiiiiiiiiiiiiiiiidddddddddddddddddddddddddddddd')
     console.log(props.showCourses, 'propscourses_APPP')
 
     console.log('full state', props.allstate)
-    
+
     let found = props.showCourses.find(c => Number(c.course_id) === Number(id))
     console.log('found single course', found)
-    
+
 
     return found
   }
