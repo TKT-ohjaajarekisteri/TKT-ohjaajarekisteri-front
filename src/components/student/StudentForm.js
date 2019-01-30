@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { createContent } from '../../reducers/courseReducer'
+import { notify } from '../../reducers/notificationReducer'
 
 
 const StudentForm = (props) => {
@@ -19,8 +20,9 @@ const StudentForm = (props) => {
       period: event.target.course_period.value,
       year: event.target.course_year.value
     }
- 
+
     props.createContent(formContent)
+    props.notify(`Your ${formContent.first_name} application has been sended`, 5)
 
     event.target.student_id.value = ''
     event.target.student_firstnames.value = ''
@@ -69,5 +71,5 @@ const StudentForm = (props) => {
 
 export default connect(
   null,
-  { createContent }
+  { createContent, notify }
 )(StudentForm)
