@@ -13,7 +13,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 const App=(props) => {
   useEffect(() => {
-    console.log('tets')
+    console.log('initData')
     props.initializeStudents()
     props.initializeCourses()
   },
@@ -29,7 +29,6 @@ const App=(props) => {
     let found = props.showCourses.find(c => Number(c.course_id) === Number(id))
     console.log('found single course', found)
 
-
     return found
   }
 
@@ -42,16 +41,16 @@ const App=(props) => {
         <div>
           <div>
             <Link to="/">RegisterForm</Link> &nbsp;
-            <Link to="/students">Students</Link> &nbsp;
+            {/* <Link to="/students">Students</Link> &nbsp; */}
             <Link to="/courses">Courses</Link> &nbsp;
           </div>
 
           <Notification />
           <Route exact path="/" render={() => <StudentForm />} />
           <Route path="/students" render={() => <StudentList />} />
-          <Route exact path="/courses" render={() => <CourseList/>}/>
+          <div className="wrapper"> <Route exact path="/courses" render={() => <CourseList/>}/> </div>
           <Route exact path='/courses/:id' render={({ match }) =>
-            <SingleCourse course={courseById(match.params.id)} />}/>
+            <SingleCourse courseId={match.params.id} course={courseById(match.params.id)} />}/>
         </div>
       </Router>
     </div>

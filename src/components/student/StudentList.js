@@ -7,9 +7,9 @@ const StudentList = (props) => (
   <div id="students">
     <h2>Students</h2>
     {props.studentsToShow.map(s =>
-      <div key={s.student_id}>
-        {s.student_id}
-        <div>{s.first_name}</div>
+      <div key={s.student_number}>
+        {s.student_number}
+        {s.first_name}
         {s.nickname}
         {s.email}
       </div>

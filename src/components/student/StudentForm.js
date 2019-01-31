@@ -9,7 +9,7 @@ const StudentForm = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const formContent = {
-      student_id: event.target.student_id.value,
+      student_number: event.target.student_number.value,
       first_name: event.target.student_firstnames.value,
       last_name: event.target.student_lastname.value,
       nickname: event.target.student_nickname.value,
@@ -24,7 +24,7 @@ const StudentForm = (props) => {
     props.createContent(formContent)
     props.notify(`Your ${formContent.first_name} application has been sended`, 5)
 
-    event.target.student_id.value = ''
+    event.target.student_number.value = ''
     event.target.student_firstnames.value = ''
     event.target.student_lastname.value = ''
     event.target.student_nickname.value = ''
@@ -43,7 +43,7 @@ const StudentForm = (props) => {
       <form onSubmit={handleSubmit}>
         <h3>Student information:</h3>
         Student number:
-        <div><input name='student_id'/></div>
+        <div><input name='student_number'/></div>
         Last name:
         <div><input name='student_lastname'/></div>
         First names:
