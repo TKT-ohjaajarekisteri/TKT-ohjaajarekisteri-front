@@ -11,7 +11,7 @@ import { initializeStudents } from './reducers/studentReducer'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 
-const App=(props) => {
+const App = (props) => {
   useEffect(() => {
     props.initializeStudents()
     props.initializeCourses()
@@ -22,8 +22,6 @@ const App=(props) => {
   const courseById = (id) => {
     return props.courses.find(c => Number(c.course_id) === Number(id))
   }
-
-  console.log('APP RENDER')
 
   return (
     <div>
@@ -39,9 +37,9 @@ const App=(props) => {
           <Notification />
           <Route exact path="/" render={() => <StudentForm />} />
           <Route path="/students" render={() => <StudentList />} />
-          <Route exact path="/courses" render={() => <CourseList/>}/>
+          <Route exact path="/courses" render={() => <CourseList />} />
           <Route exact path='/courses/:id' render={({ match }) =>
-            <SingleCourse courseId={match.params.id} course={courseById(match.params.id)} />}/>
+            <SingleCourse courseId={match.params.id} course={courseById(match.params.id)} />} />
         </div>
       </Router>
     </div>

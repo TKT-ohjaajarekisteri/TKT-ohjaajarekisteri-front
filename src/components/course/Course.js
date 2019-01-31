@@ -12,7 +12,6 @@ const Course = ({ course }) => {
   }
   return (
     <tr style={courseStyle}>
-      {/* <td className = "course_id"> {course.course_id}</td> */}
       <td><Link to={`/courses/${course.course_id}`}>{course.learningopportunity_id}</Link></td>
       <td className = "name"> {course.course_name}</td>
       <td className = "year">{course.year}</td>
