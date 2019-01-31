@@ -1,34 +1,54 @@
 {
   "students": [
     {
-      "student": "Kalle Kustaa",
-      "course": "Fullstack",
+      "student_id": "1111111111111111",
+      "first_name": "Virva",
+      "last_name": "Svala",
+      "nickname": "Viku",
+      "phone": "040",
+      "email": "gmail.com",
       "id": 1
     },
     {
-      "student": "Maija Meikäläinen",
-      "course": "Ohtu",
+      "student_id": "2001771082",
+      "first_name": "Jaska",
+      "last_name": "Jokunen",
+      "nickname": "Jakke",
+      "phone": "040-5873059",
+      "email": "sukka@gmail.com",
       "id": 2
     },
     {
-      "student": "Jaska Jokunen",
-      "course": "Käjä",
+      "student_id": "1o1208230974",
+      "first_name": "Heli",
+      "last_name": "Huh",
+      "nickname": "Helstsu",
+      "phone": "09090",
+      "email": "gmail",
       "id": 3
+    }
+  ],
+  "courses": [
+    {
+      "learningopportunity_id": "TKT 201",
+      "course_name": "OHJA",
+      "period": "4",
+      "year": "2016",
+      "id": 1
     },
     {
-      "student": "Nakke Nakuttaja",
-      "course": "OHTU",
-      "id": 4
+      "learningopportunity_id": "TKT 301",
+      "course_name": "LÄJÄ",
+      "period": "6",
+      "year": "2018",
+      "id": 2
     },
     {
-      "student": "uushakija",
-      "course": "OHTU",
-      "id": 5
-    },
-    {
-      "student": "testt",
-      "course": "test",
-      "id": 6
+      "learningopportunity_id": "TKT702",
+      "course_name": "Pläjä",
+      "period": "7",
+      "year": "2010",
+      "id": 3
     }
   ]
 }

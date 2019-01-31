@@ -1,22 +1,19 @@
 import axios from 'axios'
+import url from './config'
 
-const baseUrl = 'http://localhost:3001/students'
-
+const baseUrl = url + '/api/students'
 
 const getAll = async () => {
   const response = await axios.get(baseUrl)
   return response.data
 }
 
-const create = async (student,data) => {
-  const newObject = {
-    student,
-    course:data,
+// const create = async (student) => {
+//   const response = await axios.post('http://localhost:3004/', student)
+//   return response.data
+// }
 
-  }
-  const response = await axios.post(baseUrl, newObject)
-  return response.data
-}
 export default {
-  getAll, create
+  getAll
+  //, create
 }
