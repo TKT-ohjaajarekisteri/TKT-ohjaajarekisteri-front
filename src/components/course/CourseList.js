@@ -18,9 +18,10 @@ const CourseList = (props) => {
           </tr>
         </thead>
         <tbody>
-          {props.coursesToShow.map(course =>
-            <Course course={course} key={course.course_id}/>
-          )}
+          <div className="courseWrapper">
+            {props.coursesToShow.map(course =>
+              <Course course={course} key={course.course_id}/>
+            )}</div>
         </tbody>
       </table>
     </div>

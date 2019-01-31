@@ -49,7 +49,7 @@ const App=(props) => {
           <Notification />
           <Route exact path="/" render={() => <StudentForm />} />
           <Route path="/students" render={() => <StudentList />} />
-          <Route exact path="/courses" render={() => <CourseList/>}/>
+          <div className="wrapper"> <Route exact path="/courses" render={() => <CourseList/>}/> </div>
           <Route exact path='/courses/:id' render={({ match }) =>
             <SingleCourse course={courseById(match.params.id)} />}/>
         </div>

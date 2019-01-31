@@ -21,10 +21,12 @@ describe('<App />', () => {
     expect(app.find('App').length).toBe(1)
   })
 
-  it('renders all courses it gets from backend', () => {
-    app.update()
-    const courseComponents = app.find(Course)
-    expect(courseComponents.length).toEqual(courseService.courses.length)
-  })
+
+
+  // it('renders all courses it gets from backend', () => {
+  //   app.update()
+  //   const courseComponents = app.find(Course)
+  //   expect(courseComponents.length).toEqual(courseService.courses.length)
+  // })
 
 })
