@@ -2,10 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Course from './Course'
 
-const CourseList = (props) => {
-
+export const CourseList = (props) => {
   return (
-    <div>
+    <div className="courseList">
       <h2>Courses</h2>
       <table>
         <thead>
@@ -17,8 +16,8 @@ const CourseList = (props) => {
             <th>Period</th>
           </tr>
         </thead>
-        <tbody className="courseListBody">
-          {props.coursesToShow.map(course =>
+        <tbody>
+          {props.courses.map(course =>
             <Course course={course} key={course.course_id}/>
           )}
         </tbody>
@@ -28,9 +27,9 @@ const CourseList = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  const coursesToShow = state.courses
+  // const coursesToShow = state.courses
   return {
-    coursesToShow
+    courses: state.courses
   }
 }
 

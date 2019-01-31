@@ -14,12 +14,10 @@ describe.only('<Course />', () => {
 
     const courseComponent = shallow(<Course course={course} />)
     
-    const course_idDiv = courseComponent.find('.course_id')
     const nameDiv = courseComponent.find('.name')
 
     console.log(nameDiv)
 
-    expect(course_idDiv.text()).toContain(course.course_id)
     expect(nameDiv.text()).toContain(course.course_name)
 
 
