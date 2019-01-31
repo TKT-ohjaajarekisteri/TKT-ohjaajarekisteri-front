@@ -4,13 +4,11 @@ import { connect } from 'react-redux'
 import { initializeCourses } from '../../reducers/courseReducer'
 import { initializeApplicants } from '../../reducers/singleCourseReducer'
 
-const SingleCourse = ({ course, studs, initializeApplicants }) => {
+const SingleCourse = ({ courseId, course, studs, initializeApplicants }) => {
 
   useEffect(() => {
     initializeCourses()
-    // initializeSingleCourse(course.course_id)
-    initializeApplicants(course.course_id)
-    //console.log(course,'initsingleCoursee' )
+    initializeApplicants(courseId)
     console.log('has init applicants')
   },
   []
@@ -20,7 +18,7 @@ const SingleCourse = ({ course, studs, initializeApplicants }) => {
 
       <div className="content">
         {console.log(course, 'course name')}
-        <h2>{course.course_id} {course.learningopportunity_id}  {course.course_name}  {course.year}  {course.period} </h2>
+        {/* <h2>{course.course_id} {course.learningopportunity_id}  {course.course_name}  {course.year}  {course.period} </h2> */}
       </div>
 
       <div> <h2>Applicants for course:</h2> </div>
