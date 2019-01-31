@@ -1,89 +1,54 @@
 {
   "students": [
     {
-      "student": "Kalle Kustaa",
-      "course": "Fullstack",
-      "id": 1
-    },
-    {
-      "student": "Maija Meikäläinen",
-      "course": "Ohtu",
-      "id": 2
-    },
-    {
-      "student": "Jaska Jokunen",
-      "course": "Käjä",
+      "student_id": "1111111111111111",
+      "first_name": "Virva",
+      "last_name": "Svala",
+      "nickname": "Viku",
+      "phone": "040",
+      "email": "gmail.com",
       "id": 3
     },
     {
-      "student": "Nakke Nakuttaja",
-      "course": "OHTU",
+      "student_id": "2001771082",
+      "first_name": "Jaska",
+      "last_name": "Jokunen",
+      "nickname": "Jakke",
+      "phone": "040-5873059",
+      "email": "sukka@gmail.com",
       "id": 4
     },
     {
-      "student": "uushakija",
-      "course": "OHTU",
+      "student_id": "1o1208230974",
+      "first_name": "Heli",
+      "last_name": "Huh",
+      "nickname": "Helstsu",
+      "phone": "09090",
+      "email": "gmail",
       "id": 5
-    },
+    }
+  ],
+  "courses": [
     {
-      "student": "testt",
-      "course": "test",
+      "learningopportunity_id": "TKT 201",
+      "course_name": "OHJA",
+      "period": "4",
+      "year": "2016",
       "id": 6
     },
     {
-      "student": {
-        "id": "111",
-        "last_name": "bisi",
-        "first_names": "olli",
-        "nickname": "sibbe",
-        "phone_number": "1234",
-        "email": "olc"
-      },
+      "learningopportunity_id": "TKT 301",
+      "course_name": "LÄJÄ",
+      "period": "6",
+      "year": "2018",
       "id": 7
     },
     {
-      "student": {
-        "id": "111",
-        "last_name": "svala",
-        "first_names": "viku",
-        "nickname": "viku",
-        "phone_number": "11",
-        "email": ""
-      },
+      "learningopportunity_id": "TKT702",
+      "course_name": "Pläjä",
+      "period": "7",
+      "year": "2010",
       "id": 8
-    },
-    {
-      "student": {
-        "id": "a",
-        "last_name": "a",
-        "first_names": "a",
-        "nickname": "a",
-        "phone_number": "a",
-        "email": "a"
-      },
-      "id": 9
-    },
-    {
-      "student": {
-        "id": "",
-        "last_name": "",
-        "first_names": "",
-        "nickname": "",
-        "phone_number": "",
-        "email": ""
-      },
-      "id": 10
-    },
-    {
-      "student": {
-        "id": "",
-        "last_name": "",
-        "first_names": "",
-        "nickname": "",
-        "phone_number": "",
-        "email": ""
-      },
-      "id": 11
     }
   ]
 }
