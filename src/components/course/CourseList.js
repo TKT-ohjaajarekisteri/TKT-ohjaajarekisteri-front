@@ -17,7 +17,7 @@ const CourseList = (props) => {
             <th>Course period</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="courseListBody">
           {props.coursesToShow.map(course =>
             <Course course={course} key={course.course_id}/>
           )}
@@ -29,7 +29,6 @@ const CourseList = (props) => {
 
 const mapStateToProps = (state) => {
   const coursesToShow = state.courses
-  // console.log(coursesToShow, 'shownCourses')
   return {
     coursesToShow
   }

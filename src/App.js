@@ -13,7 +13,6 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 const App=(props) => {
   useEffect(() => {
-    console.log('initData')
     props.initializeStudents()
     props.initializeCourses()
   },
@@ -21,19 +20,10 @@ const App=(props) => {
   )
 
   const courseById = (id) => {
-    console.log(id, 'iiiiiiiiiiiiiiiiiiiiiiiiiiiidddddddddddddddddddddddddddddd')
-    console.log(props.showCourses, 'propscourses_APPP')
-
-    console.log('full state', props.state)
-
-    let found = props.showCourses.find(c => Number(c.course_id) === Number(id))
-    console.log('found single course', found)
-
-    return found
+    return props.courses.find(c => Number(c.course_id) === Number(id))
   }
 
   console.log('APP RENDER')
-  // console.log('current full state', props.state)
 
   return (
     <div>
@@ -49,7 +39,7 @@ const App=(props) => {
           <Notification />
           <Route exact path="/" render={() => <StudentForm />} />
           <Route path="/students" render={() => <StudentList />} />
-          <div className="wrapper"> <Route exact path="/courses" render={() => <CourseList/>}/> </div>
+          <Route exact path="/courses" render={() => <CourseList/>}/>
           <Route exact path='/courses/:id' render={({ match }) =>
             <SingleCourse courseId={match.params.id} course={courseById(match.params.id)} />}/>
         </div>
@@ -58,12 +48,9 @@ const App=(props) => {
   )
 }
 
-//get stuff from store
 const mapStateToProps = (state) => {
-  const showCourses= state.courses
   return {
-    showCourses,
-    state
+    courses: state.courses
   }
 }
 

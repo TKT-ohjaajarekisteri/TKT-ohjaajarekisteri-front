@@ -43,7 +43,7 @@ const SingleCourse = ({ courseId, course, courses, studs, initializeApplicants, 
 //get stuff from store //students:state.applicants,
 const mapStateToProps = (state) => {
   return {
-    studs: state.applicants,
+    studs: state.singleCourse,
     courses: state.courses
   }
 }
