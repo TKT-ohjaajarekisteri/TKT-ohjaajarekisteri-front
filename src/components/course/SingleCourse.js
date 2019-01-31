@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-// import { initializeSingleCourse } from '../../reducers/courseReducer'
 import { initializeCourses } from '../../reducers/courseReducer'
 import { initializeApplicants } from '../../reducers/singleCourseReducer'
 
-const SingleCourse = ({ courseId, course, courses, studs, initializeApplicants, initializeCourses }) => {
+export const SingleCourse = (props) => {
 
   useEffect(() => {
     initializeCourses()
@@ -14,10 +13,12 @@ const SingleCourse = ({ courseId, course, courses, studs, initializeApplicants, 
   []
   )
 
+  let { courseId, course, studs, initializeApplicants, initializeCourses } = props
+
   return (
     <div>
       {console.log('render singleCourse')}
-      <div className="content">
+      <div className="courseHeader">
         {console.log(course, 'course name')}
         {!course ? null :
           <h2>{course.course_id} {course.learningopportunity_id}  {course.course_name}  {course.year}  {course.period} </h2>
@@ -28,7 +29,7 @@ const SingleCourse = ({ courseId, course, courses, studs, initializeApplicants, 
       {console.log(studs, 'applicants')}
 
       {studs.map(student =>
-        <div key={student.student_id}>
+        <div key={student.student_id} className="studentDiv">
           {student.student_id}
           {student.first_name}
           {student.nickname}
@@ -43,8 +44,7 @@ const SingleCourse = ({ courseId, course, courses, studs, initializeApplicants, 
 //get stuff from store //students:state.applicants,
 const mapStateToProps = (state) => {
   return {
-    studs: state.singleCourse,
-    courses: state.courses
+    studs: state.singleCourse
   }
 }
 
