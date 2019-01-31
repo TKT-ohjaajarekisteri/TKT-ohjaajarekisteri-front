@@ -10,11 +10,11 @@ const CourseList = (props) => {
       <table>
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Course code</th>
-            <th>Course name</th>
-            <th>Course year</th>
-            <th>Course period</th>
+            {/* <th>Id</th> */}
+            <th>Code</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Period</th>
           </tr>
         </thead>
         <tbody>
