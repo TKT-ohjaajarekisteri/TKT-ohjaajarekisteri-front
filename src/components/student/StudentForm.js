@@ -22,7 +22,7 @@ const StudentForm = (props) => {
     }
 
     props.createContent(formContent)
-    props.notify(`Your ${formContent.first_name} application has been sended`, 5)
+    props.notify(`The application for ${formContent.first_name} has been sent`, 5)
 
     event.target.student_number.value = ''
     event.target.student_firstnames.value = ''
@@ -42,27 +42,64 @@ const StudentForm = (props) => {
       <h2>Create a new application</h2>
       <form onSubmit={handleSubmit}>
         <h3>Student information:</h3>
-        Student number:
-        <div><input name='student_number'/></div>
-        Last name:
-        <div><input name='student_lastname'/></div>
-        First names:
-        <div><input name='student_firstnames'/></div>
-        Nickname:
-        <div><input name='student_nickname'/></div>
-        Phone:
-        <div><input name='student_phonenumber'/></div>
-        Email:
-        <div><input name='student_email'/></div>
+        <table>
+          <tbody>
+            <tr>
+              <td><label>Student number: </label></td>
+              <td><input name='student_number' /></td>
+            </tr>
+
+            <tr>
+              <td><label>Last name: </label></td>
+              <td><input name='student_lastname' /></td>
+            </tr>
+
+            <tr>
+              <td><label>First names: </label></td>
+              <td><input name='student_firstnames' /></td>
+            </tr>
+
+            <tr>
+              <td><label>Nickname: </label></td>
+              <td><input name='student_nickname' /></td>
+            </tr>
+
+            <tr>
+              <td><label>Phone: </label></td>
+              <td><input name='student_phonenumber' /></td>
+            </tr>
+
+            <tr>
+              <td><label>Email: </label></td>
+              <td><input name='student_email' /></td>
+            </tr>
+          </tbody>
+        </table>
+
         <h3>Course Information:</h3>
-        Course id:
-        <div><input name='course_id'/></div>
-        Course name:
-        <div><input name='course_name'/></div>
-        Course year:
-        <div><input name='course_year'/></div>
-        Course period:
-        <div><input name='course_period'/></div>
+        <table>
+          <tbody>
+            <tr>
+              <td><label>Course id: </label></td>
+              <td><input name='course_id' /></td>
+            </tr>
+
+            <tr>
+              <td><label>Course name: </label></td>
+              <td><input name='course_name' /></td>
+            </tr>
+
+            <tr>
+              <td><label>Course year: </label></td>
+              <td><input name='course_year' /></td>
+            </tr>
+
+            <tr>
+              <td><label>Course period: </label></td>
+              <td><input name='course_period' /></td>
+            </tr>
+          </tbody>
+        </table>
         <button>create</button>
       </form>
     </div>

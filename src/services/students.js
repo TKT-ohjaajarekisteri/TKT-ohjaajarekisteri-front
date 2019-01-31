@@ -8,12 +8,7 @@ const getAll = async () => {
   return response.data
 }
 
-// const create = async (student) => {
-//   const response = await axios.post('http://localhost:3004/', student)
-//   return response.data
-// }
 
 export default {
   getAll
-  //, create
 }

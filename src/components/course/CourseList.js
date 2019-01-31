@@ -9,7 +9,6 @@ export const CourseList = (props) => {
       <table>
         <thead>
           <tr>
-            {/* <th>Id</th> */}
             <th>Code</th>
             <th>Name</th>
             <th>Year</th>
@@ -18,7 +17,7 @@ export const CourseList = (props) => {
         </thead>
         <tbody>
           {props.courses.map(course =>
-            <Course course={course} key={course.course_id}/>
+            <Course course={course} key={course.course_id} />
           )}
         </tbody>
       </table>
@@ -27,7 +26,6 @@ export const CourseList = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  // const coursesToShow = state.courses
   return {
     courses: state.courses
   }

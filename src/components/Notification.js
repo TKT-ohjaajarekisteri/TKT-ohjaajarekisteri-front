@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Notification=(props) => {
+const Notification = (props) => {
 
-  if (props.notification.length===0) {
+  if (props.notification.length === 0) {
     return null
   }
   const style = {

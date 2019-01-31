@@ -3,7 +3,6 @@ import url from './config'
 
 const baseUrl = url + 'api/courses/'
 
-
 const getAll = async () => {
   const response = await axios.get(baseUrl)
   return response.data

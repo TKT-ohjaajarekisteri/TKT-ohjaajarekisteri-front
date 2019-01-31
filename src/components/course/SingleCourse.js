@@ -1,50 +1,51 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-// import { initializeSingleCourse } from '../../reducers/courseReducer'
 import { initializeCourses } from '../../reducers/courseReducer'
 import { initializeApplicants } from '../../reducers/singleCourseReducer'
+import Student from '../student/Student'
 
-const SingleCourse = ({ courseId, course, courses, studs, initializeApplicants, initializeCourses }) => {
+export const SingleCourse = (props) => {
 
   useEffect(() => {
     initializeCourses()
     initializeApplicants(courseId)
-    console.log('has init applicants')
   },
   []
   )
 
+  let { courseId, course, applicants, initializeApplicants, initializeCourses } = props
+
   return (
     <div>
-      {console.log('render singleCourse')}
-      <div className="content">
-        {console.log(course, 'course name')}
+      <div className="courseHeader">
         {!course ? null :
-          <h2>{course.course_id} {course.learningopportunity_id}  {course.course_name}  {course.year}  {course.period} </h2>
+          <h2>{course.course_id}  {course.learningopportunity_id} {course.course_name}  {course.year} {course.period}</h2>
         }
       </div>
 
-      <div> <h2>Applicants for course:</h2> </div>
-      {console.log(studs, 'applicants')}
-
-      {studs.map(student =>
-        <div key={student.student_id}>
-          {student.student_id}
-          {student.first_name}
-          {student.nickname}
-          {student.email}
-        </div>
-      )}
-
+      <h3>Applicants for course:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Student number</th>
+            <th>Frist name</th>
+            <th>Nickname</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {applicants.map(student =>
+            <Student key={student.student_id} student={student} />
+          )}
+        </tbody>
+      </table>
     </div>
   )
 }
 
-//get stuff from store //students:state.applicants,
 const mapStateToProps = (state) => {
   return {
-    studs: state.singleCourse,
-    courses: state.courses
+    applicants: state.singleCourse
   }
 }
 
