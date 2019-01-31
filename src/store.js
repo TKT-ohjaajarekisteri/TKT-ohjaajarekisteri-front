@@ -10,7 +10,7 @@ const reducer = combineReducers({
   notification: notificationReducer,
   students: studentReducer,
   courses: courseReducer,
-  applicants: singleCourseReducer
+  singleCourse: singleCourseReducer
 })
 
 const store = createStore(

@@ -9,12 +9,6 @@ const courseReducer = (store = [], action) => {
     }
     return [...store, action.data]
 
-  case 'CREATE_STUDENT':
-    if (store.find(student => student.student_id===action.data.student_id)) {
-      return store
-    }
-    return [...store, action.data]
-
   case 'INIT_COURSES':
     return action.data
 
@@ -49,6 +43,7 @@ export const createContent = (content) => {
       data: response.course
 
     })
+
     dispatch({
       type: 'CREATE_STUDENT',
       data: response.student

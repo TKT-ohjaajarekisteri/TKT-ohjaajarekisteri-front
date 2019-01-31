@@ -24,7 +24,7 @@ const App=(props) => {
     console.log(id, 'iiiiiiiiiiiiiiiiiiiiiiiiiiiidddddddddddddddddddddddddddddd')
     console.log(props.showCourses, 'propscourses_APPP')
 
-    console.log('full state', props.allstate)
+    console.log('full state', props.state)
 
     let found = props.showCourses.find(c => Number(c.course_id) === Number(id))
     console.log('found single course', found)
@@ -33,6 +33,7 @@ const App=(props) => {
   }
 
   console.log('APP RENDER')
+  // console.log('current full state', props.state)
 
   return (
     <div>
@@ -62,7 +63,7 @@ const mapStateToProps = (state) => {
   const showCourses= state.courses
   return {
     showCourses,
-    allstate: state
+    state
   }
 }
 
