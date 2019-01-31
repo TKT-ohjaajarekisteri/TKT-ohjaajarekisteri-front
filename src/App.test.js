@@ -3,9 +3,9 @@ import { mount } from 'enzyme'
 import App from './App'
 import { Provider } from 'react-redux'
 import store from './store.js'
-import Course from './components/course/Course'
-jest.mock('./services/courses')
-import courseService from './services/courses'
+//import Course from './components/course/Course'
+//jest.mock('./services/courses')
+//import courseService from './services/courses'
 
 describe('<App />', () => {
   let app

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 const StudentList = (props) => (
 
-  <div>
+  <div id="students">
     <h2>Students</h2>
     {props.studentsToShow.map(s =>
       <div key={s.student_number}>
