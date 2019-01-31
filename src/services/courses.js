@@ -1,6 +1,7 @@
 import axios from 'axios'
+import url from './config'
 
-const baseUrl = 'http://localhost:3004/api/courses/'
+const baseUrl = url + 'api/courses/'
 
 
 const getAll = async () => {
@@ -9,13 +10,13 @@ const getAll = async () => {
 }
 
 const create = async (course) => {
-  const response = await axios.post('http://localhost:3004/api/students', course)
+  const response = await axios.post(url + 'api/students', course)
   return response.data
 }
 
 //get students for specific course
 const getStudents = async (id) => {
-  const response = await axios.get(`http://localhost:3004/api/courses/${id}/students`)
+  const response = await axios.get(url + 'api/courses/${id}/students')
   return response.data
 }
 
