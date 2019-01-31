@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 
 const StudentList = (props) => (
 
-  <div>
+  <div id="students">
     <h2>Students</h2>
     {props.studentsToShow.map(s =>
       <div key={s.student_id}>
         {s.student_id}
-        {s.first_name}
+        <div>{s.first_name}</div>
         {s.nickname}
         {s.email}
       </div>
