@@ -16,7 +16,7 @@ const create = async (course) => {
 
 //get students for specific course
 const getStudents = async (id) => {
-  const response = await axios.get(url + 'api/courses/${id}/students')
+  const response = await axios.get(url + `api/courses/${id}/students`)
   return response.data
 }
 
