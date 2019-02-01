@@ -19,7 +19,7 @@ export const SingleCourse = (props) => {
     <div>
       <div className="courseHeader">
         {!course ? null :
-          <h2>{course.course_id}  {course.learningopportunity_id} {course.course_name}  {course.year} {course.period}</h2>
+          <h2>{course.learningopportunity_id} {course.course_name}  {course.year} {course.period}</h2>
         }
       </div>
 
