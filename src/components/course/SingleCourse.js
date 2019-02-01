@@ -27,8 +27,7 @@ export const SingleCourse = (props) => {
       <table>
         <thead>
           <tr>
-            <th>Student number</th>
-            <th>Frist name</th>
+            <th>First name</th>
             <th>Last name</th>
             <th>Email</th>
           </tr>
