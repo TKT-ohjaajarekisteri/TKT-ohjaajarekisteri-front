@@ -9,10 +9,6 @@ const StudentForm = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const formContent = {
-      student_number: event.target.student_number.value,
-      first_name: event.target.student_firstnames.value,
-      last_name: event.target.student_lastname.value,
-      nickname: event.target.student_nickname.value,
       phone: event.target.student_phonenumber.value,
       email: event.target.student_email.value,
       learningopportunity_id: event.target.course_id.value,
@@ -24,10 +20,6 @@ const StudentForm = (props) => {
     props.createContent(formContent)
     props.notify(`The application for ${formContent.first_name} has been sent`, 5)
 
-    event.target.student_number.value = ''
-    event.target.student_firstnames.value = ''
-    event.target.student_lastname.value = ''
-    event.target.student_nickname.value = ''
     event.target.student_phonenumber.value = ''
     event.target.student_email.value = ''
 
@@ -38,69 +30,45 @@ const StudentForm = (props) => {
   }
 
   return (
-    <div>
+    <div className='studentForm'>
+
       <h2>Create a new application</h2>
       <form onSubmit={handleSubmit}>
-        <h3>Student information:</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td><label>Student number: </label></td>
-              <td><input name='student_number' /></td>
-            </tr>
+        <div>
+          <h3>Student information:</h3>
+        </div>
+        <div>
+          <label>Phone: </label>
+          <input type="text"name='student_phonenumber' />
+        </div>
 
-            <tr>
-              <td><label>Last name: </label></td>
-              <td><input name='student_lastname' /></td>
-            </tr>
-
-            <tr>
-              <td><label>First names: </label></td>
-              <td><input name='student_firstnames' /></td>
-            </tr>
-
-            <tr>
-              <td><label>Nickname: </label></td>
-              <td><input name='student_nickname' /></td>
-            </tr>
-
-            <tr>
-              <td><label>Phone: </label></td>
-              <td><input name='student_phonenumber' /></td>
-            </tr>
-
-            <tr>
-              <td><label>Email: </label></td>
-              <td><input name='student_email' /></td>
-            </tr>
-          </tbody>
-        </table>
+        <div>
+          <label>Email: </label>
+          <input type="text" name='student_email'/>
+        </div>
 
         <h3>Course Information:</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td><label>Course id: </label></td>
-              <td><input name='course_id' /></td>
-            </tr>
 
-            <tr>
-              <td><label>Course name: </label></td>
-              <td><input name='course_name' /></td>
-            </tr>
+        <div>
+          <label>Course id: </label>
+          <input type="text" name='course_id' />
+        </div>
 
-            <tr>
-              <td><label>Course year: </label></td>
-              <td><input name='course_year' /></td>
-            </tr>
+        <div>
+          <label>Course name: </label>
+          <input type="text" name='course_name' />
+        </div>
 
-            <tr>
-              <td><label>Course period: </label></td>
-              <td><input name='course_period' /></td>
-            </tr>
-          </tbody>
-        </table>
-        <button>create</button>
+        <div>
+          <label>Course year: </label>
+          <input type="text" name='course_year' />
+        </div>
+
+        <div>
+          <label>Course period: </label>
+          <input type="text" name='course_period' />
+        </div>
+        <button className="button" type="submit">create</button>
       </form>
     </div>
   )

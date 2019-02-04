@@ -6,7 +6,6 @@ import { notify } from './../reducers/notificationReducer'
 
 
 const LoginForm = (props) => {
- 
   const handleLoginSubmit = async (event) => {
     event.preventDefault()
 
@@ -31,8 +30,6 @@ const LoginForm = (props) => {
   return(
     <div>
       <h2>Sign in with your University of Helsinki credentials</h2>
-
-
       <form onSubmit={handleLoginSubmit}>
         <div>
             username
@@ -47,7 +44,6 @@ const LoginForm = (props) => {
           <input
             type="password"
             name="password"
-   
           />
         </div>
         <button type="submit">Login</button>
