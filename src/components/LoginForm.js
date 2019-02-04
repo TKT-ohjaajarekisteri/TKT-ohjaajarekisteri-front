@@ -2,7 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { notify } from './../reducers/notificationReducer'
-import { login } from './../reducers/loginReducer'
+//import { login } from './../reducers/loginReducer'
 
 
 const LoginForm = (props) => {
@@ -14,7 +14,7 @@ const LoginForm = (props) => {
     const password=event.target.password.value
     try {
 
-      login(username, password)   //kutsuttaan action creatoria
+      //login(username, password)   //kutsuttaan action creatoria
       notify(`user ${username} logged in`, 5)
 
       event.target.username.value = ''
