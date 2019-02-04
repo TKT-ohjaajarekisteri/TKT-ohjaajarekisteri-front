@@ -29,12 +29,14 @@ const App = (props) => {
       <Router>
         <div>
           <div>
+          <Link to="/login">Login</Link> &nbsp;
             <Link to="/">RegisterForm</Link> &nbsp;
             {/* <Link to="/students">Students</Link> &nbsp; */}
             <Link to="/courses">Courses</Link> &nbsp;
           </div>
 
           <Notification />
+          <Route exact path="/" render={() => <LoginForm />} />
           <Route exact path="/" render={() => <StudentForm />} />
           <Route path="/students" render={() => <StudentList />} />
           <Route exact path="/courses" render={() => <CourseList />} />
