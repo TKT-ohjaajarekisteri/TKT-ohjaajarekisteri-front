@@ -2,10 +2,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { notify } from './../reducers/notificationReducer'
-//import { login } from './../reducers/loginReducer'
+import { login } from './../reducers/loginReducer'
 
 
 const LoginForm = (props) => {
+
   const handleLoginSubmit = async (event) => {
     event.preventDefault()
 
@@ -13,26 +14,28 @@ const LoginForm = (props) => {
     const password=event.target.password.value
     try {
 
-      //login(username, password)   //kutsuttaan action creatoria
+      this.props.login(username, password) 
       notify(`user ${username} logged in`, 5)
 
       event.target.username.value = ''
       event.target.password.value=''
-      //if email---omasinglepage else RegisterForm
-     // history.push('/')
+      //if email=onko jo hakenut aikaisemmin---ohjaus omalle singlepagelle else studentForm hakemukseen
+     // history.push('/studentForm')
+     //history.push('/SingleStudent username={username}')
 
     } catch(exception) {
       console.log('login went wrong')
+      //tänne tulostuksia käyttäjälle..wrong password or email
 
     }
   }
 
   return(
-    <div>
+    <div className='studentForm'>
       <h2>Sign in with your University of Helsinki credentials</h2>
       <form onSubmit={handleLoginSubmit}>
         <div>
-            username
+        <label>username </label>  
           <input
             type="text"
             name="username"
@@ -40,13 +43,13 @@ const LoginForm = (props) => {
         </div>
 
         <div>
-            password
+        <label>password</label>
           <input
             type="password"
             name="password"
           />
         </div>
-        <button type="submit">Login</button>
+        <button className="button" type="submit">create</button>
       </form>
 
     </div>
@@ -55,5 +58,5 @@ const LoginForm = (props) => {
 
 export default connect(
   null,
-  { notify }
+  { notify, login }
 )(LoginForm)
