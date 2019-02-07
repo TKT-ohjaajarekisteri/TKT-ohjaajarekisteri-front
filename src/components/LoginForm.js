@@ -5,8 +5,10 @@ import { notify, setError } from './../reducers/notificationReducer'
 import { saveUser } from './../reducers/loginReducer'
 import loginService from '../services/login'
 import courseService from '../services/courses'
+import studentService from '../services/students'
 
-const LoginForm = (props) => {
+
+const LoginForm = ({history, notify, setError, saveUser, logged}) => {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault()
@@ -20,34 +22,36 @@ const LoginForm = (props) => {
         username: username,
         password: password
          })
-         console.log(user,'tietokannastapalautettu user')
+        // console.log(user,'tietokannastapalautettu user')
 
         window.localStorage.setItem('loggedInUser', JSON.stringify(user))
         const loggedUser=JSON.parse(window.localStorage.getItem('loggedInUser'))
-        console.log(loggedUser,'localstoresta haettu user')
-        props.saveUser(loggedUser)
+        //console.log(loggedUser,'localstoresta haettu user')
+        saveUser(loggedUser)
         courseService.setToken(loggedUser.token)
-        props.notify(`user ${username} logged in`, 5)
+        notify(`user logged in`, 5) //${username}
 
-      event.target.username.value = ''
-      event.target.password.value=''
-      if (user.email){
-        // history.push('/SingleStudent', user={user})
+     if (loggedUser.user.email===false){
+        //console.log(loggedUser,'false email')
+       history.push('/register')
       }
-        else {
-        //history.push('/studentForm')
-    } 
-    }
-    catch(exception) {
-      console.log('login went wrong') 
+       else {
+       history.push(`/students/${loggedUser.user_id}`)
+     }  
+      }
+    catch(exception) { 
+        event.target.username.value = ''
+        event.target.password.value = ''
+     // console.log('login went wrong') 
       if (exception.response) {
         if (exception.response.status === 400) {
-          props.setError('Username or password is missing!',5)
+          setError('Username or password is missing!',5)    
+          
         } else if (exception.response.status === 401) {
-          props.setError('Username or password is incorrect!',5)
+         setError('Username or password is incorrect!',5)
         }
       } else {
-        props.setError('Error occurred, login failed')
+        setError('Error occurred, login failed')
       } 
     }
   }
@@ -78,7 +82,13 @@ const LoginForm = (props) => {
   )
 }
 
+const mapStateToProps = (state) => {   
+   return {
+     logged: state.loggedUser
+   }
+ }
+
 export default connect(
-  null,
+    mapStateToProps,
   { notify, setError, saveUser}
 )(LoginForm)

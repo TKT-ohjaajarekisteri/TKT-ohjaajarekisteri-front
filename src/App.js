@@ -5,8 +5,11 @@ import StudentForm from './components/student/StudentForm'
 import StudentList from './components/student/StudentList'
 import Notification from './components/Notification'
 import SingleCourse from './components/course/SingleCourse'
+import SingleStudent from './components/student/SingleStudent'
 import CourseList from './components/course/CourseList'
+import Home from './components/Home'
 
+import { saveUser } from './reducers/loginReducer'
 import { logout } from './reducers/loginReducer'
 import { initializeCourses } from './reducers/courseReducer'
 import { initializeStudents } from './reducers/studentReducer'
@@ -24,19 +27,17 @@ const App = (props) => {
   },
   []
   )
-
   const userCheck = async () => {
     let token
     try {
       token = JSON.parse(window.localStorage.getItem('loggedInUser')).token
-      await tokenCheckService.userCheck(token)
-      this.props.loginUser(
-        JSON.parse(window.localStorage.getItem('loggedInUser'))
+      // await tokenCheckService.userCheck(token)
+      props.saveUser(JSON.parse(window.localStorage.getItem('loggedInUser'))
       )
       return true
     } catch (e) {
       console.log(e.response)
-      //this.props.loginuser(null)
+      props.saveUser(null)
       return false
     }
   }
@@ -48,30 +49,67 @@ const App = (props) => {
 
   return (
     <div>
-      <h1>TKT Assistant Register</h1>
       <Router>
         <div>
           <div>
-       
-            <Link to="/">RegisterForm</Link> &nbsp;
-            {/* <Link to="/students">Students</Link> &nbsp; */}
-            <Link to="/courses">Courses</Link> &nbsp;    
-            {props.user
-                ? <em> You are logged in <Link to="/logout">logout</Link> &nbsp;</em>//{props.user.username} 
-                : <input onClick={props.logout} type="button" value="logout" />} 
-          </div>
 
+          <Link to="/">Home</Link> &nbsp;
+
+          {props.loggedUser && props.loggedUser.user.role === "student"
+            ? <Link to="/register">RegisterForm</Link>
+            : <em></em> } &nbsp;
+
+
+            {props.loggedUser && props.loggedUser.user.role === "student" //vaihda admin kun valmis
+              ? <Link to="/courses">Courses</Link>
+              : <em></em>} &nbsp;
+           
+           {props.loggedUser && props.loggedUser.user.role === "student" //vaihda admin kun valmis
+              ?<Link to="/students">Students</Link>
+              : <em></em> }  &nbsp;
+
+            {props.loggedUser
+            ? <em> You are logged in <input onClick={props.logout} type="button" value="logout"/>&nbsp;</em>
+            : <Link to="/login">login</Link> } &nbsp;
+
+
+          {/* just for test purpose going to be deleted when no needed */}
+            {/* <Link to="/register">RegisterFormtest</Link> &nbsp;  
+            <Link to="/courses">Coursestest</Link>&nbsp;
+            <Link to="/students">Studentstest</Link> &nbsp; 
+            <Link to="/login">logintest</Link>&nbsp; */}
+
+          </div>
+          <h1>TKT Assistant Register</h1>
+ 
           <Notification />
-          <Route exact path="/login" render={() => <LoginForm />} />
-          {/* <Route exact path="/logout" render={() => <LoginForm />} /> */}
-          <Route exact path="/" render={() => <StudentForm />} />
-          <Route path="/students" render={() => <StudentList />} />
-          <Route exact path="/courses" render={() => <CourseList />} />
+  
+          <Route exact path="/" render={() => <Home />} />
+
+          <Route exact path="/register" render={() => <StudentForm />} />     
+         
+          <Route exact path="/students" render={() =>
+          props.loggedUser //  {props.loggedUser && props.loggedUser.user.role === "admin"
+            ? ( <StudentList/>) 
+            : ( <Redirect to="/login" />)} />
+
+          <Route exact path="/courses" render={() =>
+          props.loggedUser //  {props.loggedUser && props.loggedUser.user.role === "admin"
+            ? ( <CourseList/>) 
+            : ( <Redirect to="/login" />)} />
+       
+
           <Route exact path='/courses/:id' render={({ match }) =>
             <SingleCourse courseId={match.params.id} course={courseById(match.params.id)} />} />
-              <Route path="/logout" render={() => <Redirect to="/login" />}/>
+
+          <Route exact path="/login" render={({ history}) => <LoginForm history={history}/>} />
+             
+       
+          <Route path="/students/:id" render={() => <SingleStudent />} /> 
         </div>
       </Router>
+    
+
     </div>
   )
 }
@@ -82,13 +120,12 @@ const App = (props) => {
 const mapStateToProps = (state) => {   
    console.log(state,'koko storeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
   return {
-    courses: state.courses,
-    user: state.loggedUser
+    loggedUser: state.loggedUser
 
   }
 }
 
 export default connect(
   mapStateToProps,
-  { initializeStudents, initializeCourses, logout}
+  { initializeStudents, initializeCourses, logout, saveUser}
 )(App)

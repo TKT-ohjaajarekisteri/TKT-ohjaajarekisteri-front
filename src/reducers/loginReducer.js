@@ -5,8 +5,6 @@ const loginReducer = (store = null, action) => {
   switch (action.type) {
 
   case 'LOGGED':
-    // console.log(action.data, 'data')
-    // console.log(action.user,'user')
     console.log(action.user,'LOGGED action.user')
     return action.user
 
@@ -32,7 +30,7 @@ export const saveUser=(user) => {
 }
 
 export const logout=() => (dispatch) => {
-  ///alert('Are you sure you want to logout!')
+  alert('Are you sure you want to logout!')
   window.localStorage.removeItem('loggedInUser')
   dispatch({
     type:'LOGOUT'

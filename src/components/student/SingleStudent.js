@@ -1,36 +1,34 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const SingleStudent = ({ user }) => {
 
+export const SingleStudent = ({ loggedUser }) => {
 
-//tietokantahaku
-//   const studentsInfo=this.props.students.find(s => s.id===user.username)
-//   return(
+  console.log(loggedUser, 'usersingelstidenkkkkkkkkkkkkkkkkkkkkt')
+  //tietokantahaku studentin tiedoille
+  //   const studentsInfo=this.props.students.find(s => s.id===user.username)
+  return(
 
     <div>
-      <h1>Student</h1>
-      <h2>{user.username}</h2>
+      <h1>Single Student</h1>
 
-      {console.log(user.username, 'username')}
+      {!loggedUser ? null :
+        <div>
+          <h2>rooli:{loggedUser.user.role}, id:{loggedUser.user.user_id}</h2>
+        </div>
+      }
 
-      <ul>
-        {studentsInfo.this.props.students.map(student =>
-          <li key={student.id}>{student.email}</li>
-        )}
-      </ul>
     </div>
   )
-
 }
 
 const mapStateToProps = (state) => {
   return {
-    students: state.students
+    loggedUser: state.loggedUser
   }
 }
-//kutsutaan  reducereista actioncreator metodeja
+
 export default connect(
   mapStateToProps,
-  {  }
+  { }
 )(SingleStudent)
