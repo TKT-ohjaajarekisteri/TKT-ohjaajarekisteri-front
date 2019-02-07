@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 
 const SingleStudent = ({ user }) => {
 
-  const studentsInfo=this.props.students.find(s => s.username===user.username)
-  return(
+
+//tietokantahaku
+//   const studentsInfo=this.props.students.find(s => s.id===user.username)
+//   return(
 
     <div>
       <h1>Student</h1>

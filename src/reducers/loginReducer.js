@@ -1,5 +1,3 @@
-import loginService from '../services/login'
-import courseService from '../services/students'
 
 const loginReducer = (store = null, action) => {
   console.log('ACTION:', action)
@@ -9,6 +7,7 @@ const loginReducer = (store = null, action) => {
   case 'LOGGED':
     // console.log(action.data, 'data')
     // console.log(action.user,'user')
+    console.log(action.user,'LOGGED action.user')
     return action.user
 
 
@@ -22,31 +21,19 @@ const loginReducer = (store = null, action) => {
 }
 
 //ACTION CREATOR
-export const login=(username, password) => {
+export const saveUser=(user) => {
+  console.log(user,'ACTION saveUSER')
   return async (dispatch)  => {
-    try {
-      const user = await loginService.login({
-        username,
-        password
-      })
-      // window.localStorage.setItem('loggedBlogappUser', JSON.stringify(user))
-      // console.log(user)
-      // console.log(user.token)
-      courseService.setToken(user.token)
-
-      dispatch({
-        type:'LOGGED',
-        user
-      })
-    } catch(exception) {
-      console.log('login went wrong')
-    }
+    dispatch({
+      type:'LOGGED',
+      user
+    })
   }
 }
 
 export const logout=() => (dispatch) => {
-  alert('Are you sure you want to logout!')
-  // window.localStorage.removeItem('loggedBlogappUser')
+  ///alert('Are you sure you want to logout!')
+  window.localStorage.removeItem('loggedInUser')
   dispatch({
     type:'LOGOUT'
   })

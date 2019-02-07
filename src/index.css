@@ -13,7 +13,7 @@ body {
     padding-top: 5px;
     font-size: 15px;
   }
-  
+
   .error {
     color: black;
     font-size: 20px;
@@ -71,7 +71,7 @@ body {
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: rgb(53, 86, 119);
+    background-color: rgb(44, 44, 44);
     border: none;
     border-radius: 15px;
   }

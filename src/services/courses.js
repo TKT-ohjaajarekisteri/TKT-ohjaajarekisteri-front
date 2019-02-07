@@ -34,5 +34,5 @@ const getStudents = async (id) => {
 
 
 export default {
-  getAll, getStudents, create
+  getAll, getStudents, create, setToken
 }
