@@ -1,13 +1,14 @@
 # Docker
 
-The project uses Docker in the staging environment and also finally in the production.
+The project uses Docker in the staging environment and also in the production.
 
 
 ## Phases of Docker setup
 
-The project has a Docker Hub account, which has images for both frontend and backend.
+The project has a Dockerhub account, which has images for both frontend and backend.
 These images were created using seperate Dockerfiles for both frontend and [backend](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-back/blob/login/Dockerfile) that can be found in the root folders.
 
+Most of the command will require sudo.
 
 ### Transfering the images to Docker Hub
 
@@ -30,11 +31,11 @@ Make sure docker and docker-compose are installed, and run docker-compose up in 
 
 List containers
 
-    sudo docker ps
+    docker ps
 
 Stop a container
 
-    sudo docker stop <container name>
+    docker stop <container name>
 
 
 ### Accessing database
@@ -57,4 +58,4 @@ Run a command inside container and you should be able to do sql queries:
 
 To show all tables in the database:
 	
-\dt 
+	\dt 
