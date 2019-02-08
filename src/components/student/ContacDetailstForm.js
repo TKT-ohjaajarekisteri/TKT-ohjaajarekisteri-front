@@ -6,8 +6,8 @@ import { notify } from '../../reducers/notificationReducer'
 
 const ContactDetailsForm = ({ createStudent, notify, id }) => {
 
-  const logged_id = id
-  console.log(logged_id, 'contactFormuseri')
+
+  console.log(id, 'contactForms loggedUsers id')
 
 
   const handleSubmit = async (event) => {
@@ -23,8 +23,7 @@ const ContactDetailsForm = ({ createStudent, notify, id }) => {
       // year: event.target.year.value
     }
 
-    console.log(logged_id, 'contactFormuseri id')
-
+    //console.log(logged_id, 'contactFormuseri id')
     createStudent(formContent, id)
     notify(`The application for ${formContent.nickname} has been sent`, 5)
 

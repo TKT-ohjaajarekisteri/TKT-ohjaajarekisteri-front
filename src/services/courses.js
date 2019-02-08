@@ -7,8 +7,7 @@ let token = null
 
 const setToken = (newToken) => {
   token = `bearer ${newToken}`
-  console.log('token asetettu')
-  console.log(token)
+  console.log('token asetettu', token)
 }
 
 const getAll = async () => {

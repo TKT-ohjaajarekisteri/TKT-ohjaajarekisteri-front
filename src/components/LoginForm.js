@@ -22,7 +22,7 @@ const LoginForm = ({ history, notify, setError, saveUser }) => {
         username: username,
         password: password
       })
-      console.log(user,'tietokannastapalautettu user')
+      //console.log(user,'tietokannastapalautettu user')
 
       //set response user to localstore and reduxstore, and tokens
       window.localStorage.setItem('loggedInUser', JSON.stringify(user))

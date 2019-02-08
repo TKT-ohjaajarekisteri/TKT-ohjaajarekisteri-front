@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 export const SingleStudent = ({ loggedUser }) => {
 
-  console.log(loggedUser, 'usersingelstidenkkkkkkkkkkkkkkkkkkkkt')
+  //console.log(loggedUser, 'loggedUser from singleStudent')
   //tähän tieto kantahaku yksittäisen studentin tiedoille
 
   return(
