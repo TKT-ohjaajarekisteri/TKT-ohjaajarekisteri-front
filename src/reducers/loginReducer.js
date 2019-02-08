@@ -5,7 +5,7 @@ const loginReducer = (store = null, action) => {
   switch (action.type) {
 
   case 'LOGGED':
-    console.log(action.user,'LOGGED action.user')
+    //console.log(action.user,'LOGGED action.user')
     return action.user
 
 
@@ -18,9 +18,9 @@ const loginReducer = (store = null, action) => {
   }
 }
 
-//ACTION CREATOR
+//ACTION CREATORS
 export const saveUser=(user) => {
-  console.log(user,'ACTION saveUSER')
+  //console.log(user,'ACTION saveUSER')
   return async (dispatch)  => {
     dispatch({
       type:'LOGGED',

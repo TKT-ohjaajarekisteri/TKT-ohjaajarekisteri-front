@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import LoginForm from './components/LoginForm'
-import StudentForm from './components/student/StudentForm'
-import StudentList from './components/student/StudentList'
+import ContactDetailForm from './components/student/ContacDetailstForm'
 import Notification from './components/Notification'
 import SingleCourse from './components/course/SingleCourse'
 import SingleStudent from './components/student/SingleStudent'
@@ -11,19 +10,15 @@ import Home from './components/Home'
 
 import { saveUser } from './reducers/loginReducer'
 import { logout } from './reducers/loginReducer'
-import { initializeCourses } from './reducers/courseReducer'
-import { initializeStudents } from './reducers/studentReducer'
-import { BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom'
-import tokenCheckService from './services/tokenCheck'
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
+//import tokenCheckService from './services/tokenCheck'
 
 const App = (props) => {
   useEffect(() => {
-    //props.initializeStudents()
-   // props.initializeCourses()
- 
-   if (window.localStorage.getItem('loggedInUser')) {
-   userCheck()
-  }
+
+    if (window.localStorage.getItem('loggedInUser')) {
+      userCheck()
+    }
   },
   []
   )
@@ -49,76 +44,74 @@ const App = (props) => {
 
   return (
     <div>
-      <Router>
+      <Router >
         <div>
           <div>
 
-          <Link to="/">Home</Link> &nbsp;
+            <Link to="/">Home</Link> &nbsp;
 
-          {props.loggedUser && props.loggedUser.user.role === "student"
-            ? <Link to="/register">RegisterForm</Link>
-            : <em></em> } &nbsp;
+            {props.loggedUser && props.loggedUser.user.role === 'student'
+              ? <Link to="/register">Contact details</Link>
+              : <em></em>} &nbsp;
 
 
-            {props.loggedUser && props.loggedUser.user.role === "student" //vaihda admin kun valmis
+            {props.loggedUser && props.loggedUser.user.role === 'admin'
               ? <Link to="/courses">Courses</Link>
               : <em></em>} &nbsp;
-           
-           {props.loggedUser && props.loggedUser.user.role === "student" //vaihda admin kun valmis
-              ?<Link to="/students">Students</Link>
-              : <em></em> }  &nbsp;
+
+            {/* tulee vasta myöhemmässä sprintissa
+            {props.loggedUser && props.loggedUser.user.role === 'admin'
+              ? <Link to="/students">Students</Link>
+              : <> </>}  &nbsp; */}
 
             {props.loggedUser
-            ? <em> You are logged in <input onClick={props.logout} type="button" value="logout"/>&nbsp;</em>
-            : <Link to="/login">login</Link> } &nbsp;
+              ? <em> You are logged in <input onClick={props.logout} type="button" value="logout" />&nbsp;</em>
+              : <Link to="/login">login</Link>} &nbsp;
 
-
-          {/* just for test purpose going to be deleted when no needed */}
-            {/* <Link to="/register">RegisterFormtest</Link> &nbsp;  
-            <Link to="/courses">Coursestest</Link>&nbsp;
-            <Link to="/students">Studentstest</Link> &nbsp; 
-            <Link to="/login">logintest</Link>&nbsp; */}
 
           </div>
-          <h1>TKT Assistant Register</h1>
- 
+          <h1>TKK-Assistant Register</h1>
+
           <Notification />
-  
+
           <Route exact path="/" render={() => <Home />} />
 
-          <Route exact path="/register" render={() => <StudentForm />} />     
-         
-          <Route exact path="/students" render={() =>
-          props.loggedUser //  {props.loggedUser && props.loggedUser.user.role === "admin"
-            ? ( <StudentList/>) 
-            : ( <Redirect to="/login" />)} />
+          <Route exact path="/register" render={() =>
+            props.loggedUser && props.loggedUser.user.role === 'student'
+              ? (<ContactDetailForm id = { props.loggedUser.user.user_id } />)
+              : (<Redirect to="/login" />)} />
+
+
+          {/*not used in 2 sprint
+           <Route exact path="/students" render={() =>
+            props.loggedUser && props.loggedUser.user.role === 'admin'
+              ? (<StudentList />)
+              : (<Redirect to="/login" />)} /> */}
+
 
           <Route exact path="/courses" render={() =>
-          props.loggedUser //  {props.loggedUser && props.loggedUser.user.role === "admin"
-            ? ( <CourseList/>) 
-            : ( <Redirect to="/login" />)} />
-       
+            props.loggedUser && props.loggedUser.user.role === 'admin'
+              ? (<CourseList />)
+              : (<Redirect to="/login" />)} />
+
 
           <Route exact path='/courses/:id' render={({ match }) =>
             <SingleCourse courseId={match.params.id} course={courseById(match.params.id)} />} />
 
-          <Route exact path="/login" render={({ history}) => <LoginForm history={history}/>} />
-             
-       
-          <Route path="/students/:id" render={() => <SingleStudent />} /> 
+          <Route path="/login" render={({ history }) =>
+            <LoginForm history={history} />} />
+
+
+          <Route path="/students/:id" render={() => <SingleStudent />} />
         </div>
       </Router>
-    
-
     </div>
   )
 }
 
 
-
-
-const mapStateToProps = (state) => {   
-   console.log(state,'koko storeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
+const mapStateToProps = (state) => {
+  console.log(state, 'koko storeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
   return {
     loggedUser: state.loggedUser
 
@@ -127,5 +120,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { initializeStudents, initializeCourses, logout, saveUser}
+  { logout, saveUser }
 )(App)

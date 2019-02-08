@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 export const SingleStudent = ({ loggedUser }) => {
 
   console.log(loggedUser, 'usersingelstidenkkkkkkkkkkkkkkkkkkkkt')
-  //tietokantahaku studentin tiedoille
-  //   const studentsInfo=this.props.students.find(s => s.id===user.username)
+  //tähän tieto kantahaku yksittäisen studentin tiedoille
+
   return(
 
     <div>

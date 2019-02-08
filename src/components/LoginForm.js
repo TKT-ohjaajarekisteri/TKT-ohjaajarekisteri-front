@@ -8,60 +8,68 @@ import courseService from '../services/courses'
 import studentService from '../services/students'
 
 
-const LoginForm = ({history, notify, setError, saveUser, logged}) => {
+const LoginForm = ({ history, notify, setError, saveUser }) => {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault()
 
-    const username=event.target.username.value
-    const password=event.target.password.value
+    const username = event.target.username.value
+    const password = event.target.password.value
 
-
+    //post login credentials to server
     try {
-        const user = await loginService.login({
+      const user = await loginService.login({
         username: username,
         password: password
-         })
-        // console.log(user,'tietokannastapalautettu user')
+      })
+      console.log(user,'tietokannastapalautettu user')
 
-        window.localStorage.setItem('loggedInUser', JSON.stringify(user))
-        const loggedUser=JSON.parse(window.localStorage.getItem('loggedInUser'))
-        //console.log(loggedUser,'localstoresta haettu user')
-        saveUser(loggedUser)
-        courseService.setToken(loggedUser.token)
-        notify(`user logged in`, 5) //${username}
+      //set response user to localstore and reduxstore, and tokens
+      window.localStorage.setItem('loggedInUser', JSON.stringify(user))
+      const loggedUser = JSON.parse(window.localStorage.getItem('loggedInUser'))
+      //console.log(loggedUser,'localstoresta haettu user')
+      saveUser(loggedUser)
+      courseService.setToken(loggedUser.token)
+      studentService.setToken(loggedUser.token)
+      notify('user logged in', 5)
 
-     if (loggedUser.user.email===false){
-        //console.log(loggedUser,'false email')
-       history.push('/register')
+      //checks role of logged user and redirects to right view
+      if (loggedUser.user.role === 'student' && loggedUser.user.email === false) {
+        console.log(loggedUser, ' student false email')
+        history.push('/register')
       }
-       else {
-       history.push(`/students/${loggedUser.user_id}`)
-     }  
+      else {
+        history.push(`/students/${loggedUser.user_id}`)
       }
-    catch(exception) { 
-        event.target.username.value = ''
-        event.target.password.value = ''
-     // console.log('login went wrong') 
+
+      if (loggedUser.user && loggedUser.user.role === 'admin') {
+        console.log(loggedUser, 'admin')
+        history.push('/courses')
+      }
+    }
+    catch (exception) {
+      // event.target.username.value = ''
+      // event.target.password.value = ''
+      console.log('login went wrong')
       if (exception.response) {
         if (exception.response.status === 400) {
-          setError('Username or password is missing!',5)    
-          
+          setError('Username or password is missing!', 5)
+
         } else if (exception.response.status === 401) {
-         setError('Username or password is incorrect!',5)
+          setError('Username or password is incorrect!', 5)
         }
       } else {
         setError('Error occurred, login failed')
-      } 
+      }
     }
   }
 
-  return(
+  return (
     <div className='studentForm'>
       <h2>Sign in with your University of Helsinki credentials</h2>
       <form onSubmit={handleLoginSubmit}>
         <div>
-        <label>username </label>  
+          <label>username </label>
           <input
             type="text"
             name="username"
@@ -69,7 +77,7 @@ const LoginForm = ({history, notify, setError, saveUser, logged}) => {
         </div>
 
         <div>
-        <label>password</label>
+          <label>password</label>
           <input
             type="password"
             name="password"
@@ -82,13 +90,13 @@ const LoginForm = ({history, notify, setError, saveUser, logged}) => {
   )
 }
 
-const mapStateToProps = (state) => {   
-   return {
-     logged: state.loggedUser
-   }
- }
+const mapStateToProps = (state) => {
+  return {
+    logged: state.loggedUser
+  }
+}
 
 export default connect(
-    mapStateToProps,
-  { notify, setError, saveUser}
+  mapStateToProps,
+  { notify, setError, saveUser }
 )(LoginForm)
