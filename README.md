@@ -22,7 +22,7 @@ This registry will be used by students to express their interest to assist on co
 ## [Product backlog](https://docs.google.com/spreadsheets/d/1anddOjdDCkdAmyJH2gLAUYYbubbZhXSGxku90kQJT9k/edit#gid=0)
 
 ## Technologies
-* Front: React, Javascript, JSX
+* Front: React, Javascript
 * Back: NodeJS
 * Database: PostgreSQL
 * DevOps: Docker
@@ -31,6 +31,8 @@ This registry will be used by students to express their interest to assist on co
 ## [Design architecture document](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/architecture.md)
 
 ## [Software Requirements Specification](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/SRS.md)
+
+## [Docker](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/docker/documentation/docker.md)
 
 ## Definition of done
 * Features are planned in sprint planning
