@@ -23,6 +23,7 @@ describe('<CourseList />', () => {
     }
 
     courseList = shallow(<CourseList {...props} />)
+    console.log(courseList.debug())
   })
 
   it('renders self', () => {
