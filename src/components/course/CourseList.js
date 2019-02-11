@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Course from './Course'
+import { initializeCourses } from '../../reducers/courseReducer'
+
 
 export const CourseList = (props) => {
+
+  useEffect(() => {
+    props.initializeCourses()
+  },
+  []
+  )
+
   return (
     <div className="courseList">
       <h2>Courses</h2>
@@ -31,4 +40,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(CourseList)
+export default connect(
+  mapStateToProps,
+  { initializeCourses }
+)(CourseList)
