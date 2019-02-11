@@ -18,6 +18,7 @@ const loginReducer = (store = null, action) => {
   }
 }
 
+
 //ACTION CREATORS
 export const saveUser=(user) => {
   //console.log(user,'ACTION saveUSER')
@@ -30,13 +31,11 @@ export const saveUser=(user) => {
 }
 
 export const logout=() => (dispatch) => {
-  alert('Are you sure you want to logout!')
   window.localStorage.removeItem('loggedInUser')
   dispatch({
     type:'LOGOUT'
   })
 }
-
 
 
 export default loginReducer

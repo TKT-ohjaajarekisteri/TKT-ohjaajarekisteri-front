@@ -16,6 +16,10 @@ const LoginForm = ({ history, notify, setError, saveUser }) => {
     const username = event.target.username.value
     const password = event.target.password.value
 
+    event.target.username.value= ''
+    event.target.password.value= ''
+
+
     //post login credentials to server
     try {
       const user = await loginService.login({
@@ -48,8 +52,7 @@ const LoginForm = ({ history, notify, setError, saveUser }) => {
       }
     }
     catch (exception) {
-      // event.target.username.value = ''
-      // event.target.password.value = ''
+
       console.log('login went wrong')
       if (exception.response) {
         if (exception.response.status === 400) {
@@ -92,7 +95,10 @@ const LoginForm = ({ history, notify, setError, saveUser }) => {
 
 const mapStateToProps = (state) => {
   return {
-    logged: state.loggedUser
+    logged: state.loggedUser,
+    username: state.username,
+    password: state.password,
+
   }
 }
 
