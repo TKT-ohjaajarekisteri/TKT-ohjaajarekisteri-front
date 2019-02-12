@@ -7,38 +7,38 @@ let token = null
 
 const setToken = (newToken) => {
   token = `bearer ${newToken}`
-  console.log('token asetettu', token)
+  // console.log('token asetettu', token)
+}
+
+const getConfig = () => {
+  return {
+    headers: { 'Authorization': token }
+  }
 }
 
 const getAll = async () => {
-  const config = {
-    headers: { 'Authorization': token }
+  try {
+    const response = await axios.get(baseUrl, getConfig())
+    return response.data
+  } catch (error) {
+    
   }
-  const response = await axios.get(baseUrl, config)
-  return response.data
+
 }
 
 
 //creates sudent and course information if token right
 const create = async (content) => {
-  const config = {
-    headers: { 'Authorization': token }
-  }
-  const response = await axios.post(url + 'api/students', content, config)
+  const response = await axios.post(url + 'api/students', content, getConfig())
   return response.data
 }
 
 
 //get students for specific course
 const getStudents = async (id) => {
-  const config = {
-    headers: { 'Authorization': token }
-  }
-  const response = await axios.get(url + `api/courses/${id}/students`, config)
+  const response = await axios.get(url + `api/courses/${id}/students`, getConfig())
   return response.data
 }
 
 
-export default {
-  getAll, getStudents, create, setToken
-}
+export default { getAll, getStudents, create, setToken }
