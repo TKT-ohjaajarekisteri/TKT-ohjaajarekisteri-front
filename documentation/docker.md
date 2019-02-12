@@ -59,3 +59,7 @@ Run a command inside container and you should be able to do sql queries:
 To show all tables in the database:
 	
 	\dt 
+
+To browse Course table:
+
+	select * from "Courses";
