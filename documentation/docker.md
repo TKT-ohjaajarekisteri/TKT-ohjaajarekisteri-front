@@ -8,7 +8,7 @@ The project uses Docker in the staging environment and also in the production.
 The project has a Dockerhub account, which has images for both frontend and backend.
 These images were created using seperate Dockerfiles for both frontend and [backend](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-back/blob/login/Dockerfile) that can be found in the root folders.
 
-Most of the command will require sudo.
+Most of the command will require sudo, and you need to have docker and docker-compose installed. Instructions for [installation](https://docker-hy.github.io/part0/).
 
 ### Transfering the images to Docker Hub
 
