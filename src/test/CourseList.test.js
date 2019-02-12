@@ -1,5 +1,6 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { BrowserRouter as Router } from 'react-router-dom';
+import { mount } from 'enzyme'
 import { CourseList } from '../components/course/CourseList'
 
 describe('<CourseList />', () => {
@@ -22,8 +23,15 @@ describe('<CourseList />', () => {
       ]
     }
 
-    courseList = shallow(<CourseList {...props} />)
-    console.log(courseList.debug())
+    courseList = mount(
+      <Router>
+        <CourseList {...props} />
+      </Router>
+    )
+  })
+
+  afterAll(() => {
+    courseList.unMount()
   })
 
   it('renders self', () => {
