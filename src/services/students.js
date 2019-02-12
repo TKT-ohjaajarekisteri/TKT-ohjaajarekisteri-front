@@ -7,30 +7,32 @@ let token = null
 
 const setToken = (newToken) => {
   token = `bearer ${newToken}`
-  console.log('token asetettu', token)
+  // console.log('token asetettu', token)
 
+}
+
+const getConfig = () => {
+  return {
+    headers: { 'Authorization': token }
+  }
 }
 
 //gets all sudents
 const getAll = async () => {
-  const config = {
-    headers: { 'Authorization': token }
-  }
-  const response = await axios.get(baseUrl,config)
+  const response = await axios.get(baseUrl, getConfig())
   return response.data
 }
 
 
 //creates sudents contactDetails
 const update = async (content, id) => {
-  const config = {
-    headers: { 'Authorization': token }
+  try {
+    const response = await axios.put(url + `api/students/${id}/`, content, getConfig())
+    return response.data
+  } catch (error) {
+    return { error: 'Invalid email address!' }
   }
-  const response = await axios.put(url + `api/students/${id}/`, content, config)
-  return response.data
 }
-
-
 
 export default {
   getAll, setToken, update

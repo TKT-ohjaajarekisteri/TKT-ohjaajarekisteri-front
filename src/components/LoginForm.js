@@ -8,7 +8,7 @@ import courseService from '../services/courses'
 import studentService from '../services/students'
 
 
-const LoginForm = ({ history, notify, setError, saveUser }) => {
+export const LoginForm = ({ history, notify, setError, saveUser }) => {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault()
@@ -26,7 +26,7 @@ const LoginForm = ({ history, notify, setError, saveUser }) => {
         username: username,
         password: password
       })
-      //console.log(user,'tietokannastapalautettu user')
+      console.log(user,'tietokannastapalautettu user')
 
       //set response user to localstore and reduxstore, and tokens
       window.localStorage.setItem('loggedInUser', JSON.stringify(user))
@@ -43,7 +43,8 @@ const LoginForm = ({ history, notify, setError, saveUser }) => {
         history.push('/register')
       }
       else {
-        history.push(`/students/${loggedUser.user_id}`)
+        // Throws error, might not be needed
+        // history.push(`/students/${loggedUser.user_id}`)
       }
 
       if (loggedUser.user && loggedUser.user.role === 'admin') {
@@ -68,8 +69,9 @@ const LoginForm = ({ history, notify, setError, saveUser }) => {
   }
 
   return (
-    <div className='studentForm'>
-      <h2>Sign in with your University of Helsinki credentials</h2>
+    <div className='loginForm'>
+      <div className='logHeader'>
+        <h2>Sign in with your University of Helsinki credentials</h2></div>
       <form onSubmit={handleLoginSubmit}>
         <div>
           <label>username </label>
