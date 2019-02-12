@@ -54,7 +54,7 @@ This lets you run commands inside a container
 
 Run a command inside container and you should be able to do sql queries:
 
-	psql -U postgres 
+	psql -U <username>
 
 To show all tables in the database:
 	
