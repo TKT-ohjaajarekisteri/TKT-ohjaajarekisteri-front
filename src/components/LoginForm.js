@@ -8,7 +8,7 @@ import courseService from '../services/courses'
 import studentService from '../services/students'
 
 
-const LoginForm = ({ history, notify, setError, saveUser }) => {
+export const LoginForm = ({ history, notify, setError, saveUser }) => {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault()
@@ -69,8 +69,9 @@ const LoginForm = ({ history, notify, setError, saveUser }) => {
   }
 
   return (
-    <div className='studentForm'>
-      <h2>Sign in with your University of Helsinki credentials</h2>
+    <div className='loginForm'>
+      <div className='logHeader'>
+        <h2>Sign in with your University of Helsinki credentials</h2></div>
       <form onSubmit={handleLoginSubmit}>
         <div>
           <label>username </label>
