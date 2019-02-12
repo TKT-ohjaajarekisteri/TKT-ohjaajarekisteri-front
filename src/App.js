@@ -114,9 +114,7 @@ const App = (props) => {
             condition={(hasContactDetails || isAdmin) && loggedUser}
             render={() => <Home />}
           />
-        
         </Switch>
-
 
 
         {/* <Route exact path="/register" render={() =>
@@ -147,104 +145,6 @@ const App = (props) => {
     </div >
   )
 }
-
-
-// const App = (props) => {
-//   useEffect(() => {
-
-//     if (window.localStorage.getItem('loggedInUser')) {
-//       userCheck()
-//     }
-//   },
-//   []
-//   )
-//   const userCheck = async () => {
-//     let token
-//     try {
-//       token = JSON.parse(window.localStorage.getItem('loggedInUser')).token
-//       // await tokenCheckService.userCheck(token)
-//       props.saveUser(JSON.parse(window.localStorage.getItem('loggedInUser'))
-//       )
-//       return true
-//     } catch (e) {
-//       console.log(e.response)
-//       props.saveUser(null)
-//       return false
-//     }
-//   }
-
-//   const courseById = (id) => {
-//     return props.courses.find(c => Number(c.course_id) === Number(id))
-//   }
-
-
-//   return (
-//     <div>
-//       <Router >
-//         <div>
-//           <div>
-
-//             <Link to="/">Home</Link> &nbsp;
-
-//             {props.loggedUser && props.loggedUser.user.role === 'student'
-//               ? <Link to="/register">Contact details</Link>
-//               : <em></em>} &nbsp;
-
-
-//             {props.loggedUser && props.loggedUser.user.role === 'admin'
-//               ? <Link to="/courses">Courses</Link>
-//               : <em></em>} &nbsp;
-
-//             {/* tulee vasta myöhemmässä sprintissa
-//             {props.loggedUser && props.loggedUser.user.role === 'admin'
-//               ? <Link to="/students">Students</Link>
-//               : <> </>}  &nbsp; */}
-
-//             {props.loggedUser
-//               ? <em> You are logged in <input onClick={props.logout} type="button" value="logout" />&nbsp;</em>
-//               : <Link to="/login">login</Link>} &nbsp;
-
-
-//           </div>
-//           <h1>TKK-Assistant Register</h1>
-
-//           <Notification />
-
-//           <Route exact path="/" render={() => <Home />} />
-
-//           <Route exact path="/register" render={() =>
-//             props.loggedUser && props.loggedUser.user.role === 'student'
-//               ? (<ContactDetailForm id = { props.loggedUser.user.user_id } />)
-//               : (<Redirect to="/login" />)} />
-
-
-//           {/*not used in 2 sprint
-//            <Route exact path="/students" render={() =>
-//             props.loggedUser && props.loggedUser.user.role === 'admin'
-//               ? (<StudentList />)
-//               : (<Redirect to="/login" />)} /> */}
-
-
-//           <Route exact path="/courses" render={() =>
-//             props.loggedUser && props.loggedUser.user.role === 'admin'
-//               ? (<CourseList />)
-//               : (<Redirect to="/login" />)} />
-
-
-//           <Route exact path='/courses/:id' render={({ match }) =>
-//             <SingleCourse courseId={match.params.id} course={courseById(match.params.id)} />} />
-
-//           <Route path="/login" render={({ history }) =>
-//             <LoginForm history={history} />} />
-
-
-//           <Route path="/students/:id" render={() => <SingleStudent />} />
-//         </div>
-//       </Router>
-//     </div>
-//   )
-// }
-
 
 const mapStateToProps = (state) => {
   console.log(state, 'koko store')
