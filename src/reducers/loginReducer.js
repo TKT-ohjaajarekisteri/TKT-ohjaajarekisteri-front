@@ -9,7 +9,6 @@ const initialState = {
 }
 
 const loginReducer = (state = initialState, action) => {
-  // console.log('ACTION:', action)
 
   switch (action.type) {
 
@@ -53,28 +52,18 @@ const loginReducer = (state = initialState, action) => {
 export const initLoggedUser = () => {
   return async (dispatch) => {
     let loggedUser = JSON.parse(window.localStorage.getItem('loggedInUser'))
-    // console.log(loggedUser)
-
-    // implement on backend
-    // let token = loggedUser.token
-    // const response = await tokenCheckService.userCheck(token)
-
-    // if (response.message === 'success') {
-    //   await courseService.setToken(loggedUser.token)
-    //   await studentService.setToken(loggedUser.token)
-    //   dispatch({
-    //     type: 'INIT_USER',
-    //     data: loggedUser
-    //   })
-    // }
 
     if (loggedUser) {
-      await courseService.setToken(loggedUser.token)
-      await studentService.setToken(loggedUser.token)
-      dispatch({
-        type: 'INIT_USER',
-        data: loggedUser
-      })
+      let token = loggedUser.token
+      const response = await tokenCheckService.userCheck(token)
+      if (response.message === 'success') {
+        await courseService.setToken(loggedUser.token)
+        await studentService.setToken(loggedUser.token)
+        dispatch({
+          type: 'INIT_USER',
+          data: loggedUser
+        })
+      }
     }
   }
 }
@@ -99,7 +88,6 @@ export const updateLoggedUser = (content, id) => {
 export const login = (username, password) => {
   return async (dispatch) => {
     const response = await loginService.login({ username: username, password: password })
-    // console.log(response.error)
     if (response.error) {
       // handle error
     } else {
