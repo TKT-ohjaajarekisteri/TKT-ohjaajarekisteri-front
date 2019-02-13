@@ -7,38 +7,18 @@ import LoginForm from './components/LoginForm'
 import ContactDetailForm from './components/student/ContacDetailstForm'
 import PrivateRoute from './components/PrivateRoute'
 import Notification from './components/Notification'
-// import SingleCourse from './components/course/SingleCourse'
-// import SingleStudent from './components/student/SingleStudent'
-// import CourseList from './components/course/CourseList'
 import Home from './components/Home'
 
 // Actions
-import { logout, saveUser } from './reducers/loginReducer'
-
-//import tokenCheckService from './services/tokenCheck'
+import { logout, initLoggedUser } from './reducers/loginReducer'
 
 const App = (props) => {
+  
   useEffect(() => {
-    if (window.localStorage.getItem('loggedInUser')) {
-            userCheck()
-          }
-  }, [])
+    props.initLoggedUser()
+  },[])
 
-    const userCheck = async () => {
-    let token
-    try {
-      token = JSON.parse(window.localStorage.getItem('loggedInUser')).token
-      // await tokenCheckService.userCheck(token)
-      props.saveUser(JSON.parse(window.localStorage.getItem('loggedInUser'))
-      )
-      return true
-    } catch (e) {
-      console.log(e.response)
-      props.saveUser(null)
-      return false
-    }
-  }
-
+  // needs to be moved to component or load data in component somehow
   const courseById = (id) => {
     return props.courses.find(c => Number(c.course_id) === Number(id))
   }
@@ -147,13 +127,13 @@ const App = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'koko store')
+  // console.log(state, 'koko store')
   return {
-    loggedUser: state.loggedUser
+    loggedUser: state.loggedUser.loggedUser
   }
 }
 
 export default connect(
   mapStateToProps,
-  { logout, saveUser }
+  { logout, initLoggedUser }
 )(App)
