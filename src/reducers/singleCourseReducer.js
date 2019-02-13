@@ -1,23 +1,44 @@
 import courseService from '../services/courses'
 
-const singleCourseReducer = (store = [], action) => {
+const initialState = {
+  course: null,
+  applicants: []
+}
+
+const singleCourseReducer = (state = initialState, action) => {
   switch (action.type) {
   case 'INIT_APPLICANTS':
-    return action.data
+    return {
+      ...state,
+      applicants: action.data
+    }
+
+  case 'INIT_COURSE': {
+    return {
+      ...state,
+      course: action.data
+    }
+  }
 
   default:
-    return store
+    return state
   }
 }
 
 // Action creators
 
-export const initializeApplicants = (id) => {
+export const initializeSingleCourse = (id) => {
   return async (dispatch) => {
-    const content = await courseService.getStudents(id)
+    const course = await courseService.getOne(id)
+    dispatch({
+      type: 'INIT_COURSE',
+      data: course
+    })
+
+    const applicants = await courseService.getStudents(id)
     dispatch({
       type: 'INIT_APPLICANTS',
-      data: content
+      data: applicants
     })
   }
 }
