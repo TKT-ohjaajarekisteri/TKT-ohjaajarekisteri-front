@@ -5,7 +5,7 @@ const studentReducer = (store = [], action) => {
   case 'INIT_STUDENTS':
     return action.data
 
-  case 'CREATE_STUDENT':
+  case 'CREATE_STUDENT_CONTACTINFO':
     if (store.find(student => student.student_id === action.data.student_id)) {
       return store
     }
@@ -28,5 +28,27 @@ export const initializeStudents = () => {
   }
 }
 
+export const createStudent = (content, id) => {
+  return async (dispatch) => {
+    const response = await studentService.update(content, id)
 
+    // Upcoming fix for updating email without logging in again
+    // if (response.error) {
+    //   return
+    // }
+    // let loggedUser = JSON.parse(window.localStorage.getItem('loggedInUser'))
+    // loggedUser.user.email = true
+    // window.localStorage.setItem('loggedInUser', JSON.stringify(loggedUser))
+    // dispatch({
+    //   type: 'UPDATE_LOGGED_USER',
+    //   data: loggedUser
+    // })
+
+    dispatch({
+      type: 'CREATE_STUDENT_CONTACTINFO',
+      data: response.course
+
+    })
+  }
+}
 export default studentReducer

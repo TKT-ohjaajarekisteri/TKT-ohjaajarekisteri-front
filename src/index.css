@@ -1,0 +1,81 @@
+body {
+    margin: 20;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  h1 {
+    color: rgb(0, 0, 0);
+
+  }
+
+  .person{
+    color: grey;
+    padding-top: 5px;
+    font-size: 15px;
+  }
+
+  .error {
+    color: black;
+    font-size: 20px;
+    border-style: solid;
+    border-color: red;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .notification {
+    color: black;
+    border-color: green;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+   /* table */
+  table {
+    border-collapse: collapse;
+    width: 60%;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {background-color:#f5f5f5;
+  }
+
+
+  /* form */
+  input[type=text],[type=password]{
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: rgb(44, 44, 44);
+    border: none;
+    border-radius: 15px;
+  }
+  .studentForm, .loginForm {
+    border-radius: 5px;
+    padding: 20px;
+  }
