@@ -45,6 +45,11 @@ const App = (props) => {
               ? <Link to="/admin/courses">Courses</Link>
               : <em></em>} &nbsp;
 
+
+            {loggedUser && loggedUser.user.role === 'student'
+              ? <Link to="/contact-info">Contact details</Link>
+              : <em></em>} &nbsp;
+
             {loggedUser && loggedUser.user.role === 'student'
               ? <Link to="/apply">Apply</Link>
               : <em></em>} &nbsp;
@@ -112,17 +117,17 @@ const App = (props) => {
               render={({ match }) => <SingleCourse courseId={match.params.id} />}
             />
 
-            <PrivateRoute
+            {/* <PrivateRoute
               exact path="/apply"
               redirectPath="/contact-info"
               condition={hasContactDetails && loggedUser}
               render={() => <ApplicationForm  id={loggedUser.user.user_id}/>}
-            />
+            /> */}
 
             <PrivateRoute
               exact path="/apply"
               redirectPath="/login"
-              condition={loggedUser === null}
+              condition={hasContactDetails && loggedUser}
               render={() => <ApplicationForm  id={loggedUser.user.user_id}/>}
             />
 
@@ -132,8 +137,6 @@ const App = (props) => {
               condition={loggedUser === null}
               render={() => <LoginForm/>}
             />
-
-            
 
 
 
@@ -163,7 +166,7 @@ const App = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state, 'koko store')
+  console.log(state, 'koko store')
   return {
     loggedUser: state.loggedUser.loggedUser
   }
