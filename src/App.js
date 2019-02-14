@@ -66,26 +66,32 @@ const App = (props) => {
             <PrivateRoute
               exact path="/"
               redirectPath="/login"
+              condition={(loggedUser === null)}
+              render={() => <LoginForm/>}
+            />
+
+            <PrivateRoute
+              exact path="/login"
+              redirectPath="/courses"
               condition={(loggedUser !== null)}
-              render={() => <Redirect to="/courses"/>}
+              render={() => <CourseList />}
             />
 
             <PrivateRoute
               exact path="/admin/courses"
               redirectPath="/"
               condition={isAdmin}
-              render={() => <Home />}
+              render={() => <CourseList />}
             />
 
             <PrivateRoute
               exact path="/login"
-              redirectPath="/"
+              redirectPath="/courses"
               condition={loggedUser === null}
               render={() => <LoginForm />}
             />
 
             <PrivateRoute
-              // exact path="/contact-info"
               exact path="/contact-info"
               redirectPath="/login"
               condition={!hasContactDetails && loggedUser}
@@ -93,8 +99,7 @@ const App = (props) => {
             />
 
             <PrivateRoute
-              //exact path="/courses"
-              exact path="/apply"
+              exact path="/course"
               redirectPath="/contact-info"
               condition={hasContactDetails && loggedUser}
               render={() => <CourseList />}
@@ -108,12 +113,27 @@ const App = (props) => {
             />
 
             <PrivateRoute
-              //exact path="/courses"
               exact path="/apply"
               redirectPath="/contact-info"
               condition={hasContactDetails && loggedUser}
               render={() => <ApplicationForm  id={loggedUser.user.user_id}/>}
             />
+
+            <PrivateRoute
+              exact path="/apply"
+              redirectPath="/login"
+              condition={loggedUser === null}
+              render={() => <ApplicationForm  id={loggedUser.user.user_id}/>}
+            />
+
+            <PrivateRoute
+              exact path="/courses"
+              redirectPath="/login"
+              condition={loggedUser === null}
+              render={() => <LoginForm/>}
+            />
+
+            
 
 
 
