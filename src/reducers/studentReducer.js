@@ -61,4 +61,17 @@ export const createStudent = (content, id) => {
     })
   }
 }
+
+
+export const applyForCourse = (content, id) => {
+  return async (dispatch) => {
+    const response = await studentService.update(content, id)
+
+    dispatch({
+      type: 'STUDENT_COURSE_APPLICATION',
+      data: response.course
+
+    })
+  }
+}
 export default studentReducer

@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router'
 
 
-
+const Home = () => {
   return (
     <div>
       <h2>Do you wanna assist TKT courses?</h2>
