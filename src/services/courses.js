@@ -20,10 +20,16 @@ const getAll = async () => {
   try {
     const response = await axios.get(baseUrl, getConfig())
     return response.data
-  } catch (error) {
-    
+  } catch (error) { 
   }
+}
 
+const getOne = async (id) => {
+  try {
+    const response = await axios.get(baseUrl + id, getConfig())
+    return response.data
+  } catch (error) { 
+  }
 }
 
 
@@ -41,4 +47,4 @@ const getStudents = async (id) => {
 }
 
 
-export default { getAll, getStudents, create, setToken }
+export default { getAll, getOne, getStudents, create, setToken }

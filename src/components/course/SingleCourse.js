@@ -1,19 +1,15 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { initializeCourses } from '../../reducers/courseReducer'
-import { initializeApplicants } from '../../reducers/singleCourseReducer'
+import { initializeSingleCourse } from '../../reducers/singleCourseReducer'
 import Student from '../student/Student'
 
-export const SingleCourse = (props) => {
+export const SingleCourse = ({ course, applicants, initializeSingleCourse, courseId }) => {
 
   useEffect(() => {
-    initializeCourses()
-    initializeApplicants(courseId)
+    initializeSingleCourse(courseId)
   },
   []
   )
-
-  let { courseId, course, applicants, initializeApplicants, initializeCourses } = props
 
   return (
     <div>
@@ -44,11 +40,12 @@ export const SingleCourse = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    applicants: state.singleCourse
+    course: state.singleCourse.course,
+    applicants: state.singleCourse.applicants
   }
 }
 
 export default connect(
   mapStateToProps,
-  { initializeApplicants, initializeCourses }
+  { initializeSingleCourse }
 )(SingleCourse)

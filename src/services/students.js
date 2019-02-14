@@ -30,6 +30,7 @@ const update = async (content, id) => {
     const response = await axios.put(url + `api/students/${id}/`, content, getConfig())
     return response.data
   } catch (error) {
+    console.log(error)
     return { error: 'Invalid email address!' }
   }
 }
