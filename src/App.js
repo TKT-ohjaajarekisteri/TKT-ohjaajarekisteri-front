@@ -1,19 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import LoginForm from './components/LoginForm'
-import ContactDetailForm from './components/student/ContacDetailstForm'
+import ContactDetailForm from './components/student/ContactDetailsForm'
+import ApplicationForm from './components/student/ApplicationForm'
 import Notification from './components/Notification'
 import SingleCourse from './components/course/SingleCourse'
 import SingleStudent from './components/student/SingleStudent'
 import CourseList from './components/course/CourseList'
 import Home from './components/Home'
 
+import { getStudent } from './reducers/studentReducer'
 import { saveUser } from './reducers/loginReducer'
 import { logout } from './reducers/loginReducer'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 //import tokenCheckService from './services/tokenCheck'
 
 const App = (props) => {
+
+
   useEffect(() => {
 
     if (window.localStorage.getItem('loggedInUser')) {
@@ -27,8 +31,7 @@ const App = (props) => {
     try {
       token = JSON.parse(window.localStorage.getItem('loggedInUser')).token
       // await tokenCheckService.userCheck(token)
-      props.saveUser(JSON.parse(window.localStorage.getItem('loggedInUser'))
-      )
+      props.saveUser(JSON.parse(window.localStorage.getItem('loggedInUser')))
       return true
     } catch (e) {
       console.log(e.response)
@@ -52,6 +55,10 @@ const App = (props) => {
 
             {props.loggedUser && props.loggedUser.user.role === 'student'
               ? <Link to="/register">Contact details</Link>
+              : <em></em>} &nbsp;
+
+            {props.loggedUser && props.loggedUser.user.role === 'student'
+              ? <Link to="/apply">Apply</Link>
               : <em></em>} &nbsp;
 
 
@@ -81,6 +88,10 @@ const App = (props) => {
               ? (<ContactDetailForm id = { props.loggedUser.user.user_id } />)
               : (<Redirect to="/login" />)} />
 
+          <Route exact path="/apply" render={() =>
+            props.loggedUser && props.loggedUser.user.role === 'student'
+              ? (<ApplicationForm id = { props.loggedUser.user.user_id } />)
+              : (<Redirect to="/login" />)} />
 
           {/*not used in 2 sprint
            <Route exact path="/students" render={() =>
@@ -120,5 +131,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { logout, saveUser }
+  { logout, saveUser, getStudent }
 )(App)

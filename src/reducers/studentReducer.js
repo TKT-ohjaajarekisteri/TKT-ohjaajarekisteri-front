@@ -28,6 +28,16 @@ export const initializeStudents = () => {
   }
 }
 
+export const getStudent = (id) => {
+  return async (dispatch) => {
+    const content = await studentService.getStudent(id)
+    dispatch({
+      type: 'GET_STUDENT',
+      data: content
+    })
+  }
+}
+
 export const createStudent = (content, id) => {
   return async (dispatch) => {
     const response = await studentService.update(content, id)

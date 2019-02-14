@@ -11,7 +11,7 @@ const setToken = (newToken) => {
 
 }
 
-//gets all sudents
+//gets all students
 const getAll = async () => {
   const config = {
     headers: { 'Authorization': token }
@@ -30,8 +30,17 @@ const update = async (content, id) => {
   return response.data
 }
 
+//gets a single studenta
+const getStudent = async (id) => {
+  const config = {
+    headers: { 'Authorization': token }
+  }
+  const response = await axios.get(`api/students/${id}/`, config)
+  return response.data
+}
+
 
 
 export default {
-  getAll, setToken, update
+  getAll, setToken, update, getStudent
 }
