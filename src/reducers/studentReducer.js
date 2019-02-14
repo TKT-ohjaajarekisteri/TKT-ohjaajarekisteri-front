@@ -65,7 +65,7 @@ export const createStudent = (content, id) => {
 
 export const applyForCourse = (content, id) => {
   return async (dispatch) => {
-    const response = await studentService.update(content, id)
+    const response = await studentService.apply(content, id)
 
     dispatch({
       type: 'STUDENT_COURSE_APPLICATION',

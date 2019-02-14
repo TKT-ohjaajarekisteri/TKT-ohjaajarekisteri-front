@@ -20,7 +20,7 @@ const ApplicationForm = ({ notify, id, applyForCourse }) => {
     }
 
     //console.log(logged_id, 'contactFormuseri id')
-    applyForCourse(formContent)
+    applyForCourse(formContent, id)
     notify(`The application for ${formContent.nickname} has been sent`, 5)
 
     event.target.course_id.value = ''
