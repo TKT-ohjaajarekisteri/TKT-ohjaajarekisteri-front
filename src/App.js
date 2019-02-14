@@ -77,7 +77,7 @@ const App = (props) => {
 
             <PrivateRoute
               exact path="/login"
-              redirectPath="/courses"
+              redirectPath="/courses" //? login
               condition={(loggedUser !== null)}
               render={() => <CourseList />}
             />

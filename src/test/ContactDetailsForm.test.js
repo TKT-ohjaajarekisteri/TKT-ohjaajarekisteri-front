@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { LoginForm } from '../components/LoginForm'
 
 
-describe.only('<LoginForm />', () => {
+describe.skip('<LoginForm />', () => {
   let loginComponent
 
 
