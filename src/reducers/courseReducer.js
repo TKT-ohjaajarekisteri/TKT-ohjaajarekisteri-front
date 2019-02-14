@@ -30,6 +30,7 @@ export const initializeCourses = () => {
 
 export const createContent = (content) => {
   return async (dispatch) => {
+
     const response = await courseService.create(content)
 
     dispatch({

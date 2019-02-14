@@ -36,5 +36,5 @@ const update = async (content, id) => {
 }
 
 export default {
-  getAll, setToken, update
+  getAll, setToken, update, getStudent
 }

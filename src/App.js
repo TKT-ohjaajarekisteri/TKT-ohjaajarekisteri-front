@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Link, Switch, Redirect } from 'react-router-dom'
 
