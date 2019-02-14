@@ -99,7 +99,7 @@ const App = (props) => {
             <PrivateRoute
               exact path="/contact-info"
               redirectPath="/login"
-              condition={!hasContactDetails && loggedUser}
+              condition={hasContactDetails && loggedUser}
               render={() => <ContactDetailsForm id={loggedUser.user.user_id} />}
             />
 
