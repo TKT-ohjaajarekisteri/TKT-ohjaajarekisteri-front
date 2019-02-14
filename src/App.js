@@ -35,7 +35,9 @@ const App = (props) => {
       <Router >
         <React.Fragment>
           <div className="NavBar">
-            <Link to="/">Home</Link> &nbsp;
+            {loggedUser && loggedUser.user.role === 'student'
+              ?<Link to="/">Courses</Link>
+              : <em></em>} &nbsp;
 
             {/* {props.loggedUser && props.loggedUser.user.role === 'student'
               ? <Link to="/register">Contact details</Link>
@@ -46,9 +48,9 @@ const App = (props) => {
               : <em></em>} &nbsp;
 
 
-            {loggedUser && loggedUser.user.role === 'student'
+            {/* {loggedUser && loggedUser.user.role === 'student'
               ? <Link to="/contact-info">Contact details</Link>
-              : <em></em>} &nbsp;
+              : <em></em>} &nbsp; */}
 
             {loggedUser && loggedUser.user.role === 'student'
               ? <Link to="/apply">Apply</Link>
@@ -66,46 +68,45 @@ const App = (props) => {
 
           </div>
 
+
           <Notification />
           <Switch>
+
+
             <PrivateRoute
               exact path="/"
               redirectPath="/login"
-              condition={(loggedUser === null)}
-              render={() => <LoginForm/>}
+              condition={(loggedUser !== null )}
+              render={() => <Redirect to="/courses"/>}
             />
+
 
             <PrivateRoute
               exact path="/login"
-              redirectPath="/courses" //? login
-              condition={(loggedUser !== null)}
-              render={() => <CourseList />}
-            />
-
-            <PrivateRoute
-              exact path="/admin/courses"
-              redirectPath="/"
-              condition={isAdmin}
-              render={() => <CourseList />}
-            />
-
-            <PrivateRoute
-              exact path="/login"
-              redirectPath="/courses"
+              redirectPath="/contact-info"
               condition={loggedUser === null}
               render={() => <LoginForm />}
             />
 
             <PrivateRoute
               exact path="/contact-info"
-              redirectPath="/login"
-              condition={hasContactDetails && loggedUser}
+              redirectPath="/apply" //login?
+              condition={!hasContactDetails && loggedUser}
               render={() => <ContactDetailsForm id={loggedUser.user.user_id} />}
             />
 
+
             <PrivateRoute
-              exact path="/course"
-              redirectPath="/contact-info"
+              exact path="/apply"
+              redirectPath="/login"
+              condition={hasContactDetails && loggedUser}
+              render={() => <ApplicationForm  id={loggedUser.user.user_id}/>}
+            />
+
+
+            <PrivateRoute
+              exact path="/courses"
+              redirectPath="/login"
               condition={hasContactDetails && loggedUser}
               render={() => <CourseList />}
             />
@@ -116,38 +117,6 @@ const App = (props) => {
               condition={(hasContactDetails || isAdmin) && loggedUser}
               render={({ match }) => <SingleCourse courseId={match.params.id} />}
             />
-
-            {/* <PrivateRoute
-              exact path="/apply"
-              redirectPath="/contact-info"
-              condition={hasContactDetails && loggedUser}
-              render={() => <ApplicationForm  id={loggedUser.user.user_id}/>}
-            /> */}
-
-            <PrivateRoute
-              exact path="/apply"
-              redirectPath="/login"
-              condition={hasContactDetails && loggedUser}
-              render={() => <ApplicationForm  id={loggedUser.user.user_id}/>}
-            />
-
-            <PrivateRoute
-              exact path="/courses"
-              redirectPath="/login"
-              condition={loggedUser === null}
-              render={() => <LoginForm/>}
-            />
-
-
-
-
-            {/* <PrivateRoute
-              exact path="/courses"
-              redirectPath="/apply"
-              condition={loggedUser}
-              render={() => <ApplicationForm  id={loggedUser.user.user_id} />}
-            />  */}
-
 
           </Switch>
 
