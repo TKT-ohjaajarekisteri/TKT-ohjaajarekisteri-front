@@ -17,7 +17,7 @@ deploy:
   provider: script
   script: "./deploy_dockerhub.sh"
   on:
-    branch: master
+    branch: dev
 
 #  provider: heroku
 #  skip_cleanup: true
