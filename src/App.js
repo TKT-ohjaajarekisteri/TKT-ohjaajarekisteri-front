@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Link, Switch, Redirect } from 'react-router-dom'
 
@@ -10,7 +10,6 @@ import CourseList from './components/course/CourseList'
 import SingleCourse from './components/course/SingleCourse'
 import PrivateRoute from './components/PrivateRoute'
 import Notification from './components/Notification'
-import Home from './components/Home'
 
 // Actions
 import { logout, initLoggedUser } from './reducers/loginReducer'
@@ -45,11 +44,6 @@ const App = (props) => {
               ? <Link to="/admin/courses">Courses</Link>
               : <em></em>} &nbsp;
 
-
-            {loggedUser && loggedUser.user.role === 'student'
-              ? <Link to="/contact-info">Contact details</Link>
-              : <em></em>} &nbsp;
-
             {loggedUser && loggedUser.user.role === 'student'
               ? <Link to="/apply">Apply</Link>
               : <em></em>} &nbsp;
@@ -71,83 +65,58 @@ const App = (props) => {
             <PrivateRoute
               exact path="/"
               redirectPath="/login"
-              condition={(loggedUser === null)}
+              condition={(loggedUser)}
               render={() => <LoginForm/>}
             />
 
             <PrivateRoute
               exact path="/login"
               redirectPath="/courses"
-              condition={(loggedUser !== null)}
+              condition={(!loggedUser)}
+              render={() => <LoginForm/>}
+            />
+
+            <PrivateRoute
+              exact path="/courses"
+              redirectPath="/login"
+              condition={(loggedUser)}
               render={() => <CourseList />}
             />
 
             <PrivateRoute
               exact path="/admin/courses"
-              redirectPath="/"
+              redirectPath="/courses"
               condition={isAdmin}
               render={() => <CourseList />}
             />
 
             <PrivateRoute
-              exact path="/login"
-              redirectPath="/courses"
-              condition={loggedUser === null}
-              render={() => <LoginForm />}
-            />
-
-            <PrivateRoute
-              exact path="/contact-info"
-              redirectPath="/login"
-              condition={hasContactDetails && loggedUser}
-              render={() => <ContactDetailsForm id={loggedUser.user.user_id} />}
-            />
-
-            <PrivateRoute
-              exact path="/course"
+              exact path="/courses"
               redirectPath="/contact-info"
-              condition={hasContactDetails && loggedUser}
+              condition={hasContactDetails || isAdmin}
               render={() => <CourseList />}
             />
 
             <PrivateRoute
               exact path="/courses/:id"
               redirectPath="/contact-info"
-              condition={(hasContactDetails || isAdmin) && loggedUser}
+              condition={hasContactDetails || isAdmin}
               render={({ match }) => <SingleCourse courseId={match.params.id} />}
             />
 
-            {/* <PrivateRoute
-              exact path="/apply"
-              redirectPath="/contact-info"
-              condition={hasContactDetails && loggedUser}
-              render={() => <ApplicationForm  id={loggedUser.user.user_id}/>}
-            /> */}
-
             <PrivateRoute
               exact path="/apply"
-              redirectPath="/login"
-              condition={hasContactDetails && loggedUser}
+              redirectPath="/contant-info"
+              condition={hasContactDetails}
               render={() => <ApplicationForm  id={loggedUser.user.user_id}/>}
             />
 
             <PrivateRoute
-              exact path="/courses"
+              exact path="/contact-info"
               redirectPath="/login"
-              condition={loggedUser === null}
-              render={() => <LoginForm/>}
+              condition={!hasContactDetails && loggedUser}
+              render={() => <ContactDetailsForm id={loggedUser.user.user_id} />}
             />
-
-
-
-
-            {/* <PrivateRoute
-              exact path="/courses"
-              redirectPath="/apply"
-              condition={loggedUser}
-              render={() => <ApplicationForm  id={loggedUser.user.user_id} />}
-            />  */}
-
 
           </Switch>
 
@@ -166,7 +135,7 @@ const App = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'koko store')
+  //console.log(state, 'koko store')
   return {
     loggedUser: state.loggedUser.loggedUser
   }
