@@ -106,7 +106,7 @@ const App = (props) => {
 
             <PrivateRoute
               exact path="/apply"
-              redirectPath="/contant-info"
+              redirectPath="/contact-info"
               condition={hasContactDetails}
               render={() => <ApplicationForm  id={loggedUser.user.user_id}/>}
             />
