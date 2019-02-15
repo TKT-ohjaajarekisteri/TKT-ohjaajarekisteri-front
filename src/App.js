@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Link, Switch, Redirect } from 'react-router-dom'
 
@@ -10,7 +10,7 @@ import CourseList from './components/course/CourseList'
 import SingleCourse from './components/course/SingleCourse'
 import PrivateRoute from './components/PrivateRoute'
 import Notification from './components/Notification'
-import Home from './components/Home'
+// import Home from './components/Home'
 
 // Actions
 import { logout, initLoggedUser } from './reducers/loginReducer'
