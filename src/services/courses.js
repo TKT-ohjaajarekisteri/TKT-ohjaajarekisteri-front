@@ -6,6 +6,7 @@ const baseUrl = url + 'api/courses/'
 let token = null
 
 const setToken = (newToken) => {
+  
   token = `bearer ${newToken}`
   // console.log('token asetettu', token)
 }
@@ -33,7 +34,7 @@ const getOne = async (id) => {
 }
 
 
-//creates sudent and course information if token right
+//creates student and course information if token right
 const create = async (content) => {
   const response = await axios.post(url + 'api/students', content, getConfig())
   return response.data
