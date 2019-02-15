@@ -32,7 +32,7 @@ const App = (props) => {
   return (
     <div>
       <h1>TKT-Assistant Register</h1>
-      <Router >
+      <Router basename={process.env.PUBLIC_URL}>
         <React.Fragment>
           <div className="NavBar">
             {loggedUser && loggedUser.user.role === 'student'
