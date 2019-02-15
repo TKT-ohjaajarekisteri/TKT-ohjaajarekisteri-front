@@ -35,6 +35,19 @@ const update = async (content, id) => {
   }
 }
 
+//creates application for a course
+const apply = async (content, id) => {
+  try {
+    const response = await axios.post(url + 'api/students', content, getConfig())
+    console.log(response, 'response')
+    return response.data
+
+  } catch (error) {
+    console.log(error)
+    return { error: 'Something went wrong' }
+  }
+}
+
 export default {
-  getAll, setToken, update
+  getAll, setToken, update, apply
 }

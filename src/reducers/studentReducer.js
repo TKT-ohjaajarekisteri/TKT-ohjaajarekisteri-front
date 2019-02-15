@@ -28,6 +28,16 @@ export const initializeStudents = () => {
   }
 }
 
+export const getStudent = (id) => {
+  return async (dispatch) => {
+    const content = await studentService.getStudent(id)
+    dispatch({
+      type: 'GET_STUDENT',
+      data: content
+    })
+  }
+}
+
 export const createStudent = (content, id) => {
   return async (dispatch) => {
     const response = await studentService.update(content, id)
@@ -46,6 +56,19 @@ export const createStudent = (content, id) => {
 
     dispatch({
       type: 'CREATE_STUDENT_CONTACTINFO',
+      data: response.course
+
+    })
+  }
+}
+
+
+export const applyForCourse = (content, id) => {
+  return async (dispatch) => {
+    const response = await studentService.apply(content, id)
+
+    dispatch({
+      type: 'STUDENT_COURSE_APPLICATION',
       data: response.course
 
     })

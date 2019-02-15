@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom'
 
 const PrivateRoute = ({ render: Component, redirectPath, condition, ...rest }) => {
   return (
-  <Route {...rest} render={props =>
+    <Route {...rest} render={props =>
       condition
         ? (<Component {...props} />)
         : (
@@ -15,7 +15,7 @@ const PrivateRoute = ({ render: Component, redirectPath, condition, ...rest }) =
           />
         )
     }
-  />)
+    />)
 }
 
 export default PrivateRoute
