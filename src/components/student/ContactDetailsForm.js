@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createStudent } from '../../reducers/studentReducer'
-import { updateLoggedUser } from '../../reducers/loginReducer'
-import { notify } from '../../reducers/notificationReducer'
+import { createStudent } from '../../reducers/actionCreators/studentActions'
+import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
+import { notify } from '../../reducers/actionCreators/notificationActions'
 
 
 export const ContactDetailsForm = ({ updateLoggedUser, notify, id }) => {

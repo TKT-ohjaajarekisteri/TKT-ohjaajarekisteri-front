@@ -1,8 +1,8 @@
-import courseService from '../services/courses'
+import courseService from '../../services/courses'
 
 
 // tells courseService to get allcourses from database and dispatch them to store
-const  initializeCourses = () => {
+const initializeCourses = () => {
   return async (dispatch) => {
     const content = await courseService.getAll()
     dispatch({
@@ -32,4 +32,5 @@ const createContent = (content) => {
   }
 
 }
-export default { createContent, initializeCourses }
+
+export { createContent, initializeCourses }

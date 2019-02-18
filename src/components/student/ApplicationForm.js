@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { applyForCourse } from '../../reducers/studentReducer'
-import { notify } from '../../reducers/notificationReducer'
+import { applyForCourse } from '../../reducers/actionCreators/studentActions'
+import { notify } from '../../reducers/actionCreators/notificationActions'
 
 
 const ApplicationForm = ({ notify, id, applyForCourse }) => {

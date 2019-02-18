@@ -1,4 +1,4 @@
-import studentService from '../services/students'
+import studentService from '../../services/students'
 
 const initializeStudents = () => {
   return async (dispatch) => {
@@ -56,4 +56,4 @@ const applyForCourse = (content, id) => {
     })
   }
 }
-export default  { applyForCourse, createStudent, initializeStudents, getStudent }
+export { applyForCourse, createStudent, initializeStudents, getStudent }

@@ -1,7 +1,7 @@
-import courseService from '../services/courses'
-import studentService from '../services/students'
-import loginService from '../services/login'
-import tokenCheckService from '../services/tokenCheck'
+import courseService from '../../services/courses'
+import studentService from '../../services/students'
+import loginService from '../../services/login'
+import tokenCheckService from '../../services/tokenCheck'
 
 const initLoggedUser = () => {
   return async (dispatch) => {
@@ -66,4 +66,4 @@ const logout = () => {
     })
   }
 }
-export default { logout, login, updateLoggedUser, initLoggedUser }
+export { logout, login, updateLoggedUser, initLoggedUser }

@@ -6,20 +6,19 @@ import { BrowserRouter as Router, Link, Switch, Redirect } from 'react-router-do
 import LoginForm from './components/LoginForm'
 import ContactDetailsForm from './components/student/ContactDetailsForm'
 import ApplicationForm from './components/student/ApplicationForm'
-import CourseList from './components/course/CourseList'
-import SingleCourse from './components/course/SingleCourse'
-import PrivateRoute from './components/PrivateRoute'
-import Notification from './components/Notification'
-// import Home from './components/Home'
+import CourseList from './components/admin/CourseList'
+import SingleCourse from './components/admin/SingleCourse'
+import PrivateRoute from './components/common/PrivateRoute'
+import Notification from './components/common/Notification'
 
 // Actions
-import { logout, initLoggedUser } from './reducers/loginActions'
+import { logout, initLoggedUser } from './reducers/actionCreators/loginActions'
 
 const App = (props) => {
 
   useEffect(() => {
     props.initLoggedUser()
-  },[])
+  }, [])
 
   const { loggedUser } = props
   const hasContactDetails = (
@@ -36,7 +35,7 @@ const App = (props) => {
         <React.Fragment>
           <div className="NavBar">
             {loggedUser && loggedUser.user.role === 'student'
-              ?<Link to="/">Courses</Link>
+              ? <Link to="/">Courses</Link>
               : <em></em>} &nbsp;
 
             {/* {props.loggedUser && props.loggedUser.user.role === 'student'
@@ -76,8 +75,8 @@ const App = (props) => {
             <PrivateRoute
               exact path="/"
               redirectPath="/login"
-              condition={(loggedUser !== null )}
-              render={() => <Redirect to="/courses"/>}
+              condition={(loggedUser !== null)}
+              render={() => <Redirect to="/courses" />}
             />
 
 
@@ -100,7 +99,7 @@ const App = (props) => {
               exact path="/apply"
               redirectPath="/login"
               condition={hasContactDetails && loggedUser}
-              render={() => <ApplicationForm  id={loggedUser.user.user_id}/>}
+              render={() => <ApplicationForm id={loggedUser.user.user_id} />}
             />
 
 

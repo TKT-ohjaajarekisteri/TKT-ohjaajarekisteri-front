@@ -28,4 +28,4 @@ const setError = (message, time) => {
     }, time * 1000)
   }
 }
-export default { setError, notify }
+export { setError, notify }
