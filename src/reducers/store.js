@@ -1,10 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import studentReducer from './reducers/studentReducer'
-import courseReducer from './reducers/courseReducer'
-import singleCourseReducer from './reducers/singleCourseReducer'
-import notificationReducer from './reducers/notificationReducer'
-import loginReducer from './reducers/loginReducer'
+import studentReducer from './studentReducer'
+import courseReducer from './courseReducer'
+import singleCourseReducer from './singleCourseReducer'
+import notificationReducer from './notificationReducer'
+import loginReducer from './loginReducer'
 
 
 const reducer = combineReducers({

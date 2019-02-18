@@ -13,7 +13,7 @@ import Notification from './components/Notification'
 // import Home from './components/Home'
 
 // Actions
-import { logout, initLoggedUser } from './reducers/loginReducer'
+import { logout, initLoggedUser } from './reducers/loginActions'
 
 const App = (props) => {
 
