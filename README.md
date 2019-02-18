@@ -5,8 +5,6 @@ This registry will be used by students to express their interest to assist on co
 
 [Backend README](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-back)
 
-[Heroku](https://tkt-ohjaajarekisteri-front.herokuapp.com/)
-
 ## Travis
 [![Build Status](https://travis-ci.org/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front.svg?branch=master)](https://travis-ci.org/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front)
 
