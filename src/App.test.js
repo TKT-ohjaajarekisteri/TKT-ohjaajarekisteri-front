@@ -2,7 +2,7 @@ import React from 'react'
 import { mount } from 'enzyme'
 import App from './App'
 import { Provider } from 'react-redux'
-import store from './store.js'
+import store from './reducers/store'
 //import Course from './components/course/Course'
 //jest.mock('./services/courses')
 //import courseService from './services/courses'

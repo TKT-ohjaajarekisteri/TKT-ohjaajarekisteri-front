@@ -9,7 +9,7 @@ export const CourseList = (props) => {
   useEffect(() => {
     props.initializeCourses()
   },
-    []
+  []
   )
 
   return (

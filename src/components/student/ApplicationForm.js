@@ -19,7 +19,7 @@ const ApplicationForm = ({ notify, id, applyForCourse }) => {
       year: event.target.year.value
     }
 
-    //console.log(logged_id, 'contactFormuseri id')
+    // Update the notification functionality in the action
     applyForCourse(formContent, id)
     notify(`The application for ${formContent.nickname} has been sent`, 5)
 

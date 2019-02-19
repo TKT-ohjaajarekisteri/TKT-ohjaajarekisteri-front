@@ -1,7 +1,7 @@
 import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom'
 import { mount } from 'enzyme'
-import { CourseList } from '../components/course/CourseList'
+import { CourseList } from '../components/admin/CourseList'
 
 describe('<CourseList />', () => {
   let courseList

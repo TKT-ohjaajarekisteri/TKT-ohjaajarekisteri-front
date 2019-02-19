@@ -36,7 +36,7 @@ const update = async (content, id) => {
 }
 
 //creates application for a course
-const apply = async (content, id) => {
+const apply = async (content) => {
   try {
     const response = await axios.post(url + 'api/students', content, getConfig())
     console.log(response, 'response')

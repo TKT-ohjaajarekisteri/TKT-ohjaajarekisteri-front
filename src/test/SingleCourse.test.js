@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import { SingleCourse } from '../components/course/SingleCourse'
+import { SingleCourse } from '../components/admin/SingleCourse'
 
 describe('<SingleCourse />', () => {
   let singleCourse

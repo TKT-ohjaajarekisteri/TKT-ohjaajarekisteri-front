@@ -16,8 +16,9 @@ export const ContactDetailsForm = ({ updateLoggedUser, notify, id }) => {
       email: event.target.email.value,
     }
 
+    // Update the notification functionality in the action
     updateLoggedUser(formContent, id)
-    notify(`The application for ${formContent.nickname} has been sent`, 5)
+    // notify(`The application for ${formContent.nickname} has been sent`, 5)
 
     event.target.nickname.value = ''
     event.target.phonenumber.value = ''

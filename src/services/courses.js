@@ -6,7 +6,7 @@ const baseUrl = url + 'api/courses/'
 let token = null
 
 const setToken = (newToken) => {
-  
+
   token = `bearer ${newToken}`
   // console.log('token asetettu', token)
 }
@@ -21,7 +21,8 @@ const getAll = async () => {
   try {
     const response = await axios.get(baseUrl, getConfig())
     return response.data
-  } catch (error) { 
+  } catch (error) {
+    // return error message
   }
 }
 
@@ -29,7 +30,8 @@ const getOne = async (id) => {
   try {
     const response = await axios.get(baseUrl + id, getConfig())
     return response.data
-  } catch (error) { 
+  } catch (error) {
+    // return error message
   }
 }
 

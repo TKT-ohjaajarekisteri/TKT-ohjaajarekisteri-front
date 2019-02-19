@@ -8,7 +8,7 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
   useEffect(() => {
     initializeSingleCourse(courseId)
   },
-    []
+  []
   )
 
   return (
