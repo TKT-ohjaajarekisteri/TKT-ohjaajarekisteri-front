@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { initializeSingleCourse } from '../../reducers/singleCourseReducer'
-import Student from '../student/Student'
+import Student from './Student'
 
 export const SingleCourse = ({ course, applicants, initializeSingleCourse, courseId }) => {
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { applyForCourse } from '../../reducers/studentReducer'
-import { notify } from '../../reducers/notificationReducer'
+import { applyForCourse } from '../../reducers/actionCreators/studentActions'
+import { notify } from '../../reducers/actionCreators/notificationActions'
 
 
 const ApplicationForm = ({ notify, id, applyForCourse }) => {
@@ -19,7 +19,7 @@ const ApplicationForm = ({ notify, id, applyForCourse }) => {
       year: event.target.year.value
     }
 
-    //console.log(logged_id, 'contactFormuseri id')
+    // Update the notification functionality in the action
     applyForCourse(formContent, id)
     notify(`The application for ${formContent.nickname} has been sent`, 5)
 

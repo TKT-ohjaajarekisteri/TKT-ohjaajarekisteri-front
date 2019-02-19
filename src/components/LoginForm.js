@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { notify, setError } from './../reducers/notificationReducer'
-import { login } from './../reducers/loginReducer'
+import { notify, setError } from './../reducers/actionCreators/notificationActions'
+import { login } from './../reducers/actionCreators/loginActions'
 
 export const LoginForm = ({ history, notify, setError, login }) => {
 

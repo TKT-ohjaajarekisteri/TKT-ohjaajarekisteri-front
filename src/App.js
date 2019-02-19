@@ -1,25 +1,24 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Link, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Switch, Redirect, Route } from 'react-router-dom'
 
 // Components
 import LoginForm from './components/LoginForm'
 import ContactDetailsForm from './components/student/ContactDetailsForm'
 import ApplicationForm from './components/student/ApplicationForm'
-import CourseList from './components/course/CourseList'
-import SingleCourse from './components/course/SingleCourse'
-import PrivateRoute from './components/PrivateRoute'
-import Notification from './components/Notification'
-// import Home from './components/Home'
+import CourseList from './components/admin/CourseList'
+import SingleCourse from './components/admin/SingleCourse'
+import PrivateRoute from './components/common/PrivateRoute'
+import Notification from './components/common/Notification'
 
 // Actions
-import { logout, initLoggedUser } from './reducers/loginReducer'
+import { logout, initLoggedUser } from './reducers/actionCreators/loginActions'
 
 const App = (props) => {
 
   useEffect(() => {
     props.initLoggedUser()
-  },[])
+  }, [])
 
   const { loggedUser } = props
   const hasContactDetails = (
@@ -36,7 +35,7 @@ const App = (props) => {
         <React.Fragment>
           <div className="NavBar">
             {loggedUser && loggedUser.user.role === 'student'
-              ?<Link to="/">Courses</Link>
+              ? <Link to="/">Courses</Link>
               : <em></em>} &nbsp;
 
             {/* {props.loggedUser && props.loggedUser.user.role === 'student'
@@ -68,56 +67,55 @@ const App = (props) => {
 
           </div>
 
-
           <Notification />
+
+          {/*
+            Works like a typical switch statement; it checks for matches and
+            runs the first thing matching the requested path
+          */}
           <Switch>
 
-
+            {/* THIS ROUTE PROTECTS ALL ROUTES UNDER "/admin" */}
             <PrivateRoute
-              exact path="/"
-              redirectPath="/login"
-              condition={(loggedUser !== null )}
-              render={() => <Redirect to="/courses"/>}
-            />
-
+              path="/admin"
+              redirectPath="/"
+              condition={loggedUser && isAdmin}
+            >
+              <Route exact path="/admin/courses" render={() => <CourseList />} />
+              <Route
+                exact path="/admin/courses/:id"
+                redirectPath="/contact-info"
+                condition={(hasContactDetails || isAdmin) && loggedUser}
+                render={({ match }) => <SingleCourse courseId={match.params.id} />}
+              />
+            </PrivateRoute>
 
             <PrivateRoute
               exact path="/login"
-              redirectPath="/contact-info"
+              redirectPath="/"
               condition={loggedUser === null}
               render={() => <LoginForm />}
             />
 
+            {/* USER IS REDIRECTED HERE IF THEY DON'T HAVE AN EMAIL ADDED */}
             <PrivateRoute
               exact path="/contact-info"
-              redirectPath="/apply" //login?
+              redirectPath="/login"
               condition={!hasContactDetails && loggedUser}
               render={() => <ContactDetailsForm id={loggedUser.user.user_id} />}
             />
 
-
-            <PrivateRoute
-              exact path="/apply"
-              redirectPath="/login"
-              condition={hasContactDetails && loggedUser}
-              render={() => <ApplicationForm  id={loggedUser.user.user_id}/>}
-            />
-
-
-            <PrivateRoute
-              exact path="/courses"
-              redirectPath="/login"
-              condition={hasContactDetails && loggedUser}
-              render={() => <CourseList />}
-            />
-
-            <PrivateRoute
-              exact path="/courses/:id"
-              redirectPath="/contact-info"
-              condition={(hasContactDetails || isAdmin) && loggedUser}
-              render={({ match }) => <SingleCourse courseId={match.params.id} />}
-            />
-
+            {/* THIS ROUTE PROTECTS ALL ROUTES UNDER "/" */}
+            <PrivateRoute path="/" redirectPath="/contact-info" condition={loggedUser && hasContactDetails}>
+              <Route
+                exact path='/'
+                render={() => <Redirect to='/apply' />}
+              />
+              <Route
+                exact path="/apply"
+                render={() => <ApplicationForm id={loggedUser.user.user_id} />}
+              />
+            </PrivateRoute>
           </Switch>
 
           {/*not used in 2 sprint

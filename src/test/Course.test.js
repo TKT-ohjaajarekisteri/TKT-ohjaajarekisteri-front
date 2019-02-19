@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Course from '../components/course/Course'
+import Course from '../components/admin/Course'
 
 
 describe.only('<Course />', () => {

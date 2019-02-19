@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Course from './Course'
-import { initializeCourses } from '../../reducers/courseReducer'
+import { initializeCourses } from '../../reducers/actionCreators/courseActions'
 
 
 export const CourseList = (props) => {

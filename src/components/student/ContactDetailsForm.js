@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createStudent } from '../../reducers/studentReducer'
-import { updateLoggedUser } from '../../reducers/loginReducer'
-import { notify } from '../../reducers/notificationReducer'
+import { createStudent } from '../../reducers/actionCreators/studentActions'
+import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
+import { notify } from '../../reducers/actionCreators/notificationActions'
 
 
 export const ContactDetailsForm = ({ updateLoggedUser, notify, id }) => {
@@ -16,8 +16,9 @@ export const ContactDetailsForm = ({ updateLoggedUser, notify, id }) => {
       email: event.target.email.value,
     }
 
+    // Update the notification functionality in the action
     updateLoggedUser(formContent, id)
-    notify(`The application for ${formContent.nickname} has been sent`, 5)
+    // notify(`The application for ${formContent.nickname} has been sent`, 5)
 
     event.target.nickname.value = ''
     event.target.phonenumber.value = ''
