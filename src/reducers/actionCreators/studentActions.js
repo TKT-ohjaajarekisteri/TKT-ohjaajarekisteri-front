@@ -30,6 +30,21 @@ const getStudentCourses = (id) => {
   }
 }
 
+const getContactInformation = (id) => {
+  return async (dispatch) => {
+    // TODO GET CONTACT INFORMATION FROM BACKEND
+    const content = {
+      nickname: '',
+      phone: '',
+      email: ''
+    }
+    dispatch({
+      type: 'INIT_CONTACT_INFORMATION',
+      data: content
+    })
+  }
+}
+
 const createStudent = (content, id) => {
   return async (dispatch) => {
     const response = await studentService.update(content, id)
@@ -68,4 +83,4 @@ const applyForCourse = (content, id) => {
 }
 
 
-export { applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses }
+export { applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation }

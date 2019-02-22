@@ -1,6 +1,11 @@
 const initialState = {
   studentCourses: [],
-  students: []
+  students: [],
+  contactInformation: {
+    nickname: '',
+    phone: '',
+    email: ''
+  }
 }
 
 const studentReducer = (state = initialState, action) => {
@@ -24,6 +29,12 @@ const studentReducer = (state = initialState, action) => {
     return {
       ...state,
       studentCourses: action.data
+    }
+
+  case 'INIT_CONTACT_INFORMATION':
+    return {
+      ...state,
+      contactInformation: action.data
     }
 
   default:

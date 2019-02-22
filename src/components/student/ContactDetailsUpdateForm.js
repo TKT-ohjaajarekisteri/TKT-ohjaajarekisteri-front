@@ -1,27 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
+import { getContactInformation } from '../../reducers/actionCreators/studentActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 
 
-export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id }) => {
+export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, }) => {
+
+  const [input, setInput] = useState({ nickname: '', phone: '', email: '' })
+
+  // TODO: GET OLD VALUES FROM BACKEND
+
+  // useEffect(() => {
+  //   getContactInformation(id)
+  //   console.log('def', defaultInput)
+  //   setInput(defaultInput)
+  // }, [])
+
+  // const getInfo = async () => {
+  //   await getContactInformation(id)
+  //   setInput(defaultInput)
+  // }
+
+  const handleChange = (event) => {
+    const newInput = {
+      ...input,
+      [event.target.name]: event.target.value
+    }
+    setInput(newInput)
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const formContent = {
+    updateLoggedUser(input, id)
 
-      nickname: event.target.nickname.value,
-      phone: event.target.phonenumber.value,
-      email: event.target.email.value,
-    }
-
-    // Update the notification functionality in the action
-    updateLoggedUser(formContent, id)
-    // notify(`The application for ${formContent.nickname} has been sent`, 5)
-
-    event.target.nickname.value = ''
-    event.target.phonenumber.value = ''
-    event.target.email.value = ''
+    // TODO: Update the notification functionality in the action
+    notify(`Information updated for ${input.nickname}`, 5)
+    setInput({ nickname: '', phone: '', email: ''  })
   }
 
   return (
@@ -34,17 +49,32 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id }) => {
         </div>
         <div>
           <label>Preferred firstname: </label>
-          <input type="text" name='nickname' />
+          <input
+            type="text"
+            value={input.nickname}
+            name='nickname'
+            onChange={handleChange}
+          />
         </div>
 
         <div>
           <label>Phone: </label>
-          <input type="text" name='phonenumber' />
+          <input
+            type="text"
+            value={input.phone}
+            name='phone'
+            onChange={handleChange}
+          />
         </div>
 
         <div>
           <label>Email: </label>
-          <input type="text" name='email' />
+          <input
+            type="text"
+            name='email'
+            value={input.email}
+            onChange={handleChange} 
+          />
         </div>
         <button className="button" type="submit">send</button>
       </form>
@@ -52,8 +82,14 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id }) => {
   )
 }
 
+const mapStateToProps = (state) => {
+  console.log(state, 'koko store')
+  return {
+    defaultInput: state.students.contactInformation
+  }
+}
 
 export default connect(
-  null,
-  { notify, updateLoggedUser }
+  mapStateToProps,
+  { notify, updateLoggedUser, getContactInformation }
 )(ContactDetailsUpdateForm)
