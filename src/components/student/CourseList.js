@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Course from './Course'
 import { getStudentCourses } from '../../reducers/actionCreators/studentActions'
-import { getCourses } from '../../reducers/actionCreators/courseActions'
+import { initializeCourses } from '../../reducers/actionCreators/courseActions'
 
 
 
@@ -12,7 +12,7 @@ export const CourseList = (props) => {
 
   useEffect(() => {
     props.getStudentCourses(props.loggedUser.user.user_id)
-    props.getCourses()
+    props.initializeCourses()
   },
   []
   )
@@ -59,6 +59,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  //{ getStudentCourses, getCourses }
-  { getStudentCourses }
+  { getStudentCourses, initializeCourses }
 )(CourseList)
