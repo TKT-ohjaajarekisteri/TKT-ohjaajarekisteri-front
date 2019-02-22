@@ -34,9 +34,9 @@ const getContactInformation = (id) => {
   return async (dispatch) => {
     // TODO GET CONTACT INFORMATION FROM BACKEND
     const content = {
-      nickname: '',
-      phone: '',
-      email: ''
+      nickname: 'nickname',
+      phone: '+358 000 555',
+      email: 'example@mail.com'
     }
     dispatch({
       type: 'INIT_CONTACT_INFORMATION',

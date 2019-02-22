@@ -1,21 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
 import { getContactInformation } from '../../reducers/actionCreators/studentActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 
 
-export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, }) => {
+export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
   const [input, setInput] = useState({ nickname: '', phone: '', email: '' })
 
   // TODO: GET OLD VALUES FROM BACKEND
 
-  // useEffect(() => {
-  //   getContactInformation(id)
-  //   console.log('def', defaultInput)
-  //   setInput(defaultInput)
-  // }, [])
+  useEffect(() => {
+    getContactInformation(id)
+    console.log('def', defaultInput)
+  }, [])
 
   // const getInfo = async () => {
   //   await getContactInformation(id)
@@ -54,6 +53,7 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, }) => {
             value={input.nickname}
             name='nickname'
             onChange={handleChange}
+            placeholder={defaultInput.nickname}
           />
         </div>
 
@@ -64,6 +64,7 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, }) => {
             value={input.phone}
             name='phone'
             onChange={handleChange}
+            placeholder={defaultInput.phone}
           />
         </div>
 
@@ -73,7 +74,8 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, }) => {
             type="text"
             name='email'
             value={input.email}
-            onChange={handleChange} 
+            onChange={handleChange}
+            placeholder={defaultInput.email}
           />
         </div>
         <button className="button" type="submit">send</button>
