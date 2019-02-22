@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Link, Switch, Redirect, Route } from 'react-ro
 // Components
 import LoginForm from './components/LoginForm'
 import ContactDetailsForm from './components/student/ContactDetailsForm'
+import ContactDetailsUpdateForm from './components/student/ContactDetailsUpdateForm'
 import ApplicationForm from './components/student/ApplicationForm'
 import AdminCourseList from './components/admin/CourseList'
 import StudentCourseList from './components/student/CourseList'
@@ -105,6 +106,14 @@ const App = (props) => {
               redirectPath="/login"
               condition={!hasContactDetails && loggedUser}
               render={() => <ContactDetailsForm id={loggedUser.user.user_id} />}
+            />
+
+            {/* USERS CAN UPDATE THEIR INFORMATION */}
+            <PrivateRoute
+              exact path="/update-info"
+              redirectPath="/login"
+              condition={loggedUser}
+              render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
             />
 
             {/* THIS ROUTE PROTECTS ALL ROUTES UNDER "/" */}
