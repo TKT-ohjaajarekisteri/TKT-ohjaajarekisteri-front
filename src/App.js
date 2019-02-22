@@ -58,6 +58,10 @@ const App = (props) => {
               ? <Link to="/apply">Apply</Link>
               : <em></em>} &nbsp;
 
+            {loggedUser && loggedUser.user.role === 'student'
+              ? <Link to="/update-info">Update info</Link>
+              : <em></em>} &nbsp;
+
 
             {/* tulee vasta myöhemmässä sprintissa
             {props.loggedUser && props.loggedUser.user.role === 'admin'
@@ -109,12 +113,12 @@ const App = (props) => {
             />
 
             {/* USERS CAN UPDATE THEIR INFORMATION */}
-            <PrivateRoute
+            {/* <PrivateRoute
               exact path="/update-info"
               redirectPath="/login"
               condition={loggedUser}
               render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
-            />
+            /> */}
 
             {/* THIS ROUTE PROTECTS ALL ROUTES UNDER "/" */}
             <PrivateRoute path="/" redirectPath="/contact-info" condition={loggedUser && hasContactDetails}>
@@ -127,8 +131,14 @@ const App = (props) => {
                 exact path="/apply"
                 render={() => <ApplicationForm id={loggedUser.user.user_id} />}
               />
+              <Route
+                exact path="/update-info"
+                render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
+              />
             </PrivateRoute>
           </Switch>
+
+
 
           {/*not used in 2 sprint
            <Route exact path="/students" render={() =>
