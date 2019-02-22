@@ -2,15 +2,30 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Course from './Course'
 import { getStudentCourses } from '../../reducers/actionCreators/studentActions'
+import { getCourses } from '../../reducers/actionCreators/courseActions'
+
 
 
 export const CourseList = (props) => {
 
+ // const [isChecked, setChecked] = useState([])
+
   useEffect(() => {
     props.getStudentCourses(props.loggedUser.user.user_id)
+    props.getCourses()
   },
   []
   )
+
+//   const handleChange = (event, id) => {
+//     const upDatedCourse = {
+
+//     }
+
+//     const newIsChecked = isChecked.map(course => {
+
+//})
+//}
 
   return (
     <div className="courseList">
@@ -36,12 +51,14 @@ export const CourseList = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    courses: state.students.studentCourses,
+    courses: state.courses,
+    studentCourses: state.students.studentCourses,
     loggedUser: state.loggedUser.loggedUser
   }
 }
 
 export default connect(
   mapStateToProps,
+  //{ getStudentCourses, getCourses }
   { getStudentCourses }
 )(CourseList)
