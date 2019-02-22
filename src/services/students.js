@@ -48,6 +48,12 @@ const apply = async (content) => {
   }
 }
 
+//gets all sudents
+const getCourses = async (id) => {
+  const response = await axios.get(baseUrl+`/${id}/courses`, getConfig())
+  return response.data
+}
+
 export default {
-  getAll, setToken, update, apply
+  getAll, setToken, update, apply, getCourses
 }
