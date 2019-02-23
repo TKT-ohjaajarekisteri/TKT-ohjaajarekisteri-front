@@ -37,20 +37,23 @@ const update = async (content, id) => {
 
 //creates application for a course
 const apply = async (content) => {
-  try {
-    const response = await axios.post(url + 'api/students', content, getConfig())
-    console.log(response, 'response')
-    return response.data
-
-  } catch (error) {
-    console.log(error)
-    return { error: 'Something went wrong' }
+  const applyFromList = false
+  if (applyFromList) {
+    try {
+      const response = await axios.post(url + 'api/students/apply', content, getConfig())
+      return response.data
+    } catch (error) {
+      console.log(error)
+      return { error: 'Something went wrong' }
+    }
+  } else {
+    console.log('data to server', content)
   }
 }
 
 //gets all sudents
 const getCourses = async (id) => {
-  const response = await axios.get(baseUrl+`/${id}/courses`, getConfig())
+  const response = await axios.get(baseUrl + `/${id}/courses`, getConfig())
   return response.data
 }
 

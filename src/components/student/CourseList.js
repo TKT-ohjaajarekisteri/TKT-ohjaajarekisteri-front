@@ -1,63 +1,79 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Course from './Course'
-import { getStudentCourses } from '../../reducers/actionCreators/studentActions'
-import { initializeCourses } from '../../reducers/actionCreators/courseActions'
-
-
+import { initializeCourseApplication, setChecked, sendApplication } from '../../reducers/actionCreators/courseApplicationActions'
 
 export const CourseList = (props) => {
 
- // const [isChecked, setChecked] = useState([])
-
   useEffect(() => {
-    props.getStudentCourses(props.loggedUser.user.user_id)
-    props.initializeCourses()
+    props.initializeCourseApplication()
   },
   []
   )
 
-//   const handleChange = (event, id) => {
-//     const upDatedCourse = {
+  const handleSubmit = () => {
+    const coursesToApplyTo = props.courses.filter(c => c.checked).map(c => c.course_id)
 
-//     }
+    if (coursesToApplyTo.length !== 0) {
+      props.sendApplication(coursesToApplyTo)
+    }
+  }
 
-//     const newIsChecked = isChecked.map(course => {
+  const handleChange = (id) => (e) => {
+    const isChecked = e.target.checked
+    const name = e.target.name
+    console.log(id)
+    console.log(name)
+    console.log(isChecked)
 
-//})
-//}
+    props.setChecked(id, isChecked)
+  }
+
+  const style = {
+    overflowY: 'auto',
+    maxHeight: '75vh',
+    margin: '10px'
+  }
 
   return (
-    <div className="courseList">
+    <div className="courseApplicationList">
       <h2>Courses</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Year</th>
-            <th>Period</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.courses.map(course =>
-            <Course course={course} key={course.course_id} />
-          )}
-        </tbody>
-      </table>
-    </div>
+      {<input className="button" type="submit" value="apply" onClick={handleSubmit} />}
+      <div className="tableScroll" style={style} >
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Year</th>
+              <th>Period</th>
+              <th>To apply</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.courses.map(course =>
+              <Course
+                course={course}
+                key={course.course_id}
+                onChange={handleChange}
+              />
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div >
   )
 }
 
 const mapStateToProps = (state) => {
   return {
-    courses: state.courses,
-    studentCourses: state.students.studentCourses,
+    courses: state.courseApplication.courses,
+    loading: state.courseApplication.coursesLoading,
     loggedUser: state.loggedUser.loggedUser
   }
 }
 
 export default connect(
   mapStateToProps,
-  { getStudentCourses, initializeCourses }
+  { initializeCourseApplication, setChecked, sendApplication }
 )(CourseList)

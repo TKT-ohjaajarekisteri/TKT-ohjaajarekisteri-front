@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Link, Switch, Redirect, Route } from 'react-ro
 // Components
 import LoginForm from './components/LoginForm'
 import ContactDetailsForm from './components/student/ContactDetailsForm'
-import ApplicationForm from './components/student/ApplicationForm'
 import AdminCourseList from './components/admin/CourseList'
 import StudentCourseList from './components/student/CourseList'
 import SingleCourse from './components/admin/SingleCourse'
@@ -44,9 +43,9 @@ const App = (props) => {
               ? <Link to="/admin/courses">Courses</Link>
               : <em></em>} &nbsp;
 
-            {loggedUser && loggedUser.user.role === 'student'
+            {/* {loggedUser && loggedUser.user.role === 'student'
               ? <Link to="/courses">Courses</Link>
-              : <em></em>} &nbsp;
+              : <em></em>} &nbsp; */}
 
 
             {/* {loggedUser && loggedUser.user.role === 'student'
@@ -113,10 +112,9 @@ const App = (props) => {
                 exact path='/'
                 render={() => <Redirect to='/apply' />}
               />
-              <Route exact path="/courses" render={() => <StudentCourseList />} />
               <Route
                 exact path="/apply"
-                render={() => <ApplicationForm id={loggedUser.user.user_id} />}
+                render={() => <StudentCourseList />}
               />
             </PrivateRoute>
           </Switch>
