@@ -51,7 +51,7 @@ const apply = async (id, content) => {
   }
 }
 
-//gets all sudents
+//gets all courses of specific student
 const getCourses = async (id) => {
   const response = await axios.get(baseUrl + `/${id}/courses`, getConfig())
   return response.data

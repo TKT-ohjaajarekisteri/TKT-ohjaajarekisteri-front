@@ -5,6 +5,11 @@ import { BrowserRouter as Router, Link, Switch, Redirect, Route } from 'react-ro
 // Components
 import LoginForm from './components/LoginForm'
 import ContactDetailsForm from './components/student/ContactDetailsForm'
+<<<<<<< HEAD
+=======
+import ContactDetailsUpdateForm from './components/student/ContactDetailsUpdateForm'
+import ApplicationForm from './components/student/ApplicationForm'
+>>>>>>> infoUpdateForm
 import AdminCourseList from './components/admin/CourseList'
 import CourseApplicationList from './components/student/CourseApplicationList'
 import SingleCourse from './components/admin/SingleCourse'
@@ -54,6 +59,10 @@ const App = (props) => {
 
             {loggedUser && loggedUser.user.role === 'student'
               ? <Link to="/apply">Apply</Link>
+              : <em></em>} &nbsp;
+
+            {loggedUser && loggedUser.user.role === 'student'
+              ? <Link to="/update-info">Update info</Link>
               : <em></em>} &nbsp;
 
 
@@ -106,6 +115,14 @@ const App = (props) => {
               render={() => <ContactDetailsForm id={loggedUser.user.user_id} />}
             />
 
+            {/* USERS CAN UPDATE THEIR INFORMATION */}
+            {/* <PrivateRoute
+              exact path="/update-info"
+              redirectPath="/login"
+              condition={loggedUser}
+              render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
+            /> */}
+
             {/* THIS ROUTE PROTECTS ALL ROUTES UNDER "/" */}
             <PrivateRoute path="/" redirectPath="/contact-info" condition={loggedUser && hasContactDetails}>
               <Route
@@ -116,8 +133,14 @@ const App = (props) => {
                 exact path="/apply"
                 render={() => <CourseApplicationList />}
               />
+              <Route
+                exact path="/update-info"
+                render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
+              />
             </PrivateRoute>
           </Switch>
+
+
 
           {/*not used in 2 sprint
            <Route exact path="/students" render={() =>
