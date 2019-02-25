@@ -36,11 +36,11 @@ const update = async (content, id) => {
 }
 
 //creates application for a course
-const apply = async (content) => {
-  const applyFromList = false
+const apply = async (id, content) => {
+  const applyFromList = true
   if (applyFromList) {
     try {
-      const response = await axios.post(url + 'api/students/apply', content, getConfig())
+      const response = await axios.post(url + `api/students/${id}/courses/apply`, content, getConfig())
       return response.data
     } catch (error) {
       console.log(error)

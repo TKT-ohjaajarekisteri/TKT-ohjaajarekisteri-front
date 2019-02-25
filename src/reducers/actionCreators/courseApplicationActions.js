@@ -34,9 +34,9 @@ const setChecked = (id, isChecked) => {
   }
 }
 
-const sendApplication = (applications) => {
+const sendApplication = (id, course_ids) => {
   return async (dispatch) => {
-    await studentService.apply({ applications: applications })
+    await studentService.apply(id, { course_ids: course_ids })
     dispatch({
       type: 'RESET_COURSE_APPLICATIONS'
     })

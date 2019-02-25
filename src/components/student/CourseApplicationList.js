@@ -3,29 +3,23 @@ import { connect } from 'react-redux'
 import Course from './Course'
 import { initializeCourseApplication, setChecked, sendApplication } from '../../reducers/actionCreators/courseApplicationActions'
 
-export const CourseList = (props) => {
+export const CourseApplicationList = (props) => {
 
   useEffect(() => {
     props.initializeCourseApplication()
   },
-  []
+    []
   )
 
   const handleSubmit = () => {
     const coursesToApplyTo = props.courses.filter(c => c.checked).map(c => c.course_id)
-
     if (coursesToApplyTo.length !== 0) {
-      props.sendApplication(coursesToApplyTo)
+      props.sendApplication(props.loggedUser.user.user_id, coursesToApplyTo)
     }
   }
 
   const handleChange = (id) => (e) => {
     const isChecked = e.target.checked
-    const name = e.target.name
-    console.log(id)
-    console.log(name)
-    console.log(isChecked)
-
     props.setChecked(id, isChecked)
   }
 
@@ -51,7 +45,7 @@ export const CourseList = (props) => {
             </tr>
           </thead>
           <tbody>
-            {props.courses.map(course =>
+            {props.courses && props.courses.map(course =>
               <Course
                 course={course}
                 key={course.course_id}
@@ -76,4 +70,4 @@ const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
   { initializeCourseApplication, setChecked, sendApplication }
-)(CourseList)
+)(CourseApplicationList)

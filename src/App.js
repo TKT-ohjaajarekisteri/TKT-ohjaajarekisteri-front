@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Link, Switch, Redirect, Route } from 'react-ro
 import LoginForm from './components/LoginForm'
 import ContactDetailsForm from './components/student/ContactDetailsForm'
 import AdminCourseList from './components/admin/CourseList'
-import StudentCourseList from './components/student/CourseList'
+import CourseApplicationList from './components/student/CourseApplicationList'
 import SingleCourse from './components/admin/SingleCourse'
 import PrivateRoute from './components/common/PrivateRoute'
 import Notification from './components/common/Notification'
@@ -114,7 +114,7 @@ const App = (props) => {
               />
               <Route
                 exact path="/apply"
-                render={() => <StudentCourseList />}
+                render={() => <CourseApplicationList />}
               />
             </PrivateRoute>
           </Switch>
