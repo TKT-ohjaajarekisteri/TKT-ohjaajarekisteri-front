@@ -67,5 +67,17 @@ const applyForCourse = (content, id) => {
   }
 }
 
+const deleteAppliedCourse = (course_id, student_id) => {
+  return async (dispatch) => {
+    const response = await studentService.deleteApplication(course_id, student_id)
 
-export { applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses }
+    dispatch({
+      type: 'STUDENT_APPLICATION_DELETE',
+      data: {id : course_id}
+
+    })
+  }
+}
+
+
+export { applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses, deleteAppliedCourse }

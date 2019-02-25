@@ -42,6 +42,13 @@ const courseApplicationReducer = (state = initialState, action) => {
       })
     }
   }
+  
+  case 'DELETE_COURSE_APPLICATION': {
+    return {
+      ...state,
+      courses: state.courses.filter(c => c.course_id !== action.data.id)
+    }
+  }
 
   default:
     return state

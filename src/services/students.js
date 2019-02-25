@@ -57,6 +57,11 @@ const getCourses = async (id) => {
   return response.data
 }
 
+const deleteApplication = async (id, course_id) => {
+  const response = await axios.get(baseUrl + `/${id}/courses/${course_id}`, getConfig())
+  return response.data
+}
+
 export default {
-  getAll, setToken, update, apply, getCourses
+  getAll, setToken, update, apply, getCourses, deleteApplication
 }
