@@ -42,7 +42,7 @@ const courseApplicationReducer = (state = initialState, action) => {
       })
     }
   }
-  
+
   case 'DELETE_COURSE_APPLICATION': {
     return {
       ...state,
