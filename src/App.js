@@ -5,11 +5,7 @@ import { BrowserRouter as Router, Link, Switch, Redirect, Route } from 'react-ro
 // Components
 import LoginForm from './components/LoginForm'
 import ContactDetailsForm from './components/student/ContactDetailsForm'
-<<<<<<< HEAD
-=======
 import ContactDetailsUpdateForm from './components/student/ContactDetailsUpdateForm'
-import ApplicationForm from './components/student/ApplicationForm'
->>>>>>> infoUpdateForm
 import AdminCourseList from './components/admin/CourseList'
 import CourseApplicationList from './components/student/CourseApplicationList'
 import SingleCourse from './components/admin/SingleCourse'
