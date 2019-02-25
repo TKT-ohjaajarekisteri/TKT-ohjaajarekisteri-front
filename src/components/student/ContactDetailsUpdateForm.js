@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
-import { getContactInformation, getStudentCourses,  deleteAppliedCourse } from '../../reducers/actionCreators/studentActions'
+import { getContactInformation, getStudentCourses, deleteAppliedCourse } from '../../reducers/actionCreators/studentActions'
 import CourseWithDel from './CourseWithDel'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 
 
-export const ContactDetailsUpdateForm = ({ loggedUser, courses, updateLoggedUser, notify, id, getContactInformation, getStudentCourses, defaultInput }) => {
+export const ContactDetailsUpdateForm = ({ loggedUser, courses, updateLoggedUser, notify, id, getContactInformation, getStudentCourses, defaultInput, deleteAppliedCourse  }) => {
 
   const [input, setInput] = useState({ nickname: '', phone: '', email: '' })
 
@@ -14,9 +14,9 @@ export const ContactDetailsUpdateForm = ({ loggedUser, courses, updateLoggedUser
 
   useEffect(() => {
     getContactInformation(id)
-    console.log(getStudentCourses(id), 'geeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeettttttttttt')
+    //console.log(getStudentCourses(id), 'geeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeettttttttttt')
     getStudentCourses(id)
-    console.log(id, 'mistääääääääää tämä id ooooooooooooooooooooooooooooooonnnnnnn')
+    //console.log(id, 'mistääääääääää tämä id ooooooooooooooooooooooooooooooonnnnnnn')
     console.log('def', defaultInput)
   }, [])
 
@@ -35,8 +35,13 @@ export const ContactDetailsUpdateForm = ({ loggedUser, courses, updateLoggedUser
 
 
   //event handler for deleting specific course application
-  const onClick = (id) => (event) => {
-    deleteAppliedCourse(id, loggedUser.user_id)
+  const removeApply = (id)  => {
+    return () => {
+      console.log('poistetaan')
+      deleteAppliedCourse(id, loggedUser.user.user_id)
+      console.log(id, loggedUser.user.user_id, ' ja logged user iddddddddeeeeeeeeeeeeeeeeeet')
+      notify('Course is removed', 5)
+    }
   }
 
   const handleSubmit = (event) => {
@@ -107,7 +112,7 @@ export const ContactDetailsUpdateForm = ({ loggedUser, courses, updateLoggedUser
           <tbody>
             {console.log(courses,'byäääääääääääääääääääääääääääääääääääääääää') }
             {courses.map(course =>
-              <CourseWithDel course={course} key={course.course_id} onClick = {onClick} />
+              <CourseWithDel course={course} key={course.course_id} onClick = {removeApply} />
             )}
           </tbody>
         </table>
@@ -127,5 +132,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { notify, updateLoggedUser, getContactInformation, getStudentCourses }
+  { notify, updateLoggedUser, getContactInformation, getStudentCourses, deleteAppliedCourse }
 )(ContactDetailsUpdateForm)
