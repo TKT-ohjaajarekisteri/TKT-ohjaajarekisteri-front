@@ -8,6 +8,7 @@ export const CourseList = (props) => {
 
   useEffect(() => {
     props.getStudentCourses(props.loggedUser.user.user_id)
+    console.log(props.loggedUser.user.user_id, 'courselisting iiiiiiiiiiiiiiiiiiiiiiiiiiiiiddddddddddddddddd')
   },
   []
   )
