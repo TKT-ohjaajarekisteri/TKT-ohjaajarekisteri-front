@@ -55,7 +55,7 @@ export const ContactDetailsUpdateForm = ({ loggedUser, courses, updateLoggedUser
 
   return (
     <div>
-      <div className='studentForm'>
+      <div className='contactDetailsUpdateForm'>
 
         <h2>Contact details </h2>
         <form onSubmit={handleSubmit}>
