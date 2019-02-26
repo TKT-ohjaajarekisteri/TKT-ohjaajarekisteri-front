@@ -66,6 +66,27 @@ describe('CourseDetailsUpdateForm', () => {
     const form = wrapper.find('.contactDetailsUpdateForm')
     expect(form.length).toBe(1)
 
+    const list = wrapper.find('.courseList')
+    expect(list.length).toBe(1)
+
   })
+
+  describe('useEffect', () => {
+    it('calls getContactInformation and getStudentCourses', () => {
+      wrapper = mount(
+        <Router>
+          <ContactDetailsUpdateForm {...props} />
+        </Router>
+      )
+      setTimeout(() => {
+        expect(props.getContactInformation).toHaveBeenCalledTimes(1)
+      }, 50)
+      setTimeout(() => {
+        expect(props.getStudentCourses).toHaveBeenCalledTimes(1)
+      }, 50)
+    })
+  })
+
+  //Todo: test send button 
 
 })
