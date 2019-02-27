@@ -1,17 +1,33 @@
+const initialState = {
+  studentCourses: [],
+  students: []
+}
 
-const studentReducer = (store = [], action) => {
+const studentReducer = (state = initialState, action) => {
   switch (action.type) {
   case 'INIT_STUDENTS':
-    return action.data
+    return {
+      ...state,
+      students: action.data
+    }
 
   case 'CREATE_STUDENT_CONTACTINFO':
-    if (store.find(student => student.student_id === action.data.student_id)) {
-      return store
+    if (state.find(student => student.student_id === action.data.student_id)) {
+      return state
     }
-    return [...store, action.data]
+    return {
+      ...state,
+      students: action.data
+    }
+
+  case 'INIT_STUDENT_COURSES':
+    return {
+      ...state,
+      studentCourses: action.data
+    }
 
   default:
-    return store
+    return state
   }
 }
 

@@ -36,18 +36,32 @@ const update = async (content, id) => {
 }
 
 //creates application for a course
-const apply = async (content) => {
-  try {
-    const response = await axios.post(url + 'api/students', content, getConfig())
-    console.log(response, 'response')
-    return response.data
-
-  } catch (error) {
-    console.log(error)
-    return { error: 'Something went wrong' }
+const apply = async (id, content) => {
+  const applyFromList = true
+  if (applyFromList) {
+    try {
+      const response = await axios.post(url + `api/students/${id}/courses/apply`, content, getConfig())
+      return response.data
+    } catch (error) {
+      console.log(error)
+      return { error: 'Something went wrong' }
+    }
+  } else {
+    console.log('data to server', content)
   }
 }
 
+//gets all sudents
+const getCourses = async (id) => {
+  const response = await axios.get(baseUrl + `/${id}/courses`, getConfig())
+  return response.data
+}
+
+const deleteApplication = async (id, course_id) => {
+  const response = await axios.get(baseUrl + `/${id}/courses/${course_id}`, getConfig())
+  return response.data
+}
+
 export default {
-  getAll, setToken, update, apply
+  getAll, setToken, update, apply, getCourses, deleteApplication
 }

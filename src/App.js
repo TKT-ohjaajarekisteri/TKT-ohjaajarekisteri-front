@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Link, Switch, Redirect, Route } from 'react-ro
 // Components
 import LoginForm from './components/LoginForm'
 import ContactDetailsForm from './components/student/ContactDetailsForm'
-import ApplicationForm from './components/student/ApplicationForm'
-import CourseList from './components/admin/CourseList'
+import AdminCourseList from './components/admin/CourseList'
+import CourseApplicationList from './components/student/CourseApplicationList'
 import SingleCourse from './components/admin/SingleCourse'
 import PrivateRoute from './components/common/PrivateRoute'
 import Notification from './components/common/Notification'
@@ -34,9 +34,6 @@ const App = (props) => {
       <Router basename={process.env.PUBLIC_URL}>
         <React.Fragment>
           <div className="NavBar">
-            {loggedUser && loggedUser.user.role === 'student'
-              ? <Link to="/">Courses</Link>
-              : <em></em>} &nbsp;
 
             {/* {props.loggedUser && props.loggedUser.user.role === 'student'
               ? <Link to="/register">Contact details</Link>
@@ -45,6 +42,10 @@ const App = (props) => {
             {loggedUser && loggedUser.user.role === 'admin'
               ? <Link to="/admin/courses">Courses</Link>
               : <em></em>} &nbsp;
+
+            {/* {loggedUser && loggedUser.user.role === 'student'
+              ? <Link to="/courses">Courses</Link>
+              : <em></em>} &nbsp; */}
 
 
             {/* {loggedUser && loggedUser.user.role === 'student'
@@ -81,7 +82,7 @@ const App = (props) => {
               redirectPath="/"
               condition={loggedUser && isAdmin}
             >
-              <Route exact path="/admin/courses" render={() => <CourseList />} />
+              <Route exact path="/admin/courses" render={() => <AdminCourseList />} />
               <Route
                 exact path="/admin/courses/:id"
                 redirectPath="/contact-info"
@@ -113,7 +114,7 @@ const App = (props) => {
               />
               <Route
                 exact path="/apply"
-                render={() => <ApplicationForm id={loggedUser.user.user_id} />}
+                render={() => <CourseApplicationList />}
               />
             </PrivateRoute>
           </Switch>

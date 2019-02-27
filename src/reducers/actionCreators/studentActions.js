@@ -20,6 +20,16 @@ const getStudent = (id) => {
   }
 }
 
+const getStudentCourses = (id) => {
+  return async (dispatch) => {
+    const content = await studentService.getCourses(id)
+    dispatch({
+      type: 'INIT_STUDENT_COURSES',
+      data: content
+    })
+  }
+}
+
 const createStudent = (content, id) => {
   return async (dispatch) => {
     const response = await studentService.update(content, id)
@@ -56,4 +66,18 @@ const applyForCourse = (content, id) => {
     })
   }
 }
-export { applyForCourse, createStudent, initializeStudents, getStudent }
+
+const deleteAppliedCourse = (course_id, student_id) => {
+  return async (dispatch) => {
+    await studentService.deleteApplication(course_id, student_id)
+
+    dispatch({
+      type: 'STUDENT_APPLICATION_DELETE',
+      data: { id: course_id }
+
+    })
+  }
+}
+
+
+export { applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses, deleteAppliedCourse }
