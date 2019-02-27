@@ -4,9 +4,9 @@ import { mount } from 'enzyme'
 import { StudentCourseList } from '../components/student/StudentCourseList'
 
 describe('<StudentCourseList />', () => {
-  let courseList
+  let courseList, props
   beforeAll(() => {
-    let props = {
+    props = {
       getStudentCourses: jest.fn(),
       deleteAppliedCourse: jest.fn(),
       notify: jest.fn(),
@@ -42,11 +42,26 @@ describe('<StudentCourseList />', () => {
 
   afterAll(() => {
     courseList.unMount()
+    // console.log(courseList.debug())
   })
 
   it('renders self', () => {
     let table = courseList.find('.courseList')
     expect(table.length).toBe(1)
-    // expect(courseList.find('Course').length).toBe(2)
   })
+
+  describe('useEffect', () => {
+    it('calls getContactInformation and getStudentCourses', () => {
+      courseList = mount(
+        <Router>
+          <StudentCourseList {...props} />
+        </Router>
+      )
+      setTimeout(() => {
+        expect(props.getStudentCourses).toHaveBeenCalledTimes(1)
+      }, 50)
+    })
+  })
+
+
 })
