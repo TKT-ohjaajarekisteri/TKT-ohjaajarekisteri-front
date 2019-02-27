@@ -59,7 +59,6 @@ const getCourses = async (id) => {
 
 //removes student's application from the course
 const deleteApplication = async (student_id, course_id) => {
-  console.log('service delete', student_id, course_id)
   const response = await axios.delete(baseUrl + `/${student_id}/courses/${course_id}`, getConfig())
   return response.data
 }

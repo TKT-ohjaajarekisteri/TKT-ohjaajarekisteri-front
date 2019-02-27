@@ -4,7 +4,7 @@ import { getStudentCourses, deleteAppliedCourse } from '../../reducers/actionCre
 import CourseWithDel from './CourseWithDel'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 
-export const StudentCourseList = ({ loggedUser, courses, id, getStudentCourses, deleteAppliedCourse }) => {
+export const StudentCourseList = ({ notify, loggedUser, courses, id, getStudentCourses, deleteAppliedCourse }) => {
 
   useEffect(() => {
     getStudentCourses(id)
@@ -51,5 +51,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { getStudentCourses, deleteAppliedCourse }
+  { getStudentCourses, deleteAppliedCourse, notify }
 )(StudentCourseList)

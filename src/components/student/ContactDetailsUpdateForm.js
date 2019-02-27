@@ -86,8 +86,6 @@ const mapStateToProps = (state) => {
   console.log(state, 'koko store')
   return {
     defaultInput: state.students.contactInformation,
-    // courses: state.students.studentCourses,
-    // loggedUser:state.loggedUser.loggedUser
   }
 }
 
