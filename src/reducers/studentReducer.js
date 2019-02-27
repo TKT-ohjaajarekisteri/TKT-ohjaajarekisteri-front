@@ -31,6 +31,13 @@ const studentReducer = (state = initialState, action) => {
       studentCourses: action.data
     }
 
+  case 'STUDENT_APPLICATION_DELETE': {
+    return {
+      ...state,
+      studentCourses: state.studentCourses.filter(c => c.course_id !== action.data.id)
+    }
+  }
+
   case 'INIT_CONTACT_INFORMATION':
     return {
       ...state,
