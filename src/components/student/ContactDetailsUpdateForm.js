@@ -14,16 +14,9 @@ export const ContactDetailsUpdateForm = ({ loggedUser, courses, updateLoggedUser
 
   useEffect(() => {
     getContactInformation(id)
-    //console.log(getStudentCourses(id), 'geeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeettttttttttt')
     getStudentCourses(id)
-    //console.log(id, 'mistääääääääää tämä id ooooooooooooooooooooooooooooooonnnnnnn')
-    console.log('def', defaultInput)
+    // console.log('def', defaultInput)
   }, [])
-
-  // const getInfo = async () => {
-  //   await getContactInformation(id)
-  //   setInput(defaultInput)
-  // }
 
   const handleChange = (event) => {
     const newInput = {
@@ -32,7 +25,6 @@ export const ContactDetailsUpdateForm = ({ loggedUser, courses, updateLoggedUser
     }
     setInput(newInput)
   }
-
 
   //event handler for deleting specific course application
   const removeApply = (id)  => {
@@ -110,7 +102,6 @@ export const ContactDetailsUpdateForm = ({ loggedUser, courses, updateLoggedUser
             </tr>
           </thead>
           <tbody>
-            {console.log(courses,'byäääääääääääääääääääääääääääääääääääääääää') }
             {courses.map(course =>
               <CourseWithDel course={course} key={course.course_id} onClick = {removeApply} />
             )}
