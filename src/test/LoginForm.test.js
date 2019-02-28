@@ -7,7 +7,7 @@ describe('<LoginForm />', () => {
   let loginComponent
 
   loginComponent = mount(<LoginForm />)
-  console.log(loginComponent.debug())
+  //console.log(loginComponent.debug())
 
   it('renders loginForm', () => {
     expect(loginComponent.find('.studentForm').length).toBe(1)
