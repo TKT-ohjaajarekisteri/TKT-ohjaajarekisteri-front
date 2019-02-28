@@ -32,7 +32,9 @@ const App = (props) => {
   return (
     <div>
       <h1>TKT-Assistant Register</h1>
+      { /* eslint-disable */ } 
       <Router basename={process.env.PUBLIC_URL}>
+      { /* eslint-enable */ }
         <React.Fragment>
           <div className="NavBar">
 
