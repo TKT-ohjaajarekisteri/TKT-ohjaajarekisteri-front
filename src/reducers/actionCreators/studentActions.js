@@ -1,5 +1,7 @@
 import studentService from '../../services/students'
 
+
+// tells studentservice to get all students from database
 const initializeStudents = () => {
   return async (dispatch) => {
     const content = await studentService.getAll()
@@ -10,6 +12,7 @@ const initializeStudents = () => {
   }
 }
 
+// tells studentservice to get specific student by id from database
 const getStudent = (id) => {
   return async (dispatch) => {
     const content = await studentService.getStudent(id)
@@ -20,6 +23,8 @@ const getStudent = (id) => {
   }
 }
 
+
+// tells studentservice to get pecific student's courses and dispatch them to store
 const getStudentCourses = (id) => {
   return async (dispatch) => {
     const content = await studentService.getCourses(id)
@@ -30,6 +35,24 @@ const getStudentCourses = (id) => {
   }
 }
 
+// tells studentservice to get pecific student's courses
+const getContactInformation = (id) => {
+  console.log(id)
+  return async (dispatch) => {
+    // TODO GET CONTACT INFORMATION FROM BACKEND
+    const content = {
+      nickname: 'nickname',
+      phone: '+358 000 555',
+      email: 'example@mail.com'
+    }
+    dispatch({
+      type: 'INIT_CONTACT_INFORMATION',
+      data: content
+    })
+  }
+}
+
+// creates student
 const createStudent = (content, id) => {
   return async (dispatch) => {
     const response = await studentService.update(content, id)
@@ -55,6 +78,7 @@ const createStudent = (content, id) => {
 }
 
 
+//tells studentservice to create application for a course post to database
 const applyForCourse = (content, id) => {
   return async (dispatch) => {
     const response = await studentService.apply(content, id)
@@ -67,17 +91,18 @@ const applyForCourse = (content, id) => {
   }
 }
 
+// deletes course which student has applied
 const deleteAppliedCourse = (course_id, student_id) => {
   return async (dispatch) => {
-    await studentService.deleteApplication(course_id, student_id)
 
+    const response = await studentService.deleteApplication(student_id, course_id)
+    console.log(response)
     dispatch({
       type: 'STUDENT_APPLICATION_DELETE',
-      data: { id: course_id }
-
+      data: { id:course_id }
     })
   }
 }
 
 
-export { applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses, deleteAppliedCourse }
+export { applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse  }

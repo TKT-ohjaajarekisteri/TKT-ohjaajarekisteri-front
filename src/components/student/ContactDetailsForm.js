@@ -5,7 +5,7 @@ import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 
 
-export const ContactDetailsForm = ({ updateLoggedUser, notify, id }) => {
+export const ContactDetailsForm = ({ updateLoggedUser, id }) => { //for future: notify
 
   const handleSubmit = async (event) => {
     event.preventDefault()

@@ -1,21 +1,18 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { LoginForm } from '../components/LoginForm'
+import { ContactDetailsForm } from '../components/student/ContactDetailsForm'
 
+describe('<ContactDetailsForm />', () => {
+  let detailsComponent
 
-describe.skip('<LoginForm />', () => {
-  let loginComponent
+  detailsComponent = shallow(<ContactDetailsForm />)
+  // console.log(detailsComponent.debug())
 
-
-  loginComponent = shallow(<LoginForm />)
-  //console.log(loginComponent.debug())
-
-
-  it('renders loginForm', () => {
-    expect(loginComponent.find('.logHeader').length).toBe(1)
-
-    let nameDiv = loginComponent.find('.loginForm')
-    expect(nameDiv.text()).toContain('username')
-    expect(nameDiv.text()).toContain('password')
+  it('renders ContactDetailsForm', () => {
+    let detailsDiv = detailsComponent.find('.studentForm')
+    expect(detailsDiv.text()).toContain('firstname')
+    expect(detailsDiv.text()).toContain('Phone')
+    expect(detailsDiv.text()).toContain('Email')
   })
+
 })

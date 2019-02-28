@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { notify, setError } from './../reducers/actionCreators/notificationActions'
 import { login } from './../reducers/actionCreators/loginActions'
 
-export const LoginForm = ({ history, notify, setError, login }) => {
+export const LoginForm = ({ notify, login }) => { //for future: history, setError
 
   const [input, setInput] = useState({ username: '', password: '' })
 

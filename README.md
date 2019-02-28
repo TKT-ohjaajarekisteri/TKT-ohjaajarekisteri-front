@@ -47,7 +47,7 @@ This registry will be used by students to express their interest to assist on co
 * [Virva Svala](https://github.com/vsvala)
 * [Janne Malin](https://github.com/wood101)
 
-## [Best practices](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/bestpractices.md)
+## [Best practices](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/bestpractices.md)
 
 ## Credits
 

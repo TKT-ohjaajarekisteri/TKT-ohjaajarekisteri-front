@@ -51,14 +51,15 @@ const apply = async (id, content) => {
   }
 }
 
-//gets all sudents
+//gets all courses of specific student
 const getCourses = async (id) => {
   const response = await axios.get(baseUrl + `/${id}/courses`, getConfig())
   return response.data
 }
 
-const deleteApplication = async (id, course_id) => {
-  const response = await axios.get(baseUrl + `/${id}/courses/${course_id}`, getConfig())
+//removes student's application from the course
+const deleteApplication = async (student_id, course_id) => {
+  const response = await axios.delete(baseUrl + `/${student_id}/courses/${course_id}`, getConfig())
   return response.data
 }
 
