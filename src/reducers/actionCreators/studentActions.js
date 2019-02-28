@@ -94,6 +94,7 @@ const applyForCourse = (content, id) => {
 // deletes course which student has applied
 const deleteAppliedCourse = (course_id, student_id) => {
   return async (dispatch) => {
+
     const response = await studentService.deleteApplication(student_id, course_id)
     console.log(response)
     dispatch({
