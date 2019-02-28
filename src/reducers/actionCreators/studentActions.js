@@ -37,6 +37,7 @@ const getStudentCourses = (id) => {
 
 // tells studentservice to get pecific student's courses
 const getContactInformation = (id) => {
+  console.log(id)
   return async (dispatch) => {
     // TODO GET CONTACT INFORMATION FROM BACKEND
     const content = {
@@ -93,11 +94,12 @@ const applyForCourse = (content, id) => {
 // deletes course which student has applied
 const deleteAppliedCourse = (course_id, student_id) => {
   return async (dispatch) => {
+
     const response = await studentService.deleteApplication(student_id, course_id)
+    console.log(response)
     dispatch({
       type: 'STUDENT_APPLICATION_DELETE',
       data: { id:course_id }
-
     })
   }
 }

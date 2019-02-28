@@ -73,7 +73,7 @@ describe('student/ <CourseApplicationList />', () => {
     })
   })
 
-  describe('Checbox', () => {
+  describe('Checkbox', () => {
     it('calls setChecked when checked', () => {
       wrapper = mount(
         <Router>

@@ -1,5 +1,17 @@
 # Best practices
 
+## Before pull request remember first
+
+Run lint:
+
+`npm run lint`
+
+
+Run tests:
+
+`CI=true npm test`
+
+
 ## Naming
 
 ### Routes
