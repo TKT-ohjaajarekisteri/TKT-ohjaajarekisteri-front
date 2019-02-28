@@ -23,6 +23,7 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
       <table>
         <thead>
           <tr>
+            <th>Student number</th>
             <th>First name</th>
             <th>Last name</th>
             <th>Email</th>
