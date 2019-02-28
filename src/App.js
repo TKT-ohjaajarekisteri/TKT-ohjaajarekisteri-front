@@ -88,8 +88,8 @@ const App = (props) => {
             {/* THIS ROUTE PROTECTS ALL ROUTES UNDER "/admin" */}
             <PrivateRoute
               path="/admin"
-              redirectPath="/"
-              condition={loggedUser && isAdmin && isLogged}
+              redirectPath="/login"
+              condition={loggedUser && isAdmin}
             >
               <Route exact path="/admin/courses" render={() => <AdminCourseList />} />
               <Route

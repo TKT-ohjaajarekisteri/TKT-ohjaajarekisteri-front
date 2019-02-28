@@ -14,7 +14,7 @@ const StudentList = (props) => {
       {props.studentsToShow.map(s =>
         <div key={s.student_id}>
           {s.student_number}
-          {s.first_name}
+          {s.first_names}
           {s.last_name}
           {s.nickname}
           {s.email}
