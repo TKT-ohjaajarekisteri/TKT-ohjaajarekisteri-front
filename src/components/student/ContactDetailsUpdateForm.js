@@ -5,7 +5,7 @@ import { getContactInformation } from '../../reducers/actionCreators/studentActi
 import { notify } from '../../reducers/actionCreators/notificationActions'
 import StudentCourseList from './StudentCourseList'
 
-export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput  }) => {
+export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
   const [input, setInput] = useState({ nickname: '', phone: '', email: '' })
 
@@ -78,6 +78,7 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
         </form>
       </div>
       <StudentCourseList id={id} />
+
     </div>
   )
 }
