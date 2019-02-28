@@ -1,20 +1,18 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import { LoginForm } from '../components/LoginForm'
+import { mount } from 'enzyme'
 
 
-describe.skip('<LoginForm />', () => {
+describe('<LoginForm />', () => {
   let loginComponent
 
-
-  loginComponent = shallow(<LoginForm />)
-  //console.log(loginComponent.debug())
-
+  loginComponent = mount(<LoginForm />)
+  console.log(loginComponent.debug())
 
   it('renders loginForm', () => {
-    expect(loginComponent.find('.logHeader').length).toBe(1)
+    expect(loginComponent.find('.studentForm').length).toBe(1)
 
-    let nameDiv = loginComponent.find('.loginForm')
+    let nameDiv = loginComponent.find('.studentForm')
     expect(nameDiv.text()).toContain('username')
     expect(nameDiv.text()).toContain('password')
   })
