@@ -1,7 +1,8 @@
 
 // Making state an object accomodates future additions to login
 const initialState = {
-  loggedUser: null
+  loggedUser: null,
+  loadingUser: true
 }
 
 const loginReducer = (state = initialState, action) => {
@@ -12,6 +13,7 @@ const loginReducer = (state = initialState, action) => {
     return {
       ...state,
       loggedUser: action.data,
+      loadingUser: false
     }
   }
 

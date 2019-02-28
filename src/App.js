@@ -21,12 +21,16 @@ const App = (props) => {
     props.initLoggedUser()
   }, [])
 
-  const { loggedUser } = props
+  const { loggedUser, loadingUser } = props
   const hasContactDetails = (
     loggedUser &&
     loggedUser.user.role === 'student' &&
     loggedUser.user.email)
   const isAdmin = loggedUser && loggedUser.user.role === 'admin'
+  const isLogged = loadingUser === false
+
+
+
 
 
   return (
@@ -50,7 +54,7 @@ const App = (props) => {
 
 
             {/* {loggedUser && loggedUser.user.role === 'student'
-              ? <Link to="/contact-info">Contact details</Link>
+              ? <Link to="/update-info">Contact details</Link>
               : <em></em>} &nbsp; */}
 
             {loggedUser && loggedUser.user.role === 'student'
@@ -85,13 +89,13 @@ const App = (props) => {
             <PrivateRoute
               path="/admin"
               redirectPath="/"
-              condition={loggedUser && isAdmin}
+              condition={loggedUser && isAdmin && isLogged}
             >
               <Route exact path="/admin/courses" render={() => <AdminCourseList />} />
               <Route
                 exact path="/admin/courses/:id"
-                redirectPath="/contact-info"
-                condition={(hasContactDetails || isAdmin) && loggedUser}
+                redirectPath="/"
+                condition={isAdmin && loggedUser && isLogged}
                 render={({ match }) => <SingleCourse courseId={match.params.id} />}
               />
             </PrivateRoute>
@@ -120,19 +124,23 @@ const App = (props) => {
             /> */}
 
             {/* THIS ROUTE PROTECTS ALL ROUTES UNDER "/" */}
-            <PrivateRoute path="/" redirectPath="/contact-info" condition={loggedUser && hasContactDetails}>
-              <Route
-                exact path='/'
-                render={() => <Redirect to='/apply' />}
-              />
-              <Route
-                exact path="/apply"
-                render={() => <CourseApplicationList />}
-              />
-              <Route
-                exact path="/update-info"
-                render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
-              />
+            <PrivateRoute path="/" redirectPath="/login" condition={loggedUser}>
+              <PrivateRoute path="/" redirectPath="/admin/courses" condition={!isAdmin}>
+                <PrivateRoute path="/" redirectPath="/contact-info" condition={hasContactDetails}>
+                  <Route
+                    exact path='/'
+                    render={() => <Redirect to='/apply' />}
+                  />
+                  <Route
+                    exact path="/apply"
+                    render={() => <CourseApplicationList />}
+                  />
+                  <Route
+                    exact path="/update-info"
+                    render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
+                  />
+                </PrivateRoute>
+              </PrivateRoute>
             </PrivateRoute>
           </Switch>
 
@@ -155,7 +163,8 @@ const App = (props) => {
 const mapStateToProps = (state) => {
   console.log(state, 'koko store')
   return {
-    loggedUser: state.loggedUser.loggedUser
+    loggedUser: state.loggedUser.loggedUser,
+    loadingUser: state.loggedUser.loadingUser
   }
 }
 
