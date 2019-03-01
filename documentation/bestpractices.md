@@ -13,9 +13,9 @@
 
 3. AND TEST MANUALLY THAT API STILL WORKS FOR
 
--old student
+-Old student
 
--new student
+-New student 
 
 -Admin
 
