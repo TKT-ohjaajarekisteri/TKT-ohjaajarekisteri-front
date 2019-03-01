@@ -28,7 +28,7 @@ Seeding creates and removes data from the database. This can be used in testing 
 
 Migration commands are [here](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-back/blob/master/MIGRATION_INFO.md).
 
-## Nuking database
+## When you wanna test new user in front, nuking database 
 
 Database can be emptied by undoing all migrations 
 <br>or with code:
