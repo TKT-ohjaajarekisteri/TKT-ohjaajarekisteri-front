@@ -12,8 +12,11 @@
 `CI=true npm test`
 
 3. AND TEST MANUALLY THAT API STILL WORKS FOR
+
 -old student
+
 -new student
+
 -Admin
 
 
