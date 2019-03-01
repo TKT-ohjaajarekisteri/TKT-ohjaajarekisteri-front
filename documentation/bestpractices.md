@@ -2,14 +2,19 @@
 
 ## Before pull request remember first
 
-Run lint:
+1. Run lint:
 
 `npm run lint`
 
 
-Run tests:
+2. Run tests:
 
 `CI=true npm test`
+
+3. AND TEST MANUALLY THAT API STILL WORKS FOR
+-old student
+-new student
+-Admin
 
 
 ## Naming
