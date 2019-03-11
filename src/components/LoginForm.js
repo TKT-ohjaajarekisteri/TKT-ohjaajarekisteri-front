@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { notify, setError } from './../reducers/actionCreators/notificationActions'
 import { login } from './../reducers/actionCreators/loginActions'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Col } from 'react-bootstrap'
 
 export const LoginForm = ({ notify, login }) => { //for future: history, setError
 
@@ -31,7 +31,7 @@ export const LoginForm = ({ notify, login }) => { //for future: history, setErro
     <div className='studentForm'>
       <h2>Sign in with your University of Helsinki credentials</h2>
       <Form onSubmit={handleLogin}>
-        <Form.Group>
+        <Form.Group as={Col} md="4">
           <div>
             <Form.Label>username </Form.Label>
             <Form.Control
