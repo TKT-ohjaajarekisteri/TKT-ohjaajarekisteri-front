@@ -37,6 +37,7 @@ export const LoginForm = ({ notify, login }) => { //for future: history, setErro
             name="username"
             value={input.username}
             onChange={handleChange}
+            autoFocus
           />
         </div>
 
