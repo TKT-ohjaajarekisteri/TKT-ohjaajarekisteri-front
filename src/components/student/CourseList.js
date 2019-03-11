@@ -15,21 +15,23 @@ export const CourseList = (props) => {
   return (
     <div className="courseList">
       <h2>Courses</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Year</th>
-            <th>Period</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.courses.map(course =>
-            <Course course={course} key={course.course_id} />
-          )}
-        </tbody>
-      </table>
+      <div className="container">
+        <table className = "table table-fixed">
+          <thead>
+            <tr>
+              <th className="col-xs-4">Code</th>
+              <th className="col-xs-8">Name</th>
+              <th className="col-xs-2">Year</th>
+              <th className="col-xs-2">Period</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.courses.map(course =>
+              <Course course={course} key={course.course_id} />
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }

@@ -34,7 +34,7 @@ const App = (props) => {
 
 
   return (
-    <div>
+    <div className= "container">
       <h1>TKT-Assistant Register</h1>
       { /* eslint-disable */ } 
       <Router basename={process.env.PUBLIC_URL}>
