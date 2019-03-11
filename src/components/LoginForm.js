@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { notify, setError } from './../reducers/actionCreators/notificationActions'
 import { login } from './../reducers/actionCreators/loginActions'
+import { Form, Button } from 'react-bootstrap'
 
 export const LoginForm = ({ notify, login }) => { //for future: history, setError
 
@@ -29,30 +30,33 @@ export const LoginForm = ({ notify, login }) => { //for future: history, setErro
   return (
     <div className='studentForm'>
       <h2>Sign in with your University of Helsinki credentials</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>username </label>
-          <input
-            type="text"
-            name="username"
-            value={input.username}
-            onChange={handleChange}
-            autoFocus
-          />
-        </div>
+      <Form onSubmit={handleLogin}>
+        <Form.Group>
+          <div>
+            <Form.Label>username </Form.Label>
+            <Form.Control
+              type="text"
+              name="username"
+              value={input.username}
+              onChange={handleChange}
+              autoFocus
+            />
+          </div>
 
-        <div>
-          <label>password </label>
-          <input
-            type="password"
-            name="password"
-            value={input.password}
-            onChange={handleChange}
-          />
-        </div>
-        <input className="button" type="submit" value="Login" />
-      </form>
-
+          <div>
+            <Form.Label>password </Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              value={input.password}
+              onChange={handleChange}
+            />
+          </div>
+          <Button variant="dark" type="submit" >
+          Login
+          </Button>
+        </Form.Group>
+      </Form>
     </div>
   )
 }
