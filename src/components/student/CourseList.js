@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Course from './Course'
 import { getStudentCourses } from '../../reducers/actionCreators/studentActions'
-
+import { Table } from 'react-bootstrap'
 
 export const CourseList = (props) => {
 
@@ -19,7 +19,7 @@ export const CourseList = (props) => {
         <table className = "table table-fixed">
           <thead>
             <tr>
-              <th className="col-xs-4">Code</th>
+              <th className="col-xs-4">Cooooooooooooooooooooode</th>
               <th className="col-xs-8">Name</th>
               <th className="col-xs-2">Year</th>
               <th className="col-xs-2">Period</th>

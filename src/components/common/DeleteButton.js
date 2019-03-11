@@ -1,10 +1,14 @@
 import React from 'react'
+import { Button } from 'react-bootstrap'
 
 const DeleteButton = ({ id, onClick }) => {
   return (
-    <button
-      onClick={onClick(id)}
-    >delete</button>
+    <Button className="buttonDelete" onClick={onClick(id)} variant="dark" type="submit" >
+    delete
+    </Button>
+    // <button
+    //   onClick={onClick(id)}
+    // >delete</button>
   )
 }
 
