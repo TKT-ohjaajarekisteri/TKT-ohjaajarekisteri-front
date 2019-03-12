@@ -4,7 +4,7 @@ import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
 import { getContactInformation } from '../../reducers/actionCreators/studentActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 import StudentCourseList from './StudentCourseList'
-import { Form, Button, Col } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 
 export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
@@ -40,7 +40,7 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
 
         <h2>Contact details </h2>
         <Form onSubmit={handleSubmit}>
-          <Form.Group as={Col} md="8">
+          <Form.Group>
             <div>
               <h3>Student information:</h3>
             </div>
