@@ -27,6 +27,46 @@ Create file docker-compose.yml and copy content from docker-compose.yml file. Th
 Make sure docker and docker-compose are installed, and run docker-compose up in the same directory where you placed the docker-compose.yml file.
 
 
+### How to use Postgresql with Docker in development mode
+
+1. Save a docker-compose.yml -file for example to the folder where you have the repositories for the back and front. Comment away the rows for the front and back so, that only rows for the database remain. 
+
+
+2. In the same folder, run command docker-compose up -d.
+
+
+3. Some changes in the back end code are needed:
+
+
+In the .env -file: change the dev-database-url (the user, password and db should be same as in the docker-compose.yml- file):
+
+```
+DEV_DATABASE_URL= postgres://POSTGRES_USER:POSTGRES_PASSWORD@db:5432/POSTGRES_DB
+```
+
+sequelize.js: in the development part comment away the rows for ssl:
+```
+'ssl': true,
+'dialectOptions': {
+'ssl': true
+ }
+
+```
+
+4. Next you should define on your local computer where the db can be found. Open a file:
+
+```
+nano /etc/hosts
+```
+
+Add a row to the file that is opened: 
+
+127.0.0.1       db
+
+
+5. Now when the back end is started in the development mode (npm run watch), you are using a local Postgres with Docker.
+
+
 ### Other userful commands
 
 List containers
