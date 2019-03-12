@@ -14,7 +14,9 @@ export const CourseList = ({
 }) => {
 
   useEffect(() => {
-    initializeCourses()
+    if (courses.length === 0) {
+      initializeCourses()
+    }
     initializeFilter()
   },
   []
