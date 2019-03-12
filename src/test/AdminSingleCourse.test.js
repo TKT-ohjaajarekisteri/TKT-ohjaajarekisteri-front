@@ -34,7 +34,7 @@ describe('<CourseList />', () => {
     courseList.unMount()
   })
 
-  it('renders studentCourseList', () => {
+  it('renders self adminCourselist', () => {
     let table = courseList.find('.courseList')
     expect(table.length).toBe(1)
     expect(courseList.find('Course').length).toBe(2)

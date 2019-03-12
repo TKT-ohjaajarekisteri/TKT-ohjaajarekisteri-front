@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { applyForCourse } from '../../reducers/actionCreators/studentActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 
-
 const ApplicationForm = ({ notify, id, applyForCourse }) => {
 
 

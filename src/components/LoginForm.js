@@ -14,7 +14,7 @@ export const LoginForm = ({ notify, login }) => { //for future: history, setErro
     const { username, password } = input
 
     login(username, password)
-    notify('this is a notification', 5)
+    // notify('this is a notification', 5)
 
     setInput({ username: '', password: '' })
   }

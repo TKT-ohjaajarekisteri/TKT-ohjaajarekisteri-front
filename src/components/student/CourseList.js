@@ -15,6 +15,7 @@ export const CourseList = (props) => {
   return (
     <div className="courseList">
       <h2>Courses</h2>
+<<<<<<< Updated upstream
       <div className="container">
         <table className = "table table-fixed">
           <thead>
@@ -32,7 +33,26 @@ export const CourseList = (props) => {
           </tbody>
         </table>
       </div>
+=======
+      {/* //<div className="container"> */}  {/* <table className = "table table-fixed"> */}
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Period</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.courses.map(course =>
+            <Course course={course} key={course.course_id} />
+          )}
+        </tbody>
+      </Table>
+>>>>>>> Stashed changes
     </div>
+    // </div>
   )
 }
 
