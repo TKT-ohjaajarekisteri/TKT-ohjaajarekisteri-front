@@ -6,6 +6,7 @@ import singleCourseReducer from './singleCourseReducer'
 import notificationReducer from './notificationReducer'
 import loginReducer from './loginReducer'
 import courseApplicationReducer from './courseApplicationReducer'
+import filterReducer from './filterReducer'
 
 
 const reducer = combineReducers({
@@ -15,6 +16,7 @@ const reducer = combineReducers({
   singleCourse: singleCourseReducer,
   loggedUser: loginReducer,
   courseApplication: courseApplicationReducer,
+  filter: filterReducer
 })
 
 const store = createStore(

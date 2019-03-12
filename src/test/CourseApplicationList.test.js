@@ -8,8 +8,12 @@ describe('student/ <CourseApplicationList />', () => {
   beforeEach(() => {
     props = {
       initializeCourseApplication: jest.fn(),
+      filter: {
+        studyProgramme: ''
+      },
       setChecked: jest.fn(),
       sendApplication: jest.fn(),
+      initializeFilter: jest.fn(),
       loggedUser: {
         user: {
           user_id: 1,
@@ -19,7 +23,7 @@ describe('student/ <CourseApplicationList />', () => {
       courses: [
         {
           course_id: 1,
-          learningopportunity_id: 'TKT 202020',
+          learningopportunity_id: 'TKT202020',
           name: 'OHTU',
           year: 2019,
           period: 2,
@@ -27,7 +31,7 @@ describe('student/ <CourseApplicationList />', () => {
         },
         {
           course_id: 2,
-          learningopportunity_id: 'TKT 202111',
+          learningopportunity_id: 'TKT202111',
           course_name: 'OHTU2',
           year: 2042,
           period: 2,
@@ -35,7 +39,7 @@ describe('student/ <CourseApplicationList />', () => {
         },
         {
           course_id: 3,
-          learningopportunity_id: 'TKT 202122',
+          learningopportunity_id: 'CSM202122',
           course_name: 'OHTU3',
           year: 2042,
           period: 3,
@@ -81,7 +85,7 @@ describe('student/ <CourseApplicationList />', () => {
         </Router>
       )
       const checkbox = wrapper.find('input[type="checkbox"]').filterWhere((item) => {
-        return item.prop('name') === 'TKT 202020'
+        return item.prop('name') === 'TKT202020'
       })
 
       checkbox.simulate('change', { target: { checked: true } })
@@ -98,7 +102,7 @@ describe('student/ <CourseApplicationList />', () => {
       )
 
       const checkbox = wrapper.find('input[type="checkbox"]').filterWhere((item) => {
-        return item.prop('name') === 'TKT 202020'
+        return item.prop('name') === 'TKT202020'
       })
 
       expect(checkbox.prop('checked')).toBe(true)
@@ -135,6 +139,18 @@ describe('student/ <CourseApplicationList />', () => {
       applyButton.simulate('click')
 
       expect(props.sendApplication).toHaveBeenCalledTimes(1)
+    })
+
+    it('only renders courses matching filter', () => {
+      let updatedProps = { ...props, filter: { studyProgramme: 'CSM' } }
+      wrapper = mount(
+        <Router>
+          <CourseApplicationList {...updatedProps} />
+        </Router>
+      )
+      let table = wrapper.find('.courseApplicationList')
+      expect(table.length).toBe(1)
+      expect(wrapper.find('Course').length).toBe(1)
     })
   })
 })
