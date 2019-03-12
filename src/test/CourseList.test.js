@@ -4,39 +4,67 @@ import { mount } from 'enzyme'
 import { CourseList } from '../components/admin/CourseList'
 
 describe('<CourseList />', () => {
-  let courseList
-  beforeAll(() => {
-    let props = {
+  let wrapper, props
+  beforeEach(() => {
+    props = {
+      initializeFilter: jest.fn(),
+      initializeCourses: jest.fn(),
+      filter: {
+        studyProgramme: ''
+      },
       courses: [
         {
-          course_id: 'TKT 202020',
-          course_name: 'OHTU',
-          course_year: 2019,
-          course_period: 2
+          course_id: 1,
+          learningopportunity_id: 'TKT202020',
+          name: 'OHTU',
+          year: 2019,
+          period: 2,
+          checked: false
         },
         {
-          course_id: 'TKT 202111',
+          course_id: 2,
+          learningopportunity_id: 'TKT202111',
           course_name: 'OHTU2',
-          course_year: 2042,
-          course_period: 2
+          year: 2042,
+          period: 2,
+          checked: false
+        },
+        {
+          course_id: 3,
+          learningopportunity_id: 'CSM202122',
+          course_name: 'OHTU3',
+          year: 2042,
+          period: 3,
+          checked: false
         }
       ]
     }
+  })
 
-    courseList = mount(
+  afterEach(() => {
+    wrapper.unmount()
+  })
+
+  it('renders self', () => {
+    wrapper = mount(
       <Router>
         <CourseList {...props} />
       </Router>
     )
-  })
-
-  afterAll(() => {
-    courseList.unMount()
-  })
-
-  it('renders studentCourseList', () => {
-    let table = courseList.find('.courseList')
+    let table = wrapper.find('.courseList')
     expect(table.length).toBe(1)
-    expect(courseList.find('Course').length).toBe(2)
+    expect(wrapper.find('Course').length).toBe(3)
+  })
+
+  it('only renders courses matching filter', () => {
+    let updatedProps = { ...props, filter: { studyProgramme: 'CSM' } }
+    wrapper = mount(
+      <Router>
+        <CourseList {...updatedProps} />
+      </Router>
+    )
+    let table = wrapper.find('.courseList')
+    expect(table.length).toBe(1)
+    expect(wrapper.find('Course').length).toBe(1)
   })
 })
