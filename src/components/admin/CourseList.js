@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Course from './Course'
+import TogglableButton from '../common/TogglableButton'
 import { initializeCourses } from '../../reducers/actionCreators/courseActions'
 import { initializeFilter, setProgramme } from '../../reducers/actionCreators/filterActions'
 
@@ -8,7 +9,8 @@ export const CourseList = ({
   initializeCourses,
   initializeFilter,
   setProgramme,
-  filter, courses
+  filter,
+  courses
 }) => {
 
   useEffect(() => {
@@ -27,9 +29,27 @@ export const CourseList = ({
     <div>
       <h2>Courses</h2>
       <div>
-        <button type='submit' name='TKT' onClick={handleProgrammeChange}>CS-Bachelor</button>
-        <button type='submit' name='CSM' onClick={handleProgrammeChange}>CS-Master</button>
-        <button type='submit' name='DATA' onClick={handleProgrammeChange}>Data Science</button>
+        <TogglableButton
+          type='submit'
+          name='TKT'
+          onClick={handleProgrammeChange}
+          filterValue={filter.studyProgramme}>
+          CS-Bachelor
+        </TogglableButton>
+        <TogglableButton
+          type='submit'
+          name='CSM'
+          onClick={handleProgrammeChange}
+          filterValue={filter.studyProgramme}>
+          CS-Master
+        </TogglableButton>
+        <TogglableButton
+          type='submit'
+          name='DATA'
+          onClick={handleProgrammeChange}
+          filterValue={filter.studyProgramme}>
+          Data Science
+        </TogglableButton>
       </div>
 
       <div className="courseList">
