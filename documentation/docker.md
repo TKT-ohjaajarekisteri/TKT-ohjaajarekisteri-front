@@ -59,23 +59,11 @@ sequelize.js: in the development part comment away the rows for ssl:
 nano /etc/hosts
 ```
 
-Add a row to the file that is opened: 
+Add a row to the first row of the file `hosts`: 
 
-127.0.0.1       db
-
+	127.0.0.1       db
 
 5. Now when the back end is started in the development mode (npm run watch), you are using a local Postgres with Docker.
-
-
-### Other userful commands
-
-List containers
-
-    docker ps
-
-Stop a container
-
-    docker stop <container name>
 
 
 ### Accessing database
@@ -103,3 +91,33 @@ To show all tables in the database:
 To browse Course table:
 
 	select * from "Courses";
+
+
+### Hard reset local postgres db manually
+
+The db name is by default the same as `<username>`.
+
+check the `container name`:
+
+	docker ps
+	docker exec -it <containername> bash
+	
+Logging in with <username> into default `postgrest` database
+	
+	psql -U <username> postgres
+	DROP DATABASE <username>;
+	CREATE DATABASE <username>;
+	\q
+	exit
+
+
+### Other userful commands
+
+List containers
+
+    docker ps
+
+Stop a container
+
+    docker stop <container name>
+
