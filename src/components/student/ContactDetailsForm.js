@@ -31,25 +31,14 @@ export const ContactDetailsForm = ({ updateLoggedUser, id }) => { //for future: 
       <h2>Contact details </h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group>
-          <div>
-            <h3>Student information:</h3>
-          </div>
-          <div>
-            <Form.Label>Preferred firstname: </Form.Label>
-            <Form.Control type="text" name='nickname' />
-          </div>
-
-          <div>
-            <Form.Label>Phone: </Form.Label>
-            <Form.Control type="text" name='phonenumber' />
-          </div>
-
-          <div>
-            <Form.Label>Email: </Form.Label>
-            <Form.Control type="text" name='email' />
-          </div>
-          <Button variant="dark" className="button" type="submit">send</Button>
+          <Form.Label>Preferred firstname: </Form.Label>
+          <Form.Control type="text" name='nickname' />
+          <Form.Label>Phone: </Form.Label>
+          <Form.Control type="text" name='phonenumber' />
+          <Form.Label>Email: </Form.Label>
+          <Form.Control type="text" name='email' />
         </Form.Group>
+        <Button variant="dark" className="button" type="submit">send</Button>
       </Form>
     </div>
   )

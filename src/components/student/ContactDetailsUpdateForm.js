@@ -41,30 +41,25 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
         <h2>Contact details </h2>
         <Form onSubmit={handleSubmit}>
           <Form.Group>
-            <div>
-              {/* <h3>Student information:</h3> */}
-            </div>
-            <div>
-              <Form.Label>Preferred firstname: </Form.Label>
-              <Form.Control
-                type="text"
-                value={input.nickname}
-                name='nickname'
-                onChange={handleChange}
-                placeholder={defaultInput.nickname}
-              />
-            </div>
 
-            <div>
-              <Form.Label>Phone: </Form.Label>
-              <Form.Control
-                type="text"
-                value={input.phone}
-                name='phone'
-                onChange={handleChange}
-                placeholder={defaultInput.phone}
-              />
-            </div>
+            <Form.Label>Preferred firstname: </Form.Label>
+            <Form.Control
+              type="text"
+              value={input.nickname}
+              name='nickname'
+              onChange={handleChange}
+              placeholder={defaultInput.nickname}
+            />
+
+
+            <Form.Label>Phone: </Form.Label>
+            <Form.Control
+              type="text"
+              value={input.phone}
+              name='phone'
+              onChange={handleChange}
+              placeholder={defaultInput.phone}
+            />
 
             <label>Email: </label>
             <Form.Control
@@ -74,7 +69,6 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
               onChange={handleChange}
               placeholder={defaultInput.email}
             />
-
 
           </Form.Group>
           <Button variant="dark" className="button" type="submit">update</Button>

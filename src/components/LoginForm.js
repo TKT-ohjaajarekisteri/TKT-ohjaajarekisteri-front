@@ -32,26 +32,20 @@ export const LoginForm = ({ notify, login }) => { //for future: history, setErro
       <h2>Sign in with your University of Helsinki credentials</h2>
       <Form onSubmit={handleLogin}>
         <Form.Group as={Col} md="4">
-          <div>
-            <Form.Label>username </Form.Label>
-            <Form.Control
-              type="text"
-              name="username"
-              value={input.username}
-              onChange={handleChange}
-              autoFocus
-            />
-          </div>
-
+          <Form.Label>username </Form.Label>
+          <Form.Control
+            type="text"
+            name="username"
+            value={input.username}
+            onChange={handleChange}
+            autoFocus/>
 
           <Form.Label>password </Form.Label>
           <Form.Control
             type="password"
             name="password"
             value={input.password}
-            onChange={handleChange}
-          />
-
+            onChange={handleChange} />
         </Form.Group>
 
         <Button className="btnLogin" variant="dark" type="submit" >
