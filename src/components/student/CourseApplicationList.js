@@ -29,11 +29,9 @@ export const CourseApplicationList = (props) => {
     <div className="courseApplicationList">
       <h2>Courses</h2>
       {/* {<input className="button" type="submit" value="apply" onClick={handleSubmit} />} */}
-      <div className="buttonApply">
-        <Button onClick={handleSubmit} variant="dark" type="submit" >
+      <Button input className="buttonApply" onClick={handleSubmit} variant="dark" type="submit" >
         apply
-        </Button></div>
-
+      </Button>
 
       <Table bordered hover>
         <thead>

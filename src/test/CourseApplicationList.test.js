@@ -113,7 +113,8 @@ describe('student/ <CourseApplicationList />', () => {
         </Router>
       )
       expect(props.sendApplication).toHaveBeenCalledTimes(0)
-      const applyButton = wrapper.find('.button')
+      const applyButton = wrapper.find('.buttonApply').first()
+      //console.log('applybuttontestin applybutton', applyButton)
       expect(applyButton.length).toBe(1)
       applyButton.simulate('click')
       expect(props.sendApplication).toHaveBeenCalledTimes(0)
@@ -130,7 +131,7 @@ describe('student/ <CourseApplicationList />', () => {
 
       expect(props.sendApplication).toHaveBeenCalledTimes(0)
 
-      const applyButton = wrapper.find('.button')
+      const applyButton = wrapper.find('.buttonApply').first()
       expect(applyButton.length).toBe(1)
       applyButton.simulate('click')
 

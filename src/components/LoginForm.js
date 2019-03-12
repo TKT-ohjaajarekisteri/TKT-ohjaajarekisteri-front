@@ -29,7 +29,9 @@ export const LoginForm = ({ notify, login }) => { //for future: history, setErro
 
   return (
     <div className='studentForm'>
-      <h2>Sign in with your University of Helsinki credentials</h2>
+      <div className='logHeader'>
+        <h2>Sign in with your University of Helsinki credentials</h2>
+      </div>
       <Form onSubmit={handleLogin}>
         <Form.Group as={Col} md="4">
           <Form.Label>username </Form.Label>

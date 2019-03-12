@@ -8,13 +8,13 @@ describe('<LoginForm />', () => {
 
 
   loginComponent = mount(<LoginForm />)
-  console.log(loginComponent.debug())
+  //console.log(loginComponent.debug())
 
 
   it('renders loginForm', () => {
     expect(loginComponent.find('.logHeader').length).toBe(1)
 
-    let nameDiv = loginComponent.find('.loginForm')
+    let nameDiv = loginComponent.find('.studentForm')
     expect(nameDiv.text()).toContain('username')
     expect(nameDiv.text()).toContain('password')
   })
