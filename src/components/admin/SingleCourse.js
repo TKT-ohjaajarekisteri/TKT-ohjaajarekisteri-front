@@ -17,7 +17,7 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
     <div>
       <div className="courseHeader">
         {!course ? null :
-          <h2>{course.learningopportunity_id} {course.course_name}  {course.year} {course.period}</h2>
+          <h2>{course.learningopportunity_id} {course.course_name}  {course.year} period:{course.period}</h2>
         }
       </div>
 
