@@ -23,12 +23,7 @@ export const StudentCourseList = ({ notify, loggedUser, courses, id, getStudentC
   return (
     <div className="courseList">
       <h2>Courses</h2>
-<<<<<<< Updated upstream
       <Table bordered hover>
-=======
-    <Table striped bordered hover>
-
->>>>>>> Stashed changes
         <thead>
           <tr>
             <th>Code</th>
@@ -43,12 +38,7 @@ export const StudentCourseList = ({ notify, loggedUser, courses, id, getStudentC
             <CourseWithDel course={course} key={course.course_id} onClick={removeApply} />
           )}
         </tbody>
-<<<<<<< Updated upstream
       </Table>
-=======
-        </Table>
-     
->>>>>>> Stashed changes
     </div>
   )
 }

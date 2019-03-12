@@ -37,7 +37,7 @@
     "eslint-plugin-react": "^7.11.1",
     "jest-cli": "^21.2.1",
     "jest-dom": "^3.0.1",
-    "react-testing-library": "^5.4.4",
+    "react-testing-library": "^5.4.4"
   },
   "browserslist": [
     ">0.2%",
