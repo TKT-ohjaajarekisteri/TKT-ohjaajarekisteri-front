@@ -9,7 +9,10 @@ import { initializeFilter, setProgramme } from '../../reducers/actionCreators/fi
 export const CourseApplicationList = (props) => {
 
   useEffect(() => {
-    props.initializeCourseApplication()
+    if (props.courses.length === 0) {
+      props.initializeCourseApplication()
+    }
+    props.initializeFilter()
   },
   []
   )
