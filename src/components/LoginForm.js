@@ -43,19 +43,20 @@ export const LoginForm = ({ notify, login }) => { //for future: history, setErro
             />
           </div>
 
-          <div>
-            <Form.Label>password </Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              value={input.password}
-              onChange={handleChange}
-            />
-          </div>
-          <Button variant="dark" type="submit" >
-          Login
-          </Button>
+
+          <Form.Label>password </Form.Label>
+          <Form.Control
+            type="password"
+            name="password"
+            value={input.password}
+            onChange={handleChange}
+          />
+
         </Form.Group>
+
+        <Button variant="dark" type="submit" >
+          Login
+        </Button>
       </Form>
     </div>
   )

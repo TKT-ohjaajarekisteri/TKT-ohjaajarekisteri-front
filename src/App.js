@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Link, Switch, Redirect, Route } from 'react-router-dom'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar, Nav, Button } from 'react-bootstrap'
 
 
 // Components
@@ -43,7 +43,7 @@ const App = (props) => {
         <React.Fragment>
           <div className="NavBar">
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-              <Navbar.Brand href="#home">TKT-Assistant Register</Navbar.Brand>
+              <Navbar.Brand href="#home">TKT – Assistant Register</Navbar.Brand>
 
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
@@ -72,25 +72,23 @@ const App = (props) => {
                       : <em></em>} &nbsp;
                   </Nav.Link>
 
-                  <Nav.Link href="#" as="span">
-                    {loggedUser && loggedUser.user.role === 'student'
-                      ? <Link to="/update-info">Update info</Link>
-                      : <em></em>} &nbsp;
-                  </Nav.Link>
-
                   {/* tulee vasta myöhemmässä sprintissa
             {props.loggedUser && props.loggedUser.user.role === 'admin'
               ? <Link to="/students">Students</Link>
               : <> </>}  &nbsp; */}
-
-                  <Nav.Link href="#" as="span">
-                    {loggedUser
-                      //  ? <div className="loginbutton"><em> You are logged in <input onClick={props.logout} type="button" value="logout" />&nbsp;</em></div>
-                      ? <div className="loginbutton"><input onClick={props.logout} type="button" value="logout" />&nbsp;</div>
-                      : <em></em>} &nbsp;
-                    {/* : <Link to="/login">Login</Link>} &nbsp; */}
-                  </Nav.Link>
                 </Nav>
+
+                <Nav.Link href="#" as="span">
+                  {loggedUser && loggedUser.user.role === 'student'
+                    ? <Link to="/update-info">My profile</Link>
+                    : <em></em>} &nbsp;
+                </Nav.Link>
+
+                <Nav.Link href="#" as="span">
+                  {loggedUser
+                    ? <Button className="loginbutton" onClick={props.logout} variant="secondary" type="button" >logout &nbsp;</Button>
+                    : <em></em>} &nbsp;
+                </Nav.Link>
               </Navbar.Collapse>
             </Navbar>
           </div>

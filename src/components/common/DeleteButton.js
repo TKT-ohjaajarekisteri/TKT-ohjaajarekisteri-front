@@ -6,9 +6,6 @@ const DeleteButton = ({ id, onClick }) => {
     <Button className="buttonDelete" onClick={onClick(id)} variant="dark" type="submit" >
     delete
     </Button>
-    // <button
-    //   onClick={onClick(id)}
-    // >delete</button>
   )
 }
 

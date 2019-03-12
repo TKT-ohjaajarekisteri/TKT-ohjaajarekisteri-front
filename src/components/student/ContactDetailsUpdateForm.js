@@ -66,18 +66,18 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
               />
             </div>
 
-            <div>
-              <label>Email: </label>
-              <Form.Control
-                type="text"
-                name='email'
-                value={input.email}
-                onChange={handleChange}
-                placeholder={defaultInput.email}
-              />
-            </div>
-            <Button variant="dark" className="button" type="submit">send</Button>
+            <label>Email: </label>
+            <Form.Control
+              type="text"
+              name='email'
+              value={input.email}
+              onChange={handleChange}
+              placeholder={defaultInput.email}
+            />
+
+
           </Form.Group>
+          <Button variant="dark" className="button" type="submit">update</Button>
         </Form>
       </div>
       <StudentCourseList id={id} />
