@@ -10,7 +10,7 @@ export const CourseApplicationList = (props) => {
   useEffect(() => {
     props.initializeCourseApplication()
   },
-    []
+  []
   )
 
   const handleSubmit = () => {
