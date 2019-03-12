@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { initializeSingleCourse } from '../../reducers/singleCourseReducer'
 import Student from './Student'
+import { Table } from 'react-bootstrap'
+
 
 export const SingleCourse = ({ course, applicants, initializeSingleCourse, courseId }) => {
 
@@ -20,7 +22,8 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
       </div>
 
       <h3>Applicants for course:</h3>
-      <table>
+      <Table bordered hover>
+
         <thead>
           <tr>
             <th>Student number</th>
@@ -34,7 +37,7 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
             <Student key={student.student_id} student={student} />
           )}
         </tbody>
-      </table>
+      </Table>
     </div>
   )
 }

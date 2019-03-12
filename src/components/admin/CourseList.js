@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Course from './Course'
 import { initializeCourses } from '../../reducers/actionCreators/courseActions'
-
+import { Table } from 'react-bootstrap'
 
 export const CourseList = (props) => {
 
@@ -15,7 +15,7 @@ export const CourseList = (props) => {
   return (
     <div className="courseList">
       <h2>Courses</h2>
-      <table>
+      <Table bordered hover>
         <thead>
           <tr>
             <th>Code</th>
@@ -29,7 +29,7 @@ export const CourseList = (props) => {
             <Course course={course} key={course.course_id} />
           )}
         </tbody>
-      </table>
+      </Table>
     </div>
   )
 }

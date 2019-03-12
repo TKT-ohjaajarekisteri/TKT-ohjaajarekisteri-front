@@ -42,7 +42,7 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <div>
-              <h3>Student information:</h3>
+              {/* <h3>Student information:</h3> */}
             </div>
             <div>
               <Form.Label>Preferred firstname: </Form.Label>
