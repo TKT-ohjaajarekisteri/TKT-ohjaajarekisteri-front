@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Course from './Course'
+import TogglableButton from '../common/TogglableButton'
 import { initializeCourseApplication, setChecked, sendApplication } from '../../reducers/actionCreators/courseApplicationActions'
 import { initializeFilter, setProgramme } from '../../reducers/actionCreators/filterActions'
 
@@ -39,9 +40,27 @@ export const CourseApplicationList = (props) => {
     <div className="courseApplicationList">
       <h2>Courses</h2>
       <div>
-        <button type='submit' name='TKT' onClick={handleProgrammeChange}>CS-Bachelor</button>
-        <button type='submit' name='CSM' onClick={handleProgrammeChange}>CS-Master</button>
-        <button type='submit' name='DATA' onClick={handleProgrammeChange}>Data Science</button>
+        <TogglableButton
+          type='submit'
+          name='TKT'
+          onClick={handleProgrammeChange}
+          filterValue={props.filter.studyProgramme}>
+          CS-Bachelor
+        </TogglableButton>
+        <TogglableButton
+          type='submit'
+          name='CSM'
+          onClick={handleProgrammeChange}
+          filterValue={props.filter.studyProgramme}>
+          CS-Master
+        </TogglableButton>
+        <TogglableButton
+          type='submit'
+          name='DATA'
+          onClick={handleProgrammeChange}
+          filterValue={props.filter.studyProgramme}>
+          Data Science
+        </TogglableButton>
       </div>
       {<input className="button" type="submit" value="apply" onClick={handleSubmit} />}
       <div className="tableScroll" style={style} >
