@@ -8,9 +8,17 @@
       margin: 20px 0px 10px 0px;
   }
 
+  a{
+      color: rgb(240, 140, 0);
+  }
+    a:hover{
+      color: rgb(252, 189, 102);
+      text-decoration: none;
+  }
+
 /* adjust navbar hight */
   .navbar-expand-lg{
-   padding:20px 20px 20px 35px;
+   padding:15px 20px 15px 35px;
     }
 
 /* adjust buttons */
@@ -30,7 +38,6 @@
     float:right;
      margin: 0px;
   }
-
 
   .courseHeader{
     margin: 0px 0px 40px 0px;
