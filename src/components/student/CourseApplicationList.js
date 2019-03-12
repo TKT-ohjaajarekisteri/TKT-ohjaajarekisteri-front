@@ -11,7 +11,7 @@ export const CourseApplicationList = (props) => {
   useEffect(() => {
     props.initializeCourseApplication()
   },
-    []
+  []
   )
 
   const handleSubmit = () => {
@@ -48,21 +48,21 @@ export const CourseApplicationList = (props) => {
           onClick={handleProgrammeChange}
           filterValue={props.filter.studyProgramme}>
           CS-Bachelor
-              </TogglableButton>
+        </TogglableButton>
         <TogglableButton
           type='submit'
           name='CSM'
           onClick={handleProgrammeChange}
           filterValue={props.filter.studyProgramme}>
           CS-Master
-              </TogglableButton>
+        </TogglableButton>
         <TogglableButton
           type='submit'
           name='DATA'
           onClick={handleProgrammeChange}
           filterValue={props.filter.studyProgramme}>
           Data Science
-              </TogglableButton>
+        </TogglableButton>
       </div>
 
       <Table bordered hover>

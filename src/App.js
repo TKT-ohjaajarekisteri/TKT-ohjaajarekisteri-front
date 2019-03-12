@@ -31,10 +31,6 @@ const App = (props) => {
   const isAdmin = loggedUser && loggedUser.user.role === 'admin'
   const isLogged = loadingUser === false
 
-
-
-
-
   return (
     <div>
       { /* eslint-disable */}
@@ -49,33 +45,18 @@ const App = (props) => {
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
 
-                  {/* {props.loggedUser && props.loggedUser.user.role === 'student'
-              ? <Link to="/register">Contact details</Link>
-              : <em></em>} &nbsp; */}
                   <Nav.Link href="#" as="span">
                     {loggedUser && loggedUser.user.role === 'admin'
                       ? <Link to="/admin/courses">Courses</Link>
                       : <em></em>} &nbsp;
                   </Nav.Link>
 
-                  {/* {loggedUser && loggedUser.user.role === 'student'
-              ? <Link to="/courses">Courses</Link>
-              : <em></em>} &nbsp; */}
-
-
-                  {/* {loggedUser && loggedUser.user.role === 'student'
-              ? <Link to="/update-info">Contact details</Link>
-              : <em></em>} &nbsp; */}
                   <Nav.Link href="#" as="span">
                     {loggedUser && loggedUser.user.role === 'student'
                       ? <Link to="/apply">Apply</Link>
                       : <em></em>} &nbsp;
                   </Nav.Link>
 
-                  {/* tulee vasta myöhemmässä sprintissa
-            {props.loggedUser && props.loggedUser.user.role === 'admin'
-              ? <Link to="/students">Students</Link>
-              : <> </>}  &nbsp; */}
                 </Nav>
 
                 <Nav.Link href="#" as="span">
@@ -86,7 +67,7 @@ const App = (props) => {
 
                 <Nav.Link href="#" as="span">
                   {loggedUser
-                    ? <Button className="loginbutton" onClick={props.logout} variant="secondary" type="button" >logout &nbsp;</Button>
+                    ? <Button className="loginbutton" onClick={props.logout} variant="secondary" type="button" >Logout</Button>
                     : <em></em>} &nbsp;
                 </Nav.Link>
               </Navbar.Collapse>
@@ -131,13 +112,6 @@ const App = (props) => {
                 render={() => <ContactDetailsForm id={loggedUser.user.user_id} />}
               />
 
-              {/* USERS CAN UPDATE THEIR INFORMATION */}
-              {/* <PrivateRoute
-              exact path="/update-info"
-              redirectPath="/login"
-              condition={loggedUser}
-              render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
-            /> */}
 
               {/* THIS ROUTE PROTECTS ALL ROUTES UNDER "/" */}
               <PrivateRoute path="/" redirectPath="/login" condition={loggedUser}>
@@ -151,6 +125,8 @@ const App = (props) => {
                       exact path="/apply"
                       render={() => <CourseApplicationList />}
                     />
+
+                    {/* USERS CAN UPDATE THEIR INFORMATION */}
                     <Route
                       exact path="/update-info"
                       render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
@@ -160,16 +136,6 @@ const App = (props) => {
               </PrivateRoute>
             </Switch>
           </div>
-
-
-          {/*not used in 2 sprint
-           <Route exact path="/students" render={() =>
-            props.loggedUser && props.loggedUser.user.role === 'admin'
-              ? (<StudentList />)
-              : (<Redirect to="/login" />)} /> */}
-
-
-          {/* <Route path="/students/:id" render={() => <SingleStudent />} /> */}
         </React.Fragment>
       </Router>
     </div >

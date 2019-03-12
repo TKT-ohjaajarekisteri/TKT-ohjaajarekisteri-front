@@ -18,7 +18,7 @@ export const CourseList = ({
     initializeCourses()
     initializeFilter()
   },
-    []
+  []
   )
 
   const handleProgrammeChange = (event) => {
@@ -53,7 +53,7 @@ export const CourseList = ({
         </TogglableButton>
       </div>
 
-      <Table bordered hover>
+      <Table className='courseList' bordered hover>
         <thead>
           <tr>
             <th>Code</th>

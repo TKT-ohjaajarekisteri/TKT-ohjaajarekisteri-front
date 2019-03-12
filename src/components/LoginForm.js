@@ -5,7 +5,7 @@ import { notify, setError } from './../reducers/actionCreators/notificationActio
 import { login } from './../reducers/actionCreators/loginActions'
 import { Form, Button, Col } from 'react-bootstrap'
 
-export const LoginForm = ({ notify, login }) => { //for future: history, setError
+export const LoginForm = ({ login }) => { //for future: history, setError
 
   const [input, setInput] = useState({ username: '', password: '' })
 
