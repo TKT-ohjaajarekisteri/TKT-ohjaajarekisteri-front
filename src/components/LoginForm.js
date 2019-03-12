@@ -54,7 +54,7 @@ export const LoginForm = ({ notify, login }) => { //for future: history, setErro
 
         </Form.Group>
 
-        <Button variant="dark" type="submit" >
+        <Button className="btnLogin" variant="dark" type="submit" >
           Login
         </Button>
       </Form>
