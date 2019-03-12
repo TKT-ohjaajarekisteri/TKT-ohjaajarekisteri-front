@@ -48,7 +48,7 @@ export const ContactDetailsForm = ({ updateLoggedUser, id }) => { //for future: 
             <Form.Label>Email: </Form.Label>
             <Form.Control type="text" name='email' />
           </div>
-          <button className="button" type="submit">send</button>
+          <Button variant="dark" className="button" type="submit">send</Button>
         </Form.Group>
       </Form>
     </div>
