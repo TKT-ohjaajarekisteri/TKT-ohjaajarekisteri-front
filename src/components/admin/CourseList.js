@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Course from './Course'
 import TogglableButton from '../common/TogglableButton'
 import { initializeCourses } from '../../reducers/actionCreators/courseActions'
+import { Table } from 'react-bootstrap'
 import { initializeFilter, setProgramme } from '../../reducers/actionCreators/filterActions'
 
 export const CourseList = ({
@@ -52,25 +53,23 @@ export const CourseList = ({
         </TogglableButton>
       </div>
 
-      <div className="courseList">
-        <table>
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Name</th>
-              <th>Year</th>
-              <th>Period</th>
-            </tr>
-          </thead>
-          <tbody>
-            {courses
-              .filter(course => course.learningopportunity_id.includes(filter.studyProgramme))
-              .map(course =>
-                <Course course={course} key={course.course_id} />
-              )}
-          </tbody>
-        </table>
-      </div>
+      <Table className='courseList' bordered hover>
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Period</th>
+          </tr>
+        </thead>
+        <tbody>
+          {courses
+            .filter(course => course.learningopportunity_id.includes(filter.studyProgramme))
+            .map(course =>
+              <Course course={course} key={course.course_id} />
+            )}
+        </tbody>
+      </Table>
     </div>
   )
 }

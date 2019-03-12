@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getStudentCourses, deleteAppliedCourse } from '../../reducers/actionCreators/studentActions'
 import CourseWithDel from './CourseWithDel'
 import { notify } from '../../reducers/actionCreators/notificationActions'
+import { Table } from 'react-bootstrap'
 
 export const StudentCourseList = ({ notify, loggedUser, courses, id, getStudentCourses, deleteAppliedCourse }) => {
 
@@ -22,13 +23,14 @@ export const StudentCourseList = ({ notify, loggedUser, courses, id, getStudentC
   return (
     <div className="courseList">
       <h2>Courses</h2>
-      <table>
+      <Table bordered hover>
         <thead>
           <tr>
             <th>Code</th>
             <th>Name</th>
             <th>Year</th>
             <th>Period</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -36,7 +38,7 @@ export const StudentCourseList = ({ notify, loggedUser, courses, id, getStudentC
             <CourseWithDel course={course} key={course.course_id} onClick={removeApply} />
           )}
         </tbody>
-      </table>
+      </Table>
     </div>
   )
 }

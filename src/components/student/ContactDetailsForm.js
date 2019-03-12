@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { createStudent } from '../../reducers/actionCreators/studentActions'
 import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
-
+import { Form, Button } from 'react-bootstrap'
 
 export const ContactDetailsForm = ({ updateLoggedUser, id }) => { //for future: notify
 
@@ -29,26 +29,17 @@ export const ContactDetailsForm = ({ updateLoggedUser, id }) => { //for future: 
     <div className='studentForm'>
 
       <h2>Contact details </h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <h3>Student information:</h3>
-        </div>
-        <div>
-          <label>Preferred firstname: </label>
-          <input type="text" name='nickname' />
-        </div>
-
-        <div>
-          <label>Phone: </label>
-          <input type="text" name='phonenumber' />
-        </div>
-
-        <div>
-          <label>Email: </label>
-          <input type="text" name='email' />
-        </div>
-        <button className="button" type="submit">send</button>
-      </form>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <Form.Label>Preferred firstname: </Form.Label>
+          <Form.Control type="text" name='nickname' />
+          <Form.Label>Phone: </Form.Label>
+          <Form.Control type="text" name='phonenumber' />
+          <Form.Label>Email: </Form.Label>
+          <Form.Control type="text" name='email' />
+        </Form.Group>
+        <Button variant="dark" className="button" type="submit">send</Button>
+      </Form>
     </div>
   )
 }

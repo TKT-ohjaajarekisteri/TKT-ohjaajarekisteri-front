@@ -51,7 +51,9 @@ describe('<CourseList />', () => {
         <CourseList {...props} />
       </Router>
     )
-    let table = wrapper.find('.courseList')
+
+    let table = wrapper.find('.courseList').first()
+
     expect(table.length).toBe(1)
     expect(wrapper.find('Course').length).toBe(3)
   })
@@ -63,7 +65,7 @@ describe('<CourseList />', () => {
         <CourseList {...updatedProps} />
       </Router>
     )
-    let table = wrapper.find('.courseList')
+    let table = wrapper.find('.courseList').first()
     expect(table.length).toBe(1)
     expect(wrapper.find('Course').length).toBe(1)
   })

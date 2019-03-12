@@ -4,6 +4,7 @@ import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
 import { getContactInformation } from '../../reducers/actionCreators/studentActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 import StudentCourseList from './StudentCourseList'
+import { Form, Button } from 'react-bootstrap'
 
 export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
@@ -38,44 +39,40 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
       <div className='contactDetailsUpdateForm'>
 
         <h2>Contact details </h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <h3>Student information:</h3>
-          </div>
-          <div>
-            <label>Preferred firstname: </label>
-            <input
+        <Form onSubmit={handleSubmit}>
+          <Form.Group>
+
+            <Form.Label>Preferred firstname: </Form.Label>
+            <Form.Control
               type="text"
               value={input.nickname}
               name='nickname'
               onChange={handleChange}
               placeholder={defaultInput.nickname}
             />
-          </div>
 
-          <div>
-            <label>Phone: </label>
-            <input
+
+            <Form.Label>Phone: </Form.Label>
+            <Form.Control
               type="text"
               value={input.phone}
               name='phone'
               onChange={handleChange}
               placeholder={defaultInput.phone}
             />
-          </div>
 
-          <div>
             <label>Email: </label>
-            <input
+            <Form.Control
               type="text"
               name='email'
               value={input.email}
               onChange={handleChange}
               placeholder={defaultInput.email}
             />
-          </div>
-          <button className="button" type="submit">send</button>
-        </form>
+
+          </Form.Group>
+          <Button variant="dark" className="button" type="submit">update</Button>
+        </Form>
       </div>
       <StudentCourseList id={id} />
 
