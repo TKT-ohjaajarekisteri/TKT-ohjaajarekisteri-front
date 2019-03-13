@@ -42,7 +42,7 @@ const sendApplication = (student_id, course_ids) => {
     })
     dispatch({
       type: 'NOTIFY',
-      data: 'Your applicaton has been send!'
+      data: 'Your applicaton has been sent!'
     })
 
     setTimeout(() => {
