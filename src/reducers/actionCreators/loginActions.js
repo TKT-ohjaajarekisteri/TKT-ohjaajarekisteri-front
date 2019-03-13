@@ -43,7 +43,16 @@ const login = (username, password) => {
   return async (dispatch) => {
     const response = await loginService.login({ username: username, password: password })
     if (response.error) {
-      // handle error
+      dispatch({
+        type: 'NOTIFY',
+        data: 'Username or password is incorrect!'
+      })
+      setTimeout(() => {
+        dispatch({
+          type: 'CLEAR',
+        })
+      }, 3000)
+
     } else {
       await courseService.setToken(response.token)
       await studentService.setToken(response.token)
@@ -51,6 +60,16 @@ const login = (username, password) => {
         type: 'LOGIN',
         data: { ...response }
       })
+      dispatch({
+        type: 'NOTIFY',
+        data: 'Logged in succesfully!'
+      })
+
+      setTimeout(() => {
+        dispatch({
+          type: 'CLEAR',
+        })
+      }, 3000)
       window.localStorage.setItem('loggedInUser', JSON.stringify({ ...response }))
     }
   }

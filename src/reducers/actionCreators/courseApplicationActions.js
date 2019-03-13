@@ -40,6 +40,16 @@ const sendApplication = (student_id, course_ids) => {
     dispatch({
       type: 'RESET_COURSE_APPLICATIONS'
     })
+    dispatch({
+      type: 'NOTIFY',
+      data: 'Your applicaton has been sent!'
+    })
+
+    setTimeout(() => {
+      dispatch({
+        type: 'CLEAR',
+      })
+    }, 2000)
   }
 }
 
