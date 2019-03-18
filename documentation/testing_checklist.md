@@ -1,4 +1,6 @@
-# Testing checklist
+# Exploratory testing checklist
+
+This is a checklist for anyone doing exploratory testing on the software. Please update whenever new features are added.
 
 ## User
 - Login with fresh user
