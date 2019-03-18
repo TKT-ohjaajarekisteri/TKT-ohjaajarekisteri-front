@@ -1,22 +1,19 @@
 import React from 'react'
+import { Button } from 'react-bootstrap'
 
 const TogglableButton = ({ children, name, type, onClick, filterValue }) => {
-  const selected = {
-    backgroundColor: '#aed6f1'
-  }
-  const deSelected = {
-    backgroundColor: '#fff'
-  }
-  let style = name === filterValue ? selected : deSelected
+  let active = name.toString() === filterValue
   return (
-    <button
-      style={style}
+    <Button
+      className="toggleButton"
+      active={active}
       type={type}
       name={name}
       onClick={onClick}
+      variant="outline-secondary"
     >
       {children}
-    </button>
+    </Button>
   )
 }
 
