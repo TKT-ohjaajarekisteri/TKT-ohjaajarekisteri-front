@@ -2,9 +2,9 @@ const initialState = {
   studentCourses: [],
   students: [],
   contactInformation: {
-    nickname: '',
     phone: '',
-    email: ''
+    email: '',
+    experience: ''    
   }
 }
 

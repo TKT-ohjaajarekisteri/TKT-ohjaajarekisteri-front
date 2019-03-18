@@ -8,7 +8,7 @@ import { Form, Button } from 'react-bootstrap'
 
 export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
-  const [input, setInput] = useState({ nickname: '', phone: '', email: '' })
+  const [input, setInput] = useState({  phone: '', email: '', experience: '' })
 
   // TODO: GET OLD VALUES FROM BACKEND
 
@@ -27,11 +27,12 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    console.log('contactupdate handlesubmit input', input)
     updateLoggedUser(input, id)
 
     // TODO: Update the notification functionality in the action
-    notify(`Information updated for ${input.nickname}`, 5)
-    setInput({ nickname: '', phone: '', email: '' })
+    notify(`Information updated`, 5)
+    setInput({ phone: '', email: '', experience: '' })
   }
 
   return (
@@ -42,16 +43,6 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
         <Form onSubmit={handleSubmit}>
           <Form.Group>
 
-            <Form.Label>Preferred firstname: </Form.Label>
-            <Form.Control
-              type="text"
-              value={input.nickname}
-              name='nickname'
-              onChange={handleChange}
-              placeholder={defaultInput.nickname}
-            />
-
-
             <Form.Label>Phone: </Form.Label>
             <Form.Control
               type="text"
@@ -61,7 +52,7 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
               placeholder={defaultInput.phone}
             />
 
-            <label>Email: </label>
+            <Form.Label>Email: </Form.Label>
             <Form.Control
               type="text"
               name='email'
@@ -70,6 +61,24 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
               placeholder={defaultInput.email}
             />
 
+            <Form.Label>Assistance/teaching experience: </Form.Label>
+            <Form.Control
+              as="textarea"
+              rows="2"
+              type="text"
+              name='experience'
+              value={input.experience}
+              onChange={handleChange}
+              placeholder={defaultInput.experience}
+            />
+         
+            {/* <Form.Check
+              type="checkbox"
+              name='teachInEnglish'
+              label="I only want to assist in Finnish"
+              onChange={handleChange}
+            /> */}
+            
           </Form.Group>
           <Button variant="dark" className="button" type="submit">update</Button>
         </Form>

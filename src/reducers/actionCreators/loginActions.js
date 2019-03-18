@@ -25,11 +25,15 @@ const initLoggedUser = () => {
 const updateLoggedUser = (content, id) => {
   return async (dispatch) => {
     const response = await studentService.update(content, id)
+    console.log('loginactionin updateloggeduser', response)
     if (response.error) {
       // handle error
     } else {
       let loggedUser = JSON.parse(window.localStorage.getItem('loggedInUser'))
-      loggedUser.user.email = true
+      //loggedUser.user.email = true
+      loggedUser.user.email = content.email
+      loggedUser.user.experience = content.phone
+      loggedUser.user.phone=content.phone
       window.localStorage.setItem('loggedInUser', JSON.stringify(loggedUser))
       dispatch({
         type: 'UPDATE_LOGGED_USER',

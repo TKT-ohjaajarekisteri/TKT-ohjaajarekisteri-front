@@ -10,8 +10,6 @@ export const ContactDetailsForm = ({ updateLoggedUser, id }) => { //for future: 
   const handleSubmit = async (event) => {
     event.preventDefault()
     const formContent = {
-
-      nickname: event.target.nickname.value,
       phone: event.target.phonenumber.value,
       email: event.target.email.value,
     }
@@ -19,8 +17,6 @@ export const ContactDetailsForm = ({ updateLoggedUser, id }) => { //for future: 
     // Update the notification functionality in the action
     updateLoggedUser(formContent, id)
     // notify(`The application for ${formContent.nickname} has been sent`, 5)
-
-    event.target.nickname.value = ''
     event.target.phonenumber.value = ''
     event.target.email.value = ''
   }
@@ -31,8 +27,6 @@ export const ContactDetailsForm = ({ updateLoggedUser, id }) => { //for future: 
       <h2>Contact details </h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group>
-          <Form.Label>Preferred firstname: </Form.Label>
-          <Form.Control type="text" name='nickname' />
           <Form.Label>Phone: </Form.Label>
           <Form.Control type="text" name='phonenumber' />
           <Form.Label>Email: </Form.Label>

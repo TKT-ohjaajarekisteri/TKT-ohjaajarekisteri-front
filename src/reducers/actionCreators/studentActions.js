@@ -35,15 +35,20 @@ const getStudentCourses = (id) => {
   }
 }
 
-// tells studentservice to get pecific student's courses
+// tells studentservice to get specific student's courses
 const getContactInformation = (id) => {
   console.log(id)
   return async (dispatch) => {
-    // TODO GET CONTACT INFORMATION FROM BACKEND
+    const student = await studentService.getStudent(id)
+    // const content = {
+    //   phone: '050-050505',
+    //   email: 'mail@mail.fi',
+    //   experience: 'I have some experience'
+    // }
     const content = {
-      nickname: 'nickname',
-      phone: '+358 000 555',
-      email: 'example@mail.com'
+      phone: student.phone,
+      email: student.email,
+      experience: student.experience
     }
     dispatch({
       type: 'INIT_CONTACT_INFORMATION',
