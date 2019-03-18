@@ -3,7 +3,8 @@
 ## Requirements
 
 - SSL is off for test ENV
-- Test db address is in ENV
+- Test db URL is in ENV
+    - set `TEST_DATABASE_URL=postgres://USERNAME:PASSWORD@db:5432/test
 - postgres is running in a local docker container
 
 ### 1. Enter container bash
