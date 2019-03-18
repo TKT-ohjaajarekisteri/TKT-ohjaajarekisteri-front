@@ -29,4 +29,4 @@ Logging in with <username> into default `postgres` database
 
 Go to the backend directory and run command:
 
-  npm run migrate-test
+    npm run migrate-test
