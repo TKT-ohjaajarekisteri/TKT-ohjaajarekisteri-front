@@ -10,7 +10,8 @@ describe('<CourseList />', () => {
       initializeFilter: jest.fn(),
       initializeCourses: jest.fn(),
       filter: {
-        studyProgramme: ''
+        studyProgramme: '',
+        period: ''
       },
       courses: [
         {
@@ -58,8 +59,8 @@ describe('<CourseList />', () => {
     expect(wrapper.find('Course').length).toBe(3)
   })
 
-  it('only renders courses matching filter', () => {
-    let updatedProps = { ...props, filter: { studyProgramme: 'CSM' } }
+  it('only renders courses matching study programme filter', () => {
+    let updatedProps = { ...props, filter: { ...props.filter, studyProgramme: 'CSM' } }
     wrapper = mount(
       <Router>
         <CourseList {...updatedProps} />
@@ -68,5 +69,29 @@ describe('<CourseList />', () => {
     let table = wrapper.find('.courseList').first()
     expect(table.length).toBe(1)
     expect(wrapper.find('Course').length).toBe(1)
+  })
+
+  it('only renders courses matching period filter', () => {
+    let updatedProps = { ...props, filter: { ...props.filter, period: '3' } }
+    wrapper = mount(
+      <Router>
+        <CourseList {...updatedProps} />
+      </Router>
+    )
+    let table = wrapper.find('.courseList').first()
+    expect(table.length).toBe(1)
+    expect(wrapper.find('Course').length).toBe(1)
+  })
+
+  it('only renders courses matching filter', () => {
+    let updatedProps = { ...props, filter: { studyProgramme: 'CSM', period: '2' } }
+    wrapper = mount(
+      <Router>
+        <CourseList {...updatedProps} />
+      </Router>
+    )
+    let table = wrapper.find('.courseList').first()
+    expect(table.length).toBe(1)
+    expect(wrapper.find('Course').length).toBe(0)
   })
 })

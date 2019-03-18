@@ -16,4 +16,14 @@ const setProgramme = (programmeId) => {
   }
 }
 
-export { initializeFilter, setProgramme }
+// period, as in: '1', '2', '3', ...
+const setPeriod = (period) => {
+  return async (dispatch) => {
+    dispatch({
+      type: 'SET_PERIOD',
+      data: period
+    })
+  }
+}
+
+export { initializeFilter, setProgramme, setPeriod }
