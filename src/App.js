@@ -67,7 +67,7 @@ const App = (props) => {
 
                 <Nav.Link href="#" as="span">
                   {loggedUser
-                    ? <Button className="loginbutton" onClick={props.logout} variant="secondary" type="button" >Logout</Button>
+                    ? <Button className="loginbutton" onClick={props.logout} variant= "outline-secondary" type="button" >Logout</Button>
                     : <em></em>} &nbsp;
                 </Nav.Link>
               </Navbar.Collapse>
