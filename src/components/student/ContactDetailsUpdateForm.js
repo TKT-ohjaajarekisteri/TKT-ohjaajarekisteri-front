@@ -8,12 +8,12 @@ import { Form, Button } from 'react-bootstrap'
 
 export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
-  var kakka= defaultInput.phone
+  var kakka = defaultInput.phone
   var phone = JSON.stringify(kakka)
-  
+
   console.log('contactupdateformin jsonkakka', phone)
   //console.log('contactupdateformin defaultinputphone', defaultInput.phone)
-  const [input, setInput] = useState({  phone: "kakka", email: '', experience: ''})
+  const [input, setInput] = useState({ phone: phone, email: '', experience: '' })
 
 
   // TODO: GET OLD VALUES FROM BACKEND
@@ -51,7 +51,7 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
 
         <h2>My profile</h2>
         <Form onSubmit={handleSubmit}>
-           <h5>{defaultInput.first_names} {defaultInput.last_name} {defaultInput.student_number} </h5>          
+          <h5>{defaultInput.first_names} {defaultInput.last_name} {defaultInput.student_number} </h5>
           <Form.Group>
 
             <Form.Label>Phone: </Form.Label>
@@ -60,7 +60,7 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
               value={input.phone}
               name='phone'
               onChange={handleChange}
-              //placeholder={defaultInput.phone}
+            //placeholder={defaultInput.phone}
             />
 
             <Form.Label>Email: </Form.Label>
@@ -82,14 +82,14 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
               onChange={handleChange}
               placeholder={defaultInput.experience}
             />
-         
+
             {/* <Form.Check
               type="checkbox"
               name='teachInEnglish'
               label="I only want to assist in Finnish"
               onChange={handleChange}
             /> */}
-            
+
           </Form.Group>
           <Button variant="dark" className="button" type="submit">update</Button>
         </Form>
