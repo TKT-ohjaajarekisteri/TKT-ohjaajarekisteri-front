@@ -8,7 +8,13 @@ import { Form, Button } from 'react-bootstrap'
 
 export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
-  const [input, setInput] = useState({  phone: '', email: '', experience: '' })
+  var kakka= defaultInput.phone
+  var phone = JSON.stringify(kakka)
+  
+  console.log('contactupdateformin jsonkakka', phone)
+  //console.log('contactupdateformin defaultinputphone', defaultInput.phone)
+  const [input, setInput] = useState({  phone: "kakka", email: '', experience: ''})
+
 
   // TODO: GET OLD VALUES FROM BACKEND
 
@@ -28,18 +34,24 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
   const handleSubmit = (event) => {
     event.preventDefault()
     console.log('contactupdate handlesubmit input', input)
-    updateLoggedUser(input, id)
-    notify(`Information updated`, 5)
-    //setInput({ phone: '', email: '', experience: '' })
+
+    if (input.email === '') {
+      console.log('handlesubmitin emailinput', input.email)
+      notify(`Email field must be filled`, 5)
+    } else {
+      updateLoggedUser(input, id)
+      notify(`Information updated`, 5)
+      //setInput({ phone: '', email: '', experience: '' })
+    }
   }
 
   return (
     <div>
       <div className='contactDetailsUpdateForm'>
 
-        <h2>Update your details </h2>
+        <h2>My profile</h2>
         <Form onSubmit={handleSubmit}>
-           {defaultInput.first_names} {defaultInput.last_name} {defaultInput.student_number}           
+           <h5>{defaultInput.first_names} {defaultInput.last_name} {defaultInput.student_number} </h5>          
           <Form.Group>
 
             <Form.Label>Phone: </Form.Label>
@@ -48,7 +60,7 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
               value={input.phone}
               name='phone'
               onChange={handleChange}
-              placeholder={defaultInput.phone}
+              //placeholder={defaultInput.phone}
             />
 
             <Form.Label>Email: </Form.Label>

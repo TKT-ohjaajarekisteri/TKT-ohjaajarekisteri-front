@@ -5,7 +5,7 @@ import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 import { Form, Button } from 'react-bootstrap'
 
-export const ContactDetailsForm = ({ updateLoggedUser, id }) => { //for future: notify
+export const ContactDetailsForm = ({ updateLoggedUser, id, notify}) => { 
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -14,13 +14,16 @@ export const ContactDetailsForm = ({ updateLoggedUser, id }) => { //for future: 
       email: event.target.email.value,
     }
 
-    // Update the notification functionality in the action
+    if (formContent.email === '') {
+      notify('Email field must be filled', 5)
+    } else {
+
     updateLoggedUser(formContent, id)
-    // notify(`The application for ${formContent.nickname} has been sent`, 5)
+    notify('Contact details have been saved', 5)
     event.target.phonenumber.value = ''
     event.target.email.value = ''
   }
-
+  }
   return (
     <div className='studentForm'>
 
