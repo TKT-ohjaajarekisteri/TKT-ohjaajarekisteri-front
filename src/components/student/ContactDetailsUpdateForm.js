@@ -6,7 +6,7 @@ import { notify } from '../../reducers/actionCreators/notificationActions'
 import StudentCourseList from './StudentCourseList'
 import { Form, Button } from 'react-bootstrap'
 
-export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
+export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput, getStudent }) => {
 
   const [input, setInput] = useState({  phone: '', email: '', experience: '' })
 
@@ -29,10 +29,8 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
     event.preventDefault()
     console.log('contactupdate handlesubmit input', input)
     updateLoggedUser(input, id)
-
-    // TODO: Update the notification functionality in the action
     notify(`Information updated`, 5)
-    setInput({ phone: '', email: '', experience: '' })
+    //setInput({ phone: '', email: '', experience: '' })
   }
 
   return (

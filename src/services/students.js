@@ -24,9 +24,9 @@ const getAll = async () => {
 }
 
 //gets a single sudent by id **CHECK SAFETY**
-const getStudent = async (id) => {
+const getStudent= async (id) => {
   try {
-    const response = await axios.put(url + `api/${id}/`, getConfig())
+    const response = await axios.get(`api/students/${id}/`, getConfig())
     return response.data
   } catch (error) {
     console.log(error)
@@ -34,7 +34,7 @@ const getStudent = async (id) => {
   }
 }
 
-//creates sudents contactDetails
+//creates students contactDetails
 const update = async (content, id) => {
   try {
     console.log('studentservicen updaten content', content)

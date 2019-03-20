@@ -30,10 +30,7 @@ const updateLoggedUser = (content, id) => {
       // handle error
     } else {
       let loggedUser = JSON.parse(window.localStorage.getItem('loggedInUser'))
-      //loggedUser.user.email = true
-      loggedUser.user.email = content.email
-      loggedUser.user.experience = content.phone
-      loggedUser.user.phone=content.phone
+      loggedUser.user.email = true
       window.localStorage.setItem('loggedInUser', JSON.stringify(loggedUser))
       dispatch({
         type: 'UPDATE_LOGGED_USER',
