@@ -41,23 +41,9 @@ const getContactInformation = (id) => {
   return async (dispatch) => {
     const student = await studentService.getStudent(id)
     console.log('studentactionin getcontactin student', student)
-    // const content = {
-    //   phone: '050-050505',
-    //   email: 'mail@mail.fi',
-    //   experience: 'I have some experience'
-    // }
-    const content = {
-      first_names: student.first_names,
-      last_name: student.last_name,
-      student_number: student.student_number,
-      phone: student.phone,
-      email: student.email,
-      experience: student.experience
-    }
-    console.log('studentactionin getcontactin content', content)
     dispatch({
       type: 'INIT_CONTACT_INFORMATION',
-      data: content
+      data: student
     })
   }
 }

@@ -6,7 +6,7 @@ import { notify } from '../../reducers/actionCreators/notificationActions'
 import StudentCourseList from './StudentCourseList'
 import { Form, Button } from 'react-bootstrap'
 
-export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput, getStudent }) => {
+export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
   const [input, setInput] = useState({  phone: '', email: '', experience: '' })
 
