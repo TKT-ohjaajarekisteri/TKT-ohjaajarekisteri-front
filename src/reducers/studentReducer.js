@@ -2,6 +2,9 @@ const initialState = {
   studentCourses: [],
   students: [],
   contactInformation: {
+    first_names: '',
+    last_name: '',
+    student_number: '',
     phone: '',
     email: '',
     experience: ''    

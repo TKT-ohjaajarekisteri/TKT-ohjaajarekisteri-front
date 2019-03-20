@@ -37,8 +37,9 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
     <div>
       <div className='contactDetailsUpdateForm'>
 
-        <h2>Contact details </h2>
+        <h2>Update your details </h2>
         <Form onSubmit={handleSubmit}>
+           {defaultInput.first_names} {defaultInput.last_name} {defaultInput.student_number}           
           <Form.Group>
 
             <Form.Label>Phone: </Form.Label>

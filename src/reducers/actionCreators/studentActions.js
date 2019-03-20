@@ -47,6 +47,9 @@ const getContactInformation = (id) => {
     //   experience: 'I have some experience'
     // }
     const content = {
+      first_names: student.first_names,
+      last_name: student.last_name,
+      student_number: student.student_number,
       phone: student.phone,
       email: student.email,
       experience: student.experience
