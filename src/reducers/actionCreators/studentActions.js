@@ -79,17 +79,18 @@ const createStudent = (content, id) => {
 
 
 //tells studentservice to create application for a course post to database
-const applyForCourse = (content, id) => {
-  return async (dispatch) => {
-    const response = await studentService.apply(content, id)
+// const applyForCourse = (content, id) => {
+//   return async (dispatch) => {
+//     const applications = await studentService.apply(content, id)
+//     const courses = await studentService.getCourses(id)
+//     console.log('after application query')
+//     dispatch({
+//       type: 'INIT_STUDENT_COURSES',
+//       data: courses
 
-    dispatch({
-      type: 'STUDENT_COURSE_APPLICATION',
-      data: response.course
-
-    })
-  }
-}
+//     })
+//   }
+// }
 
 // deletes course which student has applied
 const deleteAppliedCourse = (course_id, student_id) => {
@@ -99,10 +100,10 @@ const deleteAppliedCourse = (course_id, student_id) => {
     console.log(response)
     dispatch({
       type: 'STUDENT_APPLICATION_DELETE',
-      data: { id:course_id }
+      data: { id: course_id }
     })
   }
 }
 
 
-export { applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse  }
+export { createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }
