@@ -37,10 +37,10 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
 
     if (input.email === '') {
       console.log('handlesubmitin emailinput', input.email)
-      notify(`Email field must be filled`, 5)
+      notify('Email field must be filled', 5)
     } else {
       updateLoggedUser(input, id)
-      notify(`Information updated`, 5)
+      notify('Information updated', 5)
       //setInput({ phone: '', email: '', experience: '' })
     }
   }
