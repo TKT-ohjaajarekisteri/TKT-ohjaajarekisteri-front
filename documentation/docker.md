@@ -10,7 +10,7 @@ These images were created using seperate Dockerfiles for both frontend and [back
 
 Most of the command will require sudo, and you need to have docker and docker-compose installed. Instructions for [installation](https://docker-hy.github.io/part0/).
 
-### Transfering the images to Docker Hub
+## Transfering the images to Docker Hub
 
 These commands can be used to push images to Dockerhub manually. This is example with backend. For login you should use the Dockerhub account you want to push the images into.
 
@@ -21,54 +21,47 @@ These commands can be used to push images to Dockerhub manually. This is example
 Example of a tag is `v0.1.0`
 
 
-### Test your docker locally
+## Test your docker locally
 
-Create file docker-compose.yml and copy content from docker-compose.yml file. The file for this project can be acquired from the project group slack.
-Make sure docker and docker-compose are installed, and run docker-compose up in the same directory where you placed the docker-compose.yml file.
+1. Create file docker-compose.yml
+2. copy content from docker-compose.yml file. 
+	- The file for this project can be acquired from the project group Slack.
+3. Make sure docker and docker-compose are installed
+4. run docker-compose up in the same directory where you placed the docker-compose.yml file.
 
 
 ### How to use Postgresql with Docker in development mode
 
 1. Save a docker-compose.yml -file for example to the folder where you have the repositories for the back and front. Comment away the rows for the front and back so, that only rows for the database remain. 
-
-
 2. In the same folder, run command docker-compose up -d.
-
-
 3. Some changes in the back end code are needed:
+4. In the .env -file: 
 
+	- Change the dev-database-url (the user, password and db should be same as in the docker-compose.yml- file):
 
-In the .env -file: change the dev-database-url (the user, password and db should be same as in the docker-compose.yml- file):
+			DEV_DATABASE_URL= postgres://POSTGRES_USER:POSTGRES_PASSWORD@db:5432/POSTGRES_DB
 
-```
-DEV_DATABASE_URL= postgres://POSTGRES_USER:POSTGRES_PASSWORD@db:5432/POSTGRES_DB
-```
+5. sequelize.js: in the development part comment away the rows for ssl:
 
-sequelize.js: in the development part comment away the rows for ssl:
-```
-'ssl': true,
-'dialectOptions': {
-'ssl': true
- }
+		'ssl': true,
+		'dialectOptions': {
+		'ssl': true
+		}
 
-```
+6. Next you should define on your local computer where the db can be found. Open a file:
 
-4. Next you should define on your local computer where the db can be found. Open a file:
-
-```
-nano /etc/hosts
-```
+		nano /etc/hosts
 
 Add a row to the first row of the file `hosts`: 
 
 	127.0.0.1       db
 
-5. Now when the back end is started in the development mode (npm run watch), you are using a local Postgres with Docker.
+7. Now when the back end is started in the development mode (npm run watch), you are using a local Postgres with Docker.
 
 
-### Accessing database
+## Accessing database
 
-Check the name of the database container:
+Check the name of the database container:from
 
 	docker ps
 
@@ -84,16 +77,11 @@ Run a command inside container and you should be able to do sql queries:
 
 	psql -U <username>
 
-To show all tables in the database:
-	
-	\dt 
-
-To browse Course table:
-
-	select * from "Courses";
+- Show all tables in the database: `\dt` 
+- To browse Course table: `SELECT * FROM "Courses";`
 
 
-### Hard reset local postgres db manually
+## Hard reset local postgres db manually
 
 The db name is by default the same as `<username>`.
 
@@ -111,13 +99,12 @@ Logging in with <username> into default `postgrest` database
 	exit
 
 
-### Other userful commands
+## Other userful commands
 
 List containers
 
-    docker ps
+	docker ps
 
 Stop a container
 
-    docker stop <container name>
-
+	docker stop <container name>
