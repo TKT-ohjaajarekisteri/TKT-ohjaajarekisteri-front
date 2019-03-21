@@ -5,7 +5,7 @@ import TogglableButton from '../common/TogglableButton'
 import { initializeCourseApplication, setChecked, sendApplication } from '../../reducers/actionCreators/courseApplicationActions'
 import { Table, Button } from 'react-bootstrap'
 import { initializeFilter, setProgramme } from '../../reducers/actionCreators/filterActions'
-
+import { withRouter } from 'react-router-dom'
 export const CourseApplicationList = (props) => {
 
   useEffect(() => {
@@ -21,6 +21,7 @@ export const CourseApplicationList = (props) => {
     const coursesToApplyTo = props.courses.filter(c => c.checked).map(c => c.course_id)
     if (coursesToApplyTo.length !== 0) {
       props.sendApplication(props.loggedUser.user.user_id, coursesToApplyTo)
+      props.history.push('/update-info')
     }
   }
 
@@ -105,7 +106,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(
+// withRouter provides history from Router component in App
+export default withRouter(connect(
   mapStateToProps,
   {
     initializeCourseApplication,
@@ -114,4 +116,4 @@ export default connect(
     initializeFilter,
     setProgramme
   }
-)(CourseApplicationList)
+)(CourseApplicationList))
