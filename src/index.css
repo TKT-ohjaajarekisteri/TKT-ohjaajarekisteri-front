@@ -38,6 +38,9 @@
     float:right;
      margin: 0px;
   }
+  .btn:focus{
+   box-shadow: none !important;
+ }
 
   .courseHeader{
     margin: 0px 0px 40px 0px;

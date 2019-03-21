@@ -14,6 +14,7 @@ describe('student/ <CourseApplicationList />', () => {
       setChecked: jest.fn(),
       sendApplication: jest.fn(),
       initializeFilter: jest.fn(),
+      history: [],
       loggedUser: {
         user: {
           user_id: 1,
