@@ -37,17 +37,13 @@ const update = async (content, id) => {
 
 //creates application for a course
 const apply = async (id, content) => {
-  const applyFromList = true
-  if (applyFromList) {
-    try {
-      const response = await axios.post(url + `api/students/${id}/courses/apply`, content, getConfig())
-      return response.data
-    } catch (error) {
-      console.log(error)
-      return { error: 'Something went wrong' }
-    }
-  } else {
-    console.log('data to server', content)
+  try {
+    const response = await axios.post(url + `api/students/${id}/courses/apply`, content, getConfig())
+    console.log('Returned from server')
+    return response.data
+  } catch (error) {
+    console.log(error)
+    return { error: 'Something went wrong' }
   }
 }
 
