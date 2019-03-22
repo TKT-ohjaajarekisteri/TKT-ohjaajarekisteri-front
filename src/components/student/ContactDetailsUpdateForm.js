@@ -12,7 +12,7 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
   var phone = defaultInput.phone
   var email = defaultInput.email
   var experience = defaultInput.experience
-  var teaches = defaultInput.teachesInEnglish
+  var teaches = !defaultInput.teachesInEnglish
   //var phone = JSON.stringify(pho)
 
   //console.log('contactupdateformin jsonphone', phone)

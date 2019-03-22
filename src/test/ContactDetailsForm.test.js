@@ -6,7 +6,7 @@ describe('<ContactDetailsForm />', () => {
   let detailsComponent
 
   detailsComponent = shallow(<ContactDetailsForm />)
-  console.log(detailsComponent.debug())
+  //console.log(detailsComponent.debug())
 
   it('renders ContactDetailsForm', () => {
     let detailsDiv = detailsComponent.find('.studentForm')
