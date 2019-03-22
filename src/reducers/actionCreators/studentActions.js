@@ -101,4 +101,4 @@ const deleteAppliedCourse = (course_id, student_id) => {
 }
 
 
-export { applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse  }
+export { applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }
