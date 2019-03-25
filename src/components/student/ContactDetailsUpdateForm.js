@@ -9,9 +9,12 @@ import { Form, Button } from 'react-bootstrap'
 
 export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEnglish, updatePhone, updateEmail, updateLanguage, updateExperience, updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
+  // getContactInformation(id) alustaa defaultit tyhjiksi.????
   useEffect(() => {
     getContactInformation(id)
+    //updatePhone(defaultInput.phone)
     //updateEmail(defaultInput.email)
+
     // console.log('def', defaultInput)
   }, [])
 
@@ -20,7 +23,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
   //     phone: event.target.phone.value,
   //     email: event.target.email.value,
   //     experience: event.target.experience.value,
-  //     teachesInEnglish: event.target.teachesInEnglish.valu
+  //     teachesInEnglish: event.target.teachesInEnglish.value
   //   }
   //   updateLoggedUser(input, id)
 
@@ -57,11 +60,13 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
             <Form.Label>Phone: </Form.Label>
             <Form.Control
               type="text"
-              phone={defaultInput.phone}
+              //phone={defaultInput.phone}
               name='phone'
               value={phone}
               //onChange={handleChange}
               onChange={(e) => updatePhone(e.target.value)}
+              placeholder={defaultInput.experience}
+
             />
 
             <Form.Label>Email: </Form.Label>
@@ -70,7 +75,9 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
               name='email'
               value={email}
               onChange={(e) => updateEmail(e.target.value)}
-            //onChange={handleChange}
+              //onChange={handleChange}
+              placeholder={defaultInput.email}
+
             />
 
             <Form.Label>Assistance/teaching experience: </Form.Label>
@@ -81,8 +88,8 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
               name='experience'
               value={experience}
               onChange={(e) => updateExperience(e.target.value)}
-            //onChange={handleChange}
-            //placeholder={defaultInput.experience}
+              //onChange={handleChange}
+              placeholder={defaultInput.experience}
             />
 
             <Form.Check
@@ -91,7 +98,8 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
               value={!teachesInEnglish}
               label="I don't want to teach in English"
               onChange={(e) => updateLanguage(e.target.value)}
-            // onChange={handleChange}
+              // onChange={handleChange}
+
             />
 
           </Form.Group>
