@@ -11,6 +11,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
 
   useEffect(() => {
     getContactInformation(id)
+    //updateEmail(defaultInput.email)
     // console.log('def', defaultInput)
   }, [])
 
@@ -87,7 +88,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
             <Form.Check
               type="checkbox"
               name='teachesInEnglish'
-              value={teachesInEnglish}
+              value={!teachesInEnglish}
               label="I don't want to teach in English"
               onChange={(e) => updateLanguage(e.target.value)}
             // onChange={handleChange}
