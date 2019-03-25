@@ -24,7 +24,7 @@ const getStudent = (id) => {
 }
 
 
-// tells studentservice to get pecific student's courses and dispatch them to store
+// tells studentservice to get specific student's courses and dispatch them to store
 const getStudentCourses = (id) => {
   return async (dispatch) => {
     const content = await studentService.getCourses(id)
@@ -35,7 +35,7 @@ const getStudentCourses = (id) => {
   }
 }
 
-// tells studentservice to get specific student's courses
+// tells studentservice to get specific student's courses //init_contact info.empty
 const getContactInformation = (id) => {
   console.log(id)
   return async (dispatch) => {
@@ -47,6 +47,7 @@ const getContactInformation = (id) => {
     })
   }
 }
+
 
 // creates student
 const createStudent = (content, id) => {
@@ -95,10 +96,36 @@ const deleteAppliedCourse = (course_id, student_id) => {
     console.log(response)
     dispatch({
       type: 'STUDENT_APPLICATION_DELETE',
-      data: { id:course_id }
+      data: { id: course_id }
     })
   }
 }
 
 
-export { applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }
+const updatePhone = (phone) => {
+  return {
+    type: 'UPDATE_PHONE',
+    data: phone
+  }
+}
+
+const updateEmail = (email) => {
+  return {
+    type: 'UPDATE_EMAIL',
+    data: email
+  }
+}
+
+const updateExperience = (experience) => {
+  return {
+    type: 'UPDATE_EXPERIENCE',
+    data:experience
+  }
+}
+const updateLanguage = (language) => {
+  return {
+    type: 'UPDATE_LANGUAGE',
+    data:language
+  }
+}
+export { updatePhone, updateEmail, updateLanguage, updateExperience, applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }

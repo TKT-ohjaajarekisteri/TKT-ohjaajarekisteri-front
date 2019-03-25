@@ -8,7 +8,7 @@ const initialState = {
     phone: '',
     email: '',
     experience: '',
-    teachesInEnglish: true    
+    teachesInEnglish: true
   }
 }
 
@@ -42,23 +42,48 @@ const studentReducer = (state = initialState, action) => {
     }
   }
 
-  case 'INIT_CONTACT_INFORMATION':
+  case 'INIT_CONTACT_INFORMATION': {
     return {
       ...state,
       contactInformation: action.data
     }
+  }
 
-  case 'SET_LANGUAGE':
+  case 'UPDATE_PHONE': {
     return {
       ...state,
-      teachesInEnglish: !state.contactInformation.teachesInEnglish
-    }  
+      phone: action.data
+    }
+  }
+  case 'UPDATE_EMAIL': {
+    return {
+      ...state,
+      email: action.data
+    }
+  }
+  case 'UPDATE_EXPERIENCE': {
+    return {
+      ...state,
+      experience: action.data
+    }
+  }
+  case 'UPDATE_LANGUAGE': {
+    return {
+      ...state,
+      language: action.data
+    }
+  }
+  // case 'SET_LANGUAGE':
+  //   return {
+  //     ...state,
+  //     teachesInEnglish: !state.contactInformation.teachesInEnglish
+  //   }
 
   default:
     return state
   }
 
- 
+
 
 }
 
