@@ -6,14 +6,18 @@ import { notify } from '../../reducers/actionCreators/notificationActions'
 import StudentCourseList from './StudentCourseList'
 import { Form, Button } from 'react-bootstrap'
 
+
 export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
-  var kakka = defaultInput.phone
-  var phone = JSON.stringify(kakka)
+  var phone = defaultInput.phone
+  var email = defaultInput.email
+  var experience = defaultInput.experience
+  var teaches = !defaultInput.teachesInEnglish
+  //var phone = JSON.stringify(pho)
 
-  console.log('contactupdateformin jsonkakka', phone)
+  //console.log('contactupdateformin jsonphone', phone)
   //console.log('contactupdateformin defaultinputphone', defaultInput.phone)
-  const [input, setInput] = useState({ phone: phone, email: '', experience: '' })
+  const [input, setInput] = useState({ phone: phone, email: email, experience: experience, teachesInEnglish: teaches })
 
 
   // TODO: GET OLD VALUES FROM BACKEND
@@ -21,12 +25,18 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
   useEffect(() => {
     getContactInformation(id)
     // console.log('def', defaultInput)
-  }, [])
+  }, defaultInput)
+  //}, [])
 
   const handleChange = (event) => {
+
+    const target = event.target
+    const value = target.type ==="checkbox" ? !target.checked : target.value
+    const name = target.name
+
     const newInput = {
       ...input,
-      [event.target.name]: event.target.value
+      [name]: value
     }
     setInput(newInput)
   }
@@ -60,7 +70,7 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
               value={input.phone}
               name='phone'
               onChange={handleChange}
-            //placeholder={defaultInput.phone}
+              placeholder={defaultInput.phone}
             />
 
             <Form.Label>Email: </Form.Label>
@@ -82,13 +92,16 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
               onChange={handleChange}
               placeholder={defaultInput.experience}
             />
-
-            {/* <Form.Check
-              type="checkbox"
-              name='teachInEnglish'
-              label="I only want to assist in Finnish"
-              onChange={handleChange}
-            /> */}
+          
+              <Form.Check
+                type="checkbox"
+                name='teachesInEnglish'
+                //value={!input.teachesInEnglish}
+                //checked={!input.teachesInEnglish}
+                defaultChecked={!defaultInput.teachesInEnglish}
+                label="I don't want to teach in English"
+                onChange={handleChange}
+              />
 
           </Form.Group>
           <Button variant="dark" className="button" type="submit">update</Button>

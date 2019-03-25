@@ -7,7 +7,8 @@ const initialState = {
     student_number: '',
     phone: '',
     email: '',
-    experience: ''    
+    experience: '',
+    teachesInEnglish: true    
   }
 }
 
@@ -47,9 +48,17 @@ const studentReducer = (state = initialState, action) => {
       contactInformation: action.data
     }
 
+  case 'SET_LANGUAGE':
+    return {
+      ...state,
+      teachesInEnglish: !state.contactInformation.teachesInEnglish
+    }  
+
   default:
     return state
   }
+
+ 
 
 }
 
