@@ -7,7 +7,7 @@ import StudentCourseList from './StudentCourseList'
 import { Form, Button } from 'react-bootstrap'
 
 
-export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEnglish, updatePhone, updateEmail, updateLanguage, updateExperience, updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
+export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english, updatePhone, updateEmail, updateLanguage, updateExperience, updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
   useEffect(() => {
     getContactInformation(id)
@@ -19,7 +19,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
   //     phone: event.target.phone.value,
   //     email: event.target.email.value,
   //     experience: event.target.experience.value,
-  //     teachesInEnglish: event.target.teachesInEnglish.value
+  //     no_english: event.target.no_english.value
   //   }
   //   updateLoggedUser(input, id)
   // }
@@ -31,7 +31,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
       phone: event.target.phone.value,
       email: event.target.email.value,
       experience: event.target.experience.value,
-      teachesInEnglish: event.target.teachesInEnglish.value
+      no_english: event.target.no_english.value
     }
 
     if (event.target.email.value === '') {
@@ -88,9 +88,9 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
 
             <Form.Check
               type="checkbox"
-              name='teachesInEnglish'
-              checked={teachesInEnglish}
-              value={teachesInEnglish}
+              name='no_english'
+              checked={no_english}
+              value={no_english}
               label="I don't want to teach in English"
               onChange={(e) => updateLanguage(e.target.checked)}
               // onChange={handleChange}
@@ -114,7 +114,7 @@ const mapStateToProps = (state) => {
     phone: state.students.phone,
     email: state.students.email,
     experience: state.students.experience,
-    teachesInEnglish: state.students.teachesInEnglish
+    no_english: state.students.no_english
   }
 }
 

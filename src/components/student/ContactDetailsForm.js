@@ -13,7 +13,7 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
       phone: event.target.phonenumber.value,
       email: event.target.email.value,
       experience: event.target.experience.value,
-      teachesInEnglish: !event.target.teachesInEnglish.value
+      no_english: !event.target.no_english.value
     }
 
     if (formContent.email === '') {
@@ -47,7 +47,7 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
 
           <Form.Check
             type="checkbox"
-            name='teachesInEnglish'
+            name='no_english'
             label="I don't want to teach in English"
             //onChange={handleChange}
           />

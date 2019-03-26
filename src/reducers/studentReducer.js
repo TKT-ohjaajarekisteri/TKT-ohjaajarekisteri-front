@@ -4,7 +4,7 @@ const initialState = {
   phone: '',
   email: '',
   experience: '',
-  teachesInEnglish: true,
+  no_english: false,
   contactInformation: {
     first_names: '',
     last_name: '',
@@ -43,7 +43,7 @@ const studentReducer = (state = initialState, action) => {
   }
 
   case 'INIT_CONTACT_INFORMATION': {
-    console.log('actionData REDUUUUUUUUUUUUUUUUUUUCEEEEEEEEEEEEEEEEEEEEEERRR', action.data)
+    console.log('actionData Reducer', action.data)
 
     return {
       ...state,
@@ -51,7 +51,7 @@ const studentReducer = (state = initialState, action) => {
       phone: action.data.phone,
       email: action.data.email,
       experience: action.data.experience,
-      teachesInEnglish: action.data.teachesInEnglish
+      no_english: action.data.no_english
 
     }
   }
@@ -81,20 +81,13 @@ const studentReducer = (state = initialState, action) => {
     return {
       ...state,
       //contactInformation:action.data
-      teachesInEnglish: action.data
+      no_english: action.data
     }
   }
-  // case 'SET_LANGUAGE':
-  //   return {
-  //     ...state,
-  //     teachesInEnglish: !state.contactInformation.teachesInEnglish
-  //   }
 
   default:
     return state
   }
-
-
 
 }
 
