@@ -12,8 +12,6 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
   // getContactInformation(id) alustaa defaultit tyhjiksi.????
   useEffect(() => {
     getContactInformation(id)
-    //updatePhone(defaultInput.phone)
-    //updateEmail(defaultInput.email)
 
     // console.log('def', defaultInput)
   }, [])
@@ -54,7 +52,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
 
         <h2>My profile</h2>
         <Form onSubmit={handleSubmit}>
-          <h5>{defaultInput.first_names} {defaultInput.last_name} {defaultInput.student_number} </h5>
+          {/* <h5>{defaultInput.first_names} {defaultInput.last_name} {defaultInput.student_number} </h5> */}
           <Form.Group>
 
             <Form.Label>Phone: </Form.Label>
@@ -65,7 +63,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
               value={phone}
               //onChange={handleChange}
               onChange={(e) => updatePhone(e.target.value)}
-              placeholder={defaultInput.experience}
+              //placeholder={defaultInput.experience}
 
             />
 
@@ -76,7 +74,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
               value={email}
               onChange={(e) => updateEmail(e.target.value)}
               //onChange={handleChange}
-              placeholder={defaultInput.email}
+             // placeholder={defaultInput.email}
 
             />
 
@@ -89,7 +87,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
               value={experience}
               onChange={(e) => updateExperience(e.target.value)}
               //onChange={handleChange}
-              placeholder={defaultInput.experience}
+             // placeholder={defaultInput.experience}
             />
 
             <Form.Check
@@ -113,9 +111,9 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'koko store')
+  console.log(state, 'Contact koko store')
   return {
-    defaultInput: state.students.contactInformation,
+    //defaultInput: state.students.contactInformation,
     phone: state.students.phone,
     email: state.students.email,
     experience: state.students.experience,
