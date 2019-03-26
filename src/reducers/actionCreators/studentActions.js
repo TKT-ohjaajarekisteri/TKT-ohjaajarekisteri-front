@@ -122,10 +122,10 @@ const updateExperience = (experience) => {
     data:experience
   }
 }
-const updateLanguage = (language) => {
+const updateLanguage = (teachesInEnglish) => {
   return {
     type: 'UPDATE_LANGUAGE',
-    data:language
+    data:teachesInEnglish
   }
 }
 export { updatePhone, updateEmail, updateLanguage, updateExperience, applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }

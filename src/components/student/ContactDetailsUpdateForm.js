@@ -9,11 +9,9 @@ import { Form, Button } from 'react-bootstrap'
 
 export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEnglish, updatePhone, updateEmail, updateLanguage, updateExperience, updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
-  // getContactInformation(id) alustaa defaultit tyhjiksi.????
   useEffect(() => {
     getContactInformation(id)
-
-    // console.log('def', defaultInput)
+    console.log('def', defaultInput)
   }, [])
 
   // const handleChange = (event) => {
@@ -24,7 +22,6 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
   //     teachesInEnglish: event.target.teachesInEnglish.value
   //   }
   //   updateLoggedUser(input, id)
-
   // }
 
   const handleSubmit = (event) => {
@@ -37,28 +34,27 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
       teachesInEnglish: event.target.teachesInEnglish.value
     }
 
-    //if (event.target.email.value === '') {
-    //   console.log('handlesubmitin emailinput', event.target.email.value)
-    //   notify('Email field must be filled', 5)
-    // } else {
+    if (event.target.email.value === '') {
+      console.log('handlesubmitin emailinput', event.target.email.value)
+      notify('Email field must be filled', 5)
+    } else {
 
-    updateLoggedUser(input, id)
-    notify('Information updated', 5)
+      updateLoggedUser(input, id)
+      notify('Information updated', 5)
+    }
   }
-
   return (
     <div>
       <div className='contactDetailsUpdateForm'>
 
         <h2>My profile</h2>
         <Form onSubmit={handleSubmit}>
-          {/* <h5>{defaultInput.first_names} {defaultInput.last_name} {defaultInput.student_number} </h5> */}
+          <h5>{defaultInput.first_names} {defaultInput.last_name} {defaultInput.student_number} </h5>
           <Form.Group>
 
             <Form.Label>Phone: </Form.Label>
             <Form.Control
               type="text"
-              //phone={defaultInput.phone}
               name='phone'
               value={phone}
               //onChange={handleChange}
@@ -74,7 +70,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
               value={email}
               onChange={(e) => updateEmail(e.target.value)}
               //onChange={handleChange}
-             // placeholder={defaultInput.email}
+              // placeholder={defaultInput.email}
 
             />
 
@@ -86,16 +82,17 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
               name='experience'
               value={experience}
               onChange={(e) => updateExperience(e.target.value)}
-              //onChange={handleChange}
-             // placeholder={defaultInput.experience}
+            //onChange={handleChange}
+            // placeholder={defaultInput.experience}
             />
 
             <Form.Check
               type="checkbox"
               name='teachesInEnglish'
-              value={!teachesInEnglish}
+              checked={teachesInEnglish}
+              value={teachesInEnglish}
               label="I don't want to teach in English"
-              onChange={(e) => updateLanguage(e.target.value)}
+              onChange={(e) => updateLanguage(e.target.checked)}
               // onChange={handleChange}
 
             />
@@ -113,7 +110,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, teachesInEn
 const mapStateToProps = (state) => {
   console.log(state, 'Contact koko store')
   return {
-    //defaultInput: state.students.contactInformation,
+    defaultInput: state.students.contactInformation,
     phone: state.students.phone,
     email: state.students.email,
     experience: state.students.experience,

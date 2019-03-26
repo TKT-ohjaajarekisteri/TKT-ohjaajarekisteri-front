@@ -1,15 +1,15 @@
 const initialState = {
   studentCourses: [],
   students: [],
-  //contactInformation: {
-  // first_names: '',
-  // last_name: '',
-  // student_number: '',
   phone: '',
   email: '',
   experience: '',
-  teachesInEnglish: true
-  //}
+  teachesInEnglish: true,
+  contactInformation: {
+    first_names: '',
+    last_name: '',
+    student_number: ''
+  }
 }
 
 const studentReducer = (state = initialState, action) => {
@@ -47,7 +47,7 @@ const studentReducer = (state = initialState, action) => {
 
     return {
       ...state,
-      //contactInformation:action.data
+      contactInformation: action.data,
       phone: action.data.phone,
       email: action.data.email,
       experience: action.data.experience,
@@ -81,7 +81,7 @@ const studentReducer = (state = initialState, action) => {
     return {
       ...state,
       //contactInformation:action.data
-      language: action.data
+      teachesInEnglish: action.data
     }
   }
   // case 'SET_LANGUAGE':
