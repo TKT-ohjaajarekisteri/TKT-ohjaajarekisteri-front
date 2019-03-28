@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { initializeSingleCourse } from '../../reducers/singleCourseReducer'
 import Student from './Student'
-import { Table } from 'react-bootstrap'
+import { Table, Button } from 'react-bootstrap'
 
 
 export const SingleCourse = ({ course, applicants, initializeSingleCourse, courseId }) => {
@@ -13,6 +13,15 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
   []
   )
 
+  const email = {
+    to: applicants.map(student => student.email.concat(';')).join(''),
+    subject: 'Subject template',
+    body: 'Body template'
+  }
+
+  const href = `https://outlook.office.com/?path=/mail/action/compose&to=${email.to}&subject=${email.subject}&body=${email.body}`
+
+
   return (
     <div>
       <div className="courseHeader">
@@ -20,8 +29,14 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
           <h2>{course.learningopportunity_id} {course.course_name}  {course.year} period:{course.period}</h2>
         }
       </div>
-
-      <h3>Applicants for course:</h3>
+      <div className='row'>
+        <div className='col'>
+          <h3>Applicants for course:</h3>
+        </div>
+        <div className='col' style={{paddingBottom: 2}}>
+          <Button className='float-right' target="_blank" rel="noopener noreferrer" href={href} variant='dark'>Email applicants</Button>
+        </div>
+      </div>
       <Table bordered hover>
 
         <thead>
@@ -34,7 +49,7 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
         </thead>
         <tbody>
           {applicants.map(student =>
-            <Student key={student.student_id} student={student} />
+              <Student key={student.student_id} student={student} />
           )}
         </tbody>
       </Table>
