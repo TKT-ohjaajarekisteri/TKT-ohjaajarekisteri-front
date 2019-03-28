@@ -35,11 +35,11 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
           <h2>{course.learningopportunity_id} {course.course_name}  {course.year} period:{course.period}</h2>
         }
       </div>
-      <div className='row'>
+      <div className='row' style={{paddingBottom: 15}}>
         <div className='col'>
           <h3>Applicants for course:</h3>
         </div>
-        <div className='col' style={{paddingBottom: 5}}>
+        <div className='col'>
           <Button className='float-right' target="_blank" rel="noopener noreferrer" href={href} variant='dark'>Email applicants</Button>
         </div>
       </div>
