@@ -25,7 +25,7 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
       notify('Contact details have been saved', 5)
       event.target.phonenumber.value = ''
       event.target.email.value = ''
-      event.target.experience.value = ''      
+      event.target.experience.value = ''
     }
   }
   return (
@@ -35,17 +35,17 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
       <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Phone: </Form.Label>
-          <Form.Control 
-          type="text" 
-          name='phonenumber' 
-          onChange={(e) => updatePhone(e.target.value)}
+          <Form.Control
+            type="text"
+            name='phonenumber'
+            onChange={(e) => updatePhone(e.target.value)}
           />
           <Form.Label>Email: </Form.Label>
-          <Form.Control 
-          type="text" 
-          name='email'
-          onChange={(e) => updateEmail(e.target.value)}
-           />
+          <Form.Control
+            type="text"
+            name='email'
+            onChange={(e) => updateEmail(e.target.value)}
+          />
 
           <Form.Label>Assistance/teaching experience: </Form.Label>
           <Form.Control
@@ -54,7 +54,7 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
             type="text"
             name='experience'
             onChange={(e) => updateExperience(e.target.value)}
-            />
+          />
 
           <Form.Check
             type="checkbox"

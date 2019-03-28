@@ -6,9 +6,9 @@ import { BrowserRouter as Router } from 'react-router-dom'
 describe('<ContactDetailsForm />', () => {
   let detailsComponent, props, wrapper
 
-  beforeEach(() => { 
+  beforeEach(() => {
     props = {
-      createStudent:jest.fn(), 
+      createStudent:jest.fn(),
       notify: jest.fn(),
       updateLoggedUser: jest.fn(),
       id: 1
@@ -17,11 +17,11 @@ describe('<ContactDetailsForm />', () => {
   })
 
   it('renders self', () => {
-  
-    wrapper = mount( 
-    <Router>
-      <ContactDetailsForm {...props}  />
-    </Router>
+
+    wrapper = mount(
+      <Router>
+        <ContactDetailsForm {...props}  />
+      </Router>
     )
 
     const form = wrapper.find('.studentForm')
@@ -31,11 +31,11 @@ describe('<ContactDetailsForm />', () => {
   })
 
   it('button pressed but empty fields', () => {
-    wrapper = mount( 
+    wrapper = mount(
       <Router>
         <ContactDetailsForm {...props}  />
       </Router>
-      )
+    )
 
     const button = wrapper.find('button')
     button.simulate('submit')
