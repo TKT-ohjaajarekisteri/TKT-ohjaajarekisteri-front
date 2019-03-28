@@ -48,9 +48,4 @@ describe('<SingleCourse />', () => {
     expect(table.length).toBe(1)
     expect(singleCourse.find('Student').length).toBe(2)
   })
-
-  it('contains valid email object from mailto', () => {
-    const email = singleCourse.email
-    expect(email.to).toBe('arttis@ottis.fi,oiva@ottis.fi,')
-  })
 })
