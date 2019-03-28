@@ -9,7 +9,8 @@ describe('student/ <CourseApplicationList />', () => {
     props = {
       initializeCourseApplication: jest.fn(),
       filter: {
-        studyProgramme: ''
+        studyProgramme: '',
+        period: ''
       },
       setChecked: jest.fn(),
       sendApplication: jest.fn(),
@@ -118,7 +119,6 @@ describe('student/ <CourseApplicationList />', () => {
       )
       expect(props.sendApplication).toHaveBeenCalledTimes(0)
       const applyButton = wrapper.find('.buttonApply').first()
-      //console.log('applybuttontestin applybutton', applyButton)
       expect(applyButton.length).toBe(1)
       applyButton.simulate('click')
       expect(props.sendApplication).toHaveBeenCalledTimes(0)
@@ -142,8 +142,8 @@ describe('student/ <CourseApplicationList />', () => {
       expect(props.sendApplication).toHaveBeenCalledTimes(1)
     })
 
-    it('only renders courses matching filter', () => {
-      let updatedProps = { ...props, filter: { studyProgramme: 'CSM' } }
+    it('only renders courses matching study programme filter', () => {
+      let updatedProps = { ...props, filter: { ...props.filter, studyProgramme: 'CSM' } }
       wrapper = mount(
         <Router>
           <CourseApplicationList {...updatedProps} />
@@ -152,6 +152,30 @@ describe('student/ <CourseApplicationList />', () => {
       let table = wrapper.find('.courseApplicationList')
       expect(table.length).toBe(1)
       expect(wrapper.find('Course').length).toBe(1)
+    })
+
+    it('only renders courses matching period filter', () => {
+      let updatedProps = { ...props, filter: { ...props.filter, period: '2' } }
+      wrapper = mount(
+        <Router>
+          <CourseApplicationList {...updatedProps} />
+        </Router>
+      )
+      let table = wrapper.find('.courseApplicationList')
+      expect(table.length).toBe(1)
+      expect(wrapper.find('Course').length).toBe(2)
+    })
+
+    it('only renders courses matching filter', () => {
+      let updatedProps = { ...props, filter: { studyProgramme: 'CSM', period: '2' } }
+      wrapper = mount(
+        <Router>
+          <CourseApplicationList {...updatedProps} />
+        </Router>
+      )
+      let table = wrapper.find('.courseApplicationList')
+      expect(table.length).toBe(1)
+      expect(wrapper.find('Course').length).toBe(0)
     })
   })
 })

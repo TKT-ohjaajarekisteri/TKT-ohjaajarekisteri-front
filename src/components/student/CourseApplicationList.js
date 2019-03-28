@@ -4,7 +4,7 @@ import Course from './Course'
 import TogglableButton from '../common/TogglableButton'
 import { initializeCourseApplication, setChecked, sendApplication } from '../../reducers/actionCreators/courseApplicationActions'
 import { Table, Button } from 'react-bootstrap'
-import { initializeFilter, setProgramme } from '../../reducers/actionCreators/filterActions'
+import { initializeFilter, setProgramme, setPeriod } from '../../reducers/actionCreators/filterActions'
 
 export const CourseApplicationList = (props) => {
 
@@ -14,7 +14,7 @@ export const CourseApplicationList = (props) => {
     }
     props.initializeFilter()
   },
-  []
+    []
   )
 
   const handleSubmit = () => {
@@ -29,22 +29,26 @@ export const CourseApplicationList = (props) => {
     props.setProgramme(event.target.name)
   }
 
+  const handlePeriodChange = (event) => {
+    event.preventDefault()
+    props.setPeriod(event.target.name)
+  }
+
   const handleChange = (id) => (e) => {
     const isChecked = e.target.checked
     props.setChecked(id, isChecked)
   }
 
-
+  const onlyUnique = (value, index, self) => {
+    return self.indexOf(value) === index
+  }
 
   return (
     <div className="courseApplicationList">
       <h2>Courses</h2>
 
-      <Button className="buttonApply" onClick={handleSubmit} variant="dark" type="submit" >
-        apply
-      </Button>
-
-      <div>
+      <div style={{ float: 'left' }}>
+        <div style={{ color: '#6c757d' }}>Study programme:</div>
         <TogglableButton
           type='submit'
           name='TKT'
@@ -67,6 +71,34 @@ export const CourseApplicationList = (props) => {
           Data Science
         </TogglableButton>
       </div>
+      <div style={{ float: 'left' }}>
+        <div style={{ color: '#6c757d' }}>Period:</div>
+        {props.courses
+          .map(c => c.period)
+          .filter(onlyUnique)
+          .sort()
+          .map(period => {
+            return (
+              <TogglableButton
+                key={period}
+                type='submit'
+                name={period}
+                onClick={handlePeriodChange}
+                filterValue={props.filter.period}>
+                {period}
+              </TogglableButton>
+            )
+          })}
+      </div>
+
+      <div style={{ float: 'right' }}>
+        <div>&nbsp;</div>
+        <Button className="buttonApply" onClick={handleSubmit} variant="dark" type="submit" >
+          apply
+        </Button>
+      </div>
+
+
 
       <Table bordered hover>
         <thead>
@@ -80,7 +112,14 @@ export const CourseApplicationList = (props) => {
         </thead>
         <tbody>
           {props.courses && props.courses
-            .filter(course => course.learningopportunity_id.includes(props.filter.studyProgramme))
+            .filter(course => {
+              let period = course.period.toString(10)
+              return (
+                course.learningopportunity_id.includes(props.filter.studyProgramme)
+                &&
+                period.includes(props.filter.period)
+              )
+            })
             .map(course =>
               <Course
                 course={course}
@@ -100,7 +139,8 @@ const mapStateToProps = (state) => {
     loading: state.courseApplication.coursesLoading,
     loggedUser: state.loggedUser.loggedUser,
     filter: {
-      studyProgramme: state.filter.studyProgramme
+      studyProgramme: state.filter.studyProgramme,
+      period: state.filter.period
     }
   }
 }
@@ -112,6 +152,7 @@ export default connect(
     setChecked,
     sendApplication,
     initializeFilter,
-    setProgramme
+    setProgramme,
+    setPeriod
   }
 )(CourseApplicationList)

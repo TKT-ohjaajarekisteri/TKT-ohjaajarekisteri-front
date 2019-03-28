@@ -30,7 +30,10 @@ This registry will be used by students to express their interest to assist on co
 
 ## [Software Requirements Specification](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/SRS.md)
 
-## [Docker](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/docker.md)
+## Docker
+- [Docker configuration and use tips](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/docker.md)
+- [Test database configuration](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/test_db_configuration.md)
+
 
 ## Definition of done
 * Features are planned in sprint planning
