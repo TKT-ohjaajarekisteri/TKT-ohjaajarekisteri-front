@@ -55,3 +55,9 @@
   .btn.toggleButton:hover {
     border-color: #6c757d;
   }
+
+  /* adjust checkbox  */
+
+  input[type="checkbox"]{
+    transform: scale(1.8);
+  }
