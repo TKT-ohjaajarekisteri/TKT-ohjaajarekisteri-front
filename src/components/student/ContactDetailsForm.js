@@ -4,8 +4,9 @@ import { createStudent } from '../../reducers/actionCreators/studentActions'
 import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 import { Form, Button } from 'react-bootstrap'
+import { updatePhone, updateEmail, updateLanguage, updateExperience } from '../../reducers/actionCreators/studentActions'
 
-export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
+export const ContactDetailsForm = ({ updateLoggedUser, id, notify, no_english }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -13,9 +14,9 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
       phone: event.target.phonenumber.value,
       email: event.target.email.value,
       experience: event.target.experience.value,
-      no_english: !event.target.no_english.value
+      no_english: event.target.no_english.value
     }
-
+    console.log('contact details form', formContent)
     if (formContent.email === '') {
       notify('Email field must be filled', 5)
     } else {
@@ -24,7 +25,7 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
       notify('Contact details have been saved', 5)
       event.target.phonenumber.value = ''
       event.target.email.value = ''
-      event.target.experience.value = ''
+      event.target.experience.value = ''      
     }
   }
   return (
@@ -34,22 +35,33 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
       <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Phone: </Form.Label>
-          <Form.Control type="text" name='phonenumber' />
+          <Form.Control 
+          type="text" 
+          name='phonenumber' 
+          onChange={(e) => updatePhone(e.target.value)}
+          />
           <Form.Label>Email: </Form.Label>
-          <Form.Control type="text" name='email' />
+          <Form.Control 
+          type="text" 
+          name='email'
+          onChange={(e) => updateEmail(e.target.value)}
+           />
 
           <Form.Label>Assistance/teaching experience: </Form.Label>
           <Form.Control
             as="textarea"
             rows="2"
             type="text"
-            name='experience'/>
+            name='experience'
+            onChange={(e) => updateExperience(e.target.value)}
+            />
 
           <Form.Check
             type="checkbox"
             name='no_english'
             label="I don't want to teach in English"
-            //onChange={handleChange}
+            checked={no_english}
+            onChange={(e) => updateLanguage(e.target.checked)}
           />
 
         </Form.Group>

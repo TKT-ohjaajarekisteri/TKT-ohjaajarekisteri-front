@@ -40,7 +40,7 @@ const getContactInformation = (id) => {
   console.log(id)
   return async (dispatch) => {
     const student = await studentService.getStudent(id)
-    console.log('studentACTIONINgetcontactin studentiiiiiiiiiiiiiiiii', student)
+    console.log('studentactionin getcontactinformationin student', student)
     dispatch({
       type: 'INIT_CONTACT_INFORMATION',
       data: student

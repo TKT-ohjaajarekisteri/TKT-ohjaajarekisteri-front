@@ -27,7 +27,7 @@ const getAll = async () => {
 const getStudent= async (id) => {
   try {
     const response = await axios.get(`api/students/${id}/`, getConfig())
-    console.log('SERVICEEEEEEEEEEEEEEEEservice getStudentin response.data from back',response.data)
+    console.log('service getStudentin response.data from back',response.data)
     return response.data
   } catch (error) {
     console.log(error)
