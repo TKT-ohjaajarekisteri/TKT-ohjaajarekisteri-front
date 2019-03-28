@@ -6,7 +6,7 @@ import { notify } from '../../reducers/actionCreators/notificationActions'
 import { Form, Button } from 'react-bootstrap'
 import { updatePhone, updateEmail, updateLanguage, updateExperience } from '../../reducers/actionCreators/studentActions'
 
-export const ContactDetailsForm = ({ updateLoggedUser, id, notify, no_english }) => {
+export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -60,7 +60,6 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify, no_english })
             type="checkbox"
             name='no_english'
             label="I don't want to teach in English"
-            checked={no_english}
             onChange={(e) => updateLanguage(e.target.checked)}
           />
 
