@@ -103,7 +103,6 @@ const deleteAppliedCourse = (course_id, student_id) => {
 }
 
 
-<<<<<<< HEAD
 const updatePhone = (phone) => {
   return {
     type: 'UPDATE_PHONE',
@@ -130,7 +129,5 @@ const updateLanguage = (teachesInEnglish) => {
     data:teachesInEnglish
   }
 }
-export { updatePhone, updateEmail, updateLanguage, updateExperience, applyForCourse, createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }
-=======
-export { createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }
->>>>>>> master
+export { updatePhone, updateEmail, updateLanguage, updateExperience, 
+   createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }
