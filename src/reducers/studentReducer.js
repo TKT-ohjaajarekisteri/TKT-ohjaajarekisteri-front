@@ -13,6 +13,7 @@ const initialState = {
 }
 
 const studentReducer = (state = initialState, action) => {
+  console.log(action.type, ' ', action.data)
   switch (action.type) {
   case 'INIT_STUDENTS':
     return {

@@ -14,9 +14,10 @@ describe('CourseDetailsUpdateForm', () => {
       notify: jest.fn(),
       id: 1,
       defaultInput: {
-        nickname: 'nickname',
         phone: '+358 000 555',
-        email: 'example@mail.com'
+        email: 'example@mail.com',
+        experience: 'no experience',
+        no_english: false
       },
       loggedUser: {
         user: {
