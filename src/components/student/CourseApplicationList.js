@@ -15,7 +15,7 @@ export const CourseApplicationList = (props) => {
     }
     props.initializeFilter()
   },
-    []
+  []
   )
 
   const handleSubmit = () => {

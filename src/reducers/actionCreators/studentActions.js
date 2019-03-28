@@ -129,5 +129,5 @@ const updateLanguage = (teachesInEnglish) => {
     data:teachesInEnglish
   }
 }
-export { updatePhone, updateEmail, updateLanguage, updateExperience, 
-   createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }
+export { updatePhone, updateEmail, updateLanguage, updateExperience,
+  createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }
