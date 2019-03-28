@@ -22,7 +22,7 @@ export const StudentCourseList = ({ notify, loggedUser, courses, id, getStudentC
 
   return (
     <div className="courseList">
-      <h2>Courses</h2>
+      <h2>My Courses</h2>
       <Table bordered hover>
         <thead>
           <tr>
@@ -44,7 +44,7 @@ export const StudentCourseList = ({ notify, loggedUser, courses, id, getStudentC
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'koko store')
+  //console.log(state, 'koko store')
   return {
     courses: state.students.studentCourses,
     loggedUser: state.loggedUser.loggedUser

@@ -152,7 +152,7 @@ const App = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'koko store')
+  console.log(state, 'APISTA koko store')
   return {
     loggedUser: state.loggedUser.loggedUser,
     loadingUser: state.loggedUser.loadingUser

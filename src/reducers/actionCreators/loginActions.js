@@ -25,6 +25,7 @@ const initLoggedUser = () => {
 const updateLoggedUser = (content, id) => {
   return async (dispatch) => {
     const response = await studentService.update(content, id)
+    console.log('loginactionin updateloggeduser', response)
     if (response.error) {
       // handle error
     } else {
