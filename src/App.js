@@ -9,6 +9,7 @@ import LoginForm from './components/LoginForm'
 import ContactDetailsForm from './components/student/ContactDetailsForm'
 import ContactDetailsUpdateForm from './components/student/ContactDetailsUpdateForm'
 import AdminCourseList from './components/admin/CourseList'
+import Summary from './components/admin/Summary'
 import CourseApplicationList from './components/student/CourseApplicationList'
 import SingleCourse from './components/admin/SingleCourse'
 import PrivateRoute from './components/common/PrivateRoute'
@@ -52,6 +53,12 @@ const App = (props) => {
                   </Nav.Link>
 
                   <Nav.Link href="#" as="span">
+                    {loggedUser && loggedUser.user.role === 'admin'
+                      ? <Link to="admin/students">Summary</Link>
+                      : <em></em>} &nbsp;
+                  </Nav.Link>
+
+                  <Nav.Link href="#" as="span">
                     {loggedUser && loggedUser.user.role === 'student'
                       ? <Link to="/apply">Apply</Link>
                       : <em></em>} &nbsp;
@@ -89,6 +96,7 @@ const App = (props) => {
                 condition={loggedUser && isAdmin}
               >
                 <Route exact path="/admin/courses" render={() => <AdminCourseList />} />
+                < Route exact path="/amin/students" render={() => <Summary />} />
                 <Route
                   exact path="/admin/courses/:id"
                   redirectPath="/"

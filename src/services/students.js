@@ -20,6 +20,7 @@ const getConfig = () => {
 //gets all sudents
 const getAll = async () => {
   const response = await axios.get(baseUrl, getConfig())
+  console.log('RESPONSE from students SERVICE',response)
   return response.data
 }
 

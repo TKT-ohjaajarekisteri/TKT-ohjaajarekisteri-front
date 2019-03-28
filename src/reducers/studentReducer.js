@@ -9,7 +9,7 @@ const initialState = {
 }
 
 const studentReducer = (state = initialState, action) => {
-  console.log(action.type, ' ', action.data)
+  console.log(action.type, 'INIT STUDENTS ', action.data)
   switch (action.type) {
   case 'INIT_STUDENTS':
     return {
