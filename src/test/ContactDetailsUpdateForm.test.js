@@ -4,11 +4,16 @@ import { mount } from 'enzyme'
 import { ContactDetailsUpdateForm } from '../components/student/ContactDetailsUpdateForm'
 import { Provider } from 'react-redux'
 import store from '../reducers/store'
+import 'jest-dom/extend-expect'
+import { render } from 'react-testing-library'
 
 describe('CourseDetailsUpdateForm', () => {
   let wrapper, props
   beforeEach(() => {
     props = {
+      updateEmail: jest.fn(),
+      updatePhone: jest.fn(),
+      updateExperience: jest.fn(),
       updateLoggedUser: jest.fn(),
       getContactInformation: jest.fn(),
       notify: jest.fn(),
@@ -31,9 +36,9 @@ describe('CourseDetailsUpdateForm', () => {
     }
   })
 
-  afterEach(() => {
-    wrapper.unmount()
-  })
+  // afterEach(() => {
+  //   wrapper.unmount()
+  // })
 
   it('renders self', () => {
     wrapper = mount(
@@ -45,6 +50,7 @@ describe('CourseDetailsUpdateForm', () => {
     )
     const form = wrapper.find('.contactDetailsUpdateForm')
     expect(form.length).toBe(1)
+    wrapper.unmount()
   })
 
   describe('useEffect', () => {
@@ -56,55 +62,29 @@ describe('CourseDetailsUpdateForm', () => {
           </Router>
         </Provider>
       )
+
       setTimeout(() => {
         expect(props.getContactInformation).toHaveBeenCalledTimes(1)
       }, 50)
+      wrapper.unmount()
     })
 
-    it('renders defaultInfo', () => {
-      wrapper = mount(
+    it('renders defaultInput', () => {
+
+      const component = render(
         <Provider store={ store }>
           <Router>
             <ContactDetailsUpdateForm {...props} />
           </Router>
         </Provider>
       )
-      const namesAndStudentNro = wrapper.find('h5').first()
-      setTimeout(() => {
-        expect(namesAndStudentNro).to.contain('Tiina')
-        expect(namesAndStudentNro).to.contain('Testaaja')
-        expect(namesAndStudentNro).to.contain('00000000')
-      }, 50)
-    })
 
-    it('button is clicked', () => {
-      wrapper = mount(
-        <Provider store={ store }>
-          <Router>
-            <ContactDetailsUpdateForm {...props} />
-          </Router>
-        </Provider>
+      expect(component.container).toHaveTextContent(
+        'Tiina Testaaja 0000000'
       )
-      const button  = wrapper.find('.button')
-
-      setTimeout(() => {
-        expect(button.length).toBe(1)
-        button.simulate('click')
-        expect(props.updateLoggedUser).toHaveBeenCalledTimes(1)
-        // expect(namesAndStudentNro).to.contain('Testaaja')
-        // expect(namesAndStudentNro).to.contain('00000000')
-      }, 50)
+      //console.log(component.debug())
     })
-
 
   })
-
-
-  // const applyButton = wrapper.find('.buttonApply').first()
-  // expect(applyButton.length).toBe(1)
-  // applyButton.simulate('click')
-  // expect(props.sendApplication).toHaveBeenCalledTimes(0)
-
-  //Todo: test send button
 
 })
