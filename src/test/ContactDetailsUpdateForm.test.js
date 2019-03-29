@@ -76,8 +76,34 @@ describe('CourseDetailsUpdateForm', () => {
         expect(namesAndStudentNro).to.contain('00000000')
       }, 50)
     })
+
+    it('button is clicked', () => {
+      wrapper = mount(
+        <Provider store={ store }>
+          <Router>
+            <ContactDetailsUpdateForm {...props} />
+          </Router>
+        </Provider>
+      )
+      const button  = wrapper.find('.button')
+
+      setTimeout(() => {
+        expect(button.length).toBe(1)
+        button.simulate('click')
+        expect(props.updateLoggedUser).toHaveBeenCalledTimes(1)
+        // expect(namesAndStudentNro).to.contain('Testaaja')
+        // expect(namesAndStudentNro).to.contain('00000000')
+      }, 50)
+    })
+
+
   })
 
+
+  // const applyButton = wrapper.find('.buttonApply').first()
+  // expect(applyButton.length).toBe(1)
+  // applyButton.simulate('click')
+  // expect(props.sendApplication).toHaveBeenCalledTimes(0)
 
   //Todo: test send button
 
