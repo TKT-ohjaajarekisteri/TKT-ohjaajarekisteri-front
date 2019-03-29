@@ -8,7 +8,6 @@ let token = null
 const setToken = (newToken) => {
 
   token = `bearer ${newToken}`
-  // console.log('token asetettu', token)
 }
 
 const getConfig = () => {
@@ -49,5 +48,9 @@ const getStudents = async (id) => {
   return response.data
 }
 
+const sendAcceptedModified = async (content) => {
+  console.log('sending', content)
+}
 
-export default { getAll, getOne, getStudents, create, setToken }
+
+export default { getAll, getOne, getStudents, create, setToken, sendAcceptedModified }
