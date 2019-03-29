@@ -19,8 +19,18 @@ const getConfig = () => {
 
 //gets all sudents
 const getAll = async () => {
-  const response = await axios.get(baseUrl, getConfig())
-  return response.data
+  try {
+    const response = await axios.get(baseUrl, getConfig())
+    return response.data
+  } catch (error) {
+    if(error===400) {
+      console.log('studentsin getall error 400', error)
+    }
+    // if (error.message==='Could not get studentlist from db') {
+    //   console.log('studentsin getall errormessage 400', error.message)
+    // }
+  }
+  // tätä voisi ensin testailla jollain mistä haetaan all
 }
 
 //gets a single sudent by id **CHECK SAFETY**
