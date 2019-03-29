@@ -26,7 +26,7 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
       })
 
     if (acceptedModified.length !== 0) {
-      sendAcceptedModified(acceptedModified)
+      sendAcceptedModified(courseId, acceptedModified)
     }
   }
 

@@ -48,8 +48,12 @@ const getStudents = async (id) => {
   return response.data
 }
 
-const sendAcceptedModified = async (content) => {
+const sendAcceptedModified = async (course_id, content) => {
   console.log('sending', content)
+  const response = await axios.post(url + `api/courses/${course_id}/students`, content, getConfig())
+  console.log('response ', response.data)
+  
+  return response.data
 }
 
 
