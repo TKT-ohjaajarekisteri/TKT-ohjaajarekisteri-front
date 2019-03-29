@@ -8,10 +8,11 @@ describe('<ContactDetailsForm />', () => {
 
   beforeEach(() => {
     props = {
-      createStudent:jest.fn(),
+      createStudent: jest.fn(),
       notify: jest.fn(),
       updateLoggedUser: jest.fn(),
-      id: 1
+      id: 1,
+      handleSubmit: jest.fn()
     }
 
   })
@@ -37,9 +38,13 @@ describe('<ContactDetailsForm />', () => {
       </Router>
     )
 
-    const button = wrapper.find('button')
+    const button = wrapper.find('button').first()
     button.simulate('submit')
     expect(props.updateLoggedUser).toHaveBeenCalledTimes(0)
+    expect(button.length).toBe(1)
+    //expect(props.handleSubmit).toHaveBeenCalledTimes(1)
+    //expect(props.notify).toHaveBeenCalledTimes(1)
+    //console.log(wrapper.debug())
     wrapper.unmount()
 
   })
