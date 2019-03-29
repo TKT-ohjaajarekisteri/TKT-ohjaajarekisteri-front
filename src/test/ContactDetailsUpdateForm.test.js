@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { mount, render } from 'enzyme'
+import { mount } from 'enzyme'
 import { ContactDetailsUpdateForm } from '../components/student/ContactDetailsUpdateForm'
 import { Provider } from 'react-redux'
 import store from '../reducers/store'
@@ -77,7 +77,6 @@ describe('CourseDetailsUpdateForm', () => {
       }, 50)
     })
   })
-
 
 
   //Todo: test send button
