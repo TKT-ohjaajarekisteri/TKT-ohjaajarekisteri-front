@@ -48,7 +48,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
       <div className='contactDetailsUpdateForm'>
 
         <h2>My profile</h2>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className='firstDetails' >
           <h5>{defaultInput.first_names} {defaultInput.last_name} {defaultInput.student_number} </h5>
           <Form.Group>
 
