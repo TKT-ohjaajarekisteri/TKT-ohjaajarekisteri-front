@@ -27,6 +27,8 @@ const updateLoggedUser = (content, id) => {
     const response = await studentService.update(content, id)
     console.log('loginactionin updateloggeduser', response)
     if (response.error) {
+      console.log('loginactionin updateloggeduserin error', response.error)
+      return response.error
       // handle error
     } else {
       let loggedUser = JSON.parse(window.localStorage.getItem('loggedInUser'))

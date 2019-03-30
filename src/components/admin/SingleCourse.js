@@ -33,7 +33,7 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
         <div className='col'>
           <h3>Applicants for course:</h3>
         </div>
-        <div className='col' style={{paddingBottom: 2}}>
+        <div className='col' style={{ paddingBottom: 2 }}>
           <Button className='float-right' target="_blank" rel="noopener noreferrer" href={href} variant='dark'>Email applicants</Button>
         </div>
       </div>
@@ -49,7 +49,7 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
         </thead>
         <tbody>
           {applicants.map(student =>
-              <Student key={student.student_id} student={student} />
+            <Student key={student.student_id} student={student} />
           )}
         </tbody>
       </Table>

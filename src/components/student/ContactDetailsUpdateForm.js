@@ -39,8 +39,16 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
       notify('Email field must be filled', 5)
     } else {
 
-      updateLoggedUser(input, id)
-      notify('Information updated', 5)
+      const promise = updateLoggedUser(input, id)
+      promise.then(response => {
+        console.log('contactinfoupdate response',  response)
+        if (response==='Details could not be updated') {
+          console.log('contactinfoupdate response',  response)
+          notify('Information could not be updated', 5)
+        } else {
+          notify('Information updated', 5)
+        }
+      })
     }
   }
   return (

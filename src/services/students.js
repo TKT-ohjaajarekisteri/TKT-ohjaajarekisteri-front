@@ -17,7 +17,7 @@ const getConfig = () => {
   }
 }
 
-//gets all sudents
+//gets all students
 const getAll = async () => {
   try {
     const response = await axios.get(baseUrl, getConfig())
@@ -25,26 +25,31 @@ const getAll = async () => {
   } catch (error) {
     if(error===400) {
       console.log('studentsin getall error 400', error)
+      return { error: 'Could not get studentlist from db' }
     }
-    // if (error.message==='Could not get studentlist from db') {
-    //   console.log('studentsin getall errormessage 400', error.message)
-    // }
+    if (error.message==='Could not get studentlist from db') {
+      console.log('studentsin getall errormessage 400', error.message)
+      return { error: 'Could not get studentlist from db' }
+    }
   }
-  // tätä voisi ensin testailla jollain mistä haetaan all
+  // tätä voisi ensin testailla jollain toisella
 }
 
-//gets a single sudent by id **CHECK SAFETY**
+//gets a single student by id
 const getStudent= async (id) => {
   try {
     const response = await axios.get(`api/students/${id}/`, getConfig())
-    console.log('service getStudentin response.data from back',response.data)
+    //console.log('service getStudentin response.data from back',response.data)
     return response.data
   } catch (error) {
-    console.log(error)
-    return { error: 'Information retrieval failed!' }
+    if(error===400) {
+      return { error: 'Could not get student from db' }
+    }
+    if (error===500) {
+      return { error: 'internal server error' }
+    }
   }
 }
-
 //creates students contactDetails
 const update = async (content, id) => {
   try {
@@ -54,7 +59,7 @@ const update = async (content, id) => {
     return response.data
   } catch (error) {
     console.log(error)
-    return { error: 'Invalid email address!' }
+    return { error: 'Details could not be updated' }
   }
 }
 
