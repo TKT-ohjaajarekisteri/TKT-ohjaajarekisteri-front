@@ -11,7 +11,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
 
   useEffect(() => {
     getContactInformation(id)
-    console.log('def', defaultInput)
+    //console.log('def', defaultInput)
   }, [])
 
   // const handleChange = (event) => {
@@ -106,7 +106,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
             />
 
           </Form.Group>
-          <Button variant="dark" className="button" type="submit">update</Button>
+          <Button variant="dark" className="updateButton" type="submit">update</Button>
         </Form>
       </div>
       <StudentCourseList id={id} />
