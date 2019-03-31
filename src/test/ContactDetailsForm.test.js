@@ -8,10 +8,11 @@ describe('<ContactDetailsForm />', () => {
 
   beforeEach(() => {
     props = {
-      createStudent:jest.fn(),
+      createStudent: jest.fn(),
       notify: jest.fn(),
       updateLoggedUser: jest.fn(),
-      id: 1
+      id: 1,
+      handleSubmit: jest.fn()
     }
 
   })
@@ -26,20 +27,6 @@ describe('<ContactDetailsForm />', () => {
 
     const form = wrapper.find('.studentForm')
     expect(form.length).toBe(1)
-    wrapper.unmount()
-
-  })
-
-  it('button pressed but empty fields', () => {
-    wrapper = mount(
-      <Router>
-        <ContactDetailsForm {...props}  />
-      </Router>
-    )
-
-    const button = wrapper.find('button')
-    button.simulate('submit')
-    expect(props.updateLoggedUser).toHaveBeenCalledTimes(0)
     wrapper.unmount()
 
   })
