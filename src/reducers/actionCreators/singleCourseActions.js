@@ -39,17 +39,38 @@ export const setStudentAccepted = (student_id, accepted_checked) => {
 export const sendAcceptedModified = (course_id, modifiedApplicants) => {
   return async (dispatch) => {
     const applicants = await courseService.sendAcceptedModified(course_id, modifiedApplicants)
-    const content = applicants.map(a => {
-      return {
-        ...a,
-        email_to_checked: false,
-        accepted_checked: a.accepted
-      }
-    })
-    dispatch({
-      type: 'INIT_APPLICANTS',
-      data: content
-    })
+    if (applicants.error) {
+      dispatch({
+        type: 'NOTIFY',
+        data: 'Could not update course.'
+      })
+      setTimeout(() => {
+        dispatch({
+          type: 'CLEAR',
+        })
+      }, 3000)
+    } else {
+      dispatch({
+        type: 'NOTIFY',
+        data: 'Changes have been saved.'
+      })
+      setTimeout(() => {
+        dispatch({
+          type: 'CLEAR',
+        })
+      }, 3000)
+      const content = applicants.map(a => {
+        return {
+          ...a,
+          email_to_checked: false,
+          accepted_checked: a.accepted
+        }
+      })
+      dispatch({
+        type: 'INIT_APPLICANTS',
+        data: content
+      })
+    }
   }
 }
 
