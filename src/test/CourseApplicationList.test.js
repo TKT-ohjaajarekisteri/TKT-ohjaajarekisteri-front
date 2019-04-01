@@ -5,7 +5,7 @@ import { CourseApplicationList } from '../components/student/CourseApplicationLi
 
 describe('student/ <CourseApplicationList />', () => {
   let wrapper, props
-  beforeEach(() => {
+  beforeAll(() => {
     props = {
       initializeCourseApplication: jest.fn(),
       filter: {

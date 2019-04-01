@@ -22,7 +22,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
       phone: event.target.phone.value,
       email: event.target.email.value,
       experience: event.target.experience.value,
-      no_english: event.target.no_english.value
+      no_english: event.target.no_english.checked
     }
     // gives error if email input is empty
     if (event.target.email.value === '') {
