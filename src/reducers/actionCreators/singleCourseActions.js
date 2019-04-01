@@ -1,31 +1,4 @@
 import courseService from '../../services/courses'
-// const applicants = [
-//   {
-//     student_id: 1,
-//     student_number: '012345678',
-//     first_names: 'Timo *Teppo Tellervo',
-//     last_name: 'Testaaja',
-//     no_english: false,
-//     experience: null,
-//     phone: '1234',
-//     email: 'jesperleonard@gmail.com',
-//     accepted: true,
-//     createdAt: '2019-03-28T11:20:42.830Z',
-//     updatedAt: '2019-03-28T11:20:55.917Z'
-//   },
-//   {
-//     student_id: 2,
-//     student_number: '012345675',
-//     first_names: 'Pimo *Peppo Pellervo',
-//     last_name: 'Pestaaja',
-//     no_english: false,
-//     experience: null,
-//     phone: '1234',
-//     email: 'olli.bisi@helsinki.fi',
-//     accepted: false,
-//     createdAt: '2019-03-28T11:20:42.830Z',
-//     updatedAt: '2019-03-28T11:20:55.917Z'
-//   }]
 
 export const initializeSingleCourse = (id) => {
   return async (dispatch) => {
@@ -82,16 +55,6 @@ export const sendAcceptedModified = (course_id, modifiedApplicants) => {
 
 export const setEmail = (student_id, email_to_checked) => {
   return async (dispatch) => {
-    // const email = {
-    //   to: applicants.map(student => student.email.concat(';')).join(''),
-    //   subject: 'Subject template',
-    //   body: 'Body template'
-    // }
-
-    // dispatch({
-    //   type: 'SET_EMAIL',
-    //   data: email
-    // })
     dispatch({
       type: 'SET_EMAIL_CHECKED',
       data: {

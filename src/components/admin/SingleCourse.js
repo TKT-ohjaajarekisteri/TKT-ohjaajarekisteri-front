@@ -2,11 +2,18 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Checkbox from '../common/Checkbox'
 import { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified } from '../../reducers/actionCreators/singleCourseActions'
-// import Student from './Student'
 import { Table, Button } from 'react-bootstrap'
 
 
-export const SingleCourse = ({ course, applicants, initializeSingleCourse, courseId, email, setStudentAccepted, setEmail, sendAcceptedModified }) => {
+export const SingleCourse = ({
+  course,
+  applicants,
+  initializeSingleCourse,
+  courseId,
+  email,
+  setStudentAccepted,
+  setEmail,
+  sendAcceptedModified }) => {
 
   useEffect(() => {
     initializeSingleCourse(courseId)
@@ -48,7 +55,7 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
           <h2>{course.learningopportunity_id} {course.course_name}  {course.year} period:{course.period}</h2>
         }
       </div>
-      <div className='row' style={{paddingBottom: 15}}>
+      <div className='row' style={{ paddingBottom: 15 }}>
         <div className='col'>
           <h3>Applicants for course:</h3>
         </div>
@@ -70,7 +77,7 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
         </thead>
         <tbody>
           {applicants.map(student =>
-            <tr key={student.student_id}>
+            <tr className='Student' key={student.student_id}>
               <td>{student.student_number}</td>
               <td>{student.first_names}</td>
               <td>{student.last_name}</td>
@@ -79,16 +86,28 @@ export const SingleCourse = ({ course, applicants, initializeSingleCourse, cours
                 <input type='number' defaultValue='0' style={{ width: 50 }} min='0'></input>
               </td>
               <td>
-                <Checkbox className='align-items-center emailTo' checked={student.email_to_checked} id={student.student_id} onChange={handleEmailToChange} />
+                <Checkbox
+                  className='align-items-center emailTo'
+                  name={student.student_number}
+                  checked={student.email_to_checked}
+                  id={student.student_id}
+                  onChange={handleEmailToChange}
+                />
               </td>
               <td>
-                <Checkbox className='align-items-center accepted' checked={student.accepted_checked} id={student.student_id} onChange={handleAcceptedChange} />
+                <Checkbox
+                  className='align-items-center accepted'
+                  name={student.student_number}
+                  checked={student.accepted_checked}
+                  id={student.student_id}
+                  onChange={handleAcceptedChange}
+                />
               </td>
             </tr>
           )}
         </tbody>
       </Table>
-      <Button className='float-right' variant='dark' onClick={handleAcceptedSubmit}>Save</Button>
+      <Button className='float-right' id='saveApplied' variant='dark' onClick={handleAcceptedSubmit}>Save</Button>
     </div>
   )
 }
