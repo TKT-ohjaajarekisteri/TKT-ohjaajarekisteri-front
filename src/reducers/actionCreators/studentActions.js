@@ -66,10 +66,31 @@ const deleteAppliedCourse = (course_id, student_id) => {
 
     const response = await studentService.deleteApplication(student_id, course_id)
     console.log(response)
-    dispatch({
-      type: 'STUDENT_APPLICATION_DELETE',
-      data: { id: course_id }
-    })
+    if (response.error || response===undefined) {
+      dispatch({
+        type: 'NOTIFY',
+        data: 'Delete failed!'
+      })
+      setTimeout(() => {
+        dispatch({
+          type: 'CLEAR',
+        })
+      }, 3000)
+    } else {
+      dispatch({
+        type: 'STUDENT_APPLICATION_DELETE',
+        data: { id: course_id }
+      })
+      dispatch({
+        type: 'NOTIFY',
+        data: 'Course deleted'
+      })
+      setTimeout(() => {
+        dispatch({
+          type: 'CLEAR',
+        })
+      }, 3000)
+    }
   }
 }
 
