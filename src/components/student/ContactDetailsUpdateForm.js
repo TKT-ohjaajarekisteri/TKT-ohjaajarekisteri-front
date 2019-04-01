@@ -1,77 +1,104 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
-import { getContactInformation } from '../../reducers/actionCreators/studentActions'
+import { getContactInformation, updatePhone, updateEmail, updateLanguage, updateExperience } from '../../reducers/actionCreators/studentActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 import StudentCourseList from './StudentCourseList'
 import { Form, Button } from 'react-bootstrap'
 
-export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
-  const [input, setInput] = useState({ nickname: '', phone: '', email: '' })
-
-  // TODO: GET OLD VALUES FROM BACKEND
+export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english, updatePhone, updateEmail, updateLanguage, updateExperience, updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
   useEffect(() => {
     getContactInformation(id)
-    // console.log('def', defaultInput)
+    //console.log('def', defaultInput)
   }, [])
 
-  const handleChange = (event) => {
-    const newInput = {
-      ...input,
-      [event.target.name]: event.target.value
-    }
-    setInput(newInput)
-  }
+  // const handleChange = (event) => {
+  //   const input = {
+  //     phone: event.target.phone.value,
+  //     email: event.target.email.value,
+  //     experience: event.target.experience.value,
+  //     no_english: event.target.no_english.value
+  //   }
+  //   updateLoggedUser(input, id)
+  // }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    updateLoggedUser(input, id)
 
-    // TODO: Update the notification functionality in the action
-    notify(`Information updated for ${input.nickname}`, 5)
-    setInput({ nickname: '', phone: '', email: '' })
+    const input = {
+      phone: event.target.phone.value,
+      email: event.target.email.value,
+      experience: event.target.experience.value,
+      no_english: event.target.no_english.value
+    }
+
+    if (event.target.email.value === '') {
+      console.log('handlesubmitin emailinput', event.target.email.value)
+      notify('Email field must be filled', 5)
+    } else {
+
+      updateLoggedUser(input, id)
+      notify('Information updated', 5)
+    }
   }
-
   return (
     <div>
       <div className='contactDetailsUpdateForm'>
 
-        <h2>Contact details </h2>
-        <Form onSubmit={handleSubmit}>
+        <h2>My profile</h2>
+        <Form onSubmit={handleSubmit} className='firstDetails' >
+          <h5>{defaultInput.first_names} {defaultInput.last_name} {defaultInput.student_number} </h5>
           <Form.Group>
-
-            <Form.Label>Preferred firstname: </Form.Label>
-            <Form.Control
-              type="text"
-              value={input.nickname}
-              name='nickname'
-              onChange={handleChange}
-              placeholder={defaultInput.nickname}
-            />
-
 
             <Form.Label>Phone: </Form.Label>
             <Form.Control
               type="text"
-              value={input.phone}
               name='phone'
-              onChange={handleChange}
-              placeholder={defaultInput.phone}
+              value={phone}
+              //onChange={handleChange}
+              onChange={(e) => updatePhone(e.target.value)}
+              //placeholder={defaultInput.experience}
+
             />
 
-            <label>Email: </label>
+            <Form.Label>Email: </Form.Label>
             <Form.Control
               type="text"
               name='email'
-              value={input.email}
-              onChange={handleChange}
-              placeholder={defaultInput.email}
+              value={email}
+              onChange={(e) => updateEmail(e.target.value)}
+              //onChange={handleChange}
+              // placeholder={defaultInput.email}
+
+            />
+
+            <Form.Label>Assistance/teaching experience: </Form.Label>
+            <Form.Control
+              as="textarea"
+              rows="2"
+              type="text"
+              name='experience'
+              value={experience}
+              onChange={(e) => updateExperience(e.target.value)}
+            //onChange={handleChange}
+            // placeholder={defaultInput.experience}
+            />
+
+            <Form.Check
+              type="checkbox"
+              name='no_english'
+              checked={no_english}
+              value={no_english}
+              label="I don't want to teach in English"
+              onChange={(e) => updateLanguage(e.target.checked)}
+              // onChange={handleChange}
+
             />
 
           </Form.Group>
-          <Button variant="dark" className="button" type="submit">update</Button>
+          <Button variant="dark" className="updateButton" type="submit">update</Button>
         </Form>
       </div>
       <StudentCourseList id={id} />
@@ -81,13 +108,17 @@ export const ContactDetailsUpdateForm = ({ updateLoggedUser, notify, id, getCont
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'koko store')
+  console.log(state, 'Contact koko store')
   return {
     defaultInput: state.students.contactInformation,
+    phone: state.students.phone,
+    email: state.students.email,
+    experience: state.students.experience,
+    no_english: state.students.no_english
   }
 }
 
 export default connect(
   mapStateToProps,
-  { notify, updateLoggedUser, getContactInformation }
+  { notify, updateLoggedUser, getContactInformation, updatePhone, updateEmail, updateLanguage, updateExperience }
 )(ContactDetailsUpdateForm)

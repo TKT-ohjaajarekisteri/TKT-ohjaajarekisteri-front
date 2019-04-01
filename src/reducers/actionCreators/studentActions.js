@@ -24,7 +24,7 @@ const getStudent = (id) => {
 }
 
 
-// tells studentservice to get pecific student's courses and dispatch them to store
+// tells studentservice to get specific student's courses and dispatch them to store
 const getStudentCourses = (id) => {
   return async (dispatch) => {
     const content = await studentService.getCourses(id)
@@ -35,22 +35,19 @@ const getStudentCourses = (id) => {
   }
 }
 
-// tells studentservice to get pecific student's courses
+// tells studentservice to get specific student's courses //init_contact info.empty
 const getContactInformation = (id) => {
   console.log(id)
   return async (dispatch) => {
-    // TODO GET CONTACT INFORMATION FROM BACKEND
-    const content = {
-      nickname: 'nickname',
-      phone: '+358 000 555',
-      email: 'example@mail.com'
-    }
+    const student = await studentService.getStudent(id)
+    console.log('studentactionin getcontactinformationin student', student)
     dispatch({
       type: 'INIT_CONTACT_INFORMATION',
-      data: content
+      data: student
     })
   }
 }
+
 
 // creates student
 const createStudent = (content, id) => {
@@ -106,4 +103,31 @@ const deleteAppliedCourse = (course_id, student_id) => {
 }
 
 
-export { createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }
+const updatePhone = (phone) => {
+  return {
+    type: 'UPDATE_PHONE',
+    data: phone
+  }
+}
+
+const updateEmail = (email) => {
+  return {
+    type: 'UPDATE_EMAIL',
+    data: email
+  }
+}
+
+const updateExperience = (experience) => {
+  return {
+    type: 'UPDATE_EXPERIENCE',
+    data:experience
+  }
+}
+const updateLanguage = (teachesInEnglish) => {
+  return {
+    type: 'UPDATE_LANGUAGE',
+    data:teachesInEnglish
+  }
+}
+export { updatePhone, updateEmail, updateLanguage, updateExperience,
+  createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }

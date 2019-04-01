@@ -23,11 +23,24 @@ const getAll = async () => {
   return response.data
 }
 
+//gets a single sudent by id **CHECK SAFETY**
+const getStudent= async (id) => {
+  try {
+    const response = await axios.get(`api/students/${id}/`, getConfig())
+    console.log('service getStudentin response.data from back',response.data)
+    return response.data
+  } catch (error) {
+    console.log(error)
+    return { error: 'Information retrieval failed!' }
+  }
+}
 
-//creates sudents contactDetails
+//creates students contactDetails
 const update = async (content, id) => {
   try {
+    console.log('studentservicen updaten content', content)
     const response = await axios.put(url + `api/students/${id}/`, content, getConfig())
+    console.log('studentservicen updaten response', response)
     return response.data
   } catch (error) {
     console.log(error)
@@ -60,5 +73,5 @@ const deleteApplication = async (student_id, course_id) => {
 }
 
 export default {
-  getAll, setToken, update, apply, getCourses, deleteApplication
+  getAll, setToken, update, apply, getCourses, deleteApplication, getStudent
 }

@@ -1,10 +1,14 @@
 const initialState = {
   studentCourses: [],
   students: [],
+  phone: '',
+  email: '',
+  experience: '',
+  no_english: false,
   contactInformation: {
-    nickname: '',
-    phone: '',
-    email: ''
+    first_names: '',
+    last_name: '',
+    student_number: ''
   }
 }
 
@@ -39,11 +43,48 @@ const studentReducer = (state = initialState, action) => {
     }
   }
 
-  case 'INIT_CONTACT_INFORMATION':
+  case 'INIT_CONTACT_INFORMATION': {
+    console.log('actionData Reducer', action.data)
+
     return {
       ...state,
-      contactInformation: action.data
+      contactInformation: action.data,
+      phone: action.data.phone,
+      email: action.data.email,
+      experience: action.data.experience,
+      no_english: action.data.no_english
+
     }
+  }
+
+  case 'UPDATE_PHONE': {
+    return {
+      ...state,
+      //contactInformation:action.data
+      phone: action.data
+    }
+  }
+  case 'UPDATE_EMAIL': {
+    return {
+      ...state,
+      // contactInformation:action.data
+      email: action.data
+    }
+  }
+  case 'UPDATE_EXPERIENCE': {
+    return {
+      ...state,
+      //contactInformation:action.data
+      experience: action.data
+    }
+  }
+  case 'UPDATE_LANGUAGE': {
+    return {
+      ...state,
+      //contactInformation:action.data
+      no_english: action.data
+    }
+  }
 
   default:
     return state
