@@ -1,6 +1,5 @@
 import studentService from '../../services/students'
 
-
 // tells studentservice to get all students from database
 const initializeStudents = () => {
   return async (dispatch) => {
@@ -28,6 +27,7 @@ const getStudent = (id) => {
 const getStudentCourses = (id) => {
   return async (dispatch) => {
     const content = await studentService.getCourses(id)
+    console.log('studentactions getstudentcourses content', content)
     dispatch({
       type: 'INIT_STUDENT_COURSES',
       data: content
@@ -35,59 +35,30 @@ const getStudentCourses = (id) => {
   }
 }
 
-// tells studentservice to get specific student's courses //init_contact info.empty
+// tells studentservice to get specific student's courses
 const getContactInformation = (id) => {
   console.log(id)
   return async (dispatch) => {
     const student = await studentService.getStudent(id)
     console.log('studentactionin getcontactinformationin student', student)
-    dispatch({
-      type: 'INIT_CONTACT_INFORMATION',
-      data: student
-    })
+    if (student===undefined || student.error) {
+      dispatch({
+        type: 'NOTIFY',
+        data: 'Could not get your course list!'
+      })
+      setTimeout(() => {
+        dispatch({
+          type: 'CLEAR',
+        })
+      }, 3000)
+    } else {
+      dispatch({
+        type: 'INIT_CONTACT_INFORMATION',
+        data: student
+      })
+    }
   }
 }
-
-
-// creates student
-const createStudent = (content, id) => {
-  return async (dispatch) => {
-    const response = await studentService.update(content, id)
-
-    // Upcoming fix for updating email without logging in again
-    // if (response.error) {
-    //   return
-    // }
-    // let loggedUser = JSON.parse(window.localStorage.getItem('loggedInUser'))
-    // loggedUser.user.email = true
-    // window.localStorage.setItem('loggedInUser', JSON.stringify(loggedUser))
-    // dispatch({
-    //   type: 'UPDATE_LOGGED_USER',
-    //   data: loggedUser
-    // })
-
-    dispatch({
-      type: 'CREATE_STUDENT_CONTACTINFO',
-      data: response.course
-
-    })
-  }
-}
-
-
-//tells studentservice to create application for a course post to database
-// const applyForCourse = (content, id) => {
-//   return async (dispatch) => {
-//     const applications = await studentService.apply(content, id)
-//     const courses = await studentService.getCourses(id)
-//     console.log('after application query')
-//     dispatch({
-//       type: 'INIT_STUDENT_COURSES',
-//       data: courses
-
-//     })
-//   }
-// }
 
 // deletes course which student has applied
 const deleteAppliedCourse = (course_id, student_id) => {
@@ -101,7 +72,6 @@ const deleteAppliedCourse = (course_id, student_id) => {
     })
   }
 }
-
 
 const updatePhone = (phone) => {
   return {
@@ -130,4 +100,4 @@ const updateLanguage = (teachesInEnglish) => {
   }
 }
 export { updatePhone, updateEmail, updateLanguage, updateExperience,
-  createStudent, initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }
+  initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }

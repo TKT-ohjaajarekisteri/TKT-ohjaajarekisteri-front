@@ -32,21 +32,22 @@ const getAll = async () => {
       return { error: 'Could not get studentlist from db' }
     }
   }
-  // tätä voisi ensin testailla jollain toisella
 }
 
 //gets a single student by id
 const getStudent= async (id) => {
   try {
     const response = await axios.get(`api/students/${id}/`, getConfig())
-    //console.log('service getStudentin response.data from back',response.data)
+    console.log('service getStudentin response.data from back',response.data)
+
     return response.data
   } catch (error) {
     if(error===400) {
+      console.log('students servicen get student error', error)
       return { error: 'Could not get student from db' }
     }
     if (error===500) {
-      return { error: 'internal server error' }
+      return { error: 'Internal server error' }
     }
   }
 }

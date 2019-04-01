@@ -9,6 +9,7 @@ export const StudentCourseList = ({ notify, loggedUser, courses, id, getStudentC
 
   useEffect(() => {
     getStudentCourses(id)
+    console.log('studentcourselistin useEffectin getstudentcourses', getStudentCourses(id))
   }, [])
 
 
@@ -34,6 +35,7 @@ export const StudentCourseList = ({ notify, loggedUser, courses, id, getStudentC
           </tr>
         </thead>
         <tbody>
+          {console.log('student courselist courses', courses)}
           {courses.map(course =>
             <CourseWithDel course={course} key={course.course_id} onClick={removeApply} />
           )}
