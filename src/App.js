@@ -54,7 +54,7 @@ const App = (props) => {
 
                   <Nav.Link href="#" as="span">
                     {loggedUser && loggedUser.user.role === 'admin'
-                      ? <Link to="admin/students">Summary</Link>
+                      ? <Link to="/admin/summary">Summary</Link>
                       : <em></em>} &nbsp;
                   </Nav.Link>
 
@@ -96,7 +96,7 @@ const App = (props) => {
                 condition={loggedUser && isAdmin}
               >
                 <Route exact path="/admin/courses" render={() => <AdminCourseList />} />
-                < Route exact path="/amin/students" render={() => <Summary />} />
+                < Route exact path="/admin/summary" render={() => <Summary />} />
                 <Route
                   exact path="/admin/courses/:id"
                   redirectPath="/"
@@ -124,21 +124,23 @@ const App = (props) => {
               {/* THIS ROUTE PROTECTS ALL ROUTES UNDER "/" */}
               <PrivateRoute path="/" redirectPath="/login" condition={loggedUser}>
                 <PrivateRoute path="/" redirectPath="/admin/courses" condition={!isAdmin}>
-                  <PrivateRoute path="/" redirectPath="/contact-info" condition={hasContactDetails}>
-                    <Route
-                      exact path='/'
-                      render={() => <Redirect to='/apply' />}
-                    />
-                    <Route
-                      exact path="/apply"
-                      render={() => <CourseApplicationList />}
-                    />
+                  <PrivateRoute path="/" redirectPath="admin/summary" condition={!isAdmin}>
+                    <PrivateRoute path="/" redirectPath="/contact-info" condition={hasContactDetails}>
+                      <Route
+                        exact path='/'
+                        render={() => <Redirect to='/apply' />}
+                      />
+                      <Route
+                        exact path="/apply"
+                        render={() => <CourseApplicationList />}
+                      />
 
-                    {/* USERS CAN UPDATE THEIR INFORMATION */}
-                    <Route
-                      exact path="/update-info"
-                      render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
-                    />
+                      {/* USERS CAN UPDATE THEIR INFORMATION */}
+                      <Route
+                        exact path="/update-info"
+                        render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
+                      />
+                    </PrivateRoute>
                   </PrivateRoute>
                 </PrivateRoute>
               </PrivateRoute>

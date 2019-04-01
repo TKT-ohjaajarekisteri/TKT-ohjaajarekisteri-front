@@ -1,38 +1,30 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { initializeStudents } from '../../reducers/actionCreators/studentActions'
+import { initializeSummary } from '../../reducers/actionCreators/summaryActions'
+
 
 const Summary = (props) => {
   useEffect(() => {
-    props.initializeStudents()
+    props.initializeSummary()
   },
   []
   )
   return (
-    <div id="students">
-      <h2>Students</h2>
-      {props.studentsToShow.map(s =>
-        <div key={s.student_id}>
-          {s.student_number}
-          {s.first_names}
-          {s.last_name}
-          {s.email}
-          {s.phonenumber}
-
-        </div>
-      )}
+    <div>
+      <h2>Hello World</h2>
     </div>
   )
 }
 
 const mapStateToProps = (state) => {
-  const studentsToShow = state.students
+  const summaryToShow = state.summary
+  console.log('studentsToShow',summaryToShow)
   return {
-    studentsToShow
+    summaryToShow
   }
 }
 
 export default connect(
   mapStateToProps,
-  { initializeStudents }
+  { initializeSummary }
 )(Summary)

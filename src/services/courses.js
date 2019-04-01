@@ -49,5 +49,12 @@ const getStudents = async (id) => {
   return response.data
 }
 
+const getSummary = async () => {
+  console.log('courses servicen getSummary metodi')
+  const response = await axios.get(url + 'api/courses/summary', getConfig())
+  return response.data
+}
 
-export default { getAll, getOne, getStudents, create, setToken }
+
+
+export default { getAll, getOne, getStudents, create, setToken, getSummary }
