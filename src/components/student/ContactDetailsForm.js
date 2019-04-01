@@ -14,7 +14,7 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
       phone: event.target.phonenumber.value,
       email: event.target.email.value,
       experience: event.target.experience.value,
-      no_english: event.target.no_english.value
+      no_english: event.target.no_english.checked
     }
     console.log('contact details form', formContent)
     if (formContent.email === '') {
