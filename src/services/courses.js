@@ -49,9 +49,10 @@ const getStudents = async (id) => {
   return response.data
 }
 
+//get students for all courses
 const getSummary = async () => {
   console.log('courses servicen getSummary metodi')
-  const response = await axios.get(url + 'api/courses/summary', getConfig())
+  const response = await axios.get(url + 'api/courses/students/summary', getConfig())
   return response.data
 }
 
