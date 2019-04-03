@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createStudent } from '../../reducers/actionCreators/studentActions'
 import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 import { Form, Button } from 'react-bootstrap'
@@ -20,9 +19,8 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
     if (formContent.email === '') {
       notify('Email field must be filled', 5)
     } else {
-
+      console.log('contactdetailsformin formcontent', formContent )
       updateLoggedUser(formContent, id)
-      notify('Contact details have been saved', 5)
       event.target.phonenumber.value = ''
       event.target.email.value = ''
       event.target.experience.value = ''
@@ -73,5 +71,5 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
 
 export default connect(
   null,
-  { createStudent, notify, updateLoggedUser }
+  { notify, updateLoggedUser }
 )(ContactDetailsForm)

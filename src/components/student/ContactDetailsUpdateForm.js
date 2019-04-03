@@ -9,21 +9,12 @@ import { Form, Button } from 'react-bootstrap'
 
 export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english, updatePhone, updateEmail, updateLanguage, updateExperience, updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
 
+  // gets the student from db and initializes and sends contact info to store
   useEffect(() => {
     getContactInformation(id)
-    //console.log('def', defaultInput)
   }, [])
 
-  // const handleChange = (event) => {
-  //   const input = {
-  //     phone: event.target.phone.value,
-  //     email: event.target.email.value,
-  //     experience: event.target.experience.value,
-  //     no_english: event.target.no_english.value
-  //   }
-  //   updateLoggedUser(input, id)
-  // }
-
+  // takes new input values from the form, updates logged user
   const handleSubmit = (event) => {
     event.preventDefault()
 
@@ -33,14 +24,12 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
       experience: event.target.experience.value,
       no_english: event.target.no_english.checked
     }
-
+    // gives error if email input is empty
     if (event.target.email.value === '') {
       console.log('handlesubmitin emailinput', event.target.email.value)
       notify('Email field must be filled', 5)
     } else {
-
       updateLoggedUser(input, id)
-      notify('Information updated', 5)
     }
   }
   return (
@@ -57,10 +46,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
               type="text"
               name='phone'
               value={phone}
-              //onChange={handleChange}
               onChange={(e) => updatePhone(e.target.value)}
-              //placeholder={defaultInput.experience}
-
             />
 
             <Form.Label>Email: </Form.Label>
@@ -69,9 +55,6 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
               name='email'
               value={email}
               onChange={(e) => updateEmail(e.target.value)}
-              //onChange={handleChange}
-              // placeholder={defaultInput.email}
-
             />
 
             <Form.Label>Assistance/teaching experience: </Form.Label>
@@ -82,8 +65,6 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
               name='experience'
               value={experience}
               onChange={(e) => updateExperience(e.target.value)}
-            //onChange={handleChange}
-            // placeholder={defaultInput.experience}
             />
 
             <Form.Check
@@ -93,7 +74,6 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
               value={no_english}
               label="I don't want to teach in English"
               onChange={(e) => updateLanguage(e.target.checked)}
-              // onChange={handleChange}
 
             />
 
