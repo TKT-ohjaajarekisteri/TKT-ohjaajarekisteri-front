@@ -52,9 +52,15 @@ const getStudents = async (id) => {
 //get students for all courses
 const getSummary = async () => {
   console.log('courses servicen getSummary metodi')
-  const response = await axios.get(url + 'api/courses/students/summary', getConfig())
-  return response.data
+  try {
+    const response = await axios.get(url + 'api/courses/students/summary', getConfig())
+    console.log('courses servicen response________________________',response)
+    return response.data
+  } catch (error) {
+    console.log('error')
+  }
 }
+
 
 
 
