@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Checkbox from '../common/Checkbox'
-import { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified } from '../../reducers/actionCreators/singleCourseActions'
+import { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified, setStudentGroups } from '../../reducers/actionCreators/singleCourseActions'
 import { Table, Button } from 'react-bootstrap'
 
 
@@ -13,6 +13,7 @@ export const SingleCourse = ({
   email,
   setStudentAccepted,
   setEmail,
+  setStudentGroups,
   sendAcceptedModified }) => {
 
   useEffect(() => {
@@ -24,11 +25,12 @@ export const SingleCourse = ({
   const handleAcceptedSubmit = (e) => {
     e.preventDefault()
     const acceptedModified = applicants
-      .filter(a => a.accepted !== a.accepted_checked)
+      .filter(a => a.accepted !== a.accepted_checked || a.groups !== a.groups_textbox)
       .map(a => {
         return {
           student_id: a.student_id,
-          accepted: a.accepted_checked
+          accepted: a.accepted !== a.accepted_checked ? a.accepted_checked : a.accepted,
+          groups: a.groups !== a.groups_textbox ? a.groups_textbox : a.groups
         }
       })
 
@@ -45,6 +47,11 @@ export const SingleCourse = ({
   const handleAcceptedChange = (id) => (e) => {
     const accepted = e.target.checked
     setStudentAccepted(id, accepted)
+  }
+
+  const handleGroupsChange = (id) => (e) => {
+    const groups = Number(e.target.value)
+    setStudentGroups(id, groups)
   }
 
   const href = `https://outlook.office.com/?path=/mail/action/compose&to=${email.to}&subject=${email.subject}&body=${email.body}`
@@ -83,7 +90,7 @@ export const SingleCourse = ({
               <td>{student.last_name}</td>
               <td>{student.email}</td>
               <td>
-                <input type='number' defaultValue='0' style={{ width: 50 }} min='0'></input>
+                <input type='number' id={student.student_number} onChange={handleGroupsChange(student.student_id)} defaultValue={student.groups_textbox} style={{ width: 50 }} min='0'></input>
               </td>
               <td>
                 <Checkbox
@@ -122,5 +129,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified }
+  { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified, setStudentGroups }
 )(SingleCourse)

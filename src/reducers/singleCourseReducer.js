@@ -4,7 +4,10 @@ const initialState = {
   email: {
     to: '',
     subject: 'Subject template',
-    body: 'Body template'
+    body: `Body template
+%0D%0A
+%0D%0A
+- Reijo`
   }
 }
 
@@ -30,6 +33,17 @@ const singleCourseReducer = (state = initialState, action) => {
       applicants: state.applicants.map(a =>
         a.student_id === action.data.student_id
           ? { ...a, accepted_checked: action.data.accepted_checked }
+          : a
+      )
+    }
+  }
+
+  case 'SET_STUDENT_GROUPS_STATE': {
+    return {
+      ...state,
+      applicants: state.applicants.map(a =>
+        a.student_id === action.data.student_id
+          ? { ...a, groups_textbox: action.data.groups_textbox }
           : a
       )
     }
