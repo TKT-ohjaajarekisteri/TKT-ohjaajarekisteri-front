@@ -94,7 +94,7 @@ export const SingleCourse = ({
               </td>
               <td>
                 <Checkbox
-                  className='align-items-center emailTo'
+                  className='align-items-center emailTo listCheckbox'
                   name={student.student_number}
                   checked={student.email_to_checked}
                   id={student.student_id}
@@ -103,7 +103,7 @@ export const SingleCourse = ({
               </td>
               <td>
                 <Checkbox
-                  className='align-items-center accepted'
+                  className='align-items-center accepted listCheckbox'
                   name={student.student_number}
                   checked={student.accepted_checked}
                   id={student.student_id}
