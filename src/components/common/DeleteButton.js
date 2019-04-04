@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap'
 const DeleteButton = ({ id, onClick }) => {
   return (
     <Button className="buttonDelete" onClick={onClick(id)} variant="outline-secondary" type="submit" >
-      delete
+      Delete
     </Button>
   )
 }

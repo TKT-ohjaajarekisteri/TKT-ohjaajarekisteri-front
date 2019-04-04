@@ -67,7 +67,7 @@ export const SingleCourse = ({
           <h3>Applicants for course:</h3>
         </div>
         <div className='col'>
-          <Button className='float-right' target="_blank" rel="noopener noreferrer" href={href} variant='dark'>Email applicants</Button>
+          <Button className='float-right' target="_blank" rel="noopener noreferrer" href={href} variant='dark'>Send email</Button>
         </div>
       </div>
       <Table bordered hover>

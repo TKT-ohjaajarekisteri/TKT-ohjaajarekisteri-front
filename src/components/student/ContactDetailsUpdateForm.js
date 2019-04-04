@@ -78,7 +78,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
             />
 
           </Form.Group>
-          <Button variant="dark" className="updateButton" type="submit">update</Button>
+          <Button variant="dark" className="updateButton" type="submit">Update</Button>
         </Form>
       </div>
       <StudentCourseList id={id} />
