@@ -9,15 +9,17 @@ describe('<CourseList />', () => {
     props = {
       initializeFilter: jest.fn(),
       initializeCourses: jest.fn(),
+
       filter: {
         studyProgramme: '',
-        period: ''
+        period: '',
+        courseName: ''
       },
       courses: [
         {
           course_id: 1,
           learningopportunity_id: 'TKT202020',
-          name: 'OHTU',
+          course_name: 'OHTU',
           year: 2019,
           period: 2,
           checked: false
@@ -84,7 +86,7 @@ describe('<CourseList />', () => {
   })
 
   it('only renders courses matching filter', () => {
-    let updatedProps = { ...props, filter: { studyProgramme: 'CSM', period: '2' } }
+    let updatedProps = { ...props, filter: { ...props.filter, studyProgramme: 'CSM', period: '2' } }
     wrapper = mount(
       <Router>
         <CourseList {...updatedProps} />
