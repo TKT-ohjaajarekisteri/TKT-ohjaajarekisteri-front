@@ -35,8 +35,10 @@ describe('<SingleCourse />', () => {
           phone: '1234',
           email: 'test@helsinki.fi',
           accepted: false,
+          groups: 0,
           accepted_checked: false,
           email_to_checked: false,
+          groups_textbox: 0
         }, {
           student_id: 2,
           student_number: '012345675',
@@ -47,8 +49,10 @@ describe('<SingleCourse />', () => {
           phone: '1234',
           email: 'tkt@helsinki.fi',
           accepted: false,
+          groups: 0,
           accepted_checked: false,
           email_to_checked: false,
+          groups_textbox: 0
         }, {
           student_id: 3,
           student_number: '012345679',
@@ -59,8 +63,10 @@ describe('<SingleCourse />', () => {
           phone: '1234',
           email: 'bee@helsinki.fi',
           accepted: true,
+          groups: 2,
           accepted_checked: true,
           email_to_checked: false,
+          groups_textbox: 2
         }
       ]
     }
@@ -77,18 +83,18 @@ describe('<SingleCourse />', () => {
     expect(wrapper.find('.Student').length).toBe(3)
   })
 
+  it('When saveButton clicked does not send modified if none have been modified', () => {
+    wrapper = mount(<SingleCourse {...props} />)
+
+    expect(props.sendAcceptedModified).toHaveBeenCalledTimes(0)
+
+    const saveButton = wrapper.find('#saveApplied').first()
+    expect(saveButton.length).toBe(1)
+    saveButton.simulate('click')
+    expect(props.sendAcceptedModified).toHaveBeenCalledTimes(0)
+  })
+
   describe('Accepted', () => {
-    it('When saveButton clicked does not send modified if none have been modified', () => {
-      wrapper = mount(<SingleCourse {...props} />)
-
-      expect(props.sendAcceptedModified).toHaveBeenCalledTimes(0)
-
-      const saveButton = wrapper.find('#saveApplied').first()
-      expect(saveButton.length).toBe(1)
-      saveButton.simulate('click')
-      expect(props.sendAcceptedModified).toHaveBeenCalledTimes(0)
-    })
-
     it('Checkbox already checked for accepted applicants', () => {
       wrapper = mount(<SingleCourse {...props} />)
 
@@ -99,7 +105,15 @@ describe('<SingleCourse />', () => {
     })
   })
 
-  // it('', () => {
+  describe('Groups', () => {
+    it('Number of groups shown for applicants', () => {
+      wrapper = mount(<SingleCourse {...props} />)
 
-  // })
+      const textfield = wrapper.find('input[type="number"]').filterWhere((item) => {
+        return item.prop('id') === '012345679'
+      })
+      expect(textfield.prop('defaultValue')).toEqual(2)
+    })
+  })
+
 })
