@@ -90,7 +90,7 @@ const getCourses = async (id) => {
 //removes student's application from the course
 const deleteApplication = async (student_id, course_id) => {
   try {
-    const response = await axios.delete(baseUrl + `/${student_id}/courses/${course_id}/delete`, getConfig())
+    const response = await axios.delete(baseUrl + `/${student_id}/courses/${course_id}`, getConfig())
     return response.data
   } catch (error) {
     //console.log(error)
