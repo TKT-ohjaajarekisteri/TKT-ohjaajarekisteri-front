@@ -2,11 +2,15 @@
 
 const initialState = {
   studyProgramme: '',
-  period: ''
+  period: '',
+  courseName: ''
 }
 
 const filterReducer = (state = initialState, action) => {
   switch (action.type) {
+  case 'SET_COURSE_NAME': {
+    return { ...state, courseName: action.data }
+  }
   case 'SET_PROGRAMME': {
     if (state.studyProgramme === action.data) {
       return { ...state, studyProgramme: '' }

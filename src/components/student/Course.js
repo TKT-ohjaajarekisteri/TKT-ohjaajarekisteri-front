@@ -9,7 +9,7 @@ const Course = ({ course, onChange }) => {
       <td className="name"> {course.course_name}</td>
       <td className="year">{course.year}</td>
       <td className="period">{course.period}</td>
-      <td className="checkbox">
+      <td className="checkbox listCheckbox">
         <CheckBox
           id={course.course_id}
           name={course.learningopportunity_id}
