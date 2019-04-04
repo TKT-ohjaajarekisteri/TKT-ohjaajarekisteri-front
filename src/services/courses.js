@@ -22,7 +22,7 @@ const getAll = async () => {
     const response = await axios.get(baseUrl, getConfig())
     return response.data
   } catch (error) {
-    // return error message
+    return { error: 'coud not get courses from db!' }
   }
 }
 
@@ -31,7 +31,7 @@ const getOne = async (id) => {
     const response = await axios.get(baseUrl + id, getConfig())
     return response.data
   } catch (error) {
-    // return error message
+    return { error: 'coud not not get course from db!' }
   }
 }
 
@@ -51,17 +51,13 @@ const getStudents = async (id) => {
 
 //get students for all courses
 const getSummary = async () => {
-  console.log('courses servicen getSummary metodi')
   try {
-    const response = await axios.get(url + 'api/courses/students/summary', getConfig())
-    console.log('courses servicen response________________________',response)
+    const response = await axios.get(url + 'api/courses/summary', getConfig())
     return response.data
   } catch (error) {
-    console.log('error')
+    return { error: 'coudnt not get courses and students from db!' }
   }
 }
-
-
 
 
 export default { getAll, getOne, getStudents, create, setToken, getSummary }

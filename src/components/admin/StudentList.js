@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { initializeStudents } from '../../reducers/studentReducer'
+import { initializeStudents } from '../../reducers/actionCreators/studentActions'
 
 const StudentList = (props) => {
   useEffect(() => {
@@ -31,6 +31,7 @@ const mapStateToProps = (state) => {
     studentsToShow
   }
 }
+
 
 export default connect(
   mapStateToProps,
