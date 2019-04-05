@@ -55,3 +55,7 @@
   .btn.toggleButton:hover {
     border-color: #6c757d;
   }
+
+  .summaryCourse {
+  color: #6c757d;
+  }

@@ -16,14 +16,14 @@ export const Summary = ({ initializeSummary, summaryToShow }) => {
   return (
     <div>
       <h2>All courses and applicants</h2>
-      <Table className='courseList' bordered hover>
+      <Table className='courseList' bordered hover >
         <thead>
           <tr>
             <th>Code</th>
             <th>Name</th>
             <th>Year</th>
             <th>Period</th>
-            <th>Student</th>
+            <th>Applicants</th>
             {/*<thead>
 
               <th>Student number</th>
@@ -35,6 +35,7 @@ export const Summary = ({ initializeSummary, summaryToShow }) => {
             </thead>*/}
           </tr>
         </thead>
+
         <tbody>
           {console.log(summaryToShow, 'kaikki')}
           {summaryToShow.summary
@@ -47,7 +48,7 @@ export const Summary = ({ initializeSummary, summaryToShow }) => {
         </tbody>
       </Table>
 
-    </div>
+    </div >
   )
 }
 
