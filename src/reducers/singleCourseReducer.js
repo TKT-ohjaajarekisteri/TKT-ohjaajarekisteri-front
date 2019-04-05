@@ -59,7 +59,7 @@ const singleCourseReducer = (state = initialState, action) => {
     return {
       ...state,
       applicants: modifiedApplicants,
-      email: { ...state.email, to: newEmailToField }
+      email: { ...state.email, to: newEmailToField, subject:course.name }
     }
   }
 

@@ -41,7 +41,7 @@ export const SingleCourse = ({
 
   const handleEmailToChange = (id) => (e) => {
     const email_to_checked = e.target.checked
-    setEmail(id, email_to_checked)
+    setEmail(id, email_to_checked) // lisää course info mukaan
   }
 
   const handleAcceptedChange = (id) => (e) => {
