@@ -23,7 +23,8 @@ export const Summary = ({ initializeSummary, summaryToShow }) => {
             <th>Name</th>
             <th>Year</th>
             <th>Period</th>
-            <thead>
+            <th>Student</th>
+            {/*<thead>
 
               <th>Student number</th>
               <th>First name</th>
@@ -31,7 +32,7 @@ export const Summary = ({ initializeSummary, summaryToShow }) => {
               <th>Email</th>
               <th>Phone</th>
 
-            </thead>
+            </thead>*/}
           </tr>
         </thead>
         <tbody>

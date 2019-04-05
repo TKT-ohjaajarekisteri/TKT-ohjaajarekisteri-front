@@ -11,25 +11,24 @@ const Summary = ({ course }) => {
       <td className="year">{course.year}</td>
       <td className="period">{course.period}</td>
 
-      <tbody>
+      {/* <tbody>
         {course.students.map(student =>
           <Student key={student.student_id} student={student} />
         )}
-      </tbody> 
+      </tbody>  */}
 
 
-      {/* <td className="student">
+      {/* <td className="student">*/}
       <tbody>
         {course.students.map(s =>
-          <div key={s.student_id}>
-            <tr>
-              <td>{s.student_number}</td>
-              <td> {s.first_names}{s.last_name}</td>
-              <td>{s.email}</td>
-              <td>{s.phonenumber}</td></tr>
-          </div>
+          <tr key={s.student_id}>
+            <td>{s.student_number}</td>
+            <td> {s.first_names}{s.last_name}</td>
+            <td>{s.email}</td>
+            <td>{s.phone}</td>
+          </tr>
         )}
-      </tbody>*/}
+      </tbody>
     </tr>
   )
 }
