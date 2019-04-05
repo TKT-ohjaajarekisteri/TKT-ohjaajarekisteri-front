@@ -15,7 +15,7 @@ export const Summary = ({ initializeSummary, summaryToShow }) => {
   )
   return (
     <div>
-      <h2>Hello World</h2>
+      <h2>All courses and applicants</h2>
       <Table className='courseList' bordered hover>
         <thead>
           <tr>
@@ -23,6 +23,15 @@ export const Summary = ({ initializeSummary, summaryToShow }) => {
             <th>Name</th>
             <th>Year</th>
             <th>Period</th>
+            <thead>
+
+              <th>Student number</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Email</th>
+              <th>Phone</th>
+
+            </thead>
           </tr>
         </thead>
         <tbody>
