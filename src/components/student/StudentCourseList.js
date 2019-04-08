@@ -2,21 +2,22 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getStudentCourses, deleteAppliedCourse } from '../../reducers/actionCreators/studentActions'
 import CourseWithDel from './CourseWithDel'
-import { notify } from '../../reducers/actionCreators/notificationActions'
 import { Table } from 'react-bootstrap'
 
-export const StudentCourseList = ({ notify, loggedUser, courses, id, getStudentCourses, deleteAppliedCourse }) => {
+export const StudentCourseList = ({ loggedUser, courses, id, getStudentCourses, deleteAppliedCourse }) => {
 
   useEffect(() => {
     getStudentCourses(id)
+    console.log('studentcourselistin useEffectin getstudentcourses', getStudentCourses(id))
   }, [])
 
 
   //event handler for deleting specific course application, tells studentactions to deleteApliedCourse
   const removeApply = (id) => {
     return () => {
-      deleteAppliedCourse(id, loggedUser.user.user_id)
-      notify('Course is removed', 5)
+      if (window.confirm('Do you want to delete this course from your application?')) {
+        deleteAppliedCourse(id, loggedUser.user.user_id)
+      }
     }
   }
 
@@ -34,6 +35,7 @@ export const StudentCourseList = ({ notify, loggedUser, courses, id, getStudentC
           </tr>
         </thead>
         <tbody>
+          {console.log('student courselist courses', courses)}
           {courses.map(course =>
             <CourseWithDel course={course} key={course.course_id} onClick={removeApply} />
           )}
@@ -53,5 +55,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { getStudentCourses, deleteAppliedCourse, notify }
+  { getStudentCourses, deleteAppliedCourse }
 )(StudentCourseList)

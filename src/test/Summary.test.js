@@ -47,7 +47,7 @@ describe('<Summary />', () => {
         <Summary {...props} />
       </Router>
     )
-    console.log(wrapper.debug())
+    //  console.log(wrapper.debug())
 
 
     expect(wrapper.find('.courseName').text()).toContain('Randomized Algorithms I')

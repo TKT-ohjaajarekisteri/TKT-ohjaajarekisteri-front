@@ -5,12 +5,13 @@ import { CourseApplicationList } from '../components/student/CourseApplicationLi
 
 describe('student/ <CourseApplicationList />', () => {
   let wrapper, props
-  beforeEach(() => {
+  beforeAll(() => {
     props = {
       initializeCourseApplication: jest.fn(),
       filter: {
         studyProgramme: '',
-        period: ''
+        period: '',
+        courseName: ''
       },
       setChecked: jest.fn(),
       sendApplication: jest.fn(),
@@ -26,7 +27,7 @@ describe('student/ <CourseApplicationList />', () => {
         {
           course_id: 1,
           learningopportunity_id: 'TKT202020',
-          name: 'OHTU',
+          course_name: 'OHTU',
           year: 2019,
           period: 2,
           checked: false
@@ -168,7 +169,7 @@ describe('student/ <CourseApplicationList />', () => {
     })
 
     it('only renders courses matching filter', () => {
-      let updatedProps = { ...props, filter: { studyProgramme: 'CSM', period: '2' } }
+      let updatedProps = { ...props, filter: { ...props.filter, studyProgramme: 'CSM', period: '2' } }
       wrapper = mount(
         <Router>
           <CourseApplicationList {...updatedProps} />

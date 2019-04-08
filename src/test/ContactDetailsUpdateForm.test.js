@@ -4,33 +4,41 @@ import { mount } from 'enzyme'
 import { ContactDetailsUpdateForm } from '../components/student/ContactDetailsUpdateForm'
 import { Provider } from 'react-redux'
 import store from '../reducers/store'
+import 'jest-dom/extend-expect'
+import { render } from 'react-testing-library'
 
 describe('CourseDetailsUpdateForm', () => {
   let wrapper, props
   beforeEach(() => {
     props = {
+      updateEmail: jest.fn(),
+      updatePhone: jest.fn(),
+      updateExperience: jest.fn(),
       updateLoggedUser: jest.fn(),
       getContactInformation: jest.fn(),
       notify: jest.fn(),
       id: 1,
       defaultInput: {
-        phone: '+358 000 555',
-        email: 'example@mail.com',
-        experience: 'no experience',
-        no_english: false
+        first_names: 'Tiina',
+        last_name: 'Testaaja',
+        student_number: '00000000'
       },
       loggedUser: {
         user: {
           user_id: 1,
           token: '...'
-        }
+        },
+        phone: '050 00000',
+        email: 'testitiina@helsinki.fi',
+        experience: 'Testing is my passion',
+        no_english: false
       }
     }
   })
 
-  afterEach(() => {
-    wrapper.unmount()
-  })
+  // afterEach(() => {
+  //   wrapper.unmount()
+  // })
 
   it('renders self', () => {
     wrapper = mount(
@@ -42,7 +50,7 @@ describe('CourseDetailsUpdateForm', () => {
     )
     const form = wrapper.find('.contactDetailsUpdateForm')
     expect(form.length).toBe(1)
-
+    wrapper.unmount()
   })
 
   describe('useEffect', () => {
@@ -54,12 +62,29 @@ describe('CourseDetailsUpdateForm', () => {
           </Router>
         </Provider>
       )
+
       setTimeout(() => {
         expect(props.getContactInformation).toHaveBeenCalledTimes(1)
       }, 50)
+      wrapper.unmount()
     })
-  })
 
-  //Todo: test send button
+    it('renders defaultInput', () => {
+
+      const component = render(
+        <Provider store={ store }>
+          <Router>
+            <ContactDetailsUpdateForm {...props} />
+          </Router>
+        </Provider>
+      )
+
+      expect(component.container).toHaveTextContent(
+        'Tiina Testaaja 0000000'
+      )
+      //console.log(component.debug())
+    })
+
+  })
 
 })

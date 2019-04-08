@@ -17,35 +17,50 @@ const getConfig = () => {
   }
 }
 
-//gets all sudents
+//gets all students
 const getAll = async () => {
-  const response = await axios.get(baseUrl, getConfig())
-  console.log('RESPONSE from students SERVICE',response)
-  return response.data
-}
-
-//gets a single sudent by id **CHECK SAFETY**
-const getStudent= async (id) => {
   try {
-    const response = await axios.get(`api/students/${id}/`, getConfig())
-    console.log('service getStudentin response.data from back',response.data)
+    const response = await axios.get(baseUrl, getConfig())
     return response.data
   } catch (error) {
-    console.log(error)
-    return { error: 'Information retrieval failed!' }
+    if(error===400) {
+      //console.log('studentsin getall error 400', error)
+      return { error: 'Could not get studentlist from db' }
+    }
+    if (error.message==='Could not get studentlist from db') {
+      //console.log('studentsin getall errormessage 400', error.message)
+      return { error: 'Could not get studentlist from db' }
+    }
   }
 }
 
+//gets a single student by id
+const getStudent= async (id) => {
+  try {
+    const response = await axios.get(`api/students/${id}/`, getConfig())
+    //console.log('service getStudentin response.data from back',response.data)
+
+    return response.data
+  } catch (error) {
+    if(error===400) {
+      //console.log('students servicen get student error', error)
+      return { error: 'Could not get student from db' }
+    }
+    if (error===500) {
+      return { error: 'Internal server error' }
+    }
+  }
+}
 //creates students contactDetails
 const update = async (content, id) => {
   try {
-    console.log('studentservicen updaten content', content)
+    //console.log('studentservicen updaten content', content)
     const response = await axios.put(url + `api/students/${id}/`, content, getConfig())
-    console.log('studentservicen updaten response', response)
+    //console.log('studentservicen updaten response', response)
     return response.data
   } catch (error) {
-    console.log(error)
-    return { error: 'Invalid email address!' }
+    //console.log(error)
+    return { error: 'Details could not be updated' }
   }
 }
 
@@ -53,24 +68,34 @@ const update = async (content, id) => {
 const apply = async (id, content) => {
   try {
     const response = await axios.post(url + `api/students/${id}/courses/apply`, content, getConfig())
-    console.log('Returned from server')
+    //console.log('Returned from server')
     return response.data
   } catch (error) {
-    console.log(error)
+    //console.log(error)
     return { error: 'Something went wrong' }
   }
 }
 
 //gets all courses of specific student
 const getCourses = async (id) => {
-  const response = await axios.get(baseUrl + `/${id}/courses`, getConfig())
-  return response.data
+  try {
+    const response = await axios.get(baseUrl + `/${id}/courses`, getConfig())
+    return response.data
+  } catch (error) {
+    //console.log(error)
+    return { error: 'Something went wrong' }
+  }
 }
 
 //removes student's application from the course
 const deleteApplication = async (student_id, course_id) => {
-  const response = await axios.delete(baseUrl + `/${student_id}/courses/${course_id}`, getConfig())
-  return response.data
+  try {
+    const response = await axios.delete(baseUrl + `/${student_id}/courses/${course_id}`, getConfig())
+    return response.data
+  } catch (error) {
+    //console.log(error)
+    return { error: 'Something went wrong' }
+  }
 }
 
 export default {

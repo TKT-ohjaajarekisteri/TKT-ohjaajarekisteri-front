@@ -5,7 +5,8 @@ import TogglableButton from '../common/TogglableButton'
 import { initializeCourseApplication, setChecked, sendApplication } from '../../reducers/actionCreators/courseApplicationActions'
 import { Table, Button } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
-import { initializeFilter, setProgramme, setPeriod } from '../../reducers/actionCreators/filterActions'
+import { initializeFilter, setProgramme, setPeriod, setCourseName } from '../../reducers/actionCreators/filterActions'
+import { Form } from 'react-bootstrap'
 
 export const CourseApplicationList = (props) => {
 
@@ -39,6 +40,11 @@ export const CourseApplicationList = (props) => {
   const handleChange = (id) => (e) => {
     const isChecked = e.target.checked
     props.setChecked(id, isChecked)
+  }
+
+  const handleCourseNameChange = (event) => {
+    event.preventDefault()
+    props.setCourseName(event.target.value)
   }
 
   const onlyUnique = (value, index, self) => {
@@ -96,20 +102,28 @@ export const CourseApplicationList = (props) => {
       <div style={{ float: 'right' }}>
         <div>&nbsp;</div>
         <Button className="buttonApply" onClick={handleSubmit} variant="dark" type="submit" >
-          apply
+          Apply
         </Button>
+      </div>
+
+      <div style={{ float: 'right', paddingRight: 15 }}>
+        <div style={{ color: '#6c757d' }}> Filter:</div>
+        <Form.Control
+          className='filterInput'
+          value={props.filter.courseName}
+          onChange={handleCourseNameChange}/>
       </div>
 
 
 
-      <Table bordered hover>
+      <Table bordered hover size='sm'>
         <thead>
           <tr>
             <th>Code</th>
             <th>Name</th>
             <th>Year</th>
             <th>Period</th>
-            <th>To apply</th>
+            <th>Apply</th>
           </tr>
         </thead>
         <tbody>
@@ -117,6 +131,12 @@ export const CourseApplicationList = (props) => {
             .filter(course => {
               let period = course.period.toString(10)
               return (
+                (
+                  course.course_name.toLowerCase().includes(props.filter.courseName.toLowerCase())
+                  ||
+                  course.learningopportunity_id.toLowerCase().includes(props.filter.courseName.toLowerCase())
+                )
+                &&
                 course.learningopportunity_id.includes(props.filter.studyProgramme)
                 &&
                 period.includes(props.filter.period)
@@ -141,6 +161,7 @@ const mapStateToProps = (state) => {
     loading: state.courseApplication.coursesLoading,
     loggedUser: state.loggedUser.loggedUser,
     filter: {
+      courseName: state.filter.courseName,
       studyProgramme: state.filter.studyProgramme,
       period: state.filter.period
     }
@@ -156,6 +177,7 @@ export default withRouter(connect(
     sendApplication,
     initializeFilter,
     setProgramme,
-    setPeriod
+    setPeriod,
+    setCourseName
   }
 )(CourseApplicationList))

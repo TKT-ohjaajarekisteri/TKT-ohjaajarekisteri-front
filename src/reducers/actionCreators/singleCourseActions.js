@@ -1,4 +1,4 @@
-import courseService from '../services/courses'
+import courseService from '../../services/courses'
 
 export const initializeSingleCourse = (id) => {
   return async (dispatch) => {
@@ -7,12 +7,95 @@ export const initializeSingleCourse = (id) => {
       type: 'INIT_COURSE',
       data: course
     })
-
+    // Fetch applicants
     const applicants = await courseService.getStudents(id)
+    // Add field for controlling checkbox
+    const content = applicants.map(a => {
+      return {
+        ...a,
+        email_to_checked: false,
+        accepted_checked: a.accepted,
+        groups_textbox: a.groups
+      }
+    })
     dispatch({
       type: 'INIT_APPLICANTS',
-      data: applicants
+      data: content
     })
   }
 }
-export default { initializeSingleCourse }
+
+export const setStudentAccepted = (student_id, accepted_checked) => {
+  return async (dispatch) => {
+    dispatch({
+      type: 'SET_STUDENT_ACCEPTED_STATE',
+      data: {
+        student_id,
+        accepted_checked
+      }
+    })
+  }
+}
+
+export const setStudentGroups = (student_id, groups_textbox) => {
+  return async (dispatch) => {
+    dispatch({
+      type: 'SET_STUDENT_GROUPS_STATE',
+      data: {
+        student_id,
+        groups_textbox
+      }
+    })
+  }
+}
+
+export const sendAcceptedModified = (course_id, modifiedApplicants) => {
+  return async (dispatch) => {
+    const applicants = await courseService.sendAcceptedModified(course_id, modifiedApplicants)
+    if (applicants.error) {
+      dispatch({
+        type: 'NOTIFY',
+        data: 'Could not update course.'
+      })
+      setTimeout(() => {
+        dispatch({
+          type: 'CLEAR',
+        })
+      }, 3000)
+    } else {
+      dispatch({
+        type: 'NOTIFY',
+        data: 'Changes have been saved.'
+      })
+      setTimeout(() => {
+        dispatch({
+          type: 'CLEAR',
+        })
+      }, 3000)
+      const content = applicants.map(a => {
+        return {
+          ...a,
+          email_to_checked: false,
+          accepted_checked: a.accepted,
+          groups_textbox: a.groups
+        }
+      })
+      dispatch({
+        type: 'INIT_APPLICANTS',
+        data: content
+      })
+    }
+  }
+}
+
+export const setEmail = (student_id, email_to_checked) => {
+  return async (dispatch) => {
+    dispatch({
+      type: 'SET_EMAIL_CHECKED',
+      data: {
+        student_id,
+        email_to_checked
+      }
+    })
+  }
+}

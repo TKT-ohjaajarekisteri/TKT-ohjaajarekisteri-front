@@ -9,6 +9,7 @@ const initializeCourseApplication = () => {
     })
     // Fetch courses
     const courses = await courseService.getAll()
+    // Add field for controlling checkbox
     const content = courses.map(c => {
       return {
         ...c,
@@ -38,7 +39,6 @@ const sendApplication = (student_id, course_ids) => {
   return async (dispatch) => {
     await studentService.apply(student_id, { course_ids: course_ids })
     const courses = await studentService.getCourses(student_id)
-    console.log('after application query')
     dispatch({
       type: 'INIT_STUDENT_COURSES',
       data: courses

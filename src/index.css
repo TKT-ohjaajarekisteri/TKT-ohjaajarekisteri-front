@@ -56,6 +56,22 @@
     border-color: #6c757d;
   }
 
-  .summaryCourse {
-  color: #6c757d;
+  /* adjust checkbox  */
+
+  .listCheckbox {
+    text-align: center;
+  }
+
+  /* adjust filter input box */
+
+  .filterInput {
+    margin: 5px 10px 20px 0px;
+    color:  #6c757d;
+    border-color: rgb(240, 140, 0);
+  }
+
+  .filterInput:focus {
+    box-shadow: none !important;
+    color:  #6c757d;
+    border-color: rgb(240, 140, 0);
   }

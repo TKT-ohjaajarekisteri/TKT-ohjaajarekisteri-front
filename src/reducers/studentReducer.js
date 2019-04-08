@@ -20,7 +20,7 @@ const studentReducer = (state = initialState, action) => {
       ...state,
       students: action.data
     }
-
+  // creates contact info when student logs in for the first time
   case 'CREATE_STUDENT_CONTACTINFO':
     if (state.find(student => student.student_id === action.data.student_id)) {
       return state
@@ -29,20 +29,20 @@ const studentReducer = (state = initialState, action) => {
       ...state,
       students: action.data
     }
-
+  // gets student courselist for student update info form page
   case 'INIT_STUDENT_COURSES':
     return {
       ...state,
       studentCourses: action.data
     }
-
+  // for the delete button in the contact details update form
   case 'STUDENT_APPLICATION_DELETE': {
     return {
       ...state,
       studentCourses: state.studentCourses.filter(c => c.course_id !== action.data.id)
     }
   }
-
+  // initilizes the contact information for contact info update form
   case 'INIT_CONTACT_INFORMATION': {
     //console.log('INIT_CONTACT_INFORMATION actionData Reducer', action.data)
 
@@ -53,10 +53,9 @@ const studentReducer = (state = initialState, action) => {
       email: action.data.email,
       experience: action.data.experience,
       no_english: action.data.no_english
-
     }
   }
-
+  // these next four methods are changing the fields for contact details update form
   case 'UPDATE_PHONE': {
     return {
       ...state,

@@ -4,13 +4,15 @@ import Course from './Course'
 import TogglableButton from '../common/TogglableButton'
 import { initializeCourses } from '../../reducers/actionCreators/courseActions'
 import { Table } from 'react-bootstrap'
-import { initializeFilter, setProgramme, setPeriod } from '../../reducers/actionCreators/filterActions'
+import { initializeFilter, setProgramme, setPeriod, setCourseName } from '../../reducers/actionCreators/filterActions'
+import { Form } from 'react-bootstrap'
 
 export const CourseList = ({
   initializeCourses,
   initializeFilter,
   setProgramme,
   setPeriod,
+  setCourseName,
   filter,
   courses
 }) => {
@@ -32,6 +34,11 @@ export const CourseList = ({
   const handlePeriodChange = (event) => {
     event.preventDefault()
     setPeriod(event.target.name)
+  }
+
+  const handleCourseNameChange = (event) => {
+    event.preventDefault()
+    setCourseName(event.target.value)
   }
 
   const onlyUnique = (value, index, self) => {
@@ -84,8 +91,15 @@ export const CourseList = ({
             )
           })}
       </div>
+      <div style={{ float: 'right' }}>
+        <div style={{ color: '#6c757d' }}> Filter:</div>
+        <Form.Control
+          className='filterInput'
+          value={filter.course_name}
+          onChange={handleCourseNameChange}/>
+      </div>
 
-      <Table className='courseList' bordered hover>
+      <Table className='courseList' size='sm' bordered hover>
         <thead>
           <tr>
             <th>Code</th>
@@ -99,6 +113,12 @@ export const CourseList = ({
             .filter(course => {
               let period = course.period.toString(10)
               return (
+                (
+                  course.course_name.toLowerCase().includes(filter.courseName.toLowerCase())
+                  ||
+                  course.learningopportunity_id.toLowerCase().includes(filter.courseName.toLowerCase())
+                )
+                &&
                 course.learningopportunity_id.includes(filter.studyProgramme)
                 &&
                 period.includes(filter.period)
@@ -120,6 +140,7 @@ const mapStateToProps = (state) => {
   return {
     courses: state.courses,
     filter: {
+      courseName: state.filter.courseName,
       studyProgramme: state.filter.studyProgramme,
       period: state.filter.period
     }
@@ -128,5 +149,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { initializeCourses, initializeFilter, setProgramme, setPeriod }
+  { initializeCourses, initializeFilter, setProgramme, setPeriod, setCourseName }
 )(CourseList)

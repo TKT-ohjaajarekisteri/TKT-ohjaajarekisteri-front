@@ -26,8 +26,17 @@ const updateLoggedUser = (content, id) => {
   return async (dispatch) => {
     const response = await studentService.update(content, id)
     console.log('loginactionin updateloggeduser', response)
-    if (response.error) {
-      // handle error
+    if (response.error || response===undefined) {
+      console.log('loginactionin updateloggeduserin error', response.error)
+      dispatch({
+        type: 'NOTIFY',
+        data: 'Saving failed!'
+      })
+      setTimeout(() => {
+        dispatch({
+          type: 'CLEAR',
+        })
+      }, 3000)
     } else {
       let loggedUser = JSON.parse(window.localStorage.getItem('loggedInUser'))
       loggedUser.user.email = true
@@ -36,9 +45,19 @@ const updateLoggedUser = (content, id) => {
         type: 'UPDATE_LOGGED_USER',
         data: loggedUser
       })
+      dispatch({
+        type: 'NOTIFY',
+        data: 'Information updated'
+      })
+      setTimeout(() => {
+        dispatch({
+          type: 'CLEAR',
+        })
+      }, 3000)
     }
   }
 }
+
 
 const login = (username, password) => {
   return async (dispatch) => {
