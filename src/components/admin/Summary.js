@@ -1,22 +1,21 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { initializeSummary } from '../../reducers/actionCreators/summaryActions'
-import SummaryCourse from './SummaryCourse'
 import { Table } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 
+export const Summary = ({ initializeSummary, summaryList }) => {
 
-export const Summary = ({ initializeSummary, summaryToShow }) => {
   useEffect(() => {
     initializeSummary()
-
   },
-    []
+  []
   )
   return (
     <div>
       <h2>All courses and applicants</h2>
-      <Table className='courseList' bordered hover >
+      <Table className='summaryCourseList' bordered hover size="sm" >
         <thead>
           <tr>
             <th>Code</th>
@@ -24,26 +23,31 @@ export const Summary = ({ initializeSummary, summaryToShow }) => {
             <th>Year</th>
             <th>Period</th>
             <th>Applicants</th>
-            {/*<thead>
-
-              <th>Student number</th>
-              <th>First name</th>
-              <th>Last name</th>
-              <th>Email</th>
-              <th>Phone</th>
-
-            </thead>*/}
           </tr>
         </thead>
-
         <tbody>
-          {console.log(summaryToShow, 'kaikki')}
-          {summaryToShow.summary
+          {summaryList.filter(course => course.students.length !== 0)
             .map(course =>
-              <SummaryCourse
-                course={course}
-                key={course.course_id}
-              />
+              <tr key={course.course_id}>
+                <td >{course.course_id}</td>
+                <td className="courseName">{course.course_name}</td>
+                <td>{course.year}</td>
+                <td>{course.period}</td>
+                <td>
+                  <Table className='summaryStudentList' bordered hover size="sm">
+                    <tbody>
+                      {course.students.map(s =>
+                        <tr key={s.student_id}>
+                          <td><Link to={`students/${s.student_id}`}>{s.student_number}</Link></td>
+                          <td className="studentName"> {s.first_names}{s.last_name}</td>
+                          <td width='20px'> {s.Application.accepted ? 'x' : ''}</td>
+                          <td width='70px'> {s.no_english ? '' : 'English'}</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </Table>
+                </td>
+              </tr>
             )}
         </tbody>
       </Table>
@@ -53,13 +57,11 @@ export const Summary = ({ initializeSummary, summaryToShow }) => {
 }
 
 
-
-
 const mapStateToProps = (state) => {
-  //const summaryToShow=state.summary
+  //const summaryList=state.summary
   console.log(state, 'koko store summarysta')
   return {
-    summaryToShow: state.summary
+    summaryList: state.summary.summary
   }
 }
 
