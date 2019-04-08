@@ -11,6 +11,7 @@ import ContactDetailsUpdateForm from './components/student/ContactDetailsUpdateF
 import AdminCourseList from './components/admin/CourseList'
 import CourseApplicationList from './components/student/CourseApplicationList'
 import SingleCourse from './components/admin/SingleCourse'
+import SingleStudent from './components/admin/SingleStudent'
 import PrivateRoute from './components/common/PrivateRoute'
 import Notification from './components/common/Notification'
 
@@ -95,6 +96,13 @@ const App = (props) => {
                   condition={isAdmin && loggedUser && isLogged}
                   render={({ match }) => <SingleCourse courseId={match.params.id} />}
                 />
+                <Route
+                  exact path="/admin/courses/students/:id"
+                  redirectPath="/"
+                  condition={isAdmin && loggedUser && isLogged}
+                  render={({ match }) => <SingleStudent studentId={match.params.id} />}
+                />
+
               </PrivateRoute>
 
               <PrivateRoute
