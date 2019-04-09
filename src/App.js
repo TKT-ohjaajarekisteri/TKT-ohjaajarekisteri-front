@@ -97,10 +97,10 @@ const App = (props) => {
                   render={({ match }) => <SingleCourse courseId={match.params.id} />}
                 />
                 <Route
-                  exact path="/admin/courses/students/:id"
+                  exact path="/admin/courses/:id1/students/:id2"
                   redirectPath="/"
                   condition={isAdmin && loggedUser && isLogged}
-                  render={({ match }) => <SingleStudent studentId={match.params.id} />}
+                  render={({ match }) => <SingleStudent courseId={match.params.id1} studentId={match.params.id2} />}
                 />
 
               </PrivateRoute>

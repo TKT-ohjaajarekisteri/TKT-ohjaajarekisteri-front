@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 import { getSingleStudent } from '../../reducers/actionCreators/singleStudentActions'
 import { Table } from 'react-bootstrap'
 
-export const SingleStudent = ({ studentId, getSingleStudent } ) => { //student
+export const SingleStudent = ({ courseId, studentId, getSingleStudent } ) => { //student
   // console.log('singlestudentin saama id', studentId)
   //console.log(loggedUser, 'loggedUser from singleStudent')
 
   useEffect(() => {
-    // console.log('singlestudentin useeffectin id', studentId)
-    getSingleStudent(studentId)
+    console.log('singlestudentin useeffectin idt', studentId, courseId)
+    getSingleStudent(courseId, studentId)
   }, [])
 
   return(

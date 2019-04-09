@@ -85,7 +85,7 @@ export const SingleCourse = ({
         <tbody>
           {applicants.map(student =>
             <tr className='Student' key={student.student_id}>
-              <td><Link to={`students/${student.student_id}`}>{student.student_number}</Link></td>
+              <td><Link to={`${course.course_id}/students/${student.student_id}`}>{student.student_number}</Link></td>
               <td>{student.first_names}</td>
               <td>{student.last_name}</td>
               <td>{student.email}</td>
