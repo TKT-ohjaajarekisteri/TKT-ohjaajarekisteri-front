@@ -7,12 +7,9 @@ export const getSingleStudent = (courseId, studentId) => {
     const students = await courseService.getStudents(courseId)
     console.log('singlestudentactionin students', students)
     
-    // const content= applicants.find(function(student) {
-    //   console.log('studentactionin student.sudent_id ja studentIdfunktiossa', student.student_id, studentId)
-    //   return student.student_id === studentId
-    // })
-    const content = students.find(student => {
-      return student.student_id === studentId
+    const content = students.find(s => {
+      console.log('studentactionin student.sudent_id ja studentIdfunktiossa', s.student_id, Number(studentId))
+      return s.student_id === Number(studentId)
     })
 
     console.log('singleStudentActionsin singlestudent', content)

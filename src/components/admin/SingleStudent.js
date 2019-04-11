@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { getSingleStudent } from '../../reducers/actionCreators/singleStudentActions'
 import { Table } from 'react-bootstrap'
 
-export const SingleStudent = ({ courseId, studentId, getSingleStudent } ) => { //student
-  // console.log('singlestudentin saama id', studentId)
+export const SingleStudent = ({ courseId, studentId, getSingleStudent, singleStudent } ) => {
+  console.log('singlestudentin student', singleStudent)
   //console.log(loggedUser, 'loggedUser from singleStudent')
 
   useEffect(() => {
@@ -28,14 +28,14 @@ export const SingleStudent = ({ courseId, studentId, getSingleStudent } ) => { /
           </tr>
         </thead>
         <tbody>
-          {/* <tr className='Student' key={student.student_id}>
-            <td>{student.student_number}</td>
-            <td>{student.first_names}</td>
-            <td>{student.last_name}</td>
-            <td>{student.email}</td>
-            <td>{student.phone}</td>
-            <td>{student.no_english}</td>
-          </tr> */}
+          <tr className='Student' key={singleStudent.student_id}>
+            <td>{singleStudent.student_number}</td>
+            <td>{singleStudent.first_names}</td>
+            <td>{singleStudent.last_name}</td>
+            <td>{singleStudent.email}</td>
+            <td>{singleStudent.phone}</td>
+            <td>{singleStudent.no_english}</td>
+          </tr>
         </tbody>
       </Table>
       <Table bordered hover>
@@ -45,9 +45,9 @@ export const SingleStudent = ({ courseId, studentId, getSingleStudent } ) => { /
           </tr>
         </thead>
         <tbody>
-          {/* <tr className='Experience' key={student.student_id}>
-            <td>{student.experience}</td>
-          </tr> */}
+          <tr className='Experience' key={singleStudent.student_id}>
+            <td>{singleStudent.experience}</td>
+          </tr>
         </tbody>
       </Table>
 
@@ -56,8 +56,9 @@ export const SingleStudent = ({ courseId, studentId, getSingleStudent } ) => { /
 }
 
 const mapStateToProps = (state) => {
+  console.log('SingleStudentin state.singleStudent', state.singleStudent)
   return {
-    // student: state.SingleStudent.student
+    singleStudent: state.singleStudent
   }
 }
 
