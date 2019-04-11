@@ -13,7 +13,7 @@ const initialState = {
 }
 
 const studentReducer = (state = initialState, action) => {
-  console.log(action.type, ' ', action.data)
+  //console.log(action.type, 'INIT STUDENTS ', action.data)
   switch (action.type) {
   case 'INIT_STUDENTS':
     return {
@@ -44,7 +44,8 @@ const studentReducer = (state = initialState, action) => {
   }
   // initilizes the contact information for contact info update form
   case 'INIT_CONTACT_INFORMATION': {
-    console.log('actionData Reducer', action.data)
+    //console.log('INIT_CONTACT_INFORMATION actionData Reducer', action.data)
+
     return {
       ...state,
       contactInformation: action.data,
@@ -58,28 +59,24 @@ const studentReducer = (state = initialState, action) => {
   case 'UPDATE_PHONE': {
     return {
       ...state,
-      //contactInformation:action.data
       phone: action.data
     }
   }
   case 'UPDATE_EMAIL': {
     return {
       ...state,
-      // contactInformation:action.data
       email: action.data
     }
   }
   case 'UPDATE_EXPERIENCE': {
     return {
       ...state,
-      //contactInformation:action.data
       experience: action.data
     }
   }
   case 'UPDATE_LANGUAGE': {
     return {
       ...state,
-      //contactInformation:action.data
       no_english: action.data
     }
   }
