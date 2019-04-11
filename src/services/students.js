@@ -37,7 +37,7 @@ const getAll = async () => {
 //gets a single student by id
 const getStudent= async (id) => {
   try {
-    const response = await axios.get(`api/students/${id}/`, getConfig())
+    const response = await axios.get(url + `api/students/${id}/`, getConfig())
     //console.log('service getStudentin response.data from back',response.data)
 
     return response.data
@@ -51,6 +51,26 @@ const getStudent= async (id) => {
     }
   }
 }
+
+//gets a single student by id for admin
+const getSingleStudent= async (id) => {
+  try {
+    const response = await axios.get(url + `api/students/${id}/admin`, getConfig())
+    //console.log('service getStudentin response.data from back',response.data)
+
+    return response.data
+  } catch (error) {
+    if(error===400) {
+      //console.log('students servicen get student error', error)
+      return { error: 'Could not get student from db' }
+    }
+    if (error===500) {
+      return { error: 'Internal server error' }
+    }
+  }
+}
+
+
 //creates students contactDetails
 const update = async (content, id) => {
   try {
@@ -99,5 +119,5 @@ const deleteApplication = async (student_id, course_id) => {
 }
 
 export default {
-  getAll, setToken, update, apply, getCourses, deleteApplication, getStudent
+  getAll, setToken, update, apply, getCourses, deleteApplication, getStudent, getSingleStudent
 }

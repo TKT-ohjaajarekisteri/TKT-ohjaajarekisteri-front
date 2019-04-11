@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 import { getSingleStudent } from '../../reducers/actionCreators/singleStudentActions'
 import { Table } from 'react-bootstrap'
 
-export const SingleStudent = ({ courseId, studentId, getSingleStudent, student }) => {
+export const SingleStudent = ({ studentId, getSingleStudent, student }) => {
   console.log('singlestudentin student', student)
 
   //console.log('singlestudentin student email', singleStudent.email)
   useEffect(() => {
-    console.log('singlestudentin useeffectin idt', studentId, courseId)
-    getSingleStudent(courseId, studentId)
+    console.log('singlestudentin useeffectin idt', studentId)
+    getSingleStudent(studentId)
   }, [])
 
   return(
@@ -28,14 +28,15 @@ export const SingleStudent = ({ courseId, studentId, getSingleStudent, student }
           </tr>
         </thead>
         <tbody>
-          {/* <tr className='Student' key={student.student_id}>
+          {console.log('single studentin student bodystä', student)}
+          <tr className='Student' key={student.student_id}>
             <td>{student.student_number}</td>
             <td>{student.first_names}</td>
             <td>{student.last_name}</td>
             <td>{student.email}</td>
             <td>{student.phone}</td>
-            <td>{student.no_english}</td>
-          </tr> */}
+            <td>{student.no_english ? '' : 'English'}</td>
+          </tr>
         </tbody>
       </Table>
       <Table bordered hover>
@@ -45,9 +46,9 @@ export const SingleStudent = ({ courseId, studentId, getSingleStudent, student }
           </tr>
         </thead>
         <tbody>
-          {/* <tr className='Experience' key={singleStudent.student_id}>
-            <td>{singleStudent.experience}</td>
-          </tr> */}
+          <tr className='Experience' key={student.student_id}>
+            <td>{student.experience}</td>
+          </tr>
         </tbody>
       </Table>
 

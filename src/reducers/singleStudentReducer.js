@@ -1,5 +1,5 @@
 const initialState = {
-  singleStudent:null
+  singleStudent:{}
 }
 
 const singleStudentReducer = (state = initialState, action) => {

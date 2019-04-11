@@ -24,13 +24,13 @@ const App = (props) => {
     props.initLoggedUser()
   }, [])
 
-  const { loggedUser, loadingUser } = props
+  const { loggedUser } = props  //loadingUser poistettu
   const hasContactDetails = (
     loggedUser &&
     loggedUser.user.role === 'student' &&
     loggedUser.user.email)
   const isAdmin = loggedUser && loggedUser.user.role === 'admin'
-  const isLogged = loadingUser === false
+  //const isLogged = loadingUser === false
 
   return (
     <div>
@@ -89,18 +89,23 @@ const App = (props) => {
                 redirectPath="/login"
                 condition={loggedUser && isAdmin}
               >
+
                 <Route exact path="/admin/courses" render={() => <AdminCourseList />} />
                 <Route
                   exact path="/admin/courses/:id"
-                  redirectPath="/"
-                  condition={isAdmin && loggedUser && isLogged}
                   render={({ match }) => <SingleCourse courseId={match.params.id} />}
                 />
+              </PrivateRoute>
+
+              {/* THIS ROUTE PROTECTS ALL ROUTES UNDER "/students" */}
+              <PrivateRoute
+                path="/students"
+                redirectPath="/login"
+                condition={loggedUser && isAdmin}
+              >
                 <Route
-                  exact path="/admin/courses/:id1/students/:id2"
-                  redirectPath="/"
-                  condition={isAdmin && loggedUser && isLogged}
-                  render={({ match }) => <SingleStudent courseId={match.params.id1} studentId={match.params.id2} />}
+                  exact path="/students/:id/admin"
+                  render={({ match }) => <SingleStudent studentId={match.params.id} />}
                 />
 
               </PrivateRoute>
@@ -155,7 +160,7 @@ const mapStateToProps = (state) => {
   console.log(state, 'APISTA koko store')
   return {
     loggedUser: state.loggedUser.loggedUser,
-    loadingUser: state.loggedUser.loadingUser
+    //loadingUser: state.loggedUser.loadingUser
   }
 }
 
