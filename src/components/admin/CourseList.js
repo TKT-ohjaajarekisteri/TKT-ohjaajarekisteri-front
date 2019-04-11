@@ -74,7 +74,7 @@ export const CourseList = ({
       </div>
       <div style={{ float: 'left' }}>
         <div style={{ color: '#6c757d' }}>Period:</div>
-        {courses
+        {courses && courses
           .map(c => c.period)
           .filter(onlyUnique)
           .sort()
@@ -96,7 +96,7 @@ export const CourseList = ({
         <Form.Control
           className='filterInput'
           value={filter.course_name}
-          onChange={handleCourseNameChange}/>
+          onChange={handleCourseNameChange} />
       </div>
 
       <Table className='courseList' size='sm' bordered hover>

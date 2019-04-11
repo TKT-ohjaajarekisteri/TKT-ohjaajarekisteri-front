@@ -76,6 +76,7 @@ export const SingleCourse = ({
             <th>Student number</th>
             <th>First name</th>
             <th>Last name</th>
+            <th>Language</th>
             <th>Email</th>
             <th>Groups</th>
             <th>Email to</th>
@@ -88,6 +89,7 @@ export const SingleCourse = ({
               <td>{student.student_number}</td>
               <td>{student.first_names}</td>
               <td>{student.last_name}</td>
+              <td>{student.no_english ? '' : 'English'}</td>
               <td>{student.email}</td>
               <td>
                 <input type='number' id={student.student_number} onChange={handleGroupsChange(student.student_id)} defaultValue={student.groups_textbox} style={{ width: 50 }} min='0'></input>
