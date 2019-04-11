@@ -39,7 +39,7 @@ export const Summary = ({ initializeSummary, summaryList }) => {
                       {course.students.map(s =>
                         <tr key={s.student_id} >
                           <td><Link to={`students/${s.student_id}`}>{s.student_number}</Link></td>
-                          <td className="studentName"> {s.first_names}{s.last_name}</td>
+                          <td className="studentName"> {s.first_names} {s.last_name}</td>
                           <td width='20px'> {s.Application.accepted ? 'x' : ''}</td>
                           <td width='70px'> {s.no_english ? '' : 'English'}</td>
                         </tr>
