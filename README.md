@@ -13,7 +13,7 @@ This registry will be used by students to express their interest to assist on co
 
 ## Installation
 
-## Usage
+## [Usage](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/commandline.md)
 
 ## Releases
 

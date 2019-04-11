@@ -10,6 +10,7 @@ import ContactDetailsForm from './components/student/ContactDetailsForm'
 import ContactDetailsUpdateForm from './components/student/ContactDetailsUpdateForm'
 import AdminCourseList from './components/admin/CourseList'
 import Summary from './components/admin/Summary'
+import UpdatePasswordForm from './components/admin/UpdatePasswordForm'
 import CourseApplicationList from './components/student/CourseApplicationList'
 import SingleCourse from './components/admin/SingleCourse'
 import PrivateRoute from './components/common/PrivateRoute'
@@ -52,6 +53,7 @@ const App = (props) => {
                       : <em></em>} &nbsp;
                   </Nav.Link>
 
+
                   <Nav.Link href="#" as="span">
                     {loggedUser && loggedUser.user.role === 'admin'
                       ? <Link to="/admin/summary">Summary</Link>
@@ -65,7 +67,11 @@ const App = (props) => {
                   </Nav.Link>
 
                 </Nav>
-
+                <Nav.Link href="#" as="span">
+                  {loggedUser && loggedUser.user.role === 'admin'
+                    ? <Link to="/admin">Change password</Link>
+                    : <em></em>} &nbsp;
+                </Nav.Link>
                 <Nav.Link href="#" as="span">
                   {loggedUser && loggedUser.user.role === 'student'
                     ? <Link to="/update-info">My profile</Link>
@@ -74,7 +80,7 @@ const App = (props) => {
 
                 <Nav.Link href="#" as="span">
                   {loggedUser
-                    ? <Button className="loginbutton" onClick={props.logout} variant= "outline-secondary" type="button" >Logout</Button>
+                    ? <Button className="loginbutton" onClick={props.logout} variant="outline-secondary" type="button" >Logout</Button>
                     : <em></em>} &nbsp;
                 </Nav.Link>
               </Navbar.Collapse>
@@ -102,6 +108,10 @@ const App = (props) => {
                   redirectPath="/"
                   condition={isAdmin && loggedUser && isLogged}
                   render={({ match }) => <SingleCourse courseId={match.params.id} />}
+                />
+                <Route
+                  exact path="/admin"
+                  render={() => <UpdatePasswordForm />}
                 />
               </PrivateRoute>
 
