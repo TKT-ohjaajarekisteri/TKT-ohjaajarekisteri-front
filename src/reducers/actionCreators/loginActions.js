@@ -1,5 +1,6 @@
 import courseService from '../../services/courses'
 import studentService from '../../services/students'
+import adminService from '../../services/admins'
 import loginService from '../../services/login'
 import tokenCheckService from '../../services/tokenCheck'
 
@@ -13,6 +14,7 @@ const initLoggedUser = () => {
       if (response.message === 'success') {
         await courseService.setToken(loggedUser.token)
         await studentService.setToken(loggedUser.token)
+        await adminService.setToken(loggedUser.token)
         dispatch({
           type: 'INIT_USER',
           data: loggedUser
@@ -76,6 +78,7 @@ const login = (username, password) => {
     } else {
       await courseService.setToken(response.token)
       await studentService.setToken(response.token)
+      await adminService.setToken(response.token)
       dispatch({
         type: 'LOGIN',
         data: { ...response }
@@ -100,6 +103,7 @@ const logout = () => {
     window.localStorage.removeItem('loggedInUser')
     await studentService.setToken(null)
     await courseService.setToken(null)
+    await adminService.setToken(null)
     dispatch({
       type: 'LOGOUT'
     })
