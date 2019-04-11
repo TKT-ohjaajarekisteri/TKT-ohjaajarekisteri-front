@@ -20,8 +20,8 @@ export const Summary = ({ initializeSummary, summaryList }) => {
           <tr>
             <th>Code</th>
             <th>Name</th>
-            <th>Year</th>
-            <th>Period</th>
+            <th className='centerColumn' >Year</th>
+            <th className='centerColumn' >Period</th>
             <th>Applicants</th>
           </tr>
         </thead>
@@ -31,8 +31,8 @@ export const Summary = ({ initializeSummary, summaryList }) => {
               <tr key={course.course_id}>
                 <td >{course.course_id}</td>
                 <td className="courseName">{course.course_name}</td>
-                <td>{course.year}</td>
-                <td>{course.period}</td>
+                <td className='centerColumn' >{course.year}</td>
+                <td className='centerColumn' >{course.period}</td>
                 <td>
                   <Table className='summaryStudentList' style={{ padding: '0', margin: '0' }} hover size="sm">
                     <tbody>
