@@ -2,6 +2,7 @@ import studentService from '../../services/students'
 
 // tells studentservice to get all students from database
 const initializeStudents = () => {
+  console.log('INIT_STUDENT_ACTION')
   return async (dispatch) => {
     const content = await studentService.getAll()
     dispatch({
