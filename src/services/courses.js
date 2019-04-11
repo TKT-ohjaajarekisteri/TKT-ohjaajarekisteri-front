@@ -66,5 +66,14 @@ const sendAcceptedModified = async (course_id, content) => {
   }
 }
 
+//get students for all courses
+const getSummary = async () => {
+  try {
+    const response = await axios.get(url + 'api/courses/summary', getConfig())
+    return response.data
+  } catch (error) {
+    return { error: 'coudnt not get courses and students from db!' }
+  }
+}
 
-export default { getAll, getOne, getStudents, create, setToken, sendAcceptedModified }
+export default { getAll, getOne, getStudents, create, setToken, sendAcceptedModified, getSummary }

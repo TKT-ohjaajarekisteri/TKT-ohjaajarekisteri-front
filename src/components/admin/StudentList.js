@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { initializeStudents } from '../../reducers/studentReducer'
+import { initializeStudents } from '../../reducers/actionCreators/studentActions'
 
 const StudentList = (props) => {
   useEffect(() => {
@@ -16,7 +16,6 @@ const StudentList = (props) => {
           {s.student_number}
           {s.first_names}
           {s.last_name}
-          {s.nickname}
           {s.email}
           {s.phonenumber}
 
@@ -32,6 +31,7 @@ const mapStateToProps = (state) => {
     studentsToShow
   }
 }
+
 
 export default connect(
   mapStateToProps,
