@@ -44,7 +44,9 @@ export const CourseList = ({
 
   const handleHiddenSubmit = (id) => (event) => {
     event.preventDefault()
-    setHidden(id)
+    if (window.confirm('Are you shure you want to hide this course?')) {
+      setHidden(id)
+    }
   }
 
   const onlyUnique = (value, index, self) => {
