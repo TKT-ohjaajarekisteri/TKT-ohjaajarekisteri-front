@@ -13,7 +13,9 @@ describe.only('<Course />', () => {
       course_period: 2
     }
 
-    const courseComponent = shallow(<Course course={course} />)
+    const setHidden = jest.fn()
+
+    const courseComponent = shallow(<Course course={course} setHidden={setHidden} />)
 
     const nameDiv = courseComponent.find('.name')
 
