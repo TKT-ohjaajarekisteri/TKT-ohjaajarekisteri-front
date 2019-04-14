@@ -54,7 +54,6 @@ export const CourseApplicationList = (props) => {
   }
 
   const alreadyApplied = (id) => {
-    console.log('course application list already applied', props.studentCourseIds.includes(id))
     return props.studentCourseIds.includes(id)
   }
 
