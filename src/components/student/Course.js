@@ -7,8 +7,8 @@ const Course = ({ course, onChange }) => {
     <tr>
       <td className="learningopportunity_id">{course.learningopportunity_id}</td>
       <td className="name"> {course.course_name}</td>
-      <td className="year">{course.year}</td>
-      <td className="period">{course.period}</td>
+      <td className="year centerColumn">{course.year}</td>
+      <td className="period centerColumn">{course.period}</td>
       <td className="checkbox listCheckbox">
         <CheckBox
           id={course.course_id}

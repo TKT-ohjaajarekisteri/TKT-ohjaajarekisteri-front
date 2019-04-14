@@ -121,8 +121,8 @@ export const CourseApplicationList = (props) => {
           <tr>
             <th>Code</th>
             <th>Name</th>
-            <th>Year</th>
-            <th>Period</th>
+            <th className='centerColumn' >Year</th>
+            <th className='centerColumn' >Period</th>
             <th>Apply</th>
           </tr>
         </thead>
