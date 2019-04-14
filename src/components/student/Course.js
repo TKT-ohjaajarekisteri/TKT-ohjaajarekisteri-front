@@ -17,7 +17,7 @@ const Course = ({ course, onChange, grey }) => {
   }
 
   return (
-    <tr>
+    <tr className= "notGrey">
       <td className="learningopportunity_id">{course.learningopportunity_id}</td>
       <td className="name"> {course.course_name}</td>
       <td className="year centerColumn">{course.year}</td>

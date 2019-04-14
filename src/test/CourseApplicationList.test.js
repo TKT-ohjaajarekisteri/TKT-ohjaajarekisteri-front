@@ -16,6 +16,8 @@ describe('student/ <CourseApplicationList />', () => {
       setChecked: jest.fn(),
       sendApplication: jest.fn(),
       initializeFilter: jest.fn(),
+      getStudentCourseIds: jest.fn(),
+      studentCourseIds: [3],
       history: [],
       loggedUser: {
         user: {
@@ -179,5 +181,21 @@ describe('student/ <CourseApplicationList />', () => {
       expect(table.length).toBe(1)
       expect(wrapper.find('Course').length).toBe(0)
     })
+
+    it('when rendering course, it is recognized if student has applied', () => {
+      wrapper = mount(
+        <Router>
+          <CourseApplicationList {...props} />
+        </Router>
+      )
+      let table = wrapper.find('.grey')
+      let table2 = wrapper.find('.notGrey')
+      expect(table.length).toBe(1)
+      expect(table2.length).toBe(2)
+      expect(wrapper.find('.grey').length).toBe(1)
+      expect(wrapper.find('.notGrey').length).toBe(2)
+      console.log(wrapper.debug())
+    })
+
   })
 })
