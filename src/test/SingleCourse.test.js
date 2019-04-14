@@ -1,6 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { SingleCourse } from '../components/admin/SingleCourse'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 describe('<SingleCourse />', () => {
   let wrapper, props
@@ -77,14 +78,14 @@ describe('<SingleCourse />', () => {
   })
 
   it('renders self', () => {
-    wrapper = mount(<SingleCourse {...props} />)
+    wrapper = mount( <Router><SingleCourse {...props} /></Router>)
     let table = wrapper.find('.courseHeader')
     expect(table.length).toBe(1)
     expect(wrapper.find('.Student').length).toBe(3)
   })
 
   it('When saveButton clicked does not send modified if none have been modified', () => {
-    wrapper = mount(<SingleCourse {...props} />)
+    wrapper = mount(<Router><SingleCourse {...props} /></Router>)
 
     expect(props.sendAcceptedModified).toHaveBeenCalledTimes(0)
 
@@ -96,7 +97,7 @@ describe('<SingleCourse />', () => {
 
   describe('Accepted', () => {
     it('Checkbox already checked for accepted applicants', () => {
-      wrapper = mount(<SingleCourse {...props} />)
+      wrapper = mount(<Router><SingleCourse {...props} /></Router>)
 
       const checkbox = wrapper.find('input[type="checkbox"]').filterWhere((item) => {
         return item.prop('name') === '012345679'
@@ -107,7 +108,7 @@ describe('<SingleCourse />', () => {
 
   describe('Groups', () => {
     it('Number of groups shown for applicants', () => {
-      wrapper = mount(<SingleCourse {...props} />)
+      wrapper = mount(<Router><SingleCourse {...props} /></Router>)
 
       const textfield = wrapper.find('input[type="number"]').filterWhere((item) => {
         return item.prop('id') === '012345679'

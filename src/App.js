@@ -89,25 +89,15 @@ const App = (props) => {
                 redirectPath="/login"
                 condition={loggedUser && isAdmin}
               >
-
                 <Route exact path="/admin/courses" render={() => <AdminCourseList />} />
                 <Route
                   exact path="/admin/courses/:id"
                   render={({ match }) => <SingleCourse courseId={match.params.id} />}
                 />
-              </PrivateRoute>
-
-              {/* THIS ROUTE PROTECTS ALL ROUTES UNDER "/students" */}
-              <PrivateRoute
-                path="/students"
-                redirectPath="/login"
-                condition={loggedUser && isAdmin}
-              >
                 <Route
-                  exact path="/students/:id/admin"
+                  exact path="/admin/students/:id/info"
                   render={({ match }) => <SingleStudent studentId={match.params.id} />}
                 />
-
               </PrivateRoute>
 
               <PrivateRoute

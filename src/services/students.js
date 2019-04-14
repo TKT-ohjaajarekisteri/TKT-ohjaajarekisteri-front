@@ -37,7 +37,7 @@ const getAll = async () => {
 //gets a single student by id
 const getStudent= async (id) => {
   try {
-    const response = await axios.get(url + `api/students/${id}/`, getConfig())
+    const response = await axios.get(url + `api/students/${id}`, getConfig())
     //console.log('service getStudentin response.data from back',response.data)
 
     return response.data
@@ -55,7 +55,7 @@ const getStudent= async (id) => {
 //gets a single student by id for admin
 const getSingleStudent= async (id) => {
   try {
-    const response = await axios.get(url + `api/students/${id}/admin`, getConfig())
+    const response = await axios.get(url + `api/students/${id}/info`, getConfig())
     //console.log('service getStudentin response.data from back',response.data)
 
     return response.data
@@ -75,7 +75,7 @@ const getSingleStudent= async (id) => {
 const update = async (content, id) => {
   try {
     //console.log('studentservicen updaten content', content)
-    const response = await axios.put(url + `api/students/${id}/`, content, getConfig())
+    const response = await axios.put(url + `api/students/${id}`, content, getConfig())
     //console.log('studentservicen updaten response', response)
     return response.data
   } catch (error) {

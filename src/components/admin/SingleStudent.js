@@ -13,7 +13,7 @@ export const SingleStudent = ({ studentId, getSingleStudent, student }) => {
   }, [])
 
   return(
-    <div>
+    <div className="singleStudent" >
 
       <h1>Student information</h1>
       <Table bordered hover>
