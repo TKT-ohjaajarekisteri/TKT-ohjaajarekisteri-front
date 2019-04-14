@@ -20,7 +20,6 @@ export const CourseApplicationList = (props) => {
   },
   []
   )
-  console.log('courseapplicationlistin studentcourseIds', props.studentCourseIds)
 
   const handleSubmit = () => {
     const coursesToApplyTo = props.courses.filter(c => c.checked).map(c => c.course_id)
@@ -55,8 +54,6 @@ export const CourseApplicationList = (props) => {
   }
 
   const alreadyApplied = (id) => {
-    console.log('courseapplicationlist already applied id', id)
-    console.log('courseapplicationlist onko haettu jo', props.studentCourseIds.includes)
     return props.studentCourseIds.includes(id)
   }
 
@@ -158,8 +155,9 @@ export const CourseApplicationList = (props) => {
                 key={course.course_id}
                 onChange={handleChange}
                 grey={alreadyApplied(course.course_id)}
-              />
-            )}
+              />)
+            .sort(function(b, a) {return (alreadyApplied(a.course_id)===alreadyApplied(b.course_id))? 0 : alreadyApplied(a.course_id)? -1 : 1})
+          }
         </tbody>
       </Table>
     </div>
