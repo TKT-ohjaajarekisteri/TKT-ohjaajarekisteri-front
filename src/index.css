@@ -21,8 +21,6 @@
     }
 
 /* adjust buttons */
-
-
 .btn{
      margin: 0px;
 }
@@ -57,13 +55,11 @@
   }
 
   /* adjust checkbox  */
-
   .listCheckbox {
     text-align: center;
   }
 
   /* adjust filter input box */
-
   .filterInput {
     margin: 5px 10px 20px 0px;
     color:  #6c757d;
@@ -80,4 +76,8 @@
 .emailHidden {
   margin: 10px 5px 0px 0px;
   float: right;
+}
+
+.centerColumn {
+  text-align: center;
 }
