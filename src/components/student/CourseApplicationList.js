@@ -54,6 +54,7 @@ export const CourseApplicationList = (props) => {
   }
 
   const alreadyApplied = (id) => {
+    console.log('course application list already applied', props.studentCourseIds.includes(id))
     return props.studentCourseIds.includes(id)
   }
 
@@ -149,6 +150,7 @@ export const CourseApplicationList = (props) => {
                 period.includes(props.filter.period)
               )
             })
+            .sort(function(a, b) {return alreadyApplied(a.course_id) - alreadyApplied(b.course_id)})
             .map(course =>
               <Course
                 course={course}
@@ -156,7 +158,6 @@ export const CourseApplicationList = (props) => {
                 onChange={handleChange}
                 grey={alreadyApplied(course.course_id)}
               />)
-            .sort(function(b, a) {return (alreadyApplied(a.course_id)===alreadyApplied(b.course_id))? 0 : alreadyApplied(a.course_id)? -1 : 1})
           }
         </tbody>
       </Table>
