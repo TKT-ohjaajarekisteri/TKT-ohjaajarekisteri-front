@@ -11,15 +11,8 @@ const Course = ({ course, onChange, grey }) => {
         <td className="year centerColumn">{course.year}</td>
         <td className="period centerColumn">{course.period}</td>
         <td className="checkbox listCheckbox">
-          <CheckBox
-            id={course.course_id}
-            name={course.learningopportunity_id}
-            checked={course.checked}
-            onChange={onChange}
-          />
         </td>
       </tr>
-
     )
   }
 
