@@ -75,3 +75,9 @@
     color:  #6c757d;
     border-color: rgb(240, 140, 0);
   }
+
+/* adjust email link hidden text */
+.emailHidden {
+  margin: 10px 5px 0px 0px;
+  float: right;
+}

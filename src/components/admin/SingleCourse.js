@@ -22,9 +22,8 @@ export const SingleCourse = ({
   []
   )
 
-  const handleAcceptedSubmit = (e) => {
-    e.preventDefault()
-    const acceptedModified = applicants
+  const getModified = (applicants) => {
+    return applicants
       .filter(a => a.accepted !== a.accepted_checked || a.groups !== a.groups_textbox)
       .map(a => {
         return {
@@ -33,7 +32,11 @@ export const SingleCourse = ({
           groups: a.groups !== a.groups_textbox ? a.groups_textbox : a.groups
         }
       })
+  }
 
+  const handleAcceptedSubmit = (e) => {
+    e.preventDefault()
+    const acceptedModified = getModified(applicants)
     if (acceptedModified.length !== 0) {
       sendAcceptedModified(courseId, acceptedModified)
     }
@@ -41,7 +44,7 @@ export const SingleCourse = ({
 
   const handleEmailToChange = (id) => (e) => {
     const email_to_checked = e.target.checked
-    setEmail(id, email_to_checked) // lisää course info mukaan
+    setEmail(id, email_to_checked) // Updates email message fields
   }
 
   const handleAcceptedChange = (id) => (e) => {
@@ -67,7 +70,13 @@ export const SingleCourse = ({
           <h3>Applicants for course:</h3>
         </div>
         <div className='col'>
-          <Button className='float-right' target="_blank" rel="noopener noreferrer" href={href} variant='dark'>Send email</Button>
+          {
+            getModified(applicants).length === 0 ?
+              <Button className='float-right' target="_blank" rel="noopener noreferrer" href={href} variant='dark'>Send email</Button>
+              :
+              <div className='emailHidden'>Save changes to Send email</div>
+          }
+
         </div>
       </div>
       <Table bordered hover>
