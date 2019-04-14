@@ -3,7 +3,8 @@
 const initialState = {
   studyProgramme: '',
   period: '',
-  courseName: ''
+  courseName: '',
+  courseId: -1,
 }
 
 const filterReducer = (state = initialState, action) => {
@@ -22,6 +23,12 @@ const filterReducer = (state = initialState, action) => {
       return { ...state, period: '' }
     }
     return { ...state, period: action.data }
+  }
+  case 'SET_COURSE_ID': {
+    if (state.courseId === action.data) {
+      return { ...state, courseId: -1 }
+    }
+    return { ...state, courseId: action.data }
   }
   case 'INIT_FILTER': {
     return initialState

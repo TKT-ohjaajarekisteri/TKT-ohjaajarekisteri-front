@@ -36,4 +36,14 @@ const setCourseName = (courseName) => {
   }
 }
 
-export { initializeFilter, setProgramme, setPeriod, setCourseName }
+// course ids
+const setCourseId = (courseId) => {
+  return async (dispatch) => {
+    dispatch({
+      type: 'SET_COURSE_ID',
+      data: courseId
+    })
+  }
+}
+
+export { initializeFilter, setProgramme, setPeriod, setCourseName, setCourseId }

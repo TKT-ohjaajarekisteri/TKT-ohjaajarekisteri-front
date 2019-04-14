@@ -5,8 +5,9 @@ import TogglableButton from '../common/TogglableButton'
 import { initializeCourseApplication, setChecked, sendApplication } from '../../reducers/actionCreators/courseApplicationActions'
 import { Table, Button } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
-import { initializeFilter, setProgramme, setPeriod, setCourseName } from '../../reducers/actionCreators/filterActions'
+import { initializeFilter, setProgramme, setPeriod, setCourseName, setCourseId } from '../../reducers/actionCreators/filterActions'
 import { Form } from 'react-bootstrap'
+import { getStudentCourseIds } from '../../reducers/actionCreators/studentActions'
 
 export const CourseApplicationList = (props) => {
 
@@ -15,9 +16,11 @@ export const CourseApplicationList = (props) => {
       props.initializeCourseApplication()
     }
     props.initializeFilter()
+    props.getStudentCourseIds(props.id)
   },
   []
   )
+  console.log('courseapplicationlistin studentcourseIds', props.studentCourseIds)
 
   const handleSubmit = () => {
     const coursesToApplyTo = props.courses.filter(c => c.checked).map(c => c.course_id)
@@ -130,6 +133,7 @@ export const CourseApplicationList = (props) => {
           {props.courses && props.courses
             .filter(course => {
               let period = course.period.toString(10)
+              console.log('courseapplication list props.studentcourseids, course.course_id ', props.studentCourseIds, course.course_id )
               return (
                 (
                   course.course_name.toLowerCase().includes(props.filter.courseName.toLowerCase())
@@ -140,6 +144,8 @@ export const CourseApplicationList = (props) => {
                 course.learningopportunity_id.includes(props.filter.studyProgramme)
                 &&
                 period.includes(props.filter.period)
+                &&
+                props.studentCourseIds.includes(course.course_id)
               )
             })
             .map(course =>
@@ -160,12 +166,15 @@ const mapStateToProps = (state) => {
     courses: state.courseApplication.courses,
     loading: state.courseApplication.coursesLoading,
     loggedUser: state.loggedUser.loggedUser,
+    studentCourseIds: state.students.studentCourseIds,
     filter: {
       courseName: state.filter.courseName,
       studyProgramme: state.filter.studyProgramme,
-      period: state.filter.period
+      period: state.filter.period,
+      courseId: state.filter.courseId
     }
   }
+
 }
 
 // withRouter provides history from Router component in App
@@ -178,6 +187,8 @@ export default withRouter(connect(
     initializeFilter,
     setProgramme,
     setPeriod,
-    setCourseName
+    setCourseName,
+    setCourseId,
+    getStudentCourseIds
   }
 )(CourseApplicationList))
