@@ -9,6 +9,8 @@ import LoginForm from './components/LoginForm'
 import ContactDetailsForm from './components/student/ContactDetailsForm'
 import ContactDetailsUpdateForm from './components/student/ContactDetailsUpdateForm'
 import AdminCourseList from './components/admin/CourseList'
+import Summary from './components/admin/Summary'
+import UpdatePasswordForm from './components/admin/UpdatePasswordForm'
 import CourseApplicationList from './components/student/CourseApplicationList'
 import SingleCourse from './components/admin/SingleCourse'
 import SingleStudent from './components/admin/SingleStudent'
@@ -52,6 +54,13 @@ const App = (props) => {
                       : <em></em>} &nbsp;
                   </Nav.Link>
 
+
+                  <Nav.Link href="#" as="span">
+                    {loggedUser && loggedUser.user.role === 'admin'
+                      ? <Link to="/admin/summary">Summary</Link>
+                      : <em></em>} &nbsp;
+                  </Nav.Link>
+
                   <Nav.Link href="#" as="span">
                     {loggedUser && loggedUser.user.role === 'student'
                       ? <Link to="/apply">Apply</Link>
@@ -59,7 +68,11 @@ const App = (props) => {
                   </Nav.Link>
 
                 </Nav>
-
+                <Nav.Link href="#" as="span">
+                  {loggedUser && loggedUser.user.role === 'admin'
+                    ? <Link to="/admin">Change password</Link>
+                    : <em></em>} &nbsp;
+                </Nav.Link>
                 <Nav.Link href="#" as="span">
                   {loggedUser && loggedUser.user.role === 'student'
                     ? <Link to="/update-info">My profile</Link>
@@ -68,7 +81,7 @@ const App = (props) => {
 
                 <Nav.Link href="#" as="span">
                   {loggedUser
-                    ? <Button className="loginbutton" onClick={props.logout} variant= "outline-secondary" type="button" >Logout</Button>
+                    ? <Button className="loginbutton" onClick={props.logout} variant="outline-secondary" type="button" >Logout</Button>
                     : <em></em>} &nbsp;
                 </Nav.Link>
               </Navbar.Collapse>
@@ -90,6 +103,7 @@ const App = (props) => {
                 condition={loggedUser && isAdmin}
               >
                 <Route exact path="/admin/courses" render={() => <AdminCourseList />} />
+                < Route exact path="/admin/summary" render={() => <Summary />} />
                 <Route
                   exact path="/admin/courses/:id"
                   render={({ match }) => <SingleCourse courseId={match.params.id} />}
@@ -97,6 +111,10 @@ const App = (props) => {
                 <Route
                   exact path="/admin/students/:id/info"
                   render={({ match }) => <SingleStudent studentId={match.params.id} />}
+                />
+                <Route
+                  exact path="/admin"
+                  render={() => <UpdatePasswordForm />}
                 />
               </PrivateRoute>
 
@@ -119,21 +137,23 @@ const App = (props) => {
               {/* THIS ROUTE PROTECTS ALL ROUTES UNDER "/" */}
               <PrivateRoute path="/" redirectPath="/login" condition={loggedUser}>
                 <PrivateRoute path="/" redirectPath="/admin/courses" condition={!isAdmin}>
-                  <PrivateRoute path="/" redirectPath="/contact-info" condition={hasContactDetails}>
-                    <Route
-                      exact path='/'
-                      render={() => <Redirect to='/apply' />}
-                    />
-                    <Route
-                      exact path="/apply"
-                      render={() => <CourseApplicationList />}
-                    />
+                  <PrivateRoute path="/" redirectPath="admin/summary" condition={!isAdmin}>
+                    <PrivateRoute path="/" redirectPath="/contact-info" condition={hasContactDetails}>
+                      <Route
+                        exact path='/'
+                        render={() => <Redirect to='/apply' />}
+                      />
+                      <Route
+                        exact path="/apply"
+                        render={() => <CourseApplicationList />}
+                      />
 
-                    {/* USERS CAN UPDATE THEIR INFORMATION */}
-                    <Route
-                      exact path="/update-info"
-                      render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
-                    />
+                      {/* USERS CAN UPDATE THEIR INFORMATION */}
+                      <Route
+                        exact path="/update-info"
+                        render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
+                      />
+                    </PrivateRoute>
                   </PrivateRoute>
                 </PrivateRoute>
               </PrivateRoute>

@@ -26,9 +26,22 @@
 
 * req, res
 
+## Userstories
+
+The definitions should be more written out in more detail so that important features are not forgotten.
+For example: On this page admin can see the details: phone number, email, ...
+
+## Commits and branches
+
+These should be kept small and easy to merge, as well as well named and commented
+
 ## Scheduling
 
 Let's all reserve three hours for deadline Thursdays, so there's time to take care of last touches
+
+## Before meeting the customer
+
+The scrum master will send a remainder email to all that are coming to the meeting
 
 ## Migrations
 
@@ -45,7 +58,7 @@ open: visualstudiocode requests   and
 
 choose: put_students_deleteCD.rest and send request
 
-Now you can log in user without contacdetails :)
+Now you can log in user without contactdetails :)
 
 
 ## When you wanna test new user in front, nuking database 

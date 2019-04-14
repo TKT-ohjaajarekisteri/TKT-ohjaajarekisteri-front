@@ -4,11 +4,7 @@ import { getSingleStudent } from '../../reducers/actionCreators/singleStudentAct
 import { Table } from 'react-bootstrap'
 
 export const SingleStudent = ({ studentId, getSingleStudent, student }) => {
-  console.log('singlestudentin student', student)
-
-  //console.log('singlestudentin student email', singleStudent.email)
   useEffect(() => {
-    console.log('singlestudentin useeffectin idt', studentId)
     getSingleStudent(studentId)
   }, [])
 
@@ -28,7 +24,6 @@ export const SingleStudent = ({ studentId, getSingleStudent, student }) => {
           </tr>
         </thead>
         <tbody>
-          {console.log('single studentin student bodystä', student)}
           <tr className='Student' key={student.student_id}>
             <td>{student.student_number}</td>
             <td>{student.first_names}</td>
@@ -51,7 +46,6 @@ export const SingleStudent = ({ studentId, getSingleStudent, student }) => {
           </tr>
         </tbody>
       </Table>
-
     </div>
   )
 }
