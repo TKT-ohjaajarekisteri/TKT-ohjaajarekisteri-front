@@ -5,7 +5,7 @@ import TogglableButton from '../common/TogglableButton'
 import { initializeCourseApplication, setChecked, sendApplication } from '../../reducers/actionCreators/courseApplicationActions'
 import { Table, Button } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
-import { initializeFilter, setProgramme, setPeriod, setCourseName, setCourseId } from '../../reducers/actionCreators/filterActions'
+import { initializeFilter, setProgramme, setPeriod, setCourseName } from '../../reducers/actionCreators/filterActions'
 import { Form } from 'react-bootstrap'
 import { getStudentCourseIds } from '../../reducers/actionCreators/studentActions'
 
@@ -52,6 +52,12 @@ export const CourseApplicationList = (props) => {
 
   const onlyUnique = (value, index, self) => {
     return self.indexOf(value) === index
+  }
+
+  const alreadyApplied = (id) => {
+    console.log('courseapplicationlist already applied id', id)
+    console.log('courseapplicationlist onko haettu jo', props.studentCourseIds.includes)
+    return props.studentCourseIds.includes(id)
   }
 
   return (
@@ -133,7 +139,7 @@ export const CourseApplicationList = (props) => {
           {props.courses && props.courses
             .filter(course => {
               let period = course.period.toString(10)
-              console.log('courseapplication list props.studentcourseids, course.course_id ', props.studentCourseIds, course.course_id )
+              //console.log('courseapplication list props.studentcourseids, course.course_id ', props.studentCourseIds, course.course_id )
               return (
                 (
                   course.course_name.toLowerCase().includes(props.filter.courseName.toLowerCase())
@@ -144,8 +150,6 @@ export const CourseApplicationList = (props) => {
                 course.learningopportunity_id.includes(props.filter.studyProgramme)
                 &&
                 period.includes(props.filter.period)
-                &&
-                props.studentCourseIds.includes(course.course_id)
               )
             })
             .map(course =>
@@ -153,6 +157,7 @@ export const CourseApplicationList = (props) => {
                 course={course}
                 key={course.course_id}
                 onChange={handleChange}
+                grey={alreadyApplied(course.course_id)}
               />
             )}
         </tbody>
@@ -170,8 +175,7 @@ const mapStateToProps = (state) => {
     filter: {
       courseName: state.filter.courseName,
       studyProgramme: state.filter.studyProgramme,
-      period: state.filter.period,
-      courseId: state.filter.courseId
+      period: state.filter.period
     }
   }
 
@@ -188,7 +192,6 @@ export default withRouter(connect(
     setProgramme,
     setPeriod,
     setCourseName,
-    setCourseId,
     getStudentCourseIds
   }
 )(CourseApplicationList))

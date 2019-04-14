@@ -37,7 +37,7 @@ const studentReducer = (state = initialState, action) => {
       studentCourses: action.data
     }
     // gets student courselist for application page
-  case 'INIT_STUDENT_COURSE_IDS  ':
+  case 'INIT_STUDENT_COURSE_IDS':
     return {
       ...state,
       studentCourseIds: action.data
