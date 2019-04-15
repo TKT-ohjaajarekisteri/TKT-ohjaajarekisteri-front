@@ -62,6 +62,20 @@
     text-align: center;
   }
 
+  .buttonHide {
+    color: rgb(240, 140, 0);
+    border-color: rgb(240, 140, 0);
+    width: 75px;
+    margin:auto;
+    display:block;
+  }
+  
+  .buttonUnhide {
+    width: 75px;
+    margin:auto;
+    display:block;
+  }
+
   /* adjust filter input box */
 
   .filterInput {
