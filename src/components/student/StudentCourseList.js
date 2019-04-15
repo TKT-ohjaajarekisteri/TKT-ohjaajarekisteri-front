@@ -21,7 +21,7 @@ export const StudentCourseList = ({ loggedUser, courses, id, getStudentCourses, 
 
   return (
     <div className="courseList">
-      <h2>My Courses</h2>
+      <h2>My Applications</h2>
       <Table bordered hover>
         <thead>
           <tr>
