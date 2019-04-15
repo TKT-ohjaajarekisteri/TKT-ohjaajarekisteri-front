@@ -36,4 +36,24 @@ const setCourseName = (courseName) => {
   }
 }
 
-export { initializeFilter, setProgramme, setPeriod, setCourseName }
+// course yearFrom
+const setYearFrom = (yearFrom) => {
+  return async (dispatch) => {
+    dispatch({
+      type: 'SET_COURSE_YEARFROM',
+      data: yearFrom
+    })
+  }
+}
+
+// course yearTo
+const setYearTo = (yearTo) => {
+  return async (dispatch) => {
+    dispatch({
+      type: 'SET_COURSE_YEARTO',
+      data: yearTo
+    })
+  }
+}
+
+export { initializeFilter, setProgramme, setPeriod, setCourseName, setYearFrom, setYearTo }

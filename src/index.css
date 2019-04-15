@@ -75,3 +75,17 @@
     color:  #6c757d;
     border-color: rgb(240, 140, 0);
   }
+
+   .filterYearInput {
+    margin: 5px 20px 20px 0px;
+    color:  #6c757d;
+    border-color: rgb(240, 140, 0);
+    width: 70px;
+  }
+
+  .filterYearInput:focus {
+    box-shadow: none !important;
+    color:  #6c757d;
+    border-color: rgb(240, 140, 0);
+  }
+
