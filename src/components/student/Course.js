@@ -3,7 +3,7 @@ import CheckBox from '../common/Checkbox'
 import { Badge } from 'react-bootstrap'
 
 const Course = ({ course, onChange, grey }) => {
-  // the course version is chosen according to if thed loggedUser has applied to the course
+  // the course version is chosen accordingly to if loggedUser has applied to the course
   if (grey) {
     return (
       <tr className = "grey">
