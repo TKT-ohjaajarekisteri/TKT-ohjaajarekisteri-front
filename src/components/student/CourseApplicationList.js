@@ -149,7 +149,8 @@ export const CourseApplicationList = (props) => {
                 period.includes(props.filter.period)
               )
             })
-            .sort(function(a, b) {return alreadyApplied(a.course_id) - alreadyApplied(b.course_id)}) //applied courses at the bottom of the list
+            //applied courses at the bottom of the list
+            .sort(function(a, b) {return alreadyApplied(a.course_id) - alreadyApplied(b.course_id)})
             .map(course =>
               <Course
                 course={course}
