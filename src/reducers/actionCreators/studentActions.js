@@ -28,7 +28,6 @@ const getStudent = (id) => {
 const getStudentCourses = (id) => {
   return async (dispatch) => {
     const content = await studentService.getCourses(id)
-    console.log('studentactions getstudentcourses content', content)
     dispatch({
       type: 'INIT_STUDENT_COURSES',
       data: content
@@ -41,8 +40,6 @@ const getStudentCourseIds = (id) => {
   return async (dispatch) => {
     const content = await studentService.getCourses(id)
     const courseIds =  content.map(course => course.course_id)
-    console.log('studentactions getstudentcourse', content)
-    console.log('studentactions getstudentcoursesids', courseIds)
     dispatch({
       type: 'INIT_STUDENT_COURSE_IDS',
       data: courseIds
@@ -52,10 +49,9 @@ const getStudentCourseIds = (id) => {
 
 // tells studentservice to get specific student's courses
 const getContactInformation = (id) => {
-  console.log(id)
+  //console.log(id)
   return async (dispatch) => {
     const student = await studentService.getStudent(id)
-    console.log('studentactionin getcontactinformationin student', student)
     if (student===undefined || student.error) {
       dispatch({
         type: 'NOTIFY',
@@ -80,7 +76,7 @@ const deleteAppliedCourse = (course_id, student_id) => {
   return async (dispatch) => {
 
     const response = await studentService.deleteApplication(student_id, course_id)
-    console.log(response)
+    //console.log(response)
     if (response.error || response===undefined) {
       dispatch({
         type: 'NOTIFY',

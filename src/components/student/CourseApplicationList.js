@@ -53,6 +53,7 @@ export const CourseApplicationList = (props) => {
     return self.indexOf(value) === index
   }
 
+  // checks if the loggedUser has already applied on a course
   const alreadyApplied = (id) => {
     return props.studentCourseIds.includes(id)
   }
@@ -136,7 +137,6 @@ export const CourseApplicationList = (props) => {
           {props.courses && props.courses
             .filter(course => {
               let period = course.period.toString(10)
-              //console.log('courseapplication list props.studentcourseids, course.course_id ', props.studentCourseIds, course.course_id )
               return (
                 (
                   course.course_name.toLowerCase().includes(props.filter.courseName.toLowerCase())
@@ -149,7 +149,7 @@ export const CourseApplicationList = (props) => {
                 period.includes(props.filter.period)
               )
             })
-            .sort(function(a, b) {return alreadyApplied(a.course_id) - alreadyApplied(b.course_id)})
+            .sort(function(a, b) {return alreadyApplied(a.course_id) - alreadyApplied(b.course_id)}) //applied courses at the bottom of the list
             .map(course =>
               <Course
                 course={course}

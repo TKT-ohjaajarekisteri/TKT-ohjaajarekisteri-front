@@ -5,12 +5,12 @@ import { Table } from 'react-bootstrap'
 
 export const SingleStudent = ({ studentId, getSingleStudent, student }) => {
   useEffect(() => {
+    //gets a single student data from db for admin by student_id
     getSingleStudent(studentId)
   }, [])
 
   return(
     <div className="singleStudent" >
-
       <h2>Student information</h2>
       <Table bordered hover>
         <thead>
@@ -51,11 +51,9 @@ export const SingleStudent = ({ studentId, getSingleStudent, student }) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log('SingleStudentin state', state)
   return {
     student: state.singleStudent.singleStudent
   }
-
 }
 
 export default connect(

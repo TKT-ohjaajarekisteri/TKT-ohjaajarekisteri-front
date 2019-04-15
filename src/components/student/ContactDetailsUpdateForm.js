@@ -97,7 +97,6 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'Contact koko store')
   return {
     defaultInput: state.students.contactInformation,
     phone: state.students.phone,

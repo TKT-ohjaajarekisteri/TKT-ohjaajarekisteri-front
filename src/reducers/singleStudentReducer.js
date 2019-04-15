@@ -3,8 +3,7 @@ const initialState = {
 }
 
 const singleStudentReducer = (state = initialState, action) => {
-  console.log(action.type, ' ', action.data)
-  console.log('singlestudentreducerista', action.type, ' ', action.data)
+  //console.log(action.type, ' ', action.data)
   switch (action.type) {
   case 'INIT_SINGLE_STUDENT':
     return {
@@ -20,7 +19,6 @@ const singleStudentReducer = (state = initialState, action) => {
   default:
     return state
   }
-
 }
 
 export default singleStudentReducer
