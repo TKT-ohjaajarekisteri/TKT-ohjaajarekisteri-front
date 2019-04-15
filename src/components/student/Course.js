@@ -1,10 +1,24 @@
 import React from 'react'
 import CheckBox from '../common/Checkbox'
+import { Badge } from 'react-bootstrap'
 
-const Course = ({ course, onChange }) => {
+const Course = ({ course, onChange, grey }) => {
+
+  if (grey) {
+    return (
+      <tr className = "grey">
+        <td className="learningopportunity_id">{course.learningopportunity_id}</td>
+        <td className="name"> {course.course_name}</td>
+        <td className="year centerColumn">{course.year}</td>
+        <td className="period centerColumn">{course.period}</td>
+        <td className= "checkbox centerColumn"><Badge variant="secondary">Applied</Badge>
+        </td>
+      </tr>
+    )
+  }
 
   return (
-    <tr>
+    <tr className= "notGrey">
       <td className="learningopportunity_id">{course.learningopportunity_id}</td>
       <td className="name"> {course.course_name}</td>
       <td className="year centerColumn">{course.year}</td>
@@ -18,6 +32,7 @@ const Course = ({ course, onChange }) => {
         />
       </td>
     </tr>
+
   )
 }
 

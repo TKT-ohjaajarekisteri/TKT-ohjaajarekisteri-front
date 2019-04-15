@@ -11,6 +11,12 @@ const courseReducer = (state = [], action) => {
   case 'INIT_COURSES':
     return action.data
 
+  case 'SET_HIDDEN': {
+    return state.map(course => {
+      return course.course_id === action.data.course_id ? action.data.course : course
+    })
+  }
+
   default:
     return state
   }

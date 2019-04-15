@@ -36,6 +36,20 @@ const getStudentCourses = (id) => {
   }
 }
 
+// tells studentservice to get specific student's courses, and dispatch their id:s to store
+const getStudentCourseIds = (id) => {
+  return async (dispatch) => {
+    const content = await studentService.getCourses(id)
+    const courseIds =  content.map(course => course.course_id)
+    console.log('studentactions getstudentcourse', content)
+    console.log('studentactions getstudentcoursesids', courseIds)
+    dispatch({
+      type: 'INIT_STUDENT_COURSE_IDS',
+      data: courseIds
+    })
+  }
+}
+
 // tells studentservice to get specific student's courses
 const getContactInformation = (id) => {
   console.log(id)
@@ -122,4 +136,4 @@ const updateLanguage = (teachesInEnglish) => {
   }
 }
 export { updatePhone, updateEmail, updateLanguage, updateExperience,
-  initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse }
+  initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse, getStudentCourseIds  }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Checkbox from '../common/Checkbox'
 import { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified, setStudentGroups } from '../../reducers/actionCreators/singleCourseActions'
 import { Table, Button } from 'react-bootstrap'
-
+import { Link } from 'react-router-dom'
 
 export const SingleCourse = ({
   course,
@@ -83,7 +83,7 @@ export const SingleCourse = ({
         <thead>
           <tr>
             <th>Student number</th>
-            <th>First name</th>
+            <th>First names</th>
             <th>Last name</th>
             <th>Language</th>
             <th>Email</th>
@@ -95,7 +95,7 @@ export const SingleCourse = ({
         <tbody>
           {applicants.map(student =>
             <tr className='Student' key={student.student_id}>
-              <td>{student.student_number}</td>
+              <td><Link to={`/admin/students/${student.student_id}/info`}>{student.student_number}</Link></td>
               <td>{student.first_names}</td>
               <td>{student.last_name}</td>
               <td>{student.no_english ? '' : 'English'}</td>

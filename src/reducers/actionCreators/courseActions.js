@@ -1,5 +1,5 @@
 import courseService from '../../services/courses'
-
+import { notify, setError } from './notificationActions'
 
 // tells courseService to get allcourses from database and dispatch them to store
 const initializeCourses = () => {
@@ -9,6 +9,25 @@ const initializeCourses = () => {
       type: 'INIT_COURSES',
       data: content
     })
+  }
+}
+
+// sets the course as hidden
+const setHidden = (course_id) => {
+  return async (dispatch) => {
+    const response = await courseService.hideCourse(course_id)
+    if (response.error) {
+      setError(response.error, 5)
+    } else {
+      dispatch({
+        type: 'SET_HIDDEN',
+        data: {
+          course_id,
+          course: response
+        }
+      })
+      notify('Course ' + response.learningopportunity_id + ' hidden', 5)
+    }
   }
 }
 
@@ -33,4 +52,4 @@ const createContent = (content) => {
 
 }
 
-export { createContent, initializeCourses }
+export { createContent, initializeCourses, setHidden }
