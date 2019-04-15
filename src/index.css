@@ -93,3 +93,7 @@
   .centerColumn {
     text-align: center;
   }
+
+  .grey {
+    color: rgb(185, 185, 184);
+  }

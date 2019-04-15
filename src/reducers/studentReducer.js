@@ -1,5 +1,6 @@
 const initialState = {
   studentCourses: [],
+  studentCourseIds: [],
   students: [],
   phone: '',
   email: '',
@@ -35,6 +36,14 @@ const studentReducer = (state = initialState, action) => {
       ...state,
       studentCourses: action.data
     }
+    // gets student courselist for application page
+  case 'INIT_STUDENT_COURSE_IDS':
+    return {
+      ...state,
+      studentCourseIds: action.data
+    }
+
+
   // for the delete button in the contact details update form
   case 'STUDENT_APPLICATION_DELETE': {
     return {

@@ -145,7 +145,7 @@ const App = (props) => {
                       />
                       <Route
                         exact path="/apply"
-                        render={() => <CourseApplicationList />}
+                        render={() => <CourseApplicationList id={loggedUser.user.user_id}/>}
                       />
 
                       {/* USERS CAN UPDATE THEIR INFORMATION */}
