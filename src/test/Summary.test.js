@@ -8,6 +8,13 @@ describe('<Summary />', () => {
   beforeAll(() => {
     props = {
       initializeSummary: jest.fn(),
+      filter: {
+        studyProgramme: '',
+        period: '',
+        courseName: '',
+        yearFrom:'',
+        yearTo:''
+      },
       summaryList: [{
         course_id: 20,
         course_name: 'Randomized Algorithms I',
