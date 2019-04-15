@@ -8,9 +8,7 @@ export const StudentCourseList = ({ loggedUser, courses, id, getStudentCourses, 
 
   useEffect(() => {
     getStudentCourses(id)
-    console.log('studentcourselistin useEffectin getstudentcourses', getStudentCourses(id))
   }, [])
-
 
   //event handler for deleting specific course application, tells studentactions to deleteApliedCourse
   const removeApply = (id) => {
@@ -35,7 +33,6 @@ export const StudentCourseList = ({ loggedUser, courses, id, getStudentCourses, 
           </tr>
         </thead>
         <tbody>
-          {console.log('student courselist courses', courses)}
           {courses.map(course =>
             <CourseWithDel course={course} key={course.course_id} onClick={removeApply} />
           )}
@@ -46,7 +43,6 @@ export const StudentCourseList = ({ loggedUser, courses, id, getStudentCourses, 
 }
 
 const mapStateToProps = (state) => {
-  //console.log(state, 'koko store')
   return {
     courses: state.students.studentCourses,
     loggedUser: state.loggedUser.loggedUser

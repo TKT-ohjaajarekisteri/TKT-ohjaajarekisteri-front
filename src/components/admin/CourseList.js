@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Course from './Course'
 import TogglableButton from '../common/TogglableButton'
-import { initializeCourses } from '../../reducers/actionCreators/courseActions'
+import { initializeCourses, setHidden } from '../../reducers/actionCreators/courseActions'
 import { Table } from 'react-bootstrap'
 import { initializeFilter, setProgramme, setPeriod, setCourseName } from '../../reducers/actionCreators/filterActions'
 import { Form } from 'react-bootstrap'
@@ -14,7 +14,8 @@ export const CourseList = ({
   setPeriod,
   setCourseName,
   filter,
-  courses
+  courses,
+  setHidden
 }) => {
 
   useEffect(() => {
@@ -39,6 +40,13 @@ export const CourseList = ({
   const handleCourseNameChange = (event) => {
     event.preventDefault()
     setCourseName(event.target.value)
+  }
+
+  const handleHiddenSubmit = (id) => (event) => {
+    event.preventDefault()
+    if (window.confirm('Are you shure you want to hide this course?')) {
+      setHidden(id)
+    }
   }
 
   const onlyUnique = (value, index, self) => {
@@ -104,8 +112,9 @@ export const CourseList = ({
           <tr>
             <th>Code</th>
             <th>Name</th>
-            <th>Year</th>
-            <th>Period</th>
+            <th className='centerColumn' >Year</th>
+            <th className='centerColumn' >Period</th>
+            <th>Hidden</th>
           </tr>
         </thead>
         <tbody>
@@ -128,6 +137,7 @@ export const CourseList = ({
               <Course
                 course={course}
                 key={course.course_id}
+                setHidden={handleHiddenSubmit}
               />
             )}
         </tbody>
@@ -149,5 +159,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { initializeCourses, initializeFilter, setProgramme, setPeriod, setCourseName }
+  { initializeCourses, initializeFilter, setProgramme, setPeriod, setCourseName, setHidden }
 )(CourseList)

@@ -49,7 +49,7 @@ const getStudents = async (id) => {
   try {
     const response = await axios.get(url + `api/courses/${id}/students`, getConfig())
     return response.data
-  } catch (error)  {
+  } catch (error) {
     return { error: 'Could not get students for this course' }
   }
 }
@@ -61,7 +61,7 @@ const sendAcceptedModified = async (course_id, content) => {
     const response = await axios.post(url + `api/courses/${course_id}/students`, content, getConfig())
     console.log('response ', response.data)
     return response.data
-  } catch (error)  {
+  } catch (error) {
     return { error: 'Something went wrong' }
 
   }
@@ -77,4 +77,13 @@ const getSummary = async () => {
   }
 }
 
-export default { getAll, getOne, getStudents, create, setToken, sendAcceptedModified, getSummary }
+const hideCourse = async (course_id) => {
+  try {
+    const response = await axios.put(url + `api/courses/${course_id}/hide`, {}, getConfig())
+    return response.data
+  } catch (error) {
+    return { error: 'Could not hide course' }
+  }
+}
+
+export default { getAll, getOne, getStudents, create, setToken, sendAcceptedModified, getSummary, hideCourse }

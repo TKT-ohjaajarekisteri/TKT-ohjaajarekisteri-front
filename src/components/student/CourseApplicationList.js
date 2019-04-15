@@ -7,6 +7,7 @@ import { Table, Button } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import { initializeFilter, setProgramme, setPeriod, setCourseName } from '../../reducers/actionCreators/filterActions'
 import { Form } from 'react-bootstrap'
+import { getStudentCourseIds } from '../../reducers/actionCreators/studentActions'
 
 export const CourseApplicationList = (props) => {
 
@@ -15,6 +16,7 @@ export const CourseApplicationList = (props) => {
       props.initializeCourseApplication()
     }
     props.initializeFilter()
+    props.getStudentCourseIds(props.id)
   },
   []
   )
@@ -49,6 +51,11 @@ export const CourseApplicationList = (props) => {
 
   const onlyUnique = (value, index, self) => {
     return self.indexOf(value) === index
+  }
+
+  // checks if the loggedUser has already applied on a course
+  const alreadyApplied = (id) => {
+    return props.studentCourseIds.includes(id)
   }
 
   return (
@@ -121,8 +128,8 @@ export const CourseApplicationList = (props) => {
           <tr>
             <th>Code</th>
             <th>Name</th>
-            <th>Year</th>
-            <th>Period</th>
+            <th className='centerColumn' >Year</th>
+            <th className='centerColumn' >Period</th>
             <th>Apply</th>
           </tr>
         </thead>
@@ -142,13 +149,16 @@ export const CourseApplicationList = (props) => {
                 period.includes(props.filter.period)
               )
             })
+            //applied courses at the bottom of the list
+            .sort(function(a, b) {return alreadyApplied(a.course_id) - alreadyApplied(b.course_id)})
             .map(course =>
               <Course
                 course={course}
                 key={course.course_id}
                 onChange={handleChange}
-              />
-            )}
+                grey={alreadyApplied(course.course_id)}
+              />)
+          }
         </tbody>
       </Table>
     </div>
@@ -160,12 +170,14 @@ const mapStateToProps = (state) => {
     courses: state.courseApplication.courses,
     loading: state.courseApplication.coursesLoading,
     loggedUser: state.loggedUser.loggedUser,
+    studentCourseIds: state.students.studentCourseIds,
     filter: {
       courseName: state.filter.courseName,
       studyProgramme: state.filter.studyProgramme,
       period: state.filter.period
     }
   }
+
 }
 
 // withRouter provides history from Router component in App
@@ -178,6 +190,7 @@ export default withRouter(connect(
     initializeFilter,
     setProgramme,
     setPeriod,
-    setCourseName
+    setCourseName,
+    getStudentCourseIds
   }
 )(CourseApplicationList))

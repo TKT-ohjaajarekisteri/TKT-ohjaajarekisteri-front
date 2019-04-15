@@ -21,8 +21,6 @@
     }
 
 /* adjust buttons */
-
-
 .btn{
      margin: 0px;
 }
@@ -35,7 +33,6 @@
     margin: 5px 0px 20px 0px;
   }
   .buttonDelete {
-     float:right;
      margin: 0px;
   }
   .btn:focus{
@@ -57,13 +54,25 @@
   }
 
   /* adjust checkbox  */
-
   .listCheckbox {
     text-align: center;
   }
 
-  /* adjust filter input box */
+  .buttonHide {
+    color: rgb(240, 140, 0);
+    border-color: rgb(240, 140, 0);
+    width: 75px;
+    margin:auto;
+    display:block;
+  }
+  
+  .buttonUnhide {
+    width: 75px;
+    margin:auto;
+    display:block;
+  }
 
+  /* adjust filter input box */
   .filterInput {
     margin: 5px 10px 20px 0px;
     color:  #6c757d;
@@ -87,5 +96,19 @@
     box-shadow: none !important;
     color:  #6c757d;
     border-color: rgb(240, 140, 0);
+  }
+
+/* adjust email link hidden text */
+  .emailHidden {
+  margin: 10px 5px 0px 0px;
+  float: right;
+  }
+
+.centerColumn {
+  text-align: center;
+}
+
+  .grey {
+    color: rgb(185, 185, 184);
   }
 

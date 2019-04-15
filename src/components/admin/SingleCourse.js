@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Checkbox from '../common/Checkbox'
 import { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified, setStudentGroups } from '../../reducers/actionCreators/singleCourseActions'
 import { Table, Button } from 'react-bootstrap'
-
+import { Link } from 'react-router-dom'
 
 export const SingleCourse = ({
   course,
@@ -22,9 +22,8 @@ export const SingleCourse = ({
   []
   )
 
-  const handleAcceptedSubmit = (e) => {
-    e.preventDefault()
-    const acceptedModified = applicants
+  const getModified = (applicants) => {
+    return applicants
       .filter(a => a.accepted !== a.accepted_checked || a.groups !== a.groups_textbox)
       .map(a => {
         return {
@@ -33,7 +32,11 @@ export const SingleCourse = ({
           groups: a.groups !== a.groups_textbox ? a.groups_textbox : a.groups
         }
       })
+  }
 
+  const handleAcceptedSubmit = (e) => {
+    e.preventDefault()
+    const acceptedModified = getModified(applicants)
     if (acceptedModified.length !== 0) {
       sendAcceptedModified(courseId, acceptedModified)
     }
@@ -41,7 +44,7 @@ export const SingleCourse = ({
 
   const handleEmailToChange = (id) => (e) => {
     const email_to_checked = e.target.checked
-    setEmail(id, email_to_checked)
+    setEmail(id, email_to_checked) // Updates email message fields
   }
 
   const handleAcceptedChange = (id) => (e) => {
@@ -67,14 +70,20 @@ export const SingleCourse = ({
           <h3>Applicants for course:</h3>
         </div>
         <div className='col'>
-          <Button className='float-right' target="_blank" rel="noopener noreferrer" href={href} variant='dark'>Send email</Button>
+          {
+            getModified(applicants).length === 0 ?
+              <Button className='float-right' target="_blank" rel="noopener noreferrer" href={href} variant='dark'>Send email</Button>
+              :
+              <div className='emailHidden'>Save changes to Send email</div>
+          }
+
         </div>
       </div>
       <Table bordered hover>
         <thead>
           <tr>
             <th>Student number</th>
-            <th>First name</th>
+            <th>First names</th>
             <th>Last name</th>
             <th>Language</th>
             <th>Email</th>
@@ -86,7 +95,7 @@ export const SingleCourse = ({
         <tbody>
           {applicants.map(student =>
             <tr className='Student' key={student.student_id}>
-              <td>{student.student_number}</td>
+              <td><Link to={`/admin/students/${student.student_id}/info`}>{student.student_number}</Link></td>
               <td>{student.first_names}</td>
               <td>{student.last_name}</td>
               <td>{student.no_english ? '' : 'English'}</td>

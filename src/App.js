@@ -13,6 +13,7 @@ import Summary from './components/admin/Summary'
 import UpdatePasswordForm from './components/admin/UpdatePasswordForm'
 import CourseApplicationList from './components/student/CourseApplicationList'
 import SingleCourse from './components/admin/SingleCourse'
+import SingleStudent from './components/admin/SingleStudent'
 import PrivateRoute from './components/common/PrivateRoute'
 import Notification from './components/common/Notification'
 
@@ -25,13 +26,13 @@ const App = (props) => {
     props.initLoggedUser()
   }, [])
 
-  const { loggedUser, loadingUser } = props
+  const { loggedUser } = props  //loadingUser poistettu
   const hasContactDetails = (
     loggedUser &&
     loggedUser.user.role === 'student' &&
     loggedUser.user.email)
   const isAdmin = loggedUser && loggedUser.user.role === 'admin'
-  const isLogged = loadingUser === false
+  //const isLogged = loadingUser === false
 
   return (
     <div>
@@ -105,9 +106,11 @@ const App = (props) => {
                 < Route exact path="/admin/summary" render={() => <Summary />} />
                 <Route
                   exact path="/admin/courses/:id"
-                  redirectPath="/"
-                  condition={isAdmin && loggedUser && isLogged}
                   render={({ match }) => <SingleCourse courseId={match.params.id} />}
+                />
+                <Route
+                  exact path="/admin/students/:id/info"
+                  render={({ match }) => <SingleStudent studentId={match.params.id} />}
                 />
                 <Route
                   exact path="/admin"
@@ -142,7 +145,7 @@ const App = (props) => {
                       />
                       <Route
                         exact path="/apply"
-                        render={() => <CourseApplicationList />}
+                        render={() => <CourseApplicationList id={loggedUser.user.user_id}/>}
                       />
 
                       {/* USERS CAN UPDATE THEIR INFORMATION */}
@@ -167,7 +170,7 @@ const mapStateToProps = (state) => {
   console.log(state, 'APISTA koko store')
   return {
     loggedUser: state.loggedUser.loggedUser,
-    loadingUser: state.loggedUser.loadingUser
+    //loadingUser: state.loggedUser.loadingUser
   }
 }
 
