@@ -37,7 +37,9 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
     // gives error if email is not in valid format
     if (!validation(input.email)) {
       notify('Please check your email', 5)
-    } else {
+    } if (input.experience.length>1000) {
+      notify('Experience maximum lenght is 1000 characters', 5)
+    }else {
       updateLoggedUser(input, id)
     }
   }
@@ -66,7 +68,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
               onChange={(e) => updateEmail(e.target.value)}
             />
 
-            <Form.Label>Assistance/teaching experience: </Form.Label>
+            <Form.Label>Assistance/teaching experience (max length 1000 characters): </Form.Label>
             <Form.Control
               as="textarea"
               rows="2"
