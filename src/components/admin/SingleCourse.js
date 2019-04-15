@@ -62,7 +62,29 @@ export const SingleCourse = ({
     <div>
       <div className="courseHeader">
         {!course ? null :
-          <h2>{course.learningopportunity_id} {course.course_name}  {course.year} period:{course.period}</h2>
+          <div>
+            <h2>{course.learningopportunity_id} {course.course_name}</h2>
+            <table className="courseHeaderData">
+              <colgroup>
+                <col width="100" />
+                <col width="80" />
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td>Year</td>
+                  <td>{course.year}</td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>{course.period}</td>
+                </tr>
+                <tr>
+                  <td>Groups</td>
+                  <td>{course.groups ? course.groups : 0}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         }
       </div>
       <div className='row' style={{ paddingBottom: 15 }}>
