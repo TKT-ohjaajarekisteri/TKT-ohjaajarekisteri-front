@@ -194,7 +194,6 @@ describe('student/ <CourseApplicationList />', () => {
       expect(table2.length).toBe(2)
       expect(wrapper.find('.grey').length).toBe(1)
       expect(wrapper.find('.notGrey').length).toBe(2)
-      console.log(wrapper.debug())
     })
 
   })
