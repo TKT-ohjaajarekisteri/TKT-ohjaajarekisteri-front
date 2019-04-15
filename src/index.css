@@ -89,3 +89,7 @@
     color:  #6c757d;
     border-color: rgb(240, 140, 0);
   }
+
+  .centerColumn {
+    text-align: center;
+  }
