@@ -3,11 +3,21 @@
 const initialState = {
   studyProgramme: '',
   period: '',
-  courseName: ''
+  courseName: '',
+  yearFrom: '',
+  yearTo: ''
 }
 
 const filterReducer = (state = initialState, action) => {
   switch (action.type) {
+
+  case 'SET_COURSE_YEARFROM': {
+    return { ...state, yearFrom: action.data }
+  }
+  case 'SET_COURSE_YEARTO': {
+    return { ...state, yearTo: action.data }
+  }
+
   case 'SET_COURSE_NAME': {
     return { ...state, courseName: action.data }
   }

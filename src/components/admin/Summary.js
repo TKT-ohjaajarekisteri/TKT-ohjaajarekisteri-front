@@ -1,20 +1,146 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { initializeSummary } from '../../reducers/actionCreators/summaryActions'
-import { Table } from 'react-bootstrap'
+import { initializeFilter, setProgramme, setPeriod, setCourseName, setYearFrom, setYearTo } from '../../reducers/actionCreators/filterActions'
+import { Table, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import TogglableButton from '../common/TogglableButton'
+import { notify } from '../../reducers/actionCreators/notificationActions'
 
 
-export const Summary = ({ initializeSummary, summaryList }) => {
+export const Summary = ({
+  initializeSummary,
+  summaryList,
+  setYearFrom,
+  setYearTo,
+  setProgramme,
+  setPeriod,
+  setCourseName,
+  filter }) => {
 
   useEffect(() => {
     initializeSummary()
+
   },
   []
   )
+
+
+  const handleProgrammeChange = (event) => {
+    event.preventDefault()
+    setProgramme(event.target.name)
+  }
+
+  const handlePeriodChange = (event) => {
+    event.preventDefault()
+    setPeriod(event.target.name)
+  }
+
+  const handleCourseNameChange = (event) => {
+    event.preventDefault()
+    setCourseName(event.target.value)
+  }
+  const handleYearFromChange = (event) => {
+    event.preventDefault()
+    setYearFrom(event.target.value)
+  }
+  const handleYearToChange = (event) => {
+    event.preventDefault()
+    setYearTo(event.target.value)
+  }
+
+
+
+  const onlyUnique = (value, index, self) => {
+    return self.indexOf(value) === index
+  }
+
   return (
+
     <div>
       <h2>All courses and applicants</h2>
+
+      <div>
+        <div style={{ float: 'left' }}>
+
+          <div style={{ color: '#6c757d' }}>Study programme:</div>
+          <TogglableButton
+            type='submit'
+            name='TKT'
+            onClick={handleProgrammeChange}
+            filterValue={filter.studyProgramme}>
+            CS-Bachelor
+          </TogglableButton>
+          <TogglableButton
+            type='submit'
+            name='CSM'
+            onClick={handleProgrammeChange}
+            filterValue={filter.studyProgramme}>
+            CS-Master
+          </TogglableButton>
+          <TogglableButton
+            type='submit'
+            name='DATA'
+            onClick={handleProgrammeChange}
+            filterValue={filter.studyProgramme}>
+            Data Science
+          </TogglableButton>
+
+        </div>
+        <div style={{ float: 'left' }}>
+          <div style={{ color: '#6c757d' }}>Period:</div>
+          {summaryList && summaryList
+            .map(c => c.period)
+            .filter(onlyUnique)
+            .sort()
+            .map(period => {
+              return (
+                <TogglableButton
+                  key={period}
+                  type='submit'
+                  name={period}
+                  onClick={handlePeriodChange}
+                  filterValue={filter.period}>
+                  {period}
+                </TogglableButton>
+              )
+            })}
+
+        </div>
+        <div style={{ float: 'right' }}>
+          <div style={{ color: '#6c757d' }}> Filter:</div>
+          <Form.Control
+            className='filterInput'
+            value={filter.course_name}
+            onChange={handleCourseNameChange} />
+        </div>
+
+        <div style={{ float: 'right' }}>
+          <div style={{ color: '#6c757d' }}>Year To:</div>
+          <Form.Control
+            className='filterYearInput'
+            value={filter.year}
+            onChange={handleYearToChange} />
+        </div>
+
+        <div style={{ float: 'right' }}>
+          <div style={{ color: '#6c757d' }}>Year From:</div>
+          <Form.Control
+            className='filterYearInput'
+            value={filter.year}
+            onChange={handleYearFromChange} />
+        </div>
+
+
+
+
+
+
+      </div>
+      {/* <Form.Group as={Col} md="4"></Form.Group> */}
+
+
+
       <Table className='summaryCourseList' bordered hover size="sm" >
         <thead>
           <tr>
@@ -25,8 +151,35 @@ export const Summary = ({ initializeSummary, summaryList }) => {
             <th>Applicants</th>
           </tr>
         </thead>
+
         <tbody>
-          {summaryList.filter(course => course.students.length !== 0)
+          {summaryList
+            .filter(course => course.students.length !== 0)
+            .filter(course => {
+              let period = course.period.toString(10)
+              return (
+                (
+                  (
+                    filter.yearFrom ? course.year >= Number(filter.yearFrom) : true
+                  )
+                  &&
+                  (
+                    filter.yearTo ? course.year <= Number(filter.yearTo) : true
+                  )
+                )
+                &&
+                (
+                  course.course_name.toLowerCase().includes(filter.courseName.toLowerCase())
+                  ||
+                  course.learningopportunity_id.toLowerCase().includes(filter.courseName.toLowerCase())
+                )
+
+                &&
+                course.learningopportunity_id.includes(filter.studyProgramme)
+                &&
+                period.includes(filter.period)
+              )
+            })
             .map(course =>
               <tr key={course.course_id}>
                 <td >{course.course_id}</td>
@@ -38,7 +191,7 @@ export const Summary = ({ initializeSummary, summaryList }) => {
                     <tbody>
                       {course.students.map(s =>
                         <tr key={s.student_id} >
-                          <td><Link to={`students/${s.student_id}`}>{s.student_number}</Link></td>
+                          <td><Link to={`/admin/students/${s.student_id}/info`}>{s.student_number}</Link></td>
                           <td className="studentName"> {s.first_names} {s.last_name}</td>
                           <td width='20px'> {s.Application.accepted ? 'x' : ''}</td>
                           <td width='70px'> {s.no_english ? '' : 'English'}</td>
@@ -53,19 +206,26 @@ export const Summary = ({ initializeSummary, summaryList }) => {
       </Table>
 
     </div >
+
   )
 }
-
 
 const mapStateToProps = (state) => {
   //const summaryList=state.summary
   console.log(state, 'koko store summarysta')
   return {
-    summaryList: state.summary.summary
+    summaryList: state.summary.summary,
+    filter: {
+      courseName: state.filter.courseName,
+      yearFrom: state.filter.yearFrom,
+      yearTo: state.filter.yearTo,
+      studyProgramme: state.filter.studyProgramme,
+      period: state.filter.period
+    }
   }
 }
 
 export default connect(
   mapStateToProps,
-  { initializeSummary }
+  { initializeSummary, initializeFilter, setProgramme, setPeriod, setCourseName, notify, setYearFrom, setYearTo }
 )(Summary)

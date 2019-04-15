@@ -63,6 +63,7 @@ const sendAcceptedModified = async (course_id, content) => {
     return response.data
   } catch (error) {
     return { error: 'Something went wrong' }
+
   }
 }
 
