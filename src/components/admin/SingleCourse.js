@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Checkbox from '../common/Checkbox'
-import { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified, setStudentGroups } from '../../reducers/actionCreators/singleCourseActions'
+import singleCourseActions from '../../reducers/actionCreators/singleCourseActions'
 import { Table, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
@@ -14,12 +14,13 @@ export const SingleCourse = ({
   setStudentAccepted,
   setEmail,
   setStudentGroups,
-  sendAcceptedModified }) => {
+  sendAcceptedModified
+}) => {
 
   useEffect(() => {
     initializeSingleCourse(courseId)
   },
-  []
+    []
   )
 
   const getModified = (applicants) => {
@@ -61,30 +62,33 @@ export const SingleCourse = ({
   return (
     <div>
       <div className="courseHeader">
-        {!course ? null :
-          <div>
-            <h2>{course.learningopportunity_id} {course.course_name}</h2>
-            <table className="courseHeaderData">
-              <colgroup>
-                <col width="100" />
-                <col width="80" />
-              </colgroup>
-              <tbody>
-                <tr>
-                  <td>Year</td>
-                  <td>{course.year}</td>
-                </tr>
-                <tr>
-                  <td>Period</td>
-                  <td>{course.period}</td>
-                </tr>
-                <tr>
-                  <td>Groups</td>
-                  <td>{course.groups ? course.groups : 0}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        {
+          !course ?
+            null
+            :
+            <div>
+              <h2>{course.learningopportunity_id} {course.course_name}</h2>
+              <table className="courseHeaderData">
+                <colgroup>
+                  <col width="100" />
+                  <col width="80" />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td>Year</td>
+                    <td>{course.year}</td>
+                  </tr>
+                  <tr>
+                    <td>Period</td>
+                    <td>{course.period}</td>
+                  </tr>
+                  <tr>
+                    <td>Groups</td>
+                    <td>{course.groups ? course.groups : 0}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
         }
       </div>
       <div className='row' style={{ paddingBottom: 15 }}>
@@ -123,7 +127,14 @@ export const SingleCourse = ({
               <td>{student.no_english ? '' : 'English'}</td>
               <td>{student.email}</td>
               <td>
-                <input type='number' id={student.student_number} onChange={handleGroupsChange(student.student_id)} defaultValue={student.groups_textbox} style={{ width: 50 }} min='0'></input>
+                <input
+                  type='number'
+                  id={student.student_number}
+                  onChange={handleGroupsChange(student.student_id)}
+                  defaultValue={student.groups_textbox}
+                  style={{ width: 50 }}
+                  min='0'
+                />
               </td>
               <td>
                 <Checkbox
@@ -162,5 +173,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified, setStudentGroups }
+  { ...singleCourseActions }
 )(SingleCourse)
