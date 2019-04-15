@@ -1,5 +1,6 @@
 import React from 'react'
 import CheckBox from '../common/Checkbox'
+import { Badge } from 'react-bootstrap'
 
 const Course = ({ course, onChange, grey }) => {
 
@@ -10,7 +11,7 @@ const Course = ({ course, onChange, grey }) => {
         <td className="name"> {course.course_name}</td>
         <td className="year centerColumn">{course.year}</td>
         <td className="period centerColumn">{course.period}</td>
-        <td className="checkbox listCheckbox">
+        <td className= "checkbox centerColumn"><Badge variant="secondary">Applied</Badge>
         </td>
       </tr>
     )
