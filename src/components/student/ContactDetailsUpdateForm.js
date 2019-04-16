@@ -38,7 +38,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
     if (!validation(input.email)) {
       notify('Please check your email', 5)
     } else if (input.experience.length>1000) {
-      notify('Experience maximum lenght is 1000 characters', 5)
+      notify('Experience maximum length is 1000 characters', 5)
     }else {
       updateLoggedUser(input, id)
     }
