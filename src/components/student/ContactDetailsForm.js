@@ -27,15 +27,14 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
       no_english: event.target.no_english.checked
     }
     //console.log('contact details form', formContent)
+
     if (!validation(formContent.email)) {
       notify('Please check your email', 5)
-    } if (formContent.experience.length>1000) {
+    }
+    else if (formContent.experience.length>1000) {
       notify('Experience maximum lenght is 1000 characters', 5)
     } else {
       updateLoggedUser(formContent, id)
-      event.target.phonenumber.value = ''
-      event.target.email.value = ''
-      event.target.experience.value = ''
     }
   }
   return (
