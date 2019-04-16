@@ -12,7 +12,7 @@ The API uses [JWT (json web token)](https://jwt.io) for authenticating HTTP requ
 
 #### Parameters
 
-```json
+```json5
 body: {
   "username":"tester",
   "password":"password"
@@ -21,11 +21,11 @@ body: {
 
 #### Response.data
 
-```json
+```json5
 Status: 200 OK
 Content-Type: application/json
 
-If credentials are for admin:
+If credentials are admin:
 {
   "token":"aaksjdhf123jk4hl4kj676t21kj34h178234t12hj4bkj",
   "user": {
@@ -34,20 +34,20 @@ If credentials are for admin:
   }
 }
 
-If credentials are for student:
+If credentials are student:
 {
   "token":"aaksjdhf123jk4hl4kj676t21kj34h178234t12hj4bkj",
   "user": {
     "user_id": 1,
     "role": "student",
-    "email": true/false // depends on the user having supplied an email address
+    "email": true // depends on the user having supplied an email address
   }
 }
 ```
 
 #### Error responses
 
-```json
+```json5
 status: 400 data: { "error": "missing username or password" }
 status: 401 data: { "error": "incorrect credentials" } // if password or username is wrong
 status: 500 data: { "error": "authentication error" } // if an authentication func throws an error
@@ -63,14 +63,14 @@ status: 500 data: { "error": "authentication error" } // if an authentication fu
 
 #### Parameters
 
-```json
+```json5
 body: {
 }
 ```
 
 #### Response.data
 
-```json
+```json5
 Status: 200 OK
 Content-Type: application/json
 
@@ -81,7 +81,7 @@ Content-Type: application/json
 
 #### Error responses
 
-```json
+```json5
 status: 404 data: { "error": "" }
 ```
 
