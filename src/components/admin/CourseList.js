@@ -19,9 +19,7 @@ export const CourseList = ({
 }) => {
 
   useEffect(() => {
-    if (courses.length === 0) {
-      initializeCourses()
-    }
+    initializeCourses()
     initializeFilter()
   },
   []
@@ -114,6 +112,7 @@ export const CourseList = ({
             <th>Name</th>
             <th className='centerColumn' >Year</th>
             <th className='centerColumn' >Period</th>
+            <th className='centerColumn' >Accepted/Applicants</th>
             <th>Hidden</th>
           </tr>
         </thead>
