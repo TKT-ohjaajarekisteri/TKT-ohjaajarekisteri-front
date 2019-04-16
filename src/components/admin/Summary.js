@@ -22,7 +22,7 @@ export const Summary = ({
     initializeSummary()
 
   },
-    []
+  []
   )
 
 
