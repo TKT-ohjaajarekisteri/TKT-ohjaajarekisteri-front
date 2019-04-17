@@ -19,12 +19,10 @@ export const CourseList = ({
 }) => {
 
   useEffect(() => {
-    if (courses.length === 0) {
-      initializeCourses()
-    }
+    initializeCourses()
     initializeFilter()
   },
-  []
+    []
   )
 
   const handleProgrammeChange = (event) => {
@@ -112,9 +110,10 @@ export const CourseList = ({
           <tr>
             <th>Code</th>
             <th>Name</th>
-            <th className='centerColumn' >Year</th>
-            <th className='centerColumn' >Period</th>
-            <th>Hidden</th>
+            <th className='centerColumn'>Year</th>
+            <th className='centerColumn'>Period</th>
+            <th className='centerColumn wrapSmallCell' >Accepted/ Applicants</th>
+            <th className='centerColumn'>Hidden</th>
           </tr>
         </thead>
         <tbody>

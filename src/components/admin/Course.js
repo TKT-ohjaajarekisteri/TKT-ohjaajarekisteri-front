@@ -4,6 +4,15 @@ import { Button } from 'react-bootstrap'
 
 const Course = ({ course, setHidden }) => {
 
+  let acceptedStudentsAmount = 0
+  let applicants = 0
+  if(course.students) {
+    applicants = course.students.length
+    course.students.forEach(student => {
+      if(student.Application.accepted) acceptedStudentsAmount++
+    })
+  }
+
   return (
 
     <tr>
@@ -11,6 +20,7 @@ const Course = ({ course, setHidden }) => {
       <td className = 'name'> {course.course_name}</td>
       <td className = 'year centerColumn' >{course.year}</td>
       <td className = 'period centerColumn' >{course.period}</td>
+      <td className = 'applicants centerColumn' >{acceptedStudentsAmount}/{applicants}</td>
       <td>
         {
           course.hidden
