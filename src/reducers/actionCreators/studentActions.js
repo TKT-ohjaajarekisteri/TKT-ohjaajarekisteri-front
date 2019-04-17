@@ -39,7 +39,7 @@ const getStudentCourses = (id) => {
 const getStudentCourseIds = (id) => {
   return async (dispatch) => {
     const content = await studentService.getCourses(id)
-    const courseIds =  content.map(course => course.course_id)
+    const courseIds = content.map(course => course.course_id)
     dispatch({
       type: 'INIT_STUDENT_COURSE_IDS',
       data: courseIds
@@ -52,7 +52,7 @@ const getContactInformation = (id) => {
   //console.log(id)
   return async (dispatch) => {
     const student = await studentService.getStudent(id)
-    if (student===undefined || student.error) {
+    if (student === undefined || student.error) {
       dispatch({
         type: 'NOTIFY',
         data: 'Could not get your course list!'
@@ -77,7 +77,7 @@ const deleteAppliedCourse = (course_id, student_id) => {
 
     const response = await studentService.deleteApplication(student_id, course_id)
     //console.log(response)
-    if (response.error || response===undefined) {
+    if (response.error || response === undefined) {
       dispatch({
         type: 'NOTIFY',
         data: 'Delete failed!'
@@ -122,14 +122,16 @@ const updateEmail = (email) => {
 const updateExperience = (experience) => {
   return {
     type: 'UPDATE_EXPERIENCE',
-    data:experience
+    data: experience
   }
 }
 const updateLanguage = (teachesInEnglish) => {
   return {
     type: 'UPDATE_LANGUAGE',
-    data:teachesInEnglish
+    data: teachesInEnglish
   }
 }
-export { updatePhone, updateEmail, updateLanguage, updateExperience,
-  initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse, getStudentCourseIds  }
+export {
+  updatePhone, updateEmail, updateLanguage, updateExperience,
+  initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse, getStudentCourseIds
+}
