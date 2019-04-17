@@ -2,6 +2,20 @@
 
 The API uses [JWT (json web token)](https://jwt.io) for authenticating HTTP requests. All authenticated endpoints require that you include a valid JWT in the *Authorization* header, e.g. `Authorization: Bearer <JWT here>`.
 
+# Endpoint index
+
+| Endpoint                      | Method | Authentication | Description |
+| ----------------------------- | ------ | -------------- | ----------- |
+| [`/api/login`](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/apiRouteDocumentation/documentation/ohjaajarekisteri-API.md#login---authenticate-user) | POST | None | Used for requesting access tokens and user information.|
+| [`/api/admins`](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/apiRouteDocumentation/documentation/ohjaajarekisteri-API.md#admin---update-admin-password) | PUT | Admin | Used for changing admin credentials. Admin JWT required. |
+| [`/api/courses`](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/apiRouteDocumentation/documentation/ohjaajarekisteri-API.md#courses---get-current-courses) | GET | Login | Used for fetching currently available courses. If the user is an admin they will also receive all courses with `"hidden":"true"`, which are not sent to student users. `students:[]` field is only returned if user is an admin. |
+| [`/api/courses/all`](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/apiRouteDocumentation/documentation/ohjaajarekisteri-API.md#courses---get-all-courses-in-database) | GET | Login | Used for fetching all courses. |
+| [`/api/courses/summary`](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/apiRouteDocumentation/documentation/ohjaajarekisteri-API.md#courses---get-all-courses-and-applicants-related-to-those-courses) | GET | Admin | Used for getting all courses and applicants of those courses to get an overview of the data and relations in the database. |
+| [`/api/:id`](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/apiRouteDocumentation/documentation/ohjaajarekisteri-API.md#courses---get-one-course) | GET | Login | Used for fetching one course based on its `course_id` |
+| [`/api/:id/students`](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/apiRouteDocumentation/documentation/ohjaajarekisteri-API.md#courses---get-all-applicants-to-a-course) | GET | Admin | Used for fetching all students that have applied to the course. |
+| [`/api/:id/students`](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/apiRouteDocumentation/documentation/ohjaajarekisteri-API.md#courses---modify-applications-groups-and-accepted-state) | POST | Admin | Used for updating the state of applications. Only the fields included in the objects passed in the request body are updated, e.g. if `groups` is missing from an object, then it was not updated. |
+| [`/api/:id/hide`](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/apiRouteDocumentation/documentation/ohjaajarekisteri-API.md#courses---hide-a-course) | PUT | Admin | Used for hiding a course from the view of applicants. |
+
 # Endpoints
 
 ## Login - authenticate user
