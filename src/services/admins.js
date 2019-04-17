@@ -15,9 +15,10 @@ const getConfig = () => {
   }
 }
 
-
 const updatePassword = async ({ oldPassword, newPassword, confirm }) => {
-
+  if (newPassword.length < 8) {
+    return { error: 'Password needs to be at least 8 characters long' }
+  }
   if (newPassword === confirm) {
     try {
       const response = await axios.put(baseUrl, { oldPassword, newPassword }, getConfig())
@@ -25,7 +26,6 @@ const updatePassword = async ({ oldPassword, newPassword, confirm }) => {
     } catch (error) {
       return { error: 'Old password is incorrect!' }
     }
-
   } else {
     return { error: 'Make sure the new password and the confirmation match' }
   }
