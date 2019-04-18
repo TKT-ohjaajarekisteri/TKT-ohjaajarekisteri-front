@@ -2,6 +2,8 @@
 
 The API uses [JWT (json web token)](https://jwt.io) for authenticating HTTP requests. All authenticated endpoints require that you include a valid JWT in the *Authorization* header, e.g. `Authorization: Bearer <JWT here>`.
 
+Roles used for authentication on endpoints are: `Login` (user needs to be logged in to access the endpoint), `User` (Only the *owner* of the requested data may access that data using that endpoint), and `Admin` (Only users with *admin* status may access the endpoint).
+
 # Endpoint index
 
 | Endpoint                      | Method | Authentication | Description |
