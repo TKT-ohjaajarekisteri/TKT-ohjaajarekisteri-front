@@ -463,7 +463,369 @@ status: 400 data: { "error": "bad req" }
 
 ---
 
-## Template - short description
+## Students - get all students
+
+| Endpoint                      | Method | Authentication | Description |
+| ----------------------------- | ------ | -------------- | ----------- |
+| `/api/students` | GET | Admin | Used for fetching all students in database. |
+
+#### Parameters
+
+```json5
+```
+
+#### Response
+
+```json5
+Status: 200 OK
+Content-Type: application/json
+Data: [
+  {
+    "student_id": 1,
+    "student_number": "012345678",
+    "first_names": "Timo *Teppo Tellervo",
+    "last_name": "Testaaja",
+    "no_english": false,
+    "experience": "",
+    "phone": "213412341",
+    "email": "tite@helsinki.fi",
+    "createdAt": "2019-04-17T09:43:28.967Z",
+    "updatedAt": "2019-04-17T10:22:18.228Z"
+  },
+  ...
+]
+```
+
+#### Error responses
+
+```json5
+status: 400 data: { "error": "Could not get studentlist from db" }
+```
+
+---
+
+## Students - get one student
+
+| Endpoint                      | Method | Authentication | Description |
+| ----------------------------- | ------ | -------------- | ----------- |
+| `/api/students/:id` | GET | User | Used for fetching a specific student based on their `user_id`. |
+
+#### Parameters
+
+```json5
+params: {
+  "id": 1 // the user_id of the student
+}
+```
+
+#### Response
+
+```json5
+Status: 200 OK
+Content-Type: application/json
+Data: {
+    "student_id": 1,
+    "student_number": "012345678",
+    "first_names": "Timo *Teppo Tellervo",
+    "last_name": "Testaaja",
+    "no_english": false,
+    "experience": "",
+    "phone": "213412341",
+    "email": "tite@helsinki.fi",
+    "createdAt": "2019-04-17T09:43:28.967Z",
+    "updatedAt": "2019-04-17T10:22:18.228Z"
+}
+```
+
+#### Error responses
+
+```json5
+status: 400 data: { "error": "Could not get student from db" }
+```
+
+---
+
+## Students - get one student
+
+| Endpoint                      | Method | Authentication | Description |
+| ----------------------------- | ------ | -------------- | ----------- |
+| `/api/students/:id/info` | GET | Admin | Used by admin for fetching a specific student based on their `student_id`. |
+
+#### Parameters
+
+```json5
+params: {
+  "id": 1 // the student_id of the student
+}
+```
+
+#### Response
+
+```json5
+Status: 200 OK
+Content-Type: application/json
+Data: {
+    "student_id": 1,
+    "student_number": "012345678",
+    "first_names": "Timo *Teppo Tellervo",
+    "last_name": "Testaaja",
+    "no_english": false,
+    "experience": "",
+    "phone": "213412341",
+    "email": "tite@helsinki.fi",
+    "createdAt": "2019-04-17T09:43:28.967Z",
+    "updatedAt": "2019-04-17T10:22:18.228Z"
+}
+```
+
+#### Error responses
+
+```json5
+status: 400 data: { "error": "Could not get student from db" }
+```
+
+---
+
+## Students - get courses related to student
+
+| Endpoint                      | Method | Authentication | Description |
+| ----------------------------- | ------ | -------------- | ----------- |
+| `/api/students/:id/courses` | GET | User | Used for fetching courses that the user has applied to. |
+
+#### Parameters
+
+```json5
+params: {
+  "id": 1 // the user_id of the student
+}
+```
+
+#### Response
+
+```json5
+Status: 200 OK
+Content-Type: application/json
+Data: [
+  {
+    "course_id": 24,
+    "learningopportunity_id": "CSM12114",
+    "course_name": "Automated Logical Reasoning",
+    "period": 4,
+    "year": 2019,
+    "groups": null,
+    "hidden": false,
+    "createdAt": "2019-04-16T19:45:24.731Z",
+    "updatedAt": "2019-04-16T19:45:24.731Z",
+    "Application": {
+      "groups": 0,
+      "accepted": false,
+      "hidden": false,
+      "createdAt": "2019-04-17T10:22:28.932Z",
+      "updatedAt": "2019-04-17T10:22:28.932Z",
+      "course_id": 24,
+      "student_id": 1
+    }
+  },
+  ...
+]
+```
+
+#### Error responses
+
+```json5
+status: 400 data: { "error": "Could not get the course list from db" }
+```
+
+---
+
+## Students - apply to courses
+
+| Endpoint                      | Method | Authentication | Description |
+| ----------------------------- | ------ | -------------- | ----------- |
+| `/api/students/:id/courses/apply` | POST | User | Used creating applications for student to courses. Applications are created to courses listed in the `course_ids` field of the request body. |
+
+#### Parameters
+
+```json5
+params: {
+  "id": 1 // the user_id of the student
+}
+body: {
+  "course_ids": [125, ... ]
+}
+```
+
+#### Response
+
+```json5
+Status: 201 Created
+Content-Type: application/json
+Data: [
+  {
+    "course_id": 125,
+    "learningopportunity_id": "DATA16001",
+    "course_name": "Network Analysis",
+    "period": 3,
+    "year": 2019,
+    "groups": null,
+    "hidden": false,
+    "createdAt": "2019-04-16T19:45:24.731Z",
+    "updatedAt": "2019-04-16T19:45:24.731Z"
+  },
+  ...
+]
+```
+
+#### Error responses
+
+```json5
+status: 400 data: { "error": "bad req" }
+```
+
+---
+
+## Students - remove application from course
+
+| Endpoint                      | Method | Authentication | Description |
+| ----------------------------- | ------ | -------------- | ----------- |
+| `/api/students/:id/courses/:course_id` | DELETE | User | Used removing an application by student. Course from which the application shall be removed is identified by the param `course_id`. |
+
+#### Parameters
+
+```json5
+params: {
+  "id": 1, // the user_id of the student
+  "course_id": 42
+}
+```
+
+#### Response
+
+```json5
+Status: 204 No Content
+```
+
+#### Error responses
+
+```json5
+status: 400 data: { "error": "bad request" }
+```
+
+---
+
+## Students - update contact details
+
+| Endpoint                      | Method | Authentication | Description |
+| ----------------------------- | ------ | -------------- | ----------- |
+| `/api/students/:id` | PUT | User | Used for updating the user's contact details. |
+
+#### Parameters
+
+```json5
+params: {
+  "id": 1, // the user_id of the student
+}
+body: {
+  "email": "test@helsinki.fi", 
+  "phone": "123456789", 
+  "experience": "This is what I have done so far...", 
+  "no_english": false
+}
+```
+
+#### Response
+
+```json5
+Status: 200 OK
+```
+
+#### Error responses
+
+```json5
+status: 400 data: { "error": "bad req" }
+```
+
+---
+
+## Students - remove student from DB
+
+| Endpoint                      | Method | Authentication | Description |
+| ----------------------------- | ------ | -------------- | ----------- |
+| `/api/students/:id` | DELETE | User | Used for deleting the record of the student from the database. |
+
+#### Parameters
+
+```json5
+params: {
+  "id": 1 // the user_id of the student
+}
+```
+
+#### Response
+
+```json5
+Status: 200 OK
+```
+
+#### Error responses
+
+```json5
+status: 400 data: { "error": "bad req" }
+```
+
+---
+
+## Students - remove student from DB
+
+| Endpoint                      | Method | Authentication | Description |
+| ----------------------------- | ------ | -------------- | ----------- |
+| `/api/students/:id/:course_id/hide` | PUT | User | Used for hiding an application to a course from the student's view. The endpoint will set the `hidden` field for the application of the student as hidden (true) if it is not hidden and makes it visible (false) if it is hidden. |
+
+#### Parameters
+
+```json5
+params: {
+  "id": 1, // the user_id of the student
+  "course_id": 24
+}
+```
+
+#### Response
+
+```json5
+Status: 200 OK
+Content-Type: application/json
+Data: {
+    "course_id": 24,
+    "learningopportunity_id": "CSM12114",
+    "course_name": "Automated Logical Reasoning",
+    "period": 4,
+    "year": 2019,
+    "groups": null,
+    "hidden": false,
+    "createdAt": "2019-04-16T19:45:24.731Z",
+    "updatedAt": "2019-04-16T19:45:24.731Z",
+    "Application": {
+      "groups": 0,
+      "accepted": false,
+      "hidden": true, <-- modified (when it was false previously)
+      "createdAt": "2019-04-17T10:22:28.932Z",
+      "updatedAt": "2019-04-17T10:22:28.932Z",
+      "course_id": 24,
+      "student_id": 1
+    }
+}
+```
+
+#### Error responses
+
+```json5
+status: 400 data: { "error": "bad req" }
+```
+
+---
+
+<!-- ## Template - short description
 
 | Endpoint                      | Method | Authentication | Description |
 | ----------------------------- | ------ | -------------- | ----------- |
@@ -490,4 +852,4 @@ Data: {}
 status: 404 data: { "error": "" }
 ```
 
----
+--- -->
