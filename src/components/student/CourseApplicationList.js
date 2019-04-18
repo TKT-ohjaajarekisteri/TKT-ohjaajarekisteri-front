@@ -18,7 +18,7 @@ export const CourseApplicationList = (props) => {
     props.initializeFilter()
     props.getStudentCourseIds(props.id)
   },
-  []
+    []
   )
 
   const handleSubmit = () => {
@@ -118,7 +118,7 @@ export const CourseApplicationList = (props) => {
         <Form.Control
           className='filterInput'
           value={props.filter.courseName}
-          onChange={handleCourseNameChange}/>
+          onChange={handleCourseNameChange} />
       </div>
 
 
@@ -128,8 +128,8 @@ export const CourseApplicationList = (props) => {
           <tr>
             <th>Code</th>
             <th>Name</th>
-            <th className='centerColumn' >Year</th>
-            <th className='centerColumn' >Period</th>
+            <th className='centerColumn'>Year</th>
+            <th className='centerColumn'>Period</th>
             <th>Apply</th>
           </tr>
         </thead>
@@ -150,7 +150,7 @@ export const CourseApplicationList = (props) => {
               )
             })
             //applied courses at the bottom of the list
-            .sort(function(a, b) {return alreadyApplied(a.course_id) - alreadyApplied(b.course_id)})
+            .sort((a, b) => { return alreadyApplied(a.course_id) - alreadyApplied(b.course_id) })
             .map(course =>
               <Course
                 course={course}
