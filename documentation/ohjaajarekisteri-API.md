@@ -26,6 +26,7 @@ Roles used for authentication on endpoints are: `Login` (user needs to be logged
 | [`/api/students/:id`](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/apiRouteDocumentation/documentation/ohjaajarekisteri-API.md#students---update-contact-details) | PUT | User | Used for updating the user's contact details. |
 | [`/api/students/:id`](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/apiRouteDocumentation/documentation/ohjaajarekisteri-API.md#students---remove-student-from-db) | DELETE | User | Used for deleting the record of the student from the database. |
 | [`/api/students/:id/:course_id/hide`](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/apiRouteDocumentation/documentation/ohjaajarekisteri-API.md#students---remove-student-from-db-1) | PUT | User | Used for hiding an application to a course from the student's view. The endpoint will set the `hidden` field for the application of the student as hidden (true) if it is not hidden and makes it visible (false) if it is hidden. |
+| [`/api/tokenCheck/login`](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/apiRouteDocumentation/documentation/ohjaajarekisteri-API.md#token---check-that-jwt-is-still-valid) | GET | Login | Used for checking if JWT is valid. |
 
 # Endpoints
 
