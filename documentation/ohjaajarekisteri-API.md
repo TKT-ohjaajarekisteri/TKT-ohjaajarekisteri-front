@@ -836,6 +836,43 @@ status: 400 data: { "error": "bad req" }
 
 ---
 
+## Token - check that JWT is still valid
+
+| Endpoint                      | Method | Authentication | Description |
+| ----------------------------- | ------ | -------------- | ----------- |
+| `/api/tokenCheck/login` | GET | Login | Used for checking if JWT is valid. |
+
+#### Parameters
+
+```json5
+// Only the JWT in the authorization header is required
+```
+
+#### Response
+
+```json5
+Status: 200 OK
+Content-Type: application/json
+Data: {
+   "message":"success"
+}
+```
+
+#### Error responses
+
+```json5
+status: 401 data: { "error": "token missing or invalid" }
+status: 500 data: {
+  "error": {
+    "name": "TokenExpiredError",
+    "message": "jwt expired",
+    "expiredAt": "2019-04-17T19:43:28.000Z"
+  }
+}
+```
+
+---
+
 <!-- ## Template - short description
 
 | Endpoint                      | Method | Authentication | Description |
