@@ -22,6 +22,7 @@ export const SingleCourse = ({
   []
   )
 
+
   const getModified = (applicants) => {
     return applicants
       .filter(a => a.accepted !== a.accepted_checked || a.groups !== a.groups_textbox)
@@ -55,6 +56,20 @@ export const SingleCourse = ({
   const handleGroupsChange = (id) => (e) => {
     const groups = Number(e.target.value)
     setStudentGroups(id, groups)
+  }
+
+  const checkAllEmailBoxes = (e) => {
+    e.preventDefault()
+    applicants.forEach(applicant => {
+      setEmail(applicant.student_id, !applicant.email_to_checked)
+    })
+  }
+
+  const checkAllAcceptedBoxes = (e) => {
+    e.preventDefault()
+    applicants.forEach(applicant => {
+      setStudentAccepted(applicant.student_id, !applicant.accepted_checked)
+    })
   }
 
   const href = `https://outlook.office.com/?path=/mail/action/compose&to=${email.to}&subject=${email.subject}&body=${email.body}`
@@ -110,8 +125,8 @@ export const SingleCourse = ({
             <th>Language</th>
             <th>Email</th>
             <th>Groups</th>
-            <th>Email to</th>
-            <th>Accepted</th>
+            <th className='emailToCol' >Email to</th>
+            <th className='acceptedCol' >Accepted</th>
           </tr>
         </thead>
         <tbody>
@@ -125,18 +140,18 @@ export const SingleCourse = ({
               <td>
                 <input type='number' id={student.student_number} onChange={handleGroupsChange(student.student_id)} defaultValue={student.groups_textbox} style={{ width: 50 }} min='0'></input>
               </td>
-              <td>
+              <td className='centerColumn'>
                 <Checkbox
-                  className='align-items-center emailTo listCheckbox'
+                  className='emailTo listCheckbox'
                   name={student.student_number}
                   checked={student.email_to_checked}
                   id={student.student_id}
                   onChange={handleEmailToChange}
                 />
               </td>
-              <td>
+              <td className='centerColumn'>
                 <Checkbox
-                  className='align-items-center accepted listCheckbox'
+                  className='accepted listCheckbox'
                   name={student.student_number}
                   checked={student.accepted_checked}
                   id={student.student_id}
@@ -145,6 +160,11 @@ export const SingleCourse = ({
               </td>
             </tr>
           )}
+          <tr>
+            <td style={{ visibility: 'hidden' , borderLeftStyle: 'hidden' , borderBottomStyle: 'hidden' }} colSpan='6'></td>
+            <td className='centerColumn noHover' ><Button id='selectEmails' variant='dark' onClick={checkAllEmailBoxes}>Check all</Button></td>
+            <td className='centerColumn noHover' ><Button id='selectEmails' variant='dark' onClick={checkAllAcceptedBoxes}>Check all</Button></td>
+          </tr>
         </tbody>
       </Table>
       <Button className='float-right' id='saveApplied' variant='dark' onClick={handleAcceptedSubmit}>Save</Button>

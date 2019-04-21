@@ -23,6 +23,7 @@
 /* adjust buttons */
 .btn{
      margin: 0px;
+     color: rgb(240, 140, 0);
 }
 .btnLogin{
      margin: 0px 0px 0px 15px;
@@ -115,3 +116,6 @@
     color: rgb(185, 185, 184);
   }
 
+  .centerColumn {
+    text-align: center;
+  }
