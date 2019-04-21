@@ -61,7 +61,7 @@ export const SingleCourse = ({
   const checkAllEmailBoxes = (e) => {
     e.preventDefault()
     applicants.forEach(applicant => {
-      setEmail(applicant.student_id, !applicant.email_to_checked)
+      setEmail(applicant.student_id, applicant.accepted_checked)
     })
   }
 
@@ -162,8 +162,8 @@ export const SingleCourse = ({
           )}
           <tr>
             <td style={{ visibility: 'hidden' , borderLeftStyle: 'hidden' , borderBottomStyle: 'hidden' }} colSpan='6'></td>
-            <td className='centerColumn noHover' ><Button id='selectEmails' variant='dark' onClick={checkAllEmailBoxes}>Check all</Button></td>
-            <td className='centerColumn noHover' ><Button id='selectEmails' variant='dark' onClick={checkAllAcceptedBoxes}>Check all</Button></td>
+            <td className='centerColumn noHover' ><Button id='selectEmails' variant='dark' onClick={checkAllEmailBoxes}>Check for accepted</Button></td>
+            <td className='centerColumn noHover' ><Button id='selectAccepted' variant='dark' onClick={checkAllAcceptedBoxes}>Check all</Button></td>
           </tr>
         </tbody>
       </Table>
