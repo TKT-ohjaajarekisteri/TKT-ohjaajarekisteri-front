@@ -15,4 +15,4 @@ Student may apply to assist in a course. Admin can view all application for a se
 Accepted students application is updated as 'accepted', after which it cannot be deleted. Admin can also assign a number of courses to
 an accepted student.
 
-![model](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/database%20model.pdf)
+![model](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/database%20model.pptx)
