@@ -103,9 +103,13 @@
   float: right;
   }
 
-.centerColumn {
-  text-align: center;
-}
+  .centerColumn {
+    text-align: center;
+  }
+
+  .wrapSmallCell {
+    width: 10%;
+  }
 
   .grey {
     color: rgb(185, 185, 184);

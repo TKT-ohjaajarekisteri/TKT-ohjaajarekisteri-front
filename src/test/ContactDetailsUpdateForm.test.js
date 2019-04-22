@@ -7,7 +7,7 @@ import store from '../reducers/store'
 import 'jest-dom/extend-expect'
 import { render } from 'react-testing-library'
 
-describe('CourseDetailsUpdateForm', () => {
+describe('ContactDetailsUpdateForm', () => {
   let wrapper, props
   beforeEach(() => {
     props = {
@@ -17,6 +17,7 @@ describe('CourseDetailsUpdateForm', () => {
       updateLoggedUser: jest.fn(),
       getContactInformation: jest.fn(),
       notify: jest.fn(),
+      experience: 'Ten years of testing',
       id: 1,
       defaultInput: {
         first_names: 'Tiina',
@@ -30,7 +31,7 @@ describe('CourseDetailsUpdateForm', () => {
         },
         phone: '050 00000',
         email: 'testitiina@helsinki.fi',
-        experience: 'Testing is my passion',
+        experience: 'Ten years of testing',
         no_english: false
       }
     }

@@ -6,23 +6,19 @@ import { Form, Button, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 
-export const UpdatePasswordForm = ({ notify, setError }) => { //for future: history, setError
+export const UpdatePasswordForm = ({ notify, setError }) => {
 
   const [input, setInput] = useState({ oldPassword: '', newPassword: '', confirm: '' })
 
-  const handlePasswordChange = (event) => {
+  const handlePasswordChange = async (event) => {
     event.preventDefault()
     const { oldPassword, newPassword, confirm } = input
-    if (newPassword.length >= 8) {
-      if (newPassword === confirm) {
-        adminService.updatePassword({ oldPassword, newPassword, confirm })
-        setInput({ oldPassword: '', newPassword: '', confirm: '' })
-        notify('Password updated successfully!', 5)
-      } else {
-        setError('Make sure the new password and confirmation match', 5)
-      }
+    const response = await adminService.updatePassword({ oldPassword, newPassword, confirm })
+    if (response.error) {
+      setError(response.error, 5)
     } else {
-      setError('Password should be at least 8 characters long', 5)
+      notify('Password updated successfully!', 5)
+      setInput({ oldPassword: '', newPassword: '', confirm: '' })
     }
   }
 

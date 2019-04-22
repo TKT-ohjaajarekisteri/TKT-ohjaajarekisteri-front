@@ -7,7 +7,7 @@ import { Table, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import TogglableButton from '../common/TogglableButton'
 import { notify } from '../../reducers/actionCreators/notificationActions'
-
+import { Badge } from 'react-bootstrap'
 
 export const Summary = ({
   initializeSummary,
@@ -181,7 +181,7 @@ export const Summary = ({
                             </Link>
                           </td>
                           <td className="studentName"> {s.first_names} {s.last_name}</td>
-                          <td width='20px'> {s.Application.accepted ? 'x' : ''}</td>
+                          <td width='70px'> {s.Application.accepted ? <Badge variant="success">Accepted</Badge> : ''}</td>
                           <td width='70px'> {s.no_english ? '' : 'English'}</td>
                         </tr>
                       )}

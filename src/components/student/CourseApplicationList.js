@@ -119,8 +119,6 @@ export const CourseApplicationList = (props) => {
           onChange={handleCourseNameChange} />
       </div>
 
-
-
       <Table bordered hover size='sm'>
         <thead>
           <tr>
@@ -148,7 +146,7 @@ export const CourseApplicationList = (props) => {
               )
             })
             //applied courses at the bottom of the list
-            .sort(function (a, b) { return alreadyApplied(a.course_id) - alreadyApplied(b.course_id) })
+            .sort((a, b) => { return alreadyApplied(a.course_id) - alreadyApplied(b.course_id) })
             .map(course =>
               <Course
                 course={course}
