@@ -14,7 +14,7 @@ export const getSingleStudent = (studentId) => {
 // tells studentservice to get specific student's courses and dispatch them to store
 export const getSingleStudentCourses = (studentId) => {
   return async (dispatch) => {
-    const content = await studentService.getCourses(studentId)
+    const content = await studentService.getSingleStudentCourses(studentId)
     dispatch({
       type: 'INIT_SINGLE_STUDENT_COURSES',
       data: content
