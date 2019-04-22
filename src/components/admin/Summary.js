@@ -17,7 +17,8 @@ export const Summary = ({
   setProgramme,
   setPeriod,
   setCourseName,
-  filter }) => {
+  filter
+}) => {
 
   useEffect(() => {
     initializeSummary()
@@ -143,13 +144,9 @@ export const Summary = ({
               let period = course.period.toString(10)
               return (
                 (
-                  (
-                    filter.yearFrom ? course.year >= Number(filter.yearFrom) : true
-                  )
+                  (filter.yearFrom ? course.year >= Number(filter.yearFrom) : true)
                   &&
-                  (
-                    filter.yearTo ? course.year <= Number(filter.yearTo) : true
-                  )
+                  (filter.yearTo ? course.year <= Number(filter.yearTo) : true)
                 )
                 &&
                 (
@@ -157,7 +154,6 @@ export const Summary = ({
                   ||
                   course.learningopportunity_id.toLowerCase().includes(filter.courseName.toLowerCase())
                 )
-
                 &&
                 course.learningopportunity_id.includes(filter.studyProgramme)
                 &&
@@ -193,7 +189,6 @@ export const Summary = ({
         </tbody>
       </Table>
     </div >
-
   )
 }
 

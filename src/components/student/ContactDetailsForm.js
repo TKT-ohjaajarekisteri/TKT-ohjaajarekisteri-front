@@ -3,10 +3,19 @@ import { connect } from 'react-redux'
 import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 import { Form, Button } from 'react-bootstrap'
-import { updatePhone, updateEmail, updateLanguage, updateExperience } from '../../reducers/actionCreators/studentActions'
+// import { updatePhone, updateEmail, updateLanguage, updateExperience } from '../../reducers/actionCreators/studentActions'
+import studentActions from '../../reducers/actionCreators/studentActions'
 import { emailValid } from '../../utils/validations'
 
-export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
+export const ContactDetailsForm = ({
+  updateLoggedUser,
+  id,
+  notify,
+  updateLanguage,
+  updateExperience,
+  updateEmail,
+  updatePhone
+}) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -72,5 +81,5 @@ export const ContactDetailsForm = ({ updateLoggedUser, id, notify }) => {
 
 export default connect(
   null,
-  { notify, updateLoggedUser }
+  { notify, updateLoggedUser, ...studentActions }
 )(ContactDetailsForm)

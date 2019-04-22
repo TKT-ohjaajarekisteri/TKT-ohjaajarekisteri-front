@@ -66,21 +66,24 @@ export const CourseApplicationList = (props) => {
           type='submit'
           name='TKT'
           onClick={handleProgrammeChange}
-          filterValue={props.filter.studyProgramme}>
+          filterValue={props.filter.studyProgramme}
+        >
           CS-Bachelor
         </TogglableButton>
         <TogglableButton
           type='submit'
           name='CSM'
           onClick={handleProgrammeChange}
-          filterValue={props.filter.studyProgramme}>
+          filterValue={props.filter.studyProgramme}
+        >
           CS-Master
         </TogglableButton>
         <TogglableButton
           type='submit'
           name='DATA'
           onClick={handleProgrammeChange}
-          filterValue={props.filter.studyProgramme}>
+          filterValue={props.filter.studyProgramme}
+        >
           Data Science
         </TogglableButton>
       </div>
@@ -97,7 +100,8 @@ export const CourseApplicationList = (props) => {
                 type='submit'
                 name={period}
                 onClick={handlePeriodChange}
-                filterValue={props.filter.period}>
+                filterValue={props.filter.period}
+              >
                 {period}
               </TogglableButton>
             )
@@ -106,7 +110,7 @@ export const CourseApplicationList = (props) => {
 
       <div style={{ float: 'right' }}>
         <div>&nbsp;</div>
-        <Button className="buttonApply" onClick={handleSubmit} variant="dark" type="submit" >
+        <Button className="buttonApply" onClick={handleSubmit} variant="dark" type="submit">
           Apply
         </Button>
       </div>
@@ -116,7 +120,8 @@ export const CourseApplicationList = (props) => {
         <Form.Control
           className='filterInput'
           value={props.filter.courseName}
-          onChange={handleCourseNameChange} />
+          onChange={handleCourseNameChange}
+        />
       </div>
 
       <Table bordered hover size='sm'>
@@ -153,7 +158,8 @@ export const CourseApplicationList = (props) => {
                 key={course.course_id}
                 onChange={handleChange}
                 grey={alreadyApplied(course.course_id)}
-              />)
+              />
+            )
           }
         </tbody>
       </Table>

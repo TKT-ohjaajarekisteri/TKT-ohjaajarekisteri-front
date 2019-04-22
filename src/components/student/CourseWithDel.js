@@ -11,10 +11,10 @@ const CourseWithDel = ({ course, onClick }) => {
       <td className="year">{course.year}</td>
       <td className="period">{course.period}</td>
       <td className="delete centerColumn">
-        {
-          course.Application.accepted ?
-            <Badge variant="success">Accepted</Badge>
-            : <DeleteButton id={course.course_id} onClick={onClick} />
+        {course.Application.accepted ?
+          <Badge variant="success">Accepted</Badge>
+          :
+          <DeleteButton id={course.course_id} onClick={onClick} />
         }
       </td>
     </tr>
