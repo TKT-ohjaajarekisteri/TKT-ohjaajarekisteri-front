@@ -5,9 +5,8 @@ import { initializeStudents } from '../../reducers/actionCreators/studentActions
 const StudentList = (props) => {
   useEffect(() => {
     props.initializeStudents()
-  },
-  []
-  )
+  }, [])
+
   return (
     <div id="students">
       <h2>Students</h2>
@@ -18,7 +17,6 @@ const StudentList = (props) => {
           {s.last_name}
           {s.email}
           {s.phonenumber}
-
         </div>
       )}
     </div>
@@ -31,7 +29,6 @@ const mapStateToProps = (state) => {
     studentsToShow
   }
 }
-
 
 export default connect(
   mapStateToProps,

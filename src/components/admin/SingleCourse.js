@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Checkbox from '../common/Checkbox'
+// import { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified, setStudentGroups } from '../../reducers/actionCreators/singleCourseActions'
 import singleCourseActions from '../../reducers/actionCreators/singleCourseActions'
 import { Table, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -19,9 +20,7 @@ export const SingleCourse = ({
 
   useEffect(() => {
     initializeSingleCourse(courseId)
-  },
-    []
-  )
+  }, [])
 
   const getModified = (applicants) => {
     return applicants
@@ -35,60 +34,60 @@ export const SingleCourse = ({
       })
   }
 
-  const handleAcceptedSubmit = (e) => {
-    e.preventDefault()
+  const handleAcceptedSubmit = (event) => {
+    event.preventDefault()
     const acceptedModified = getModified(applicants)
     if (acceptedModified.length !== 0) {
       sendAcceptedModified(courseId, acceptedModified)
     }
   }
 
-  const handleEmailToChange = (id) => (e) => {
-    const email_to_checked = e.target.checked
+  const handleEmailToChange = (id) => (event) => {
+    const email_to_checked = event.target.checked
     setEmail(id, email_to_checked) // Updates email message fields
   }
 
-  const handleAcceptedChange = (id) => (e) => {
-    const accepted = e.target.checked
+  const handleAcceptedChange = (id) => (event) => {
+    const accepted = event.target.checked
     setStudentAccepted(id, accepted)
   }
 
-  const handleGroupsChange = (id) => (e) => {
-    const groups = Number(e.target.value)
+  const handleGroupsChange = (id) => (event) => {
+    const groups = Number(event.target.value)
     setStudentGroups(id, groups)
   }
 
   const href = `https://outlook.office.com/?path=/mail/action/compose&to=${email.to}&subject=${email.subject}&body=${email.body}`
+
   return (
     <div>
       <div className="courseHeader">
-        {
-          !course ?
-            null
-            :
-            <div>
-              <h2>{course.learningopportunity_id} {course.course_name}</h2>
-              <table className="courseHeaderData">
-                <colgroup>
-                  <col width="100" />
-                  <col width="80" />
-                </colgroup>
-                <tbody>
-                  <tr>
-                    <td>Year</td>
-                    <td>{course.year}</td>
-                  </tr>
-                  <tr>
-                    <td>Period</td>
-                    <td>{course.period}</td>
-                  </tr>
-                  <tr>
-                    <td>Groups</td>
-                    <td>{course.groups ? course.groups : 0}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        {!course ?
+          null
+          :
+          <div>
+            <h2>{course.learningopportunity_id} {course.course_name}</h2>
+            <table className="courseHeaderData">
+              <colgroup>
+                <col width="100" />
+                <col width="80" />
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td>Year</td>
+                  <td>{course.year}</td>
+                </tr>
+                <tr>
+                  <td>Period</td>
+                  <td>{course.period}</td>
+                </tr>
+                <tr>
+                  <td>Groups</td>
+                  <td>{course.groups ? course.groups : 0}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         }
       </div>
       <div className='row' style={{ paddingBottom: 15 }}>
@@ -96,13 +95,19 @@ export const SingleCourse = ({
           <h3>Applicants for course:</h3>
         </div>
         <div className='col'>
-          {
-            getModified(applicants).length === 0 ?
-              <Button className='float-right' target="_blank" rel="noopener noreferrer" href={href} variant='dark'>Send email</Button>
-              :
-              <div className='emailHidden'>Save changes to Send email</div>
+          {getModified(applicants).length === 0 ?
+            <Button
+              className='float-right'
+              target="_blank"
+              rel="noopener noreferrer"
+              href={href}
+              variant='dark'
+            >
+              Send email
+            </Button>
+            :
+            <div className='emailHidden'>Save changes to Send email</div>
           }
-
         </div>
       </div>
       <Table bordered hover>
@@ -121,7 +126,11 @@ export const SingleCourse = ({
         <tbody>
           {applicants.map(student =>
             <tr className='Student' key={student.student_id}>
-              <td><Link to={`/admin/students/${student.student_id}/info`}>{student.student_number}</Link></td>
+              <td>
+                <Link to={`/admin/students/${student.student_id}/info`}>
+                  {student.student_number}
+                </Link>
+              </td>
               <td>{student.first_names}</td>
               <td>{student.last_name}</td>
               <td>{student.no_english ? '' : 'English'}</td>
@@ -158,7 +167,14 @@ export const SingleCourse = ({
           )}
         </tbody>
       </Table>
-      <Button className='float-right' id='saveApplied' variant='dark' onClick={handleAcceptedSubmit}>Save</Button>
+      <Button
+        className='float-right'
+        id='saveApplied'
+        variant='dark'
+        onClick={handleAcceptedSubmit}
+      >
+        Save
+      </Button>
     </div>
   )
 }

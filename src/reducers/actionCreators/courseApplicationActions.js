@@ -60,4 +60,4 @@ const sendApplication = (student_id, course_ids) => {
   }
 }
 
-export { initializeCourseApplication, setChecked, sendApplication }
+export default { initializeCourseApplication, setChecked, sendApplication }

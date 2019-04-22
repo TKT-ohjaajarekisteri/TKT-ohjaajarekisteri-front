@@ -56,4 +56,4 @@ const setYearTo = (yearTo) => {
   }
 }
 
-export { initializeFilter, setProgramme, setPeriod, setCourseName, setYearFrom, setYearTo }
+export default { initializeFilter, setProgramme, setPeriod, setCourseName, setYearFrom, setYearTo }

@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Course from './Course'
 import TogglableButton from '../common/TogglableButton'
-import { initializeCourseApplication, setChecked, sendApplication } from '../../reducers/actionCreators/courseApplicationActions'
+// import { initializeCourseApplication, setChecked, sendApplication } from '../../reducers/actionCreators/courseApplicationActions'
+import courseApplicationActions from '../../reducers/actionCreators/courseApplicationActions'
 import { Table, Button } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
-import { initializeFilter, setProgramme, setPeriod, setCourseName } from '../../reducers/actionCreators/filterActions'
+import filterActions from '../../reducers/actionCreators/filterActions'
 import { Form } from 'react-bootstrap'
 import { getStudentCourseIds } from '../../reducers/actionCreators/studentActions'
 
@@ -17,9 +18,7 @@ export const CourseApplicationList = (props) => {
     }
     props.initializeFilter()
     props.getStudentCourseIds(props.id)
-  },
-  []
-  )
+  }, [])
 
   const handleSubmit = () => {
     const coursesToApplyTo = props.courses.filter(c => c.checked).map(c => c.course_id)
@@ -61,7 +60,6 @@ export const CourseApplicationList = (props) => {
   return (
     <div className="courseApplicationList">
       <h2>Courses</h2>
-
       <div style={{ float: 'left' }}>
         <div style={{ color: '#6c757d' }}>Study programme:</div>
         <TogglableButton
@@ -118,7 +116,7 @@ export const CourseApplicationList = (props) => {
         <Form.Control
           className='filterInput'
           value={props.filter.courseName}
-          onChange={handleCourseNameChange}/>
+          onChange={handleCourseNameChange} />
       </div>
 
 
@@ -128,15 +126,15 @@ export const CourseApplicationList = (props) => {
           <tr>
             <th>Code</th>
             <th>Name</th>
-            <th className='centerColumn' >Year</th>
-            <th className='centerColumn' >Period</th>
-            <th>Apply</th>
+            <th className='centerColumn'>Year</th>
+            <th className='centerColumn'>Period</th>
+            <th className='centerColumn'>Apply</th>
           </tr>
         </thead>
         <tbody>
           {props.courses && props.courses
             .filter(course => {
-              let period = course.period.toString(10)
+              let period = course.period.toString()
               return (
                 (
                   course.course_name.toLowerCase().includes(props.filter.courseName.toLowerCase())
@@ -150,7 +148,7 @@ export const CourseApplicationList = (props) => {
               )
             })
             //applied courses at the bottom of the list
-            .sort(function(a, b) {return alreadyApplied(a.course_id) - alreadyApplied(b.course_id)})
+            .sort(function (a, b) { return alreadyApplied(a.course_id) - alreadyApplied(b.course_id) })
             .map(course =>
               <Course
                 course={course}
@@ -183,14 +181,5 @@ const mapStateToProps = (state) => {
 // withRouter provides history from Router component in App
 export default withRouter(connect(
   mapStateToProps,
-  {
-    initializeCourseApplication,
-    setChecked,
-    sendApplication,
-    initializeFilter,
-    setProgramme,
-    setPeriod,
-    setCourseName,
-    getStudentCourseIds
-  }
+  { ...filterActions, ...courseApplicationActions, getStudentCourseIds }
 )(CourseApplicationList))

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+// import { initializeFilter, setProgramme, setPeriod, setCourseName } from '../../reducers/actionCreators/filterActions'
+import filterActions from '../../reducers/actionCreators/filterActions'
+import courseActions from '../../reducers/actionCreators/courseActions'
 import Course from './Course'
 import TogglableButton from '../common/TogglableButton'
-import { initializeCourses, setHidden } from '../../reducers/actionCreators/courseActions'
 import { Table } from 'react-bootstrap'
-import { initializeFilter, setProgramme, setPeriod, setCourseName } from '../../reducers/actionCreators/filterActions'
 import { Form } from 'react-bootstrap'
 
 export const CourseList = ({
@@ -23,9 +24,7 @@ export const CourseList = ({
       initializeCourses()
     }
     initializeFilter()
-  },
-  []
-  )
+  }, [])
 
   const handleProgrammeChange = (event) => {
     event.preventDefault()
@@ -112,15 +111,15 @@ export const CourseList = ({
           <tr>
             <th>Code</th>
             <th>Name</th>
-            <th className='centerColumn' >Year</th>
-            <th className='centerColumn' >Period</th>
-            <th>Hidden</th>
+            <th className='centerColumn'>Year</th>
+            <th className='centerColumn'>Period</th>
+            <th className='centerColumn'>Hidden</th>
           </tr>
         </thead>
         <tbody>
           {courses
             .filter(course => {
-              let period = course.period.toString(10)
+              let period = course.period.toString()
               return (
                 (
                   course.course_name.toLowerCase().includes(filter.courseName.toLowerCase())
@@ -159,5 +158,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { initializeCourses, initializeFilter, setProgramme, setPeriod, setCourseName, setHidden }
+  { ...courseActions, ...filterActions }
 )(CourseList)
