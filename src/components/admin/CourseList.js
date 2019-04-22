@@ -22,7 +22,7 @@ export const CourseList = ({
     initializeCourses()
     initializeFilter()
   },
-    []
+  []
   )
 
   const handleProgrammeChange = (event) => {

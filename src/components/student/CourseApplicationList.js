@@ -18,7 +18,7 @@ export const CourseApplicationList = (props) => {
     props.initializeFilter()
     props.getStudentCourseIds(props.id)
   },
-    []
+  []
   )
 
   const handleSubmit = () => {
