@@ -90,6 +90,17 @@ const getCourses = async (id) => {
   }
 }
 
+//gets all courses of specific student for admin
+const getSingleStudentCourses = async (id) => {
+  try {
+    const response = await axios.get(baseUrl + `/${id}/info/courses`, getConfig())
+    return response.data
+  } catch (error) {
+    //console.log(error)
+    return { error: 'Something went wrong' }
+  }
+}
+
 //removes student's application from the course
 const deleteApplication = async (student_id, course_id) => {
   try {
@@ -101,5 +112,5 @@ const deleteApplication = async (student_id, course_id) => {
 }
 
 export default {
-  getAll, setToken, update, apply, getCourses, deleteApplication, getStudent, getSingleStudent
+  getAll, setToken, update, apply, getCourses, deleteApplication, getStudent, getSingleStudent, getSingleStudentCourses
 }
