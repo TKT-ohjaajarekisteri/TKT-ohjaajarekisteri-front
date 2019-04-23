@@ -52,7 +52,6 @@ describe('<StudentCourseList />', () => {
 
   afterAll(() => {
     courseList.unMount()
-    // console.log(courseList.debug())
   })
 
   it('renders self', () => {

@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { BrowserRouter as Router, Link, Switch, Redirect, Route } from 'react-router-dom'
 import { Navbar, Nav, Button } from 'react-bootstrap'
 
-
 // Components
 import LoginForm from './components/LoginForm'
 import ContactDetailsForm from './components/student/ContactDetailsForm'
@@ -26,13 +25,16 @@ const App = (props) => {
     props.initLoggedUser()
   }, [])
 
-  const { loggedUser } = props  //loadingUser poistettu
-  const hasContactDetails = (
-    loggedUser &&
-    loggedUser.user.role === 'student' &&
-    loggedUser.user.email)
+  const { loggedUser } = props
+  const hasContactDetails =
+    (
+      loggedUser
+      &&
+      loggedUser.user.role === 'student'
+      &&
+      loggedUser.user.email
+    )
   const isAdmin = loggedUser && loggedUser.user.role === 'admin'
-  //const isLogged = loadingUser === false
 
   return (
     <div>
@@ -42,7 +44,7 @@ const App = (props) => {
         <React.Fragment>
           <div className="NavBar">
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-              <Navbar.Brand href="#home">TKT – Assistant Register</Navbar.Brand>
+              <Navbar.Brand href="/">TKT – Assistant Register</Navbar.Brand>
 
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
@@ -53,7 +55,6 @@ const App = (props) => {
                       ? <Link to="/admin/courses">Courses</Link>
                       : <em></em>} &nbsp;
                   </Nav.Link>
-
 
                   <Nav.Link href="#" as="span">
                     {loggedUser && loggedUser.user.role === 'admin'
@@ -103,7 +104,7 @@ const App = (props) => {
                 condition={loggedUser && isAdmin}
               >
                 <Route exact path="/admin/courses" render={() => <AdminCourseList />} />
-                < Route exact path="/admin/summary" render={() => <Summary />} />
+                <Route exact path="/admin/summary" render={() => <Summary />} />
                 <Route
                   exact path="/admin/courses/:id"
                   render={({ match }) => <SingleCourse courseId={match.params.id} />}
@@ -137,23 +138,21 @@ const App = (props) => {
               {/* THIS ROUTE PROTECTS ALL ROUTES UNDER "/" */}
               <PrivateRoute path="/" redirectPath="/login" condition={loggedUser}>
                 <PrivateRoute path="/" redirectPath="/admin/courses" condition={!isAdmin}>
-                  <PrivateRoute path="/" redirectPath="admin/summary" condition={!isAdmin}>
-                    <PrivateRoute path="/" redirectPath="/contact-info" condition={hasContactDetails}>
-                      <Route
-                        exact path='/'
-                        render={() => <Redirect to='/apply' />}
-                      />
-                      <Route
-                        exact path="/apply"
-                        render={() => <CourseApplicationList id={loggedUser.user.user_id}/>}
-                      />
+                  <PrivateRoute path="/" redirectPath="/contact-info" condition={hasContactDetails}>
+                    <Route
+                      exact path='/'
+                      render={() => <Redirect to='/apply' />}
+                    />
+                    <Route
+                      exact path="/apply"
+                      render={() => <CourseApplicationList id={loggedUser.user.user_id} />}
+                    />
 
-                      {/* USERS CAN UPDATE THEIR INFORMATION */}
-                      <Route
-                        exact path="/update-info"
-                        render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
-                      />
-                    </PrivateRoute>
+                    {/* USERS CAN UPDATE THEIR INFORMATION */}
+                    <Route
+                      exact path="/update-info"
+                      render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
+                    />
                   </PrivateRoute>
                 </PrivateRoute>
               </PrivateRoute>
@@ -167,10 +166,8 @@ const App = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'APISTA koko store')
   return {
-    loggedUser: state.loggedUser.loggedUser,
-    //loadingUser: state.loggedUser.loadingUser
+    loggedUser: state.loggedUser.loggedUser
   }
 }
 

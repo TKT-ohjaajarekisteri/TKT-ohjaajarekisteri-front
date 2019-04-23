@@ -15,9 +15,9 @@ This registry will be used by students to express their interest to assist on co
 
 ## [Usage](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/commandline.md)
 
-## Releases
+## [Releases](https://studies.cs.helsinki.fi/ohjaajarekisteri/login)
 
-## [Product backlog](https://docs.google.com/spreadsheets/d/1anddOjdDCkdAmyJH2gLAUYYbubbZhXSGxku90kQJT9k/edit#gid=0)
+## [Product backlog](https://docs.google.com/spreadsheets/d/1anddOjdDCkdAmyJH2gLAUYYbubbZhXSGxku90kQJT9k/edit#gid=1)
 
 ## Technologies
 * Front: React, Javascript

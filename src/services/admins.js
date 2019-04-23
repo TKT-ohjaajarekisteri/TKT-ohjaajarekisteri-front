@@ -2,7 +2,6 @@ import axios from 'axios'
 import url from './config'
 
 const baseUrl = url + 'api/admins'
-
 let token = null
 
 const setToken = (newToken) => {

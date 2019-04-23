@@ -1,10 +1,9 @@
 const initialState = {
-  singleStudent:{},
+  singleStudent: {},
   studentCourses: []
 }
 
 const singleStudentReducer = (state = initialState, action) => {
-  //console.log(action.type, ' ', action.data)
   switch (action.type) {
   case 'INIT_SINGLE_STUDENT': {
     return {
@@ -22,7 +21,6 @@ const singleStudentReducer = (state = initialState, action) => {
   default:
     return state
   }
-
 }
 
 export default singleStudentReducer

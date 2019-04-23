@@ -1,4 +1,4 @@
-import React, { useEffect }from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getSingleStudent, getSingleStudentCourses } from '../../reducers/actionCreators/singleStudentActions'
 import { Table } from 'react-bootstrap'
