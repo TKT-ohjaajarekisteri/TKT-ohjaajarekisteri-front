@@ -12,8 +12,8 @@ describe('<Summary />', () => {
         studyProgramme: '',
         period: '',
         courseName: '',
-        yearFrom:'',
-        yearTo:''
+        yearFrom: '',
+        yearTo: ''
       },
       summaryList: [{
         course_id: 20,
@@ -54,8 +54,6 @@ describe('<Summary />', () => {
         <Summary {...props} />
       </Router>
     )
-    //  console.log(wrapper.debug())
-
 
     expect(wrapper.find('.courseName').text()).toContain('Randomized Algorithms I')
   })
@@ -66,8 +64,6 @@ describe('<Summary />', () => {
         <Summary {...props} />
       </Router>
     )
-    //console.log(wrapper.debug())
-
 
     expect(wrapper.find('.studentName').text()).toContain('Timo *Teppo Tellervo')
   })

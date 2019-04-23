@@ -10,7 +10,6 @@ import filterReducer from './filterReducer'
 import singleStudentReducer from './singleStudentReducer'
 import summaryReducer from './summaryReducer'
 
-
 const reducer = combineReducers({
   notification: notificationReducer,
   students: studentReducer,

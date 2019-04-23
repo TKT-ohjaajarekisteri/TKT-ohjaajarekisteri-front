@@ -1,4 +1,4 @@
-import React, { useEffect }from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getSingleStudent } from '../../reducers/actionCreators/singleStudentActions'
 import { Table } from 'react-bootstrap'
@@ -9,7 +9,7 @@ export const SingleStudent = ({ studentId, getSingleStudent, student }) => {
     getSingleStudent(studentId)
   }, [])
 
-  return(
+  return (
     <div className="singleStudent" >
       <h2>Student information</h2>
       <Table bordered hover>

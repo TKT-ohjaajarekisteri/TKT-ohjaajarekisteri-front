@@ -14,14 +14,13 @@ const initialState = {
 }
 
 const studentReducer = (state = initialState, action) => {
-  //console.log(action.type, 'INIT STUDENTS ', action.data)
   switch (action.type) {
   case 'INIT_STUDENTS':
     return {
       ...state,
       students: action.data
     }
-  // creates contact info when student logs in for the first time
+    // creates contact info when student logs in for the first time
   case 'CREATE_STUDENT_CONTACTINFO':
     if (state.find(student => student.student_id === action.data.student_id)) {
       return state
@@ -30,7 +29,7 @@ const studentReducer = (state = initialState, action) => {
       ...state,
       students: action.data
     }
-  // gets student courselist for student update info form page
+    // gets student courselist for student update info form page
   case 'INIT_STUDENT_COURSES':
     return {
       ...state,
@@ -44,7 +43,7 @@ const studentReducer = (state = initialState, action) => {
     }
 
 
-  // for the delete button in the contact details update form
+    // for the delete button in the contact details update form
   case 'STUDENT_APPLICATION_DELETE': {
     return {
       ...state,
@@ -53,7 +52,6 @@ const studentReducer = (state = initialState, action) => {
   }
   // initilizes the contact information for contact info update form
   case 'INIT_CONTACT_INFORMATION': {
-    //console.log('INIT_CONTACT_INFORMATION actionData Reducer', action.data)
 
     return {
       ...state,

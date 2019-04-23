@@ -4,7 +4,7 @@ import adminService from '../../services/admins'
 import loginService from '../../services/login'
 import tokenCheckService from '../../services/tokenCheck'
 
-const initLoggedUser = () => {
+export const initLoggedUser = () => {
   return async (dispatch) => {
     let loggedUser = JSON.parse(window.localStorage.getItem('loggedInUser'))
 
@@ -24,12 +24,10 @@ const initLoggedUser = () => {
   }
 }
 
-const updateLoggedUser = (content, id) => {
+export const updateLoggedUser = (content, id) => {
   return async (dispatch) => {
     const response = await studentService.update(content, id)
-    console.log('loginactionin updateloggeduser', response)
-    if (response.error || response===undefined) {
-      console.log('loginactionin updateloggeduserin error', response.error)
+    if (response.error || response === undefined) {
       dispatch({
         type: 'NOTIFY',
         data: 'Saving failed!'
@@ -61,7 +59,7 @@ const updateLoggedUser = (content, id) => {
 }
 
 
-const login = (username, password) => {
+export const login = (username, password) => {
   return async (dispatch) => {
     const response = await loginService.login({ username: username, password: password })
     if (response.error) {
@@ -98,7 +96,7 @@ const login = (username, password) => {
   }
 }
 
-const logout = () => {
+export const logout = () => {
   return async (dispatch) => {
     window.localStorage.removeItem('loggedInUser')
     await studentService.setToken(null)
@@ -109,4 +107,4 @@ const logout = () => {
     })
   }
 }
-export { logout, login, updateLoggedUser, initLoggedUser }
+export default { logout, login, updateLoggedUser, initLoggedUser }

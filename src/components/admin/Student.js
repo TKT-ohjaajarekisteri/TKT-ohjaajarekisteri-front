@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Student = ({ student }) => {
-
   return (
     <tr>
       <td>{student.student_number}</td>
