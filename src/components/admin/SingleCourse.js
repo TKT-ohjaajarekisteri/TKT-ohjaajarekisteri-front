@@ -108,24 +108,23 @@ export const SingleCourse = ({
           <h3>Applicants for course:</h3>
         </div>
 
-        <div className='col'>
-          <Button className='button float-right' style= {{ float: 'right', margin: 5 }} id='saveApplied' onClick={handleAcceptedSubmit}>Save</Button>
 
-          {getModified(applicants).length === 0 ?
-            <Button
-              className='float-right'
-              target="_blank"
-              rel="noopener noreferrer"
-              href={href}
-              variant='dark'
-            >
-              Send email
-            </Button>
-            :
-            <div className='emailHidden'>Save changes to Send email</div>
-          }
+        {getModified(applicants).length === 0 ?
+          <Button
+            className='button float-right'
+            target="_blank"
+            rel="noopener noreferrer"
+            href={href}
+            variant='dark'
+            style= {{ float: 'right', margin: 5 }}
+          >
+            Send email
+          </Button>
+          :
+          <div className='emailHidden'>Save changes to Send email</div>
+        }
+        <Button className='button float-right' style={{ float: 'right', margin: 5 }} id='saveApplied' onClick={handleAcceptedSubmit}>Save</Button>
 
-        </div>
       </div>
 
       <Table bordered hover>
