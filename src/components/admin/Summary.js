@@ -23,7 +23,6 @@ export const Summary = ({
     initializeSummary()
   }, [])
 
-
   const handleProgrammeChange = (event) => {
     event.preventDefault()
     setProgramme(event.target.name)

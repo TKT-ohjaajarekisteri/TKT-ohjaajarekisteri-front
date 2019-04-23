@@ -59,7 +59,7 @@ export const ContactDetailsUpdateForm = ({
 
             <Form.Label>Phone: </Form.Label>
             <Form.Control
-              type="text"
+              type='text'
               name='phone'
               value={phone}
               onChange={(e) => updatePhone(e.target.value)}
@@ -67,7 +67,7 @@ export const ContactDetailsUpdateForm = ({
 
             <Form.Label>Email: </Form.Label>
             <Form.Control
-              type="email"
+              type='email'
               name='email'
               value={email}
               onChange={(e) => updateEmail(e.target.value)}
@@ -75,16 +75,16 @@ export const ContactDetailsUpdateForm = ({
 
             <Form.Label>Assistance/teaching experience (remaining characters {1000 - experience.length}):</Form.Label>
             <Form.Control
-              as="textarea"
-              rows="2"
-              type="text"
+              as='textarea'
+              rows='2'
+              type='text'
               name='experience'
               value={experience}
               onChange={(e) => updateExperience(e.target.value)}
             />
 
             <Form.Check
-              type="checkbox"
+              type='checkbox'
               name='no_english'
               checked={no_english}
               value={no_english}
@@ -93,7 +93,7 @@ export const ContactDetailsUpdateForm = ({
             />
 
           </Form.Group>
-          <Button variant='dark' className="updateButton" type="submit">Update</Button>
+          <Button className='button updateButton' type='submit'>Update</Button>
         </Form>
       </div>
       <StudentCourseList id={id} />

@@ -115,3 +115,18 @@
     color: rgb(185, 185, 184);
   }
 
+  .centerColumn {
+    text-align: center;
+  }
+
+  .button {
+    color: rgb(240, 140, 0);
+    border-color: rgb(240, 140, 0);
+    background-color: white;
+  }
+
+  .button:hover {
+    color:  white;
+    border-color: #6c757d;
+    background-color: #6c757d;
+  }

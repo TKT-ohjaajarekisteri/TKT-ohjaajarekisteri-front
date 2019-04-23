@@ -109,7 +109,8 @@ export const CourseApplicationList = (props) => {
 
       <div style={{ float: 'right' }}>
         <div>&nbsp;</div>
-        <Button className="buttonApply" onClick={handleSubmit} variant="dark" type="submit">
+
+        <Button className="button buttonApply" onClick={handleSubmit} type="submit" >
           Apply
         </Button>
       </div>

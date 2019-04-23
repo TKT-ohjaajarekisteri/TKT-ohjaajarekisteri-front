@@ -57,7 +57,7 @@ export const UpdatePasswordForm = ({ notify, setError }) => {
             onChange={handleChange} />
         </Form.Group>
 
-        <Button className="btnLogin" variant="dark" type="submit" >
+        <Button className="button btnLogin" type="submit" >
           Update Password
         </Button>
       </Form>

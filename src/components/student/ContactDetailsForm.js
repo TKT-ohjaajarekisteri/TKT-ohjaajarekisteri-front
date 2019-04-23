@@ -42,35 +42,35 @@ export const ContactDetailsForm = ({
         <Form.Group>
           <Form.Label>Phone: </Form.Label>
           <Form.Control
-            type="text"
+            type='text'
             name='phonenumber'
             onChange={(e) => updatePhone(e.target.value)}
           />
           <Form.Label>Email: </Form.Label>
           <Form.Control
-            type="email"
+            type='email'
             name='email'
             onChange={(e) => updateEmail(e.target.value)}
           />
 
           <Form.Label>Assistance/teaching experience (max length 1000 characters):</Form.Label>
           <Form.Control
-            as="textarea"
-            rows="2"
-            type="text"
+            as='textarea'
+            rows='2'
+            type='text'
             name='experience'
             onChange={(e) => updateExperience(e.target.value)}
           />
 
           <Form.Check
-            type="checkbox"
+            type='checkbox'
             name='no_english'
             label="I don't want to teach in English"
             onChange={(e) => updateLanguage(e.target.checked)}
           />
 
         </Form.Group>
-        <Button variant="dark" className="button" type="submit">send</Button>
+        <Button className='button' type='submit'>send</Button>
       </Form>
     </div>
   )
