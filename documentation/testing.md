@@ -1,5 +1,6 @@
 # Testing
 
+Tests can be run locally and the project is configured to Travis CI testing.
 
 ### Unit tests for backend:
 - `$ npm run test` (runs unit tests for backend)
@@ -9,4 +10,4 @@
 ### Unit tests for frontend:
 - `$ npm run test` (runs unit tests for frontend)
 
-Project is configured to Travis CI testing.
+
