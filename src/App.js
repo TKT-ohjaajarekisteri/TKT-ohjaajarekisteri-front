@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Link, Switch, Redirect, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom'
 import { NavBar } from './components/common/NavBar'
 // import { Navbar, Nav, Button } from 'react-bootstrap'
 
