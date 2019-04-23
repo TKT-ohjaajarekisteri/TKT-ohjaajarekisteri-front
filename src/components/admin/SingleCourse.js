@@ -68,7 +68,7 @@ export const SingleCourse = ({
   const checkAllAcceptedBoxes = (e) => {
     e.preventDefault()
     applicants.forEach(applicant => {
-      setStudentAccepted(applicant.student_id, !applicant.accepted_checked)
+      setStudentAccepted(applicant.student_id, true)
     })
   }
 
@@ -109,7 +109,7 @@ export const SingleCourse = ({
         <div className='col'>
           {
             getModified(applicants).length === 0 ?
-              <Button className='float-right' target="_blank" rel="noopener noreferrer" href={href} variant='dark'>Send email</Button>
+              <Button className='button float-right' target="_blank" rel="noopener noreferrer" href={href} >Send email</Button>
               :
               <div className='emailHidden'>Save changes to Send email</div>
           }
@@ -162,12 +162,12 @@ export const SingleCourse = ({
           )}
           <tr>
             <td style={{ visibility: 'hidden' , borderLeftStyle: 'hidden' , borderBottomStyle: 'hidden' }} colSpan='6'></td>
-            <td className='centerColumn noHover' ><Button id='selectEmails' variant='dark' onClick={checkAllEmailBoxes}>Check for accepted</Button></td>
-            <td className='centerColumn noHover' ><Button id='selectAccepted' variant='dark' onClick={checkAllAcceptedBoxes}>Check all</Button></td>
+            <td className='centerColumn noHover' ><Button id='selectEmails' className='button' onClick={checkAllEmailBoxes}>Check for accepted</Button></td>
+            <td className='centerColumn noHover' ><Button id='selectAccepted' className='button' onClick={checkAllAcceptedBoxes}>Check all</Button></td>
           </tr>
         </tbody>
       </Table>
-      <Button className='float-right' id='saveApplied' variant='dark' onClick={handleAcceptedSubmit}>Save</Button>
+      <Button className='button float-right' id='saveApplied'  onClick={handleAcceptedSubmit}>Save</Button>
     </div>
   )
 }

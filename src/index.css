@@ -23,7 +23,6 @@
 /* adjust buttons */
 .btn{
      margin: 0px;
-     color: rgb(240, 140, 0);
 }
 .btnLogin{
      margin: 0px 0px 0px 15px;
@@ -118,4 +117,16 @@
 
   .centerColumn {
     text-align: center;
+  }
+
+  .button {
+    color: rgb(240, 140, 0);
+    border-color: rgb(240, 140, 0);
+    background-color: white;
+  }
+
+  .button:hover {
+    color:  white;
+    border-color: #6c757d;
+    background-color: #6c757d;
   }
