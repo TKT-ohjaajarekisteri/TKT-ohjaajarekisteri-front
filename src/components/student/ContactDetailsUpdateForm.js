@@ -1,13 +1,27 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
-import { getContactInformation, updatePhone, updateEmail, updateLanguage, updateExperience } from '../../reducers/actionCreators/studentActions'
+import studentActions from '../../reducers/actionCreators/studentActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 import StudentCourseList from './StudentCourseList'
 import { Form, Button } from 'react-bootstrap'
 import { emailValid } from '../../utils/validations'
 
-export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english, updatePhone, updateEmail, updateLanguage, updateExperience, updateLoggedUser, notify, id, getContactInformation, defaultInput }) => {
+export const ContactDetailsUpdateForm = ({
+  phone,
+  email,
+  experience,
+  no_english,
+  updatePhone,
+  updateEmail,
+  updateLanguage,
+  updateExperience,
+  updateLoggedUser,
+  notify,
+  id,
+  getContactInformation,
+  defaultInput
+}) => {
 
   // gets the student from db and initializes and sends contact info to store
   useEffect(() => {
@@ -33,6 +47,7 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
       updateLoggedUser(input, id)
     }
   }
+
   return (
     <div>
       <div className='contactDetailsUpdateForm'>
@@ -75,7 +90,6 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
               value={no_english}
               label="I don't want to teach in English"
               onChange={(e) => updateLanguage(e.target.checked)}
-
             />
 
           </Form.Group>
@@ -83,7 +97,6 @@ export const ContactDetailsUpdateForm = ({ phone, email, experience, no_english,
         </Form>
       </div>
       <StudentCourseList id={id} />
-
     </div>
   )
 }
@@ -100,5 +113,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { notify, updateLoggedUser, getContactInformation, updatePhone, updateEmail, updateLanguage, updateExperience }
+  { notify, updateLoggedUser, ...studentActions }
 )(ContactDetailsUpdateForm)

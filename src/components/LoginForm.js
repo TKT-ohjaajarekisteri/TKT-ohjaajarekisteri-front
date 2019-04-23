@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { notify, setError } from './../reducers/actionCreators/notificationActions'
@@ -40,14 +39,16 @@ export const LoginForm = ({ login }) => { //for future: history, setError
             name="username"
             value={input.username}
             onChange={handleChange}
-            autoFocus/>
+            autoFocus
+          />
 
           <Form.Label>password </Form.Label>
           <Form.Control
             type="password"
             name="password"
             value={input.password}
-            onChange={handleChange} />
+            onChange={handleChange}
+          />
         </Form.Group>
 
         <Button className="btnLogin" variant="dark" type="submit" >

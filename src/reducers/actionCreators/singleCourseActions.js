@@ -99,3 +99,5 @@ export const setEmail = (student_id, email_to_checked) => {
     })
   }
 }
+
+export default { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified, setStudentGroups }

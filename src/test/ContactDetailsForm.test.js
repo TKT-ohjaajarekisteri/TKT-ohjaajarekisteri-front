@@ -21,7 +21,7 @@ describe('<ContactDetailsForm />', () => {
 
     wrapper = mount(
       <Router>
-        <ContactDetailsForm {...props}  />
+        <ContactDetailsForm {...props} />
       </Router>
     )
 
@@ -32,7 +32,6 @@ describe('<ContactDetailsForm />', () => {
   })
 
   detailsComponent = shallow(<ContactDetailsForm />)
-  //console.log(detailsComponent.debug())
 
   it('renders ContactDetailsForm', () => {
     let detailsDiv = detailsComponent.find('.studentForm')
