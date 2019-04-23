@@ -75,12 +75,20 @@ export const SingleCourse = ({
                   <td>{course.year}</td>
                 </tr>
                 <tr>
-                  <td>Period</td>
-                  <td>{course.period}</td>
+                  <td>Periods</td>
+                  <td>{course.periods.toString()}</td>
                 </tr>
                 <tr>
                   <td>Groups</td>
                   <td>{course.groups ? course.groups : 0}</td>
+                </tr>
+                <tr>
+                  <td>Start date</td>
+                  <td>{course.startingDate}</td>
+                </tr>
+                <tr>
+                  <td>End date</td>
+                  <td>{course.endingDate}</td>
                 </tr>
               </tbody>
             </table>

@@ -18,7 +18,7 @@ export const CourseApplicationList = (props) => {
     props.initializeFilter()
     props.getStudentCourseIds(props.id)
   },
-    []
+  []
   )
 
   const handleSubmit = () => {
@@ -89,7 +89,7 @@ export const CourseApplicationList = (props) => {
       <div style={{ float: 'left' }}>
         <div style={{ color: '#6c757d' }}>Period:</div>
         {props.courses
-          .map(c => c.period)
+          .map(c => c.periods[0])
           .filter(onlyUnique)
           .sort()
           .map(period => {
@@ -128,15 +128,16 @@ export const CourseApplicationList = (props) => {
           <tr>
             <th>Code</th>
             <th>Name</th>
-            <th className='centerColumn'>Year</th>
-            <th className='centerColumn'>Period</th>
-            <th>Apply</th>
+            <th className='centerColumn wrapSmallCell'>Starting Period</th>
+            <th className='centerColumn'>To</th>
+            <th className='centerColumn'>From</th>
+            <th className='centerColumn' >Apply</th>
           </tr>
         </thead>
         <tbody>
           {props.courses && props.courses
             .filter(course => {
-              let period = course.period.toString(10)
+              let period = course.periods[0].toString(10)
               return (
                 (
                   course.course_name.toLowerCase().includes(props.filter.courseName.toLowerCase())

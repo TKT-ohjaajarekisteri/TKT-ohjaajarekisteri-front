@@ -19,7 +19,7 @@ const Course = ({ course, setHidden }) => {
       <td><Link to={`courses/${course.course_id}`}>{course.learningopportunity_id}</Link></td>
       <td className = 'name'> {course.course_name}</td>
       <td className = 'year centerColumn' >{course.year}</td>
-      <td className = 'period centerColumn' >{course.period}</td>
+      <td className = 'periods centerColumn' >{course.periods[0]}</td>
       <td className = 'applicants centerColumn' >{acceptedStudentsAmount}/{applicants}</td>
       <td>
         {

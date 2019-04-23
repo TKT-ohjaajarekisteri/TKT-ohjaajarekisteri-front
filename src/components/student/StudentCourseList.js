@@ -27,8 +27,9 @@ export const StudentCourseList = ({ loggedUser, courses, id, getStudentCourses, 
           <tr>
             <th>Code</th>
             <th>Name</th>
-            <th>Year</th>
-            <th>Period</th>
+            <th className='centerColumn' >Period</th>
+            <th className='centerColumn' >From</th>
+            <th className='centerColumn' >To</th>
             <th></th>
           </tr>
         </thead>

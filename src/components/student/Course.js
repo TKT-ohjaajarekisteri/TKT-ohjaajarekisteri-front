@@ -9,8 +9,9 @@ const Course = ({ course, onChange, grey }) => {
       <tr className = "grey">
         <td className="learningopportunity_id">{course.learningopportunity_id}</td>
         <td className="name"> {course.course_name}</td>
-        <td className="year centerColumn">{course.year}</td>
-        <td className="period centerColumn">{course.period}</td>
+        <td className="period centerColumn"> {course.periods[0]}</td>
+        <td className="startDate centerColumn">{course.startingDate}</td>
+        <td className="endDate centerColumn">{course.endingDate}</td>
         <td className= "checkbox centerColumn"><Badge variant="secondary">Applied</Badge>
         </td>
       </tr>
@@ -21,8 +22,9 @@ const Course = ({ course, onChange, grey }) => {
     <tr className= "notGrey">
       <td className="learningopportunity_id">{course.learningopportunity_id}</td>
       <td className="name"> {course.course_name}</td>
-      <td className="year centerColumn">{course.year}</td>
-      <td className="period centerColumn">{course.period}</td>
+      <td className="period centerColumn"> {course.periods[0]}</td>
+      <td className="startDate centerColumn">{course.startingDate}</td>
+      <td className="endDate centerColumn">{course.endingDate}</td>
       <td className="checkbox listCheckbox">
         <CheckBox
           id={course.course_id}

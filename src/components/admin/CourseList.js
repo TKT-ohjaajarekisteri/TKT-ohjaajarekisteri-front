@@ -22,7 +22,7 @@ export const CourseList = ({
     initializeCourses()
     initializeFilter()
   },
-    []
+  []
   )
 
   const handleProgrammeChange = (event) => {
@@ -81,7 +81,7 @@ export const CourseList = ({
       <div style={{ float: 'left' }}>
         <div style={{ color: '#6c757d' }}>Period:</div>
         {courses && courses
-          .map(c => c.period)
+          .map(c => c.periods[0])
           .filter(onlyUnique)
           .sort()
           .map(period => {
@@ -111,7 +111,7 @@ export const CourseList = ({
             <th>Code</th>
             <th>Name</th>
             <th className='centerColumn'>Year</th>
-            <th className='centerColumn'>Period</th>
+            <th className='centerColumn wrapSmallCell'>Starting Period</th>
             <th className='centerColumn wrapSmallCell' >Accepted/ Applicants</th>
             <th className='centerColumn'>Hidden</th>
           </tr>
@@ -119,7 +119,7 @@ export const CourseList = ({
         <tbody>
           {courses
             .filter(course => {
-              let period = course.period.toString(10)
+              let period = course.periods[0].toString(10)
               return (
                 (
                   course.course_name.toLowerCase().includes(filter.courseName.toLowerCase())
