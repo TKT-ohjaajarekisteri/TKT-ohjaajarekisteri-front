@@ -43,7 +43,7 @@ describe('ContactDetailsUpdateForm', () => {
 
   it('renders self', () => {
     wrapper = mount(
-      <Provider store={ store }>
+      <Provider store={store}>
         <Router>
           <ContactDetailsUpdateForm {...props} />
         </Router>
@@ -57,7 +57,7 @@ describe('ContactDetailsUpdateForm', () => {
   describe('useEffect', () => {
     it('calls getContactInformation ', () => {
       wrapper = mount(
-        <Provider store={ store }>
+        <Provider store={store}>
           <Router>
             <ContactDetailsUpdateForm {...props} />
           </Router>
@@ -73,7 +73,7 @@ describe('ContactDetailsUpdateForm', () => {
     it('renders defaultInput', () => {
 
       const component = render(
-        <Provider store={ store }>
+        <Provider store={store}>
           <Router>
             <ContactDetailsUpdateForm {...props} />
           </Router>
@@ -83,7 +83,6 @@ describe('ContactDetailsUpdateForm', () => {
       expect(component.container).toHaveTextContent(
         'Tiina Testaaja 0000000'
       )
-      //console.log(component.debug())
     })
 
   })

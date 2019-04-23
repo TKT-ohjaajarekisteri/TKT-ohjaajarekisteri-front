@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { initializeSummary } from '../../reducers/actionCreators/summaryActions'
-import { initializeFilter, setProgramme, setPeriod, setCourseName, setYearFrom, setYearTo } from '../../reducers/actionCreators/filterActions'
+import filterActions from '../../reducers/actionCreators/filterActions'
 import { Table, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import TogglableButton from '../common/TogglableButton'
@@ -16,15 +16,12 @@ export const Summary = ({
   setProgramme,
   setPeriod,
   setCourseName,
-  filter }) => {
+  filter
+}) => {
 
   useEffect(() => {
     initializeSummary()
-
-  },
-  []
-  )
-
+  }, [])
 
   const handleProgrammeChange = (event) => {
     event.preventDefault()
@@ -54,13 +51,10 @@ export const Summary = ({
   }
 
   return (
-
     <div>
       <h2>All courses and applicants</h2>
-
       <div>
         <div style={{ float: 'left' }}>
-
           <div style={{ color: '#6c757d' }}>Study programme:</div>
           <TogglableButton
             type='submit'
@@ -83,8 +77,8 @@ export const Summary = ({
             filterValue={filter.studyProgramme}>
             Data Science
           </TogglableButton>
-
         </div>
+
         <div style={{ float: 'left' }}>
           <div style={{ color: '#6c757d' }}>Period:</div>
           {summaryList && summaryList
@@ -103,8 +97,8 @@ export const Summary = ({
                 </TogglableButton>
               )
             })}
-
         </div>
+
         <div style={{ float: 'right' }}>
           <div style={{ color: '#6c757d' }}> Filter:</div>
           <Form.Control
@@ -128,18 +122,9 @@ export const Summary = ({
             value={filter.year}
             onChange={handleYearFromChange} />
         </div>
-
-
-
-
-
-
       </div>
-      {/* <Form.Group as={Col} md="4"></Form.Group> */}
 
-
-
-      <Table className='summaryCourseList' bordered hover size="sm" >
+      <Table className='summaryCourseList' bordered hover size="sm">
         <thead>
           <tr>
             <th>Code</th>
@@ -157,13 +142,9 @@ export const Summary = ({
               let period = course.periods[0].toString(10)
               return (
                 (
-                  (
-                    filter.yearFrom ? course.year >= Number(filter.yearFrom) : true
-                  )
+                  (filter.yearFrom ? course.year >= Number(filter.yearFrom) : true)
                   &&
-                  (
-                    filter.yearTo ? course.year <= Number(filter.yearTo) : true
-                  )
+                  (filter.yearTo ? course.year <= Number(filter.yearTo) : true)
                 )
                 &&
                 (
@@ -171,7 +152,6 @@ export const Summary = ({
                   ||
                   course.learningopportunity_id.toLowerCase().includes(filter.courseName.toLowerCase())
                 )
-
                 &&
                 course.learningopportunity_id.includes(filter.studyProgramme)
                 &&
@@ -189,7 +169,11 @@ export const Summary = ({
                     <tbody>
                       {course.students.map(s =>
                         <tr key={s.student_id} >
-                          <td><Link to={`/admin/students/${s.student_id}/info`}>{s.student_number}</Link></td>
+                          <td>
+                            <Link to={`/admin/students/${s.student_id}/info`}>
+                              {s.student_number}
+                            </Link>
+                          </td>
                           <td className="studentName"> {s.first_names} {s.last_name}</td>
                           <td width='70px'> {s.Application.accepted ? <Badge variant="success">Accepted</Badge> : ''}</td>
                           <td width='70px'> {s.no_english ? '' : 'English'}</td>
@@ -202,15 +186,11 @@ export const Summary = ({
             )}
         </tbody>
       </Table>
-
     </div >
-
   )
 }
 
 const mapStateToProps = (state) => {
-  //const summaryList=state.summary
-  console.log(state, 'koko store summarysta')
   return {
     summaryList: state.summary.summary,
     filter: {
@@ -225,5 +205,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { initializeSummary, initializeFilter, setProgramme, setPeriod, setCourseName, notify, setYearFrom, setYearTo }
+  { initializeSummary, notify, ...filterActions }
 )(Summary)

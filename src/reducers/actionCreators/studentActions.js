@@ -1,8 +1,7 @@
 import studentService from '../../services/students'
 
 // tells studentservice to get all students from database
-const initializeStudents = () => {
-  console.log('INIT_STUDENT_ACTION')
+export const initializeStudents = () => {
   return async (dispatch) => {
     const content = await studentService.getAll()
     dispatch({
@@ -13,7 +12,7 @@ const initializeStudents = () => {
 }
 
 // tells studentservice to get specific student by id from database
-const getStudent = (id) => {
+export const getStudent = (id) => {
   return async (dispatch) => {
     const content = await studentService.getStudent(id)
     dispatch({
@@ -25,7 +24,7 @@ const getStudent = (id) => {
 
 
 // tells studentservice to get specific student's courses and dispatch them to store
-const getStudentCourses = (id) => {
+export const getStudentCourses = (id) => {
   return async (dispatch) => {
     const content = await studentService.getCourses(id)
     dispatch({
@@ -36,7 +35,7 @@ const getStudentCourses = (id) => {
 }
 
 // tells studentservice to get specific student's courses, and dispatch their id:s to store
-const getStudentCourseIds = (id) => {
+export const getStudentCourseIds = (id) => {
   return async (dispatch) => {
     const content = await studentService.getCourses(id)
     const courseIds = content.map(course => course.course_id)
@@ -48,8 +47,7 @@ const getStudentCourseIds = (id) => {
 }
 
 // tells studentservice to get specific student's courses
-const getContactInformation = (id) => {
-  //console.log(id)
+export const getContactInformation = (id) => {
   return async (dispatch) => {
     const student = await studentService.getStudent(id)
     if (student === undefined || student.error) {
@@ -72,11 +70,9 @@ const getContactInformation = (id) => {
 }
 
 // deletes course which student has applied
-const deleteAppliedCourse = (course_id, student_id) => {
+export const deleteAppliedCourse = (course_id, student_id) => {
   return async (dispatch) => {
-
     const response = await studentService.deleteApplication(student_id, course_id)
-    //console.log(response)
     if (response.error || response === undefined) {
       dispatch({
         type: 'NOTIFY',
@@ -105,33 +101,42 @@ const deleteAppliedCourse = (course_id, student_id) => {
   }
 }
 
-const updatePhone = (phone) => {
+export const updatePhone = (phone) => {
   return {
     type: 'UPDATE_PHONE',
     data: phone
   }
 }
 
-const updateEmail = (email) => {
+export const updateEmail = (email) => {
   return {
     type: 'UPDATE_EMAIL',
     data: email
   }
 }
 
-const updateExperience = (experience) => {
+export const updateExperience = (experience) => {
   return {
     type: 'UPDATE_EXPERIENCE',
     data: experience
   }
 }
-const updateLanguage = (teachesInEnglish) => {
+export const updateLanguage = (teachesInEnglish) => {
   return {
     type: 'UPDATE_LANGUAGE',
     data: teachesInEnglish
   }
 }
-export {
-  updatePhone, updateEmail, updateLanguage, updateExperience,
-  initializeStudents, getStudent, getStudentCourses, getContactInformation, deleteAppliedCourse, getStudentCourseIds
+
+export default {
+  updatePhone,
+  updateEmail,
+  updateLanguage,
+  updateExperience,
+  initializeStudents,
+  getStudent,
+  getStudentCourses,
+  getContactInformation,
+  deleteAppliedCourse,
+  getStudentCourseIds
 }

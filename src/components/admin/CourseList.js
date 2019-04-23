@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import filterActions from '../../reducers/actionCreators/filterActions'
+import courseActions from '../../reducers/actionCreators/courseActions'
 import Course from './Course'
 import TogglableButton from '../common/TogglableButton'
-import { initializeCourses, setHidden } from '../../reducers/actionCreators/courseActions'
 import { Table } from 'react-bootstrap'
-import { initializeFilter, setProgramme, setPeriod, setCourseName } from '../../reducers/actionCreators/filterActions'
 import { Form } from 'react-bootstrap'
 
 export const CourseList = ({
@@ -21,9 +21,7 @@ export const CourseList = ({
   useEffect(() => {
     initializeCourses()
     initializeFilter()
-  },
-  []
-  )
+  }, [])
 
   const handleProgrammeChange = (event) => {
     event.preventDefault()
@@ -42,7 +40,7 @@ export const CourseList = ({
 
   const handleHiddenSubmit = (id) => (event) => {
     event.preventDefault()
-    if (window.confirm('Are you shure you want to hide this course?')) {
+    if (window.confirm('Are you sure you want to hide this course?')) {
       setHidden(id)
     }
   }
@@ -158,5 +156,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { initializeCourses, initializeFilter, setProgramme, setPeriod, setCourseName, setHidden }
+  { ...courseActions, ...filterActions }
 )(CourseList)

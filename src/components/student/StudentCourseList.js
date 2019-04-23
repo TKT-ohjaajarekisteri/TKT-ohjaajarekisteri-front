@@ -35,7 +35,11 @@ export const StudentCourseList = ({ loggedUser, courses, id, getStudentCourses, 
         </thead>
         <tbody>
           {courses.map(course =>
-            <CourseWithDel course={course} key={course.course_id} onClick={removeApply} />
+            <CourseWithDel
+              course={course}
+              key={course.course_id}
+              onClick={removeApply}
+            />
           )}
         </tbody>
       </Table>

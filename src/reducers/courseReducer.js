@@ -1,4 +1,3 @@
-
 // returns courses from store
 const courseReducer = (state = [], action) => {
   switch (action.type) {

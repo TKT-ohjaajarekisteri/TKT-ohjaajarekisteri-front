@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Checkbox from '../common/Checkbox'
-import { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified, setStudentGroups } from '../../reducers/actionCreators/singleCourseActions'
+import singleCourseActions from '../../reducers/actionCreators/singleCourseActions'
 import { Table, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
@@ -14,13 +14,12 @@ export const SingleCourse = ({
   setStudentAccepted,
   setEmail,
   setStudentGroups,
-  sendAcceptedModified }) => {
+  sendAcceptedModified
+}) => {
 
   useEffect(() => {
     initializeSingleCourse(courseId)
-  },
-  []
-  )
+  }, [])
 
   const getModified = (applicants) => {
     return applicants
@@ -34,34 +33,51 @@ export const SingleCourse = ({
       })
   }
 
-  const handleAcceptedSubmit = (e) => {
-    e.preventDefault()
+  const handleAcceptedSubmit = (event) => {
+    event.preventDefault()
     const acceptedModified = getModified(applicants)
     if (acceptedModified.length !== 0) {
       sendAcceptedModified(courseId, acceptedModified)
     }
   }
 
-  const handleEmailToChange = (id) => (e) => {
-    const email_to_checked = e.target.checked
+  const handleEmailToChange = (id) => (event) => {
+    const email_to_checked = event.target.checked
     setEmail(id, email_to_checked) // Updates email message fields
   }
 
-  const handleAcceptedChange = (id) => (e) => {
-    const accepted = e.target.checked
+  const handleAcceptedChange = (id) => (event) => {
+    const accepted = event.target.checked
     setStudentAccepted(id, accepted)
   }
 
-  const handleGroupsChange = (id) => (e) => {
-    const groups = Number(e.target.value)
+  const handleGroupsChange = (id) => (event) => {
+    const groups = Number(event.target.value)
     setStudentGroups(id, groups)
   }
 
+  const checkAllEmailBoxes = (e) => {
+    e.preventDefault()
+    applicants.forEach(applicant => {
+      setEmail(applicant.student_id, applicant.accepted_checked)
+    })
+  }
+
+  const checkAllAcceptedBoxes = (e) => {
+    e.preventDefault()
+    applicants.forEach(applicant => {
+      setStudentAccepted(applicant.student_id, true)
+    })
+  }
+
   const href = `https://outlook.office.com/?path=/mail/action/compose&to=${email.to}&subject=${email.subject}&body=${email.body}`
+
   return (
     <div>
       <div className="courseHeader">
-        {!course ? null :
+        {!course ?
+          null
+          :
           <div>
             <h2>{course.learningopportunity_id} {course.course_name}</h2>
             <table className="courseHeaderData">
@@ -99,16 +115,26 @@ export const SingleCourse = ({
         <div className='col'>
           <h3>Applicants for course:</h3>
         </div>
-        <div className='col'>
-          {
-            getModified(applicants).length === 0 ?
-              <Button className='float-right' target="_blank" rel="noopener noreferrer" href={href} variant='dark'>Send email</Button>
-              :
-              <div className='emailHidden'>Save changes to Send email</div>
-          }
 
-        </div>
+
+        {getModified(applicants).length === 0 ?
+          <Button
+            className='button float-right'
+            target="_blank"
+            rel="noopener noreferrer"
+            href={href}
+            variant='dark'
+            style= {{ float: 'right', margin: 5 }}
+          >
+            Send email
+          </Button>
+          :
+          <div className='emailHidden'>Save changes to Send email</div>
+        }
+        <Button className='button float-right' style={{ float: 'right', margin: 5 }} id='saveApplied' onClick={handleAcceptedSubmit}>Save</Button>
+
       </div>
+
       <Table bordered hover>
         <thead>
           <tr>
@@ -118,33 +144,44 @@ export const SingleCourse = ({
             <th>Language</th>
             <th>Email</th>
             <th>Groups</th>
-            <th>Email to</th>
-            <th>Accepted</th>
+            <th className='emailToCol' >Email to</th>
+            <th className='acceptedCol' >Accepted</th>
           </tr>
         </thead>
         <tbody>
           {applicants.map(student =>
             <tr className='Student' key={student.student_id}>
-              <td><Link to={`/admin/students/${student.student_id}/info`}>{student.student_number}</Link></td>
+              <td>
+                <Link to={`/admin/students/${student.student_id}/info`}>
+                  {student.student_number}
+                </Link>
+              </td>
               <td>{student.first_names}</td>
               <td>{student.last_name}</td>
               <td>{student.no_english ? '' : 'English'}</td>
               <td>{student.email}</td>
               <td>
-                <input type='number' id={student.student_number} onChange={handleGroupsChange(student.student_id)} defaultValue={student.groups_textbox} style={{ width: 50 }} min='0'></input>
+                <input
+                  type='number'
+                  id={student.student_number}
+                  onChange={handleGroupsChange(student.student_id)}
+                  defaultValue={student.groups_textbox}
+                  style={{ width: 50 }}
+                  min='0'
+                />
               </td>
-              <td>
+              <td className='centerColumn'>
                 <Checkbox
-                  className='align-items-center emailTo listCheckbox'
+                  className='emailTo listCheckbox'
                   name={student.student_number}
                   checked={student.email_to_checked}
                   id={student.student_id}
                   onChange={handleEmailToChange}
                 />
               </td>
-              <td>
+              <td className='centerColumn'>
                 <Checkbox
-                  className='align-items-center accepted listCheckbox'
+                  className='accepted listCheckbox'
                   name={student.student_number}
                   checked={student.accepted_checked}
                   id={student.student_id}
@@ -153,9 +190,13 @@ export const SingleCourse = ({
               </td>
             </tr>
           )}
+          <tr>
+            <td style={{ visibility: 'hidden', borderLeftStyle: 'hidden', borderBottomStyle: 'hidden' }} colSpan='6'></td>
+            <td className='centerColumn' ><Button id='selectEmails' variant="outline-secondary" onClick={checkAllEmailBoxes}>Check for accepted</Button></td>
+            <td className='centerColumn' ><Button id='selectAccepted' variant="outline-secondary" onClick={checkAllAcceptedBoxes}>Check all</Button></td>
+          </tr>
         </tbody>
       </Table>
-      <Button className='float-right' id='saveApplied' variant='dark' onClick={handleAcceptedSubmit}>Save</Button>
     </div>
   )
 }
@@ -170,5 +211,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified, setStudentGroups }
+  { ...singleCourseActions }
 )(SingleCourse)

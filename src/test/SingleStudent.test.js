@@ -17,8 +17,27 @@ describe('<SingleStudent/>', () => {
         student_number: '012345678'
       },
       getSingleStudent: jest.fn(),
+      getSingleStudentCourses: jest.fn(),
       studentId: 2,
-
+      courses: [ {
+        Application: {
+          groups: 0,
+          accepted: false,
+          hidden: false,
+          createdAt: '2019-04-22T07:09:48.359Z',
+          updatedAt: '2019-04-22T07:09:48.359Z'
+        },
+        course_id: 162,
+        course_name: 'Tietokoneen toiminta',
+        createdAt: '2019-04-15T12:13:01.732Z',
+        groups: null,
+        hidden: false,
+        learningopportunity_id: 'TKT10005',
+        period: 4,
+        updatedAt: '2019-04-15T12:13:01.732Z',
+        year: 2019
+      }
+      ]
     }
   })
 
