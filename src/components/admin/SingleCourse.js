@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Checkbox from '../common/Checkbox'
-// import { initializeSingleCourse, setEmail, setStudentAccepted, sendAcceptedModified, setStudentGroups } from '../../reducers/actionCreators/singleCourseActions'
 import singleCourseActions from '../../reducers/actionCreators/singleCourseActions'
 import { Table, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'

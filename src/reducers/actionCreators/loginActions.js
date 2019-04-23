@@ -27,9 +27,7 @@ export const initLoggedUser = () => {
 export const updateLoggedUser = (content, id) => {
   return async (dispatch) => {
     const response = await studentService.update(content, id)
-    console.log('loginactionin updateloggeduser', response)
     if (response.error || response === undefined) {
-      console.log('loginactionin updateloggeduserin error', response.error)
       dispatch({
         type: 'NOTIFY',
         data: 'Saving failed!'

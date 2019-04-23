@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { initializeSummary } from '../../reducers/actionCreators/summaryActions'
-// import { initializeFilter, setProgramme, setPeriod, setCourseName, setYearFrom, setYearTo } from '../../reducers/actionCreators/filterActions'
 import filterActions from '../../reducers/actionCreators/filterActions'
 import { Table, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'

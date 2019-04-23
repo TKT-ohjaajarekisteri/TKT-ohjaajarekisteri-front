@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
-// import { getContactInformation, updatePhone, updateEmail, updateLanguage, updateExperience } from '../../reducers/actionCreators/studentActions'
 import studentActions from '../../reducers/actionCreators/studentActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
 import StudentCourseList from './StudentCourseList'

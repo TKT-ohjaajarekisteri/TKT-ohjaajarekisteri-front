@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-// import { initializeFilter, setProgramme, setPeriod, setCourseName } from '../../reducers/actionCreators/filterActions'
 import filterActions from '../../reducers/actionCreators/filterActions'
 import courseActions from '../../reducers/actionCreators/courseActions'
 import Course from './Course'
@@ -41,7 +40,7 @@ export const CourseList = ({
 
   const handleHiddenSubmit = (id) => (event) => {
     event.preventDefault()
-    if (window.confirm('Are you shure you want to hide this course?')) {
+    if (window.confirm('Are you sure you want to hide this course?')) {
       setHidden(id)
     }
   }
