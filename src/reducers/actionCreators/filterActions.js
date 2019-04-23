@@ -1,4 +1,4 @@
-const initializeFilter = () => {
+export const initializeFilter = () => {
   return async (dispatch) => {
     dispatch({
       type: 'INIT_FILTER'
@@ -7,7 +7,7 @@ const initializeFilter = () => {
 }
 
 // programmeId, as in 'TKT', 'CSM', 'DATA'
-const setProgramme = (programmeId) => {
+export const setProgramme = (programmeId) => {
   return async (dispatch) => {
     dispatch({
       type: 'SET_PROGRAMME',
@@ -17,7 +17,7 @@ const setProgramme = (programmeId) => {
 }
 
 // period, as in: '1', '2', '3', ...
-const setPeriod = (period) => {
+export const setPeriod = (period) => {
   return async (dispatch) => {
     dispatch({
       type: 'SET_PERIOD',
@@ -27,7 +27,7 @@ const setPeriod = (period) => {
 }
 
 // course names
-const setCourseName = (courseName) => {
+export const setCourseName = (courseName) => {
   return async (dispatch) => {
     dispatch({
       type: 'SET_COURSE_NAME',
@@ -37,7 +37,7 @@ const setCourseName = (courseName) => {
 }
 
 // course yearFrom
-const setYearFrom = (yearFrom) => {
+export const setYearFrom = (yearFrom) => {
   return async (dispatch) => {
     dispatch({
       type: 'SET_COURSE_YEARFROM',
@@ -47,7 +47,7 @@ const setYearFrom = (yearFrom) => {
 }
 
 // course yearTo
-const setYearTo = (yearTo) => {
+export const setYearTo = (yearTo) => {
   return async (dispatch) => {
     dispatch({
       type: 'SET_COURSE_YEARTO',

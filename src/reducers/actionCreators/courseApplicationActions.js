@@ -2,7 +2,7 @@ import courseService from '../../services/courses'
 import studentService from '../../services/students'
 
 // get all courses from database, add selected state to courses and dispatch the array to store
-const initializeCourseApplication = () => {
+export const initializeCourseApplication = () => {
   return async (dispatch) => {
     dispatch({
       type: 'APPLICATION_COURSES_FETCH',
@@ -23,7 +23,7 @@ const initializeCourseApplication = () => {
   }
 }
 
-const setChecked = (id, isChecked) => {
+export const setChecked = (id, isChecked) => {
   return async (dispatch) => {
     dispatch({
       type: 'SET_COURSE_STATUS',
@@ -35,7 +35,7 @@ const setChecked = (id, isChecked) => {
   }
 }
 
-const sendApplication = (student_id, course_ids) => {
+export const sendApplication = (student_id, course_ids) => {
   return async (dispatch) => {
     await studentService.apply(student_id, { course_ids: course_ids })
     const courses = await studentService.getCourses(student_id)

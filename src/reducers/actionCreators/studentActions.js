@@ -2,7 +2,6 @@ import studentService from '../../services/students'
 
 // tells studentservice to get all students from database
 export const initializeStudents = () => {
-  console.log('INIT_STUDENT_ACTION')
   return async (dispatch) => {
     const content = await studentService.getAll()
     dispatch({
@@ -49,7 +48,6 @@ export const getStudentCourseIds = (id) => {
 
 // tells studentservice to get specific student's courses
 export const getContactInformation = (id) => {
-  //console.log(id)
   return async (dispatch) => {
     const student = await studentService.getStudent(id)
     if (student === undefined || student.error) {
@@ -74,9 +72,7 @@ export const getContactInformation = (id) => {
 // deletes course which student has applied
 export const deleteAppliedCourse = (course_id, student_id) => {
   return async (dispatch) => {
-
     const response = await studentService.deleteApplication(student_id, course_id)
-    //console.log(response)
     if (response.error || response === undefined) {
       dispatch({
         type: 'NOTIFY',

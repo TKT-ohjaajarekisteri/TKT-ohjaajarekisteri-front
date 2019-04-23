@@ -2,7 +2,7 @@ import courseService from '../../services/courses'
 import { notify, setError } from './notificationActions'
 
 // tells courseService to get allcourses from database and dispatch them to store
-const initializeCourses = () => {
+export const initializeCourses = () => {
   return async (dispatch) => {
     const content = await courseService.getAll()
     dispatch({
@@ -13,7 +13,7 @@ const initializeCourses = () => {
 }
 
 // sets the course as hidden
-const setHidden = (course_id) => {
+export const setHidden = (course_id) => {
   return async (dispatch) => {
     const response = await courseService.hideCourse(course_id)
     if (response.error) {

@@ -1,14 +1,10 @@
-
-// Making state an object accomodates future additions to login
 const initialState = {
   loggedUser: null,
   loadingUser: true
 }
 
 const loginReducer = (state = initialState, action) => {
-
   switch (action.type) {
-
   case 'INIT_USER': {
     return {
       ...state,

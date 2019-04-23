@@ -1,6 +1,6 @@
 import courseService from '../../services/courses'
 
-const initializeSingleCourse = (id) => {
+export const initializeSingleCourse = (id) => {
   return async (dispatch) => {
     const course = await courseService.getOne(id)
     dispatch({
@@ -25,7 +25,7 @@ const initializeSingleCourse = (id) => {
   }
 }
 
-const setStudentAccepted = (student_id, accepted_checked) => {
+export const setStudentAccepted = (student_id, accepted_checked) => {
   return async (dispatch) => {
     dispatch({
       type: 'SET_STUDENT_ACCEPTED_STATE',
@@ -37,7 +37,7 @@ const setStudentAccepted = (student_id, accepted_checked) => {
   }
 }
 
-const setStudentGroups = (student_id, groups_textbox) => {
+export const setStudentGroups = (student_id, groups_textbox) => {
   return async (dispatch) => {
     dispatch({
       type: 'SET_STUDENT_GROUPS_STATE',
@@ -49,7 +49,7 @@ const setStudentGroups = (student_id, groups_textbox) => {
   }
 }
 
-const sendAcceptedModified = (course_id, modifiedApplicants) => {
+export const sendAcceptedModified = (course_id, modifiedApplicants) => {
   return async (dispatch) => {
     const applicants = await courseService.sendAcceptedModified(course_id, modifiedApplicants)
     if (applicants.error) {
@@ -88,7 +88,7 @@ const sendAcceptedModified = (course_id, modifiedApplicants) => {
   }
 }
 
-const setEmail = (student_id, email_to_checked) => {
+export const setEmail = (student_id, email_to_checked) => {
   return async (dispatch) => {
     dispatch({
       type: 'SET_EMAIL_CHECKED',
