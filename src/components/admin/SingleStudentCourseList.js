@@ -19,9 +19,11 @@ export const SingleStudentCourseList = ({ courses }) => {
           </tr>
         </thead>
         <tbody>
-          {courses.map(course =>
-            <SingleStudentCourse course={course} key={course.course_id} />
-          )}
+          {courses
+            .sort((a, b) => { return b.Application.accepted - a.Application.accepted  })
+            .map(course =>
+              <SingleStudentCourse course={course} key={course.course_id} />
+            )}
         </tbody>
       </Table>
     </div>
