@@ -17,7 +17,7 @@ This registry will be used by students to express their interest to assist on co
 
 ## [Releases](https://studies.cs.helsinki.fi/ohjaajarekisteri/login)
 
-## [Product backlog](https://studies.cs.helsinki.fi/ohjaajarekisteri/login)
+## [Product backlog](https://docs.google.com/spreadsheets/d/1anddOjdDCkdAmyJH2gLAUYYbubbZhXSGxku90kQJT9k/edit#gid=1)
 
 ## Technologies
 * Front: React, Javascript
