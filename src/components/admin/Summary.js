@@ -21,9 +21,7 @@ export const Summary = ({
   useEffect(() => {
     initializeSummary()
 
-  },
-  []
-  )
+  },[])
 
 
   const handleProgrammeChange = (event) => {

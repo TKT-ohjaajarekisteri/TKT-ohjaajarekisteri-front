@@ -21,9 +21,7 @@ export const CourseList = ({
   useEffect(() => {
     initializeCourses()
     initializeFilter()
-  },
-    []
-  )
+  },[])
 
   const handleProgrammeChange = (event) => {
     event.preventDefault()

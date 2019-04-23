@@ -18,9 +18,7 @@ export const SingleCourse = ({
 
   useEffect(() => {
     initializeSingleCourse(courseId)
-  },
-  []
-  )
+  }, [])
 
 
   const getModified = (applicants) => {
@@ -106,16 +104,22 @@ export const SingleCourse = ({
         <div className='col'>
           <h3>Applicants for course:</h3>
         </div>
+
+
         <div className='col'>
+          <Button className='button float-right' style= {{ float: 'right', margin: 5 }} id='saveApplied' onClick={handleAcceptedSubmit}>Save</Button>
+
           {
             getModified(applicants).length === 0 ?
-              <Button className='button float-right' target="_blank" rel="noopener noreferrer" href={href} >Send email</Button>
+              <Button className='button float-right' style={{ float: 'right', margin: 5 }} target="_blank" rel="noopener noreferrer" href={href} >Send email</Button>
               :
               <div className='emailHidden'>Save changes to Send email</div>
+
           }
 
         </div>
       </div>
+
       <Table bordered hover>
         <thead>
           <tr>
@@ -161,13 +165,12 @@ export const SingleCourse = ({
             </tr>
           )}
           <tr>
-            <td style={{ visibility: 'hidden' , borderLeftStyle: 'hidden' , borderBottomStyle: 'hidden' }} colSpan='6'></td>
-            <td className='centerColumn noHover' ><Button id='selectEmails' className='button' onClick={checkAllEmailBoxes}>Check for accepted</Button></td>
-            <td className='centerColumn noHover' ><Button id='selectAccepted' className='button' onClick={checkAllAcceptedBoxes}>Check all</Button></td>
+            <td style={{ visibility: 'hidden', borderLeftStyle: 'hidden', borderBottomStyle: 'hidden' }} colSpan='6'></td>
+            <td className='centerColumn' ><Button id='selectEmails' variant="outline-secondary" onClick={checkAllEmailBoxes}>Check for accepted</Button></td>
+            <td className='centerColumn' ><Button id='selectAccepted' variant="outline-secondary" onClick={checkAllAcceptedBoxes}>Check all</Button></td>
           </tr>
         </tbody>
       </Table>
-      <Button className='button float-right' id='saveApplied'  onClick={handleAcceptedSubmit}>Save</Button>
     </div>
   )
 }
