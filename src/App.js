@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Link, Switch, Redirect, Route } from 'react-router-dom'
-import { Navbar, Nav, Button } from 'react-bootstrap'
+import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom'
+import { NavBar } from './components/common/NavBar'
+// import { Navbar, Nav, Button } from 'react-bootstrap'
 
 // Components
 import LoginForm from './components/LoginForm'
@@ -42,52 +43,11 @@ const App = (props) => {
       <Router basename={process.env.PUBLIC_URL}>
         { /* eslint-enable */}
         <React.Fragment>
-          <div className="NavBar">
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-              <Navbar.Brand href="/">TKT – Assistant Register</Navbar.Brand>
 
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="mr-auto">
-
-                  <Nav.Link href="#" as="span">
-                    {loggedUser && loggedUser.user.role === 'admin'
-                      ? <Link to="/admin/courses">Courses</Link>
-                      : <em></em>} &nbsp;
-                  </Nav.Link>
-
-                  <Nav.Link href="#" as="span">
-                    {loggedUser && loggedUser.user.role === 'admin'
-                      ? <Link to="/admin/summary">Summary</Link>
-                      : <em></em>} &nbsp;
-                  </Nav.Link>
-
-                  <Nav.Link href="#" as="span">
-                    {loggedUser && loggedUser.user.role === 'student'
-                      ? <Link to="/apply">Apply</Link>
-                      : <em></em>} &nbsp;
-                  </Nav.Link>
-
-                </Nav>
-                <Nav.Link href="#" as="span">
-                  {loggedUser && loggedUser.user.role === 'admin'
-                    ? <Link to="/admin">Change password</Link>
-                    : <em></em>} &nbsp;
-                </Nav.Link>
-                <Nav.Link href="#" as="span">
-                  {loggedUser && loggedUser.user.role === 'student'
-                    ? <Link to="/update-info">My profile</Link>
-                    : <em></em>} &nbsp;
-                </Nav.Link>
-
-                <Nav.Link href="#" as="span">
-                  {loggedUser
-                    ? <Button className="loginbutton" onClick={props.logout} variant="outline-secondary" type="button" >Logout</Button>
-                    : <em></em>} &nbsp;
-                </Nav.Link>
-              </Navbar.Collapse>
-            </Navbar>
-          </div>
+          <NavBar
+            loggedUser={loggedUser}
+            logout={props.logout}
+          />
 
           <Notification />
           <div className="container">
