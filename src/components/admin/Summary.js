@@ -21,6 +21,7 @@ export const Summary = ({
 
   useEffect(() => {
     initializeSummary()
+    setYearFrom(getThisYear())
   }, [])
 
   const handleProgrammeChange = (event) => {
@@ -48,6 +49,11 @@ export const Summary = ({
 
   const onlyUnique = (value, index, self) => {
     return self.indexOf(value) === index
+  }
+
+  const getThisYear = () => {
+    const today = new Date()
+    return today.getFullYear()
   }
 
   return (
@@ -120,7 +126,8 @@ export const Summary = ({
           <Form.Control
             className='filterYearInput'
             value={filter.year}
-            onChange={handleYearFromChange} />
+            onChange={handleYearFromChange}
+            defaultValue={getThisYear()} />
         </div>
       </div>
 
@@ -175,8 +182,8 @@ export const Summary = ({
                             </Link>
                           </td>
                           <td className="studentName"> {s.first_names} {s.last_name}</td>
-                          <td width='70px'> {s.Application.accepted ? <Badge variant="success">Accepted</Badge> : ''}</td>
-                          <td width='70px'> {s.no_english ? '' : 'English'}</td>
+                          <td width='70px'> {s.Application.accepted ? <Badge variant="success">Accepted</Badge> : <Badge variant="warning">Pending</Badge>}</td>
+                          <td width='70px'> {s.no_english ? <img src={ require('../../Images/finnishFlag.png') } width='50' height='30' /> : <img src={ require('../../Images/englishFlag.svg') } alt='English' width='50' height='30' /> }</td>
                         </tr>
                       )}
                     </tbody>
