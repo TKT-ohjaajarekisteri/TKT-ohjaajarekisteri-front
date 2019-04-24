@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom'
 import { NavBar } from './components/common/NavBar'
-// import { Navbar, Nav, Button } from 'react-bootstrap'
 
 // Components
 import LoginForm from './components/LoginForm'
@@ -16,6 +15,7 @@ import SingleCourse from './components/admin/SingleCourse'
 import SingleStudent from './components/admin/SingleStudent'
 import PrivateRoute from './components/common/PrivateRoute'
 import Notification from './components/common/Notification'
+import StudentCourseList from './components/student/StudentCourseList'
 
 // Actions
 import { logout, initLoggedUser } from './reducers/actionCreators/loginActions'
@@ -112,6 +112,11 @@ const App = (props) => {
                     <Route
                       exact path="/update-info"
                       render={() => <ContactDetailsUpdateForm id={loggedUser.user.user_id} />}
+                    />
+                    {/* USERS CAN SEE THEIR APPLICATIONS */}
+                    <Route
+                      exact path="/applications"
+                      render={() => <StudentCourseList id={loggedUser.user.user_id} />}
                     />
                   </PrivateRoute>
                 </PrivateRoute>

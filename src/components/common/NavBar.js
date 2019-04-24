@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Navbar, Nav, Button } from 'react-bootstrap'
 
 export const NavBar = ({ loggedUser, logout }) => {
+
   return (
     <div className='NavBar'>
       <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
@@ -38,7 +39,13 @@ export const NavBar = ({ loggedUser, logout }) => {
 
           <Nav.Link href='#' as='span'>
             {loggedUser && loggedUser.user.role === 'student'
-              ? <Link to='/update-info'>My profile</Link>
+              ? <Link to='/update-info'>Profile</Link>
+              : <em></em>} &nbsp;
+          </Nav.Link>
+
+          <Nav.Link href='#' as='span'>
+            {loggedUser && loggedUser.user.role === 'student'
+              ? <Link to='/applications'>Applications</Link>
               : <em></em>} &nbsp;
           </Nav.Link>
 

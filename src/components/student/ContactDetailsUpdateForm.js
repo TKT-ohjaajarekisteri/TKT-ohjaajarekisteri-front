@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { updateLoggedUser } from '../../reducers/actionCreators/loginActions'
 import studentActions from '../../reducers/actionCreators/studentActions'
 import { notify } from '../../reducers/actionCreators/notificationActions'
-import StudentCourseList from './StudentCourseList'
 import { Form, Button } from 'react-bootstrap'
 import { emailValid } from '../../utils/validations'
 
@@ -96,7 +95,6 @@ export const ContactDetailsUpdateForm = ({
           <Button className='button updateButton' type='submit'>Update</Button>
         </Form>
       </div>
-      <StudentCourseList id={id} />
     </div>
   )
 }
