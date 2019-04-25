@@ -29,6 +29,12 @@ export const NavBar = ({ loggedUser, logout }) => {
                 ? <Link to='/apply'>Apply</Link>
                 : <em></em>} &nbsp;
             </Nav.Link>
+
+            <Nav.Link href='#' as='span'>
+              {loggedUser && loggedUser.user.role === 'student'
+                ? <Link to='/applications'>Applications</Link>
+                : <em></em>} &nbsp;
+            </Nav.Link>
           </Nav>
 
           <Nav.Link href='#' as='span'>
@@ -43,11 +49,7 @@ export const NavBar = ({ loggedUser, logout }) => {
               : <em></em>} &nbsp;
           </Nav.Link>
 
-          <Nav.Link href='#' as='span'>
-            {loggedUser && loggedUser.user.role === 'student'
-              ? <Link to='/applications'>Applications</Link>
-              : <em></em>} &nbsp;
-          </Nav.Link>
+
 
           <Nav.Link href='#' as='span'>
             {loggedUser ?
