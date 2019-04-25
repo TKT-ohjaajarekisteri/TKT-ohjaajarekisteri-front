@@ -8,7 +8,7 @@ const SingleStudentCourse = ({ course }) => {
       <td className="learningopportunity_id">{course.learningopportunity_id}</td>
       <td className="name"> {course.course_name}</td>
       <td className="year centerColumn">{course.year}</td>
-      <td className="period centerColumn">{course.period}</td>
+      <td className="period centerColumn">{course.periods[0]}</td>
       <td className= "accepted centerColumn">{
         course.Application.accepted ?
           <Badge variant="success">Accepted</Badge>

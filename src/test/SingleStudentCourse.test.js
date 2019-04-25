@@ -19,7 +19,7 @@ describe('<SingleStudentCourse/>', () => {
       groups: null,
       hidden: false,
       learningopportunity_id: 'TKT10005',
-      period: 4,
+      periods: [4],
       updatedAt: '2019-04-15T12:13:01.732Z',
       year: 2019
     }

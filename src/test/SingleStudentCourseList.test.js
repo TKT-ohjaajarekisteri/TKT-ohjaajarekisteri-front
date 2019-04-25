@@ -19,6 +19,7 @@ describe('<SingleStudentCourseList />', () => {
           course_id: 162,
           course_name: 'Tietokoneen toiminta',
           createdAt: '2019-04-15T12:13:01.732Z',
+          periods: [4],
           groups: null,
           hidden: false
         },
@@ -33,6 +34,7 @@ describe('<SingleStudentCourseList />', () => {
           course_id: 174,
           course_name: 'Ohjelmistotekniikka',
           createdAt: '2019-04-15T12:13:01.732Z',
+          periods: [4],
           groups: null,
           hidden: false
         },
@@ -47,6 +49,7 @@ describe('<SingleStudentCourseList />', () => {
           course_id: 189,
           course_name: 'Aineopintojen harjoitustyö: Tietorakenteet ja algoritmit (periodi IV)',
           createdAt: '2019-04-15T12:13:01.732Z',
+          periods: [4],
           groups: null,
           hidden: false
         }
