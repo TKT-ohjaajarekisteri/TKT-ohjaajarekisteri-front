@@ -130,6 +130,7 @@ export const CourseList = ({
                 period.includes(filter.period)
               )
             })
+            .sort((a, b) => { return a.hidden - b.hidden })
             .map(course =>
               <Course
                 course={course}
