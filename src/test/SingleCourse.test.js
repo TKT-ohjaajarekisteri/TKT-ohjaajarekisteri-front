@@ -12,7 +12,7 @@ describe('<SingleCourse />', () => {
         learningopportunity_id: 'TKT202020',
         name: 'OHTU',
         year: 2019,
-        period: 2,
+        periods: [2],
         checked: false
       },
       initializeSingleCourse: jest.fn(),

@@ -20,7 +20,7 @@ describe('<Summary />', () => {
         course_name: 'Randomized Algorithms I',
         createdAt: '2019-03-28T15:50:42.184Z',
         learningopportunity_id: 'CSM12104',
-        period: 4,
+        periods: [4],
         students: [{
           Application: {
             accepted: false,
