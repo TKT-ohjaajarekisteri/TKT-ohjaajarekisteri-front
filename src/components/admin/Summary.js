@@ -167,7 +167,7 @@ export const Summary = ({
             })
             .map(course =>
               <tr key={course.course_id}>
-                <td >{course.course_id}</td>
+                <td >{course.learningopportunity_id}</td>
                 <td className="courseName">{course.course_name}</td>
                 <td className='centerColumn' >{course.year}</td>
                 <td className='centerColumn' >{course.periods[0]}</td>
@@ -176,14 +176,14 @@ export const Summary = ({
                     <tbody>
                       {course.students.map(s =>
                         <tr key={s.student_id} >
-                          <td>
+                          <td width = '80'>
                             <Link to={`/admin/students/${s.student_id}/info`}>
                               {s.student_number}
                             </Link>
                           </td>
-                          <td className="studentName"> {s.first_names} {s.last_name}</td>
-                          <td width='70px'> {s.Application.accepted ? <Badge variant="success">Accepted</Badge> : <Badge variant="warning">Pending</Badge>}</td>
-                          <td width='70px'> {s.no_english ? <img src={ require('../../Images/finnishFlag.png') } width='50' height='30' /> : <img src={ require('../../Images/englishFlag.svg') } alt='English' width='50' height='30' /> }</td>
+                          <td className="studentName centerColumn"> {s.first_names} {s.last_name}</td>
+                          <td width = '40'> {s.Application.accepted ? <Badge variant="success">Accepted</Badge> : <Badge variant="warning">Pending</Badge>}</td>
+                          <td width = '40'> {s.no_english ? <img src={ require('../../Images/finnishFlag.png') } width='30' height='20' /> : <img src={ require('../../Images/englishFlag.svg') } alt='English' width='50' height='30' /> }</td>
                         </tr>
                       )}
                     </tbody>
