@@ -8,6 +8,7 @@ describe('<Summary />', () => {
   beforeAll(() => {
     props = {
       initializeSummary: jest.fn(),
+      setYearFrom: jest.fn(),
       filter: {
         studyProgramme: '',
         period: '',
