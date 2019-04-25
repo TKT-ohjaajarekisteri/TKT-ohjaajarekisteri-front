@@ -82,7 +82,7 @@ export const Summary = ({
         <div style={{ float: 'left' }}>
           <div style={{ color: '#6c757d' }}>Period:</div>
           {summaryList && summaryList
-            .map(c => c.period)
+            .map(c => c.periods[0])
             .filter(onlyUnique)
             .sort()
             .map(period => {
@@ -130,7 +130,7 @@ export const Summary = ({
             <th>Code</th>
             <th>Name</th>
             <th className='centerColumn' >Year</th>
-            <th className='centerColumn' >Period</th>
+            <th className='centerColumn wrapSmallCell' >Starting Period</th>
             <th>Applicants</th>
           </tr>
         </thead>
@@ -139,7 +139,7 @@ export const Summary = ({
           {summaryList
             .filter(course => course.students.length !== 0)
             .filter(course => {
-              let period = course.period.toString(10)
+              let period = course.periods[0].toString(10)
               return (
                 (
                   (filter.yearFrom ? course.year >= Number(filter.yearFrom) : true)
@@ -162,8 +162,8 @@ export const Summary = ({
               <tr key={course.course_id}>
                 <td >{course.course_id}</td>
                 <td className="courseName">{course.course_name}</td>
-                <td className='centerColumn'>{course.year}</td>
-                <td className='centerColumn'>{course.period}</td>
+                <td className='centerColumn' >{course.year}</td>
+                <td className='centerColumn' >{course.periods[0]}</td>
                 <td>
                   <Table className='summaryStudentList' style={{ padding: '0', margin: '0' }} hover size="sm">
                     <tbody>

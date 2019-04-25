@@ -10,7 +10,7 @@ describe.only('<Course />', () => {
       learningopportunity_id: 'TKT 202020',
       course_name: 'OHTU',
       course_year: 2019,
-      course_period: 2
+      periods: [2]
     }
 
     const setHidden = jest.fn()

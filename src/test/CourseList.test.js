@@ -21,7 +21,7 @@ describe('<CourseList />', () => {
           learningopportunity_id: 'TKT202020',
           course_name: 'OHTU',
           year: 2019,
-          period: 2,
+          periods: [2],
           checked: false
         },
         {
@@ -29,7 +29,7 @@ describe('<CourseList />', () => {
           learningopportunity_id: 'TKT202111',
           course_name: 'OHTU2',
           year: 2042,
-          period: 2,
+          periods: [2],
           checked: false
         },
         {
@@ -37,7 +37,7 @@ describe('<CourseList />', () => {
           learningopportunity_id: 'CSM202122',
           course_name: 'OHTU3',
           year: 2042,
-          period: 3,
+          periods: [3],
           checked: false
         }
       ]
