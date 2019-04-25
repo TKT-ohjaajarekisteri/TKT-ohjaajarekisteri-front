@@ -176,14 +176,30 @@ export const Summary = ({
                     <tbody>
                       {course.students.map(s =>
                         <tr key={s.student_id} >
-                          <td width = '80'>
+                          <td width='80'>
                             <Link to={`/admin/students/${s.student_id}/info`}>
                               {s.student_number}
                             </Link>
                           </td>
                           <td className="studentName centerColumn"> {s.first_names} {s.last_name}</td>
-                          <td width = '40'> {s.Application.accepted ? <Badge variant="success">Accepted</Badge> : <Badge variant="warning">Pending</Badge>}</td>
-                          <td width = '40'> {s.no_english ? <img src={ require('../../Images/finnishFlag.png') } width='30' height='20' /> : <img src={ require('../../Images/englishFlag.svg') } alt='English' width='50' height='30' /> }</td>
+                          <td width='40'> {s.Application.accepted ? <Badge variant="success">Accepted</Badge> : <Badge variant="warning">Pending</Badge>}</td>
+                          <td width='40'>
+                            {s.no_english ?
+                              <img
+                                src={require('../../Images/finnishFlag.png')}
+                                width='30'
+                                height='20'
+                                alt="Finnish Flag"
+                              />
+                              :
+                              <img
+                                src={require('../../Images/englishFlag.svg')}
+                                width='30'
+                                height='20'
+                                alt="English Flag"
+                              />
+                            }
+                          </td>
                         </tr>
                       )}
                     </tbody>
