@@ -65,7 +65,7 @@ export const login = (username, password) => {
     if (response.error) {
       dispatch({
         type: 'NOTIFY',
-        data: 'Username or password is incorrect!'
+        data: response.error
       })
       setTimeout(() => {
         dispatch({
