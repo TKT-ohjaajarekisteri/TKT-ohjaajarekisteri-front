@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { notify, setError } from './../reducers/actionCreators/notificationActions'
 import { login } from './../reducers/actionCreators/loginActions'
-import { Form, Button, Col } from 'react-bootstrap'
+import { Form, Button, Col, Container, Row } from 'react-bootstrap'
 
 export const LoginForm = ({ login }) => { //for future: history, setError
 
@@ -28,34 +28,44 @@ export const LoginForm = ({ login }) => { //for future: history, setError
 
   return (
     <div className='studentForm'>
-      <div className='logHeader'>
-        <h2>Sign in with your University of Helsinki credentials</h2>
-      </div>
-      <Form onSubmit={handleLogin}>
-        <Form.Group as={Col} md="4">
-          <Form.Label>username </Form.Label>
-          <Form.Control
-            type="text"
-            name="username"
-            value={input.username}
-            onChange={handleChange}
-            autoFocus
-          />
+      <Container>
+        <Row>
+          <Col>
+            <div className='logHeader'>
+              <h3>TKT – Assistant Register</h3>
+              <h5>Login with University of Helsinki credentials</h5>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={{ span: 6, offset: 3 }}>
+            <Form onSubmit={handleLogin}>
+              <Form.Group>
+                <Form.Label>username</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="username"
+                  value={input.username}
+                  onChange={handleChange}
+                  autoFocus
+                />
 
-          <Form.Label>password </Form.Label>
-          <Form.Control
-            type="password"
-            name="password"
-            value={input.password}
-            onChange={handleChange}
-          />
-        </Form.Group>
-
-        <Button className="btnLogin" variant="dark" type="submit" >
-          Login
-        </Button>
-      </Form>
-    </div>
+                <Form.Label>password </Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  value={input.password}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Button className="btnLogin" variant="dark" type="submit" >
+                Login
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </div >
   )
 }
 
