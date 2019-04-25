@@ -7,7 +7,18 @@ export const NavBar = ({ loggedUser, logout }) => {
   return (
     <div className='NavBar'>
       <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
-        <Navbar.Brand href='/'>TKT – Assistant Register</Navbar.Brand>
+        <Navbar.Brand href='/'>
+          <img
+            src='/hy-logo.png'
+            width='60'
+            height='60'
+            className='d-inline-block align-top'
+            alt='Helsingin Yliopisto'
+          />
+        </Navbar.Brand>
+        <Navbar.Brand>
+          TKT – Assistant Register
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
 
