@@ -49,7 +49,7 @@ export const sendApplication = (student_id, course_ids) => {
     })
     dispatch({
       type: 'NOTIFY',
-      data: 'Your applicaton has been saved'
+      data: 'Your application has been saved'
     })
 
     setTimeout(() => {
