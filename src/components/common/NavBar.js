@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, Button } from 'react-bootstrap'
+import logo from '../../Images/hy-logo.png'
 
 export const NavBar = ({ loggedUser, logout }) => {
 
@@ -9,7 +10,7 @@ export const NavBar = ({ loggedUser, logout }) => {
       <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
         <Navbar.Brand href='/'>
           <img
-            src='/hy-logo.png'
+            src={logo}
             width='60'
             height='60'
             className='d-inline-block align-top'
