@@ -90,7 +90,7 @@ export const deleteAppliedCourse = (course_id, student_id) => {
       })
       dispatch({
         type: 'NOTIFY',
-        data: 'Course deleted'
+        data: 'Application deleted'
       })
       setTimeout(() => {
         dispatch({

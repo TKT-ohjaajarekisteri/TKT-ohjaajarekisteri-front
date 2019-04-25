@@ -14,7 +14,7 @@ export const SingleStudentCourseList = ({ courses }) => {
             <th>Code</th>
             <th>Name</th>
             <th>Year</th>
-            <th>Period</th>
+            <th>Starting period</th>
             <th>Status</th>
           </tr>
         </thead>
