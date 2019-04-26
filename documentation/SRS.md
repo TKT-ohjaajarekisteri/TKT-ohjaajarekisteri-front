@@ -2,29 +2,33 @@
 
 ## Purpose 
 
-Teaching assistant register is used to keep track of students applying to assist in University of Helsinki's computer science 
-courses.
+Teaching assistant register is used to keep track of students applying to assist in University of Helsinki's computer science courses. Admin can select assistants from all applicants.
 
 ## Users
 
-As of now, there are no users or possibility of login. In the future student, teacher and admin users will be added. Students
-may apply for assistant positions for courses. Teachers and admins can browse, accept and reject applicants for courses.
+Application has two kinds of users: student and admin. Students can register with their University of Helsinki credentials. Admin has to be added by the administration.
 
-## MVP
+## MVP (17.1.2019)
 
 Students have to write their own information and the information of the course they are applying to. Applications are linked to
 a course, and all applicants for a specific course can be viewed.
 
+## Functionalities
+
+Students can register as users. Students' can apply to assist in ongoing and future courses and filter them by period and study program. Students can view and delete their applications.
+
+Admin can see ongoing and future courses and filter them by period and study program. Admin can hide courses from students' view. Admin can see all applicants in course page. Admin can send email to selected applicants by Outlook 365 via browser. Admin can select selected applicants as accepted assistants. Admin can see all courses and their applicants in a single page on summary page.
+
 ## Planned future functionalities
 
-* Login possibility for student, teacher and admin
-* Student may select languages they are ready to teach in
-* Students may view and edit their information
-* Selection for student to be active / inactive applicant
-* Sorting courses in a desired way
-* Course list will be listed from weboodi for updated course information, and to prevent users from mispelling course names.
-* Student login will be done via Universitys login
-* Teachers and admins can select which applicants to select for a course
-* Teachers and admins may view students' assistance history
-* Teachers and admins may send emails to specific applicants or to all applicants
-* Teachers and admins have a link to students' transcript of studies
+* Admin can add a new course via application
+* Admin has a link to a students' transcript of study records
+* Admin can search for a course by its name
+* Admin can gray out selected courses
+* Admin can edit number of groups in a course
+* Admin can edit students' information
+* Admin can see the number of registered students and the number of sent applications
+* Admin can send email to all registered students
+* Student can unsubscribe from email list
+* Teacher can log in
+* Students can log their working hours

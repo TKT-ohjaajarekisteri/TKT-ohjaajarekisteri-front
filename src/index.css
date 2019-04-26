@@ -130,3 +130,19 @@
     border-color: #6c757d;
     background-color: #6c757d;
   }
+
+  .logHeader {
+    padding: 80px 20px 20px 20px;
+  }
+
+  .logHeader h3 {
+    text-align: center;
+  }
+  .logHeader h4 {
+    text-align: center;
+  }
+
+  .logHeader h5 {
+    text-align: center;
+    color:  #6c757d;
+  }
