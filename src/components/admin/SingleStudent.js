@@ -41,18 +41,21 @@ export const SingleStudent = ({ studentId, getSingleStudent, getSingleStudentCou
             </tr>
           </tbody>
         </Table>
-        <Table bordered hover>
-          <thead>
-            <tr>
-              <th>Experience</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className='Experience' key={student.student_id}>
-              <td>{student.experience}</td>
-            </tr>
-          </tbody>
-        </Table>
+        {student.experience === ''
+          ? null
+          :  <Table bordered hover>
+            <thead>
+              <tr>
+                <th>Experience</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className='Experience' key={student.student_id}>
+                <td>{student.experience}</td>
+              </tr>
+            </tbody>
+          </Table>
+        }
       </div>
       <SingleStudentCourseList courses={courses} />
     </div>

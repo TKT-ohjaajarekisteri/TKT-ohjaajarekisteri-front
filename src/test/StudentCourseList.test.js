@@ -22,6 +22,7 @@ describe('<StudentCourseList />', () => {
           course_id: 'TKT 202020',
           course_name: 'OHTU',
           course_year: 2019,
+          startingDate: '02.09.2019',
           periods: [2],
           Application: {
             groups: 0,
@@ -33,6 +34,7 @@ describe('<StudentCourseList />', () => {
           course_id: 'TKT 202111',
           course_name: 'OHTU2',
           course_year: 2042,
+          startingDate: '02.09.2042',
           periods: [2],
           Application: {
             groups: 0,
