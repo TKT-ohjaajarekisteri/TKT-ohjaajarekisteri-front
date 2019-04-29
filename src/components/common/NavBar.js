@@ -1,13 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, Button } from 'react-bootstrap'
+import logo from '../../Images/hy-logo.png'
 
 export const NavBar = ({ loggedUser, logout }) => {
 
   return (
     <div className='NavBar'>
       <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
-        <Navbar.Brand href='/'>TKT – Assistant Register</Navbar.Brand>
+        <Navbar.Brand href='/'>
+          <img
+            src={logo}
+            width='60'
+            height='60'
+            className='d-inline-block align-top'
+            alt='Helsingin Yliopisto'
+          />
+        </Navbar.Brand>
+        <Navbar.Brand>
+          TKT – Assistant Register
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
 
@@ -29,6 +41,12 @@ export const NavBar = ({ loggedUser, logout }) => {
                 ? <Link to='/apply'>Apply</Link>
                 : <em></em>} &nbsp;
             </Nav.Link>
+
+            <Nav.Link href='#' as='span'>
+              {loggedUser && loggedUser.user.role === 'student' && loggedUser.user.email
+                ? <Link to='/applications'>Applications</Link>
+                : <em></em>} &nbsp;
+            </Nav.Link>
           </Nav>
 
           <Nav.Link href='#' as='span'>
@@ -40,12 +58,6 @@ export const NavBar = ({ loggedUser, logout }) => {
           <Nav.Link href='#' as='span'>
             {loggedUser && loggedUser.user.role === 'student' && loggedUser.user.email
               ? <Link to='/update-info'>Profile</Link>
-              : <em></em>} &nbsp;
-          </Nav.Link>
-
-          <Nav.Link href='#' as='span'>
-            {loggedUser && loggedUser.user.role === 'student' && loggedUser.user.email
-              ? <Link to='/applications'>Applications</Link>
               : <em></em>} &nbsp;
           </Nav.Link>
 

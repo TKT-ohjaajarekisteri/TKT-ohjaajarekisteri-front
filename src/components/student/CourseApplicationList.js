@@ -23,7 +23,7 @@ export const CourseApplicationList = (props) => {
     const coursesToApplyTo = props.courses.filter(c => c.checked).map(c => c.course_id)
     if (coursesToApplyTo.length !== 0) {
       props.sendApplication(props.loggedUser.user.user_id, coursesToApplyTo)
-      props.history.push('/update-info')
+      props.history.push('/applications')
     }
   }
 
@@ -129,9 +129,9 @@ export const CourseApplicationList = (props) => {
           <tr>
             <th>Code</th>
             <th>Name</th>
-            <th className='centerColumn wrapSmallCell'>Starting Period</th>
-            <th className='centerColumn'>To</th>
+            <th className='centerColumn wrapSmallCell'>Starting period</th>
             <th className='centerColumn'>From</th>
+            <th className='centerColumn'>To</th>
             <th className='centerColumn' >Apply</th>
           </tr>
         </thead>

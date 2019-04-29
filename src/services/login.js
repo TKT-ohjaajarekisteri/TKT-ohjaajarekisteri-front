@@ -8,7 +8,16 @@ const login = async (credentials) => {
     const response = await axios.post(baseUrl, credentials)
     return response.data
   } catch (error) {
-    return { error: 'Username or password is incorrect!' }
+    const status = error.response.status
+    if (status === 500) {
+      return { error: 'Unable to connect to server.' }
+    } else if (status === 400) {
+      return { error: 'Username or password missing.' }
+    } else if (status === 401) {
+      return { error: 'Username or password is incorrect.' }
+    } else {
+      return { error: 'Unable to connect to server.' }
+    }
   }
 }
 
