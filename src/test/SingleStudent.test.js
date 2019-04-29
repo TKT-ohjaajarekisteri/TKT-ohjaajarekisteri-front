@@ -1,5 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { SingleStudent } from '../components/admin/SingleStudent'
 
 describe('<SingleStudent/>', () => {
@@ -19,7 +20,7 @@ describe('<SingleStudent/>', () => {
       getSingleStudent: jest.fn(),
       getSingleStudentCourses: jest.fn(),
       studentId: 2,
-      courses: [ {
+      courses: [{
         Application: {
           groups: 0,
           accepted: false,
@@ -46,7 +47,11 @@ describe('<SingleStudent/>', () => {
   })
 
   it('renders self', () => {
-    wrapper = mount( <SingleStudent {...props} />)
+    wrapper = mount(
+      <Router>
+        <SingleStudent {...props} />
+      </Router>
+    )
     let table = wrapper.find('.singleStudent')
     expect(table.length).toBe(1)
     expect(wrapper.find('.Student').length).toBe(1)
