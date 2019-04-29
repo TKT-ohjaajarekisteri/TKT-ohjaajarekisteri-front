@@ -6,7 +6,7 @@ const SingleStudentCourse = ({ course }) => {
 
   return (
     <tr className="singleStudentCourse">
-      <td><Link to={`/courses/${course.course_id}`}>{course.learningopportunity_id}</Link></td>
+      <td><Link to={`/admin/courses/${course.course_id}`}>{course.learningopportunity_id}</Link></td>
       <td className="name"> {course.course_name}</td>
       <td className="year centerColumn">{course.year}</td>
       <td className="period centerColumn">{course.periods[0]}</td>
