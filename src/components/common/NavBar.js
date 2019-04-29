@@ -25,7 +25,7 @@ export const NavBar = ({ loggedUser, logout }) => {
             </Nav.Link>
 
             <Nav.Link href='#' as='span'>
-              {loggedUser && loggedUser.user.role === 'student'
+              {loggedUser && loggedUser.user.role === 'student' && loggedUser.user.email
                 ? <Link to='/apply'>Apply</Link>
                 : <em></em>} &nbsp;
             </Nav.Link>
@@ -38,13 +38,13 @@ export const NavBar = ({ loggedUser, logout }) => {
           </Nav.Link>
 
           <Nav.Link href='#' as='span'>
-            {loggedUser && loggedUser.user.role === 'student'
+            {loggedUser && loggedUser.user.role === 'student' && loggedUser.user.email
               ? <Link to='/update-info'>Profile</Link>
               : <em></em>} &nbsp;
           </Nav.Link>
 
           <Nav.Link href='#' as='span'>
-            {loggedUser && loggedUser.user.role === 'student'
+            {loggedUser && loggedUser.user.role === 'student' && loggedUser.user.email
               ? <Link to='/applications'>Applications</Link>
               : <em></em>} &nbsp;
           </Nav.Link>
