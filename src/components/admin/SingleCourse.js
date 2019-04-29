@@ -124,7 +124,7 @@ export const SingleCourse = ({
             rel="noopener noreferrer"
             href={href}
             variant='dark'
-            style= {{ float: 'right', margin: 5 }}
+            style={{ float: 'right', margin: 5 }}
           >
             Send email
           </Button>
@@ -158,7 +158,23 @@ export const SingleCourse = ({
               </td>
               <td>{student.first_names}</td>
               <td>{student.last_name}</td>
-              <td>{student.no_english ? '' : 'English'}</td>
+              <td width='50'>
+                {student.no_english ?
+                  <img
+                    src={require('../../Images/finnishFlag.png')}
+                    width='30'
+                    height='20'
+                    alt="Finnish Flag"
+                  />
+                  :
+                  <img
+                    src={require('../../Images/englishFlag.svg')}
+                    width='30'
+                    height='20'
+                    alt="English Flag"
+                  />
+                }
+              </td>
               <td>{student.email}</td>
               <td>
                 <input

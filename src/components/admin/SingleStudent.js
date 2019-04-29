@@ -15,7 +15,7 @@ export const SingleStudent = ({ studentId, getSingleStudent, getSingleStudentCou
     getSingleStudentCourses(studentId)
   }, [])
 
-  return(
+  return (
     <div>
       <div className="singleStudent" >
         <h2>Student information</h2>
@@ -37,13 +37,29 @@ export const SingleStudent = ({ studentId, getSingleStudent, getSingleStudentCou
               <td>{student.last_name}</td>
               <td>{student.email}</td>
               <td>{student.phone}</td>
-              <td>{student.no_english ? '' : 'English'}</td>
+              <td width='50'>
+                {student.no_english ?
+                  <img
+                    src={require('../../Images/finnishFlag.png')}
+                    width='30'
+                    height='20'
+                    alt="Finnish Flag"
+                  />
+                  :
+                  <img
+                    src={require('../../Images/englishFlag.svg')}
+                    width='30'
+                    height='20'
+                    alt="English Flag"
+                  />
+                }
+              </td>
             </tr>
           </tbody>
         </Table>
         {student.experience === ''
           ? null
-          :  <Table bordered hover>
+          : <Table bordered hover>
             <thead>
               <tr>
                 <th>Experience</th>
