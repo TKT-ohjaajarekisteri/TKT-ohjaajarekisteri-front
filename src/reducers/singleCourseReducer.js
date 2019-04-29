@@ -1,11 +1,11 @@
 const emailBody = (course, applicantsToEmail) => {
   const applicantRows = applicantsToEmail.map(a => a.first_names+' '+a.last_name+', ('+a.groups+')').join('%0D%0A')
   const bodyParts = [
-    'Hei,%0D%0A%0D%0AOlit hakenut opetusavustajaksi kurssille:%0D%0A',
-    course.learningopportunity_id+' '+course.course_name+' '+course.year+' ',
-    'periodi '+course.period+'%0D%0A%0D%0A',
-    'Kurssille valitut opetusavustajat sekä ohjattavien ',
-    'ryhmien määrä:%0D%0A',
+    'Hei,%0D%0A%0D%0AOlet hakenut opetusavustajaksi kurssille:%0D%0A',
+    course.learningopportunity_id+' '+course.course_name+' '+course.year+', ',
+    'joka alkaa periodilla '+course.periods[0]+'.%0D%0A%0D%0A',
+    'Kurssille valitut opetusavustajat (sekä ohjattavien ',
+    'ryhmien määrä):%0D%0A',
     applicantRows,
     '%0D%0A%0D%0AKuittaa, otatko tehtävän vastaan.%0D%0A',
     'Ilmoita myös siinä tapauksessa, jos et ota tehtävää vastaan.%0D%0A%0D%0A',
@@ -15,11 +15,10 @@ const emailBody = (course, applicantsToEmail) => {
     '%0D%0A%0D%0A',
     'Hello,%0D%0A%0D%0AYou have applied the role of teaching assistant for the course:%0D%0A',
     course.learningopportunity_id+' '+course.course_name+' '+course.year+' ',
-    'period '+course.period+'%0D%0A%0D%0A',
-    'The chosen teaching assistants and allocated number of groups ',
-    'are presented below:%0D%0A',
+    'beginning on period '+course.periods[0]+'.%0D%0A%0D%0A',
+    'The chosen teaching assistants (and their allocated number of groups) are:%0D%0A',
     applicantRows,
-    '%0D%0A%0D%0APlease respond, whether or not you accept position.%0D%0A',
+    '%0D%0A%0D%0APlease respond, whether or not you accept this position.%0D%0A%0D%0A',
     'BR, Reijo',
   ]
   return bodyParts.join('')
