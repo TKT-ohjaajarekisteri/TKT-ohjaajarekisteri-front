@@ -21,8 +21,8 @@ export const StudentCourseList = ({ loggedUser, courses, id, getStudentCourses, 
 
   //Returns a date object from date format DD.MM.YYYY String
   const parseDate = (date) => {
-    const day = date.substring(0,2)
-    const month = date.substring(3,5)
+    const day = date.substring(0, 2)
+    const month = date.substring(3, 5)
     const year = date.substring(6, date.length)
     return new Date(year + '-' + month + '-' + day)
   }
@@ -30,6 +30,9 @@ export const StudentCourseList = ({ loggedUser, courses, id, getStudentCourses, 
   return (
     <div className="courseList">
       <h2>My Applications</h2>
+      <div className="grayInfoText">
+        <p>Students who are chosen as teaching assistants are notified by email before the course begins. You may also view your application status on this page.</p>
+      </div>
       <Table bordered hover>
         <thead>
           <tr>
@@ -44,7 +47,7 @@ export const StudentCourseList = ({ loggedUser, courses, id, getStudentCourses, 
         <tbody>
           {courses
             .sort((a, b) => { return parseDate(b.startingDate) - parseDate(a.startingDate) })
-            .sort((a, b) => { return a.Application.accepted - b.Application.accepted  })
+            .sort((a, b) => { return a.Application.accepted - b.Application.accepted })
             .map(course =>
               <CourseWithDel
                 course={course}
