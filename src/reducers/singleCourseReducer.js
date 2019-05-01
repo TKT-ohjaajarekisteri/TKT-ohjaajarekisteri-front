@@ -1,7 +1,6 @@
 const emailBodyAccepted = (course, applicantsToEmail) => {
   const applicantRows = applicantsToEmail.map(a => a.first_names+' '+a.last_name+', ('+a.groups+')').join('%0D%0A')
-  let bodyParts =[]
-  bodyParts = [
+  const bodyParts = [
     'Hei,%0D%0A%0D%0AOlet hakenut opetusavustajaksi kurssille:%0D%0A',
     course.learningopportunity_id+' '+course.course_name+' '+course.year+', ',
     'joka alkaa periodilla '+course.periods[0]+'.%0D%0A%0D%0A',
