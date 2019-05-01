@@ -128,11 +128,19 @@ export const updateLanguage = (teachesInEnglish) => {
   }
 }
 
+export const updateApprentice = (apprentice) => {
+  return {
+    type: 'UPDATE_APPRENTICE',
+    data: apprentice
+  }
+}
+
 export default {
   updatePhone,
   updateEmail,
   updateLanguage,
   updateExperience,
+  updateApprentice,
   initializeStudents,
   getStudent,
   getStudentCourses,

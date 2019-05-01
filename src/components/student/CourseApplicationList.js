@@ -127,12 +127,12 @@ export const CourseApplicationList = (props) => {
       <Table bordered hover size='sm'>
         <thead>
           <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th className='centerColumn wrapSmallCell'>Starting period</th>
-            <th className='centerColumn'>From</th>
-            <th className='centerColumn'>To</th>
-            <th className='centerColumn' >Apply</th>
+            <th style={{ verticalAlign: 'middle' }}>Code</th>
+            <th style={{ verticalAlign: 'middle' }}>Name</th>
+            <th className='centerColumn wrapSmallCell' style={{ verticalAlign: 'middle' }}>Starting period</th>
+            <th className='centerColumn' style={{ verticalAlign: 'middle' }}>From</th>
+            <th className='centerColumn' style={{ verticalAlign: 'middle' }}>To</th>
+            <th className='centerColumn' style={{ verticalAlign: 'middle' }}>Apply</th>
           </tr>
         </thead>
         <tbody>

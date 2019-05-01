@@ -6,6 +6,7 @@ const initialState = {
   email: '',
   experience: '',
   no_english: false,
+  apprentice: false,
   contactInformation: {
     first_names: '',
     last_name: '',
@@ -59,7 +60,8 @@ const studentReducer = (state = initialState, action) => {
       phone: action.data.phone,
       email: action.data.email,
       experience: action.data.experience,
-      no_english: action.data.no_english
+      no_english: action.data.no_english,
+      apprentice: action.data.apprentice
     }
   }
   // these next four methods are changing the fields for contact details update form
@@ -85,6 +87,12 @@ const studentReducer = (state = initialState, action) => {
     return {
       ...state,
       no_english: action.data
+    }
+  }
+  case 'UPDATE_APPRENTICE': {
+    return {
+      ...state,
+      apprentice: action.data
     }
   }
 

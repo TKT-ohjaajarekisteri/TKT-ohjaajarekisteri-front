@@ -106,12 +106,12 @@ export const CourseList = ({
       <Table className='courseList' size='sm' bordered hover>
         <thead>
           <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th className='centerColumn'>Year</th>
-            <th className='centerColumn wrapSmallCell'>Starting Period</th>
-            <th className='centerColumn wrapSmallCell' >Accepted/ Applicants</th>
-            <th className='centerColumn'>Hidden</th>
+            <th style={{ verticalAlign: 'middle' }}>Code</th>
+            <th style={{ verticalAlign: 'middle' }}>Name</th>
+            <th className='centerColumn' style={{ verticalAlign: 'middle' }}>Year</th>
+            <th className='centerColumn wrapSmallCell' style={{ verticalAlign: 'middle' }}>Starting Period</th>
+            <th className='centerColumn wrapSmallCell' style={{ verticalAlign: 'middle' }}>Accepted/ Applicants</th>
+            <th className='centerColumn' style={{ verticalAlign: 'middle' }}>Hidden</th>
           </tr>
         </thead>
         <tbody>

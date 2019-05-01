@@ -36,11 +36,11 @@ export const StudentCourseList = ({ loggedUser, courses, id, getStudentCourses, 
       <Table bordered hover>
         <thead>
           <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th className='centerColumn' >Period</th>
-            <th className='centerColumn' >From</th>
-            <th className='centerColumn' >To</th>
+            <th style={{ verticalAlign: 'middle' }}>Code</th>
+            <th style={{ verticalAlign: 'middle' }}>Name</th>
+            <th className='centerColumn' style={{ verticalAlign: 'middle' }}>Period</th>
+            <th className='centerColumn' style={{ verticalAlign: 'middle' }}>From</th>
+            <th className='centerColumn' style={{ verticalAlign: 'middle' }}>To</th>
             <th></th>
           </tr>
         </thead>

@@ -11,10 +11,12 @@ export const ContactDetailsUpdateForm = ({
   email,
   experience,
   no_english,
+  apprentice,
   updatePhone,
   updateEmail,
   updateLanguage,
   updateExperience,
+  updateApprentice,
   updateLoggedUser,
   notify,
   id,
@@ -35,7 +37,8 @@ export const ContactDetailsUpdateForm = ({
       phone: event.target.phone.value,
       email: event.target.email.value,
       experience: event.target.experience.value,
-      no_english: event.target.no_english.checked
+      no_english: event.target.no_english.checked,
+      apprentice: event.target.apprentice.checked
     }
     // gives error if email is not in valid format
     if (!emailValid(input.email)) {
@@ -91,6 +94,15 @@ export const ContactDetailsUpdateForm = ({
               onChange={(e) => updateLanguage(e.target.checked)}
             />
 
+            <Form.Check
+              type='checkbox'
+              name='apprentice'
+              checked={apprentice}
+              value={apprentice}
+              label='I have been an apprentice (kisälli)'
+              onChange={(e) => updateApprentice(e.target.checked)}
+            />
+
           </Form.Group>
           <Button className='button updateButton' type='submit'>Update</Button>
         </Form>
@@ -105,7 +117,8 @@ const mapStateToProps = (state) => {
     phone: state.students.phone,
     email: state.students.email,
     experience: state.students.experience,
-    no_english: state.students.no_english
+    no_english: state.students.no_english,
+    apprentice: state.students.apprentice
   }
 }
 

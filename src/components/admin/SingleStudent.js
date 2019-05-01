@@ -22,12 +22,13 @@ export const SingleStudent = ({ studentId, getSingleStudent, getSingleStudentCou
         <Table bordered hover>
           <thead>
             <tr>
-              <th>Student number</th>
-              <th>First names</th>
-              <th>Last name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Language</th>
+              <th style={{ verticalAlign: 'middle' }}>Student number</th>
+              <th style={{ verticalAlign: 'middle' }}>First names</th>
+              <th style={{ verticalAlign: 'middle' }}>Last name</th>
+              <th style={{ verticalAlign: 'middle' }}>Email</th>
+              <th style={{ verticalAlign: 'middle' }}>Phone</th>
+              <th style={{ verticalAlign: 'middle' }}>Language</th>
+              <th className='wrapSmallCell' style={{ verticalAlign: 'middle' }}>Apprentice experience</th>
             </tr>
           </thead>
           <tbody>
@@ -54,6 +55,7 @@ export const SingleStudent = ({ studentId, getSingleStudent, getSingleStudentCou
                   />
                 }
               </td>
+              <td>{student.apprentice ? 'Yes' : 'No'}</td>
             </tr>
           </tbody>
         </Table>
