@@ -134,11 +134,11 @@ export const Summary = ({
       <Table className='summaryCourseList' bordered hover size="sm">
         <thead>
           <tr>
-            <th style={{ verticalAlign: 'middle' }}>Code</th>
-            <th style={{ verticalAlign: 'middle' }}>Name</th>
-            <th className='centerColumn' style={{ verticalAlign: 'middle' }}>Year</th>
-            <th className='centerColumn wrapSmallCell' style={{ verticalAlign: 'middle' }}>Starting Period</th>
-            <th style={{ verticalAlign: 'middle' }}>Applicants</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th className='centerColumn'>Year</th>
+            <th className='centerColumn wrapSmallCell'>Starting Period</th>
+            <th>Applicants</th>
           </tr>
         </thead>
 
