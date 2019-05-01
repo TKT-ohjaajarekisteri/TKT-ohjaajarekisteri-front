@@ -136,8 +136,8 @@ export const Summary = ({
           <tr>
             <th>Code</th>
             <th>Name</th>
-            <th className='centerColumn'>Year</th>
-            <th className='centerColumn wrapSmallCell'>Starting Period</th>
+            <th className='centerColumn' >Year</th>
+            <th className='centerColumn wrapSmallCell' >Starting Period</th>
             <th>Applicants</th>
           </tr>
         </thead>
