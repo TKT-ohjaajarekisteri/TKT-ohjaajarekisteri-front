@@ -6,21 +6,37 @@ const Course = ({ course, onChange, grey }) => {
   // the course version is chosen accordingly to if loggedUser has applied to the course
   if (grey) {
     return (
-      <tr className = "grey">
-        <td className="learningopportunity_id">{course.learningopportunity_id}</td>
+      <tr className="grey">
+        <td className="learningopportunity_id">
+          <a
+            target='_blank'
+            rel="noopener noreferrer"
+            href={`https://courses.helsinki.fi/fi/${course.learningopportunity_id}`}
+          >
+            {course.learningopportunity_id}
+          </a>
+        </td>
         <td className="name"> {course.course_name}</td>
         <td className="period centerColumn"> {course.periods[0]}</td>
         <td className="startDate centerColumn">{course.startingDate}</td>
         <td className="endDate centerColumn">{course.endingDate}</td>
-        <td className= "checkbox centerColumn"><Badge variant="secondary">Applied</Badge>
+        <td className="checkbox centerColumn"><Badge variant="secondary">Applied</Badge>
         </td>
       </tr>
     )
   }
 
   return (
-    <tr className= "notGrey">
-      <td className="learningopportunity_id">{course.learningopportunity_id}</td>
+    <tr className="notGrey">
+      <td className="learningopportunity_id">
+        <a
+          target='_blank'
+          rel="noopener noreferrer"
+          href={`https://courses.helsinki.fi/fi/${course.learningopportunity_id}`}
+        >
+          {course.learningopportunity_id}
+        </a>
+      </td>
       <td className="name"> {course.course_name}</td>
       <td className="period centerColumn"> {course.periods[0]}</td>
       <td className="startDate centerColumn">{course.startingDate}</td>
