@@ -138,15 +138,15 @@ export const SingleCourse = ({
       <Table bordered hover>
         <thead>
           <tr>
-            <th style={{ verticalAlign: 'middle' }}>Student number</th>
-            <th style={{ verticalAlign: 'middle' }}>First names</th>
-            <th style={{ verticalAlign: 'middle' }}>Last name</th>
-            <th style={{ verticalAlign: 'middle' }}>Language</th>
-            <th className='wrapSmallCell' style={{ verticalAlign: 'middle' }}>Apprentice experience</th>
-            <th style={{ verticalAlign: 'middle' }}>Email</th>
-            <th style={{ verticalAlign: 'middle' }}>Groups</th>
-            <th className='emailToCol' style={{ verticalAlign: 'middle' }}>Email to</th>
-            <th className='acceptedCol' style={{ verticalAlign: 'middle' }}>Accepted</th>
+            <th>Student number</th>
+            <th>First names</th>
+            <th>Last name</th>
+            <th>Language</th>
+            <th className='wrapSmallCell'>Apprentice experience</th>
+            <th>Email</th>
+            <th>Groups</th>
+            <th className='emailToCol'>Email to</th>
+            <th className='acceptedCol'>Accepted</th>
           </tr>
         </thead>
         <tbody>
