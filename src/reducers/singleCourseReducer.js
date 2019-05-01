@@ -118,7 +118,7 @@ const singleCourseReducer = (state = initialState, action) => {
         to: newEmailToField,
         subject: subject(state.course),
         bodyAccepted: emailBodyAccepted(state.course, applicantsToEmail),
-        bodyNotAccepted: emailBodyNotAccepted(state.course, applicantsToEmail),
+        bodyNotAccepted: emailBodyNotAccepted(state.course),
       }
     }
   }
