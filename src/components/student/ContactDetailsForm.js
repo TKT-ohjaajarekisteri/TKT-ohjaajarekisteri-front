@@ -14,7 +14,8 @@ export const ContactDetailsForm = ({
   updateLanguage,
   updateExperience,
   updateEmail,
-  updatePhone
+  updatePhone,
+  updateApprentice
 }) => {
 
   const handleSubmit = async (event) => {
@@ -23,7 +24,8 @@ export const ContactDetailsForm = ({
       phone: event.target.phonenumber.value,
       email: event.target.email.value,
       experience: event.target.experience.value,
-      no_english: event.target.no_english.checked
+      no_english: event.target.no_english.checked,
+      apprentice: event.target.apprentice.checked
     }
 
     if (!emailValid(formContent.email)) {
@@ -68,6 +70,13 @@ export const ContactDetailsForm = ({
             name='no_english'
             label="I don't want to teach in English"
             onChange={(e) => updateLanguage(e.target.checked)}
+          />
+
+          <Form.Check
+            type='checkbox'
+            name='apprentice'
+            label='I have been an apprentice (kisälli)'
+            onChange={(e) => updateApprentice(e.target.checked)}
           />
 
         </Form.Group>

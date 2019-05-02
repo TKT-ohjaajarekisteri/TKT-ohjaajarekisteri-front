@@ -148,7 +148,11 @@
   }
 
   .grayInfoText {
-    color: #6c757d;
+    color:  #6c757d;
+  }
+
+  th {
+    vertical-align: middle !important;
   }
 
   .GDPRInfo h4 {

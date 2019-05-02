@@ -108,7 +108,7 @@ export const CourseList = ({
             <th>Name</th>
             <th className='centerColumn'>Year</th>
             <th className='centerColumn wrapSmallCell'>Starting Period</th>
-            <th className='centerColumn wrapSmallCell' >Accepted/ Applicants</th>
+            <th className='centerColumn wrapSmallCell'>Accepted/ Applicants</th>
             <th className='centerColumn'>Hidden</th>
           </tr>
         </thead>

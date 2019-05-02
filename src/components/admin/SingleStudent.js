@@ -28,6 +28,7 @@ export const SingleStudent = ({ studentId, getSingleStudent, getSingleStudentCou
               <th>Email</th>
               <th>Phone</th>
               <th>Language</th>
+              <th className='wrapSmallCell'>Apprentice experience</th>
             </tr>
           </thead>
           <tbody>
@@ -54,6 +55,7 @@ export const SingleStudent = ({ studentId, getSingleStudent, getSingleStudentCou
                   />
                 }
               </td>
+              <td>{student.apprentice ? 'Yes' : 'No'}</td>
             </tr>
           </tbody>
         </Table>

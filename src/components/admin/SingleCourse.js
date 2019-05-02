@@ -162,6 +162,7 @@ export const SingleCourse = ({
             <th>First names</th>
             <th>Last name</th>
             <th>Language</th>
+            <th className='wrapSmallCell'>Apprentice experience</th>
             <th>Email</th>
             <th>Groups</th>
             <th className='acceptedCol' >Accepted</th>
@@ -195,6 +196,7 @@ export const SingleCourse = ({
                   />
                 }
               </td>
+              <td>{student.apprentice ? 'Yes' : 'No'}</td>
               <td>{student.email}</td>
               <td>
                 <input

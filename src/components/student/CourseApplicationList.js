@@ -131,7 +131,7 @@ export const CourseApplicationList = (props) => {
             <th className='centerColumn wrapSmallCell'>Starting period</th>
             <th className='centerColumn'>From</th>
             <th className='centerColumn'>To</th>
-            <th className='centerColumn' >Apply</th>
+            <th className='centerColumn'>Apply</th>
           </tr>
         </thead>
         <tbody>
