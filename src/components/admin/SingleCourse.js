@@ -135,14 +135,14 @@ export const SingleCourse = ({
               variant='dark'
               style={{ float: 'right', margin: 5 }}
             >
-            Send acceptance email
+              Send acceptance email
             </Button>
             <Button
-              className='button float-right'
+              className='float-right'
               target="_blank"
               rel="noopener noreferrer"
               href={hrefNotAccept}
-              variant='dark'
+              variant='outline-secondary'
               style={{ float: 'right', margin: 5 }}
             >
               Send refusal email
@@ -228,12 +228,12 @@ export const SingleCourse = ({
           )}
           <tr>
             <td style={{ visibility: 'hidden', borderLeftStyle: 'hidden', borderBottomStyle: 'hidden' }} colSpan='6'></td>
-            <td className='centerColumn' ><Button id='selectAccepted' variant="outline-secondary" onClick={checkAllAcceptedBoxes}>Check all</Button></td>
-            <td className='centerColumn' ><Button id='selectEmails' variant="outline-secondary" onClick={checkAllEmailBoxes}>Check accepted</Button></td>
+            <td className='centerColumn' ><Button className='button' id='selectAccepted' variant="outline-secondary" onClick={checkAllAcceptedBoxes}>Check all</Button></td>
+            <td className='centerColumn' ><Button className='button' id='selectEmails' style={{ width: '110px' }} variant="outline-secondary" onClick={checkAllEmailBoxes}>Check accepted</Button></td>
           </tr>
           <tr>
             <td style={{ visibility: 'hidden', borderLeftStyle: 'hidden', borderBottomStyle: 'hidden' }} colSpan='7'></td>
-            <td className='centerColumn' ><Button id='selectEmailsUnaccepted' variant="outline-secondary" onClick={checkNotAcceptedEmailBoxes}>Check unaccepted</Button></td>
+            <td className='centerColumn' ><Button id='selectEmailsUnaccepted' style={{ width: '110px' }} variant="outline-secondary" onClick={checkNotAcceptedEmailBoxes}>Check not accepted</Button></td>
           </tr>
         </tbody>
       </Table>
