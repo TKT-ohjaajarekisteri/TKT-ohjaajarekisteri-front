@@ -5,44 +5,42 @@ This registry will be used by students to express their interest to assist on co
 
 [Backend README](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-back)
 
-## Travis
+### Travis
 [![Build Status](https://travis-ci.org/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front.svg?branch=master)](https://travis-ci.org/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front)
 
-## Codecov
+### Codecov
 [![codecov](https://codecov.io/gh/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/branch/master/graph/badge.svg)](https://codecov.io/gh/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front)
 
-## Installation
+### [Usage](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/commandline.md)
 
-## [Usage](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/commandline.md)
+### [Releases](https://studies.cs.helsinki.fi/ohjaajarekisteri/login)
 
-## [Releases](https://studies.cs.helsinki.fi/ohjaajarekisteri/login)
+### [Product backlog](https://docs.google.com/spreadsheets/d/1anddOjdDCkdAmyJH2gLAUYYbubbZhXSGxku90kQJT9k/edit#gid=1)
 
-## [Product backlog](https://docs.google.com/spreadsheets/d/1anddOjdDCkdAmyJH2gLAUYYbubbZhXSGxku90kQJT9k/edit#gid=1)
-
-## Technologies
+### Technologies
 * Front: React, Javascript
 * Back: NodeJS
 * Database: PostgreSQL
 * DevOps: Docker
 * Server: students.cs.helsinki.fi
 
-## [Design architecture document](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/architecture.md)
+### [Design architecture document](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/architecture.md)
 
-## [Software Requirements Specification](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/SRS.md)
+### [Software Requirements Specification](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/SRS.md)
 
-## Docker
+### Installation / Docker
 - [Docker configuration and use tips](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/docker.md)
 - [Test database configuration](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/test_db_configuration.md)
+- [How to set up the staging / production server](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/production_and_staging_deployment_guide.md)
 
-
-## Definition of done
+### Definition of done
 * Features are planned in sprint planning
 * Features documented and tested in appropriate detail
 * Feature passes Jest tests and ESlint
 * Branch is approved by another team member before merging to master
 * Feature passes Travis CI Server
 
-## Contributing
+### Contributing
 * [Harri Mehtälä](https://github.com/hajame)
 * [Heli Huhtilainen](https://github.com/apndx)
 * [Olli Bisi](https://github.com/obisi)
@@ -50,9 +48,6 @@ This registry will be used by students to express their interest to assist on co
 * [Virva Svala](https://github.com/vsvala)
 * [Janne Malin](https://github.com/wood101)
 
-## [Best practices](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/bestpractices.md)
+### [Best practices](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/bestpractices.md)
 
-## Credits
-
-## [License](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/LICENSE)
-=======
+### [License](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/LICENSE)
