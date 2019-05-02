@@ -30,13 +30,6 @@ This registry will be used by students to express their interest to assist on co
 - [Test database configuration](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/test_db_configuration.md)
 - [How to set up the staging / production server](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/production_and_staging_deployment_guide.md)
 
-### Definition of done
-* Features are planned in sprint planning
-* Features documented and tested in appropriate detail
-* Feature passes Jest tests and ESlint
-* Branch is approved by another team member before merging to master
-* Feature passes Travis CI Server
-
 ### Contributing
 * [Harri Mehtälä](https://github.com/hajame)
 * [Heli Huhtilainen](https://github.com/apndx)
