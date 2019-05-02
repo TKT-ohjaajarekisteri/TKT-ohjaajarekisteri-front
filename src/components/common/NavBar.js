@@ -38,6 +38,12 @@ export const NavBar = ({ loggedUser, logout }) => {
             </Nav.Link>
 
             <Nav.Link href='#' as='span'>
+              {loggedUser && loggedUser.user.role === 'admin'
+                ? <Link to='/admin/studentDelete'>Delete student</Link>
+                : <em></em>} &nbsp;
+            </Nav.Link>            
+
+            <Nav.Link href='#' as='span'>
               {loggedUser && loggedUser.user.role === 'student' && loggedUser.user.email
                 ? <Link to='/apply'>Apply</Link>
                 : <em></em>} &nbsp;
