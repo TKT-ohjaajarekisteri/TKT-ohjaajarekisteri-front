@@ -5,11 +5,8 @@ This registry will be used by students to express their interest to assist on co
 
 [Backend README](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-back)
 
-### Travis
-[![Build Status](https://travis-ci.org/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front.svg?branch=master)](https://travis-ci.org/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front)
-
-### Codecov
-[![codecov](https://codecov.io/gh/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/branch/master/graph/badge.svg)](https://codecov.io/gh/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front)
+### Travis / Codecov 
+[![Build Status](https://travis-ci.org/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front.svg?branch=master)](https://travis-ci.org/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front) [![codecov](https://codecov.io/gh/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/branch/master/graph/badge.svg)](https://codecov.io/gh/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front)
 
 ### [Usage](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/commandline.md)
 
