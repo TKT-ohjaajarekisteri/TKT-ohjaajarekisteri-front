@@ -5,6 +5,7 @@ import { notify } from '../../reducers/actionCreators/notificationActions'
 import { Form, Button } from 'react-bootstrap'
 import studentActions from '../../reducers/actionCreators/studentActions'
 import { emailValid } from '../../utils/validations'
+import GDPRInfo from './GDPRInfo'
 
 export const ContactDetailsForm = ({
   updateLoggedUser,
@@ -72,6 +73,9 @@ export const ContactDetailsForm = ({
         </Form.Group>
         <Button className='button' type='submit'>send</Button>
       </Form>
+      <div className="grayInfoText">
+        <GDPRInfo />
+      </div>
     </div>
   )
 }
