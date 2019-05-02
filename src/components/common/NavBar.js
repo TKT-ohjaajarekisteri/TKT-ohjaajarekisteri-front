@@ -2,14 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import logo from '../../Images/hy-logo.png'
-import url from '../../services/config'
 
 export const NavBar = ({ loggedUser, logout }) => {
 
   return (
     <div className='NavBar'>
       <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
-        <Navbar.Brand href={url}>
+        <Navbar.Brand>
           <img
             src={logo}
             width='60'
@@ -41,7 +40,7 @@ export const NavBar = ({ loggedUser, logout }) => {
               {loggedUser && loggedUser.user.role === 'admin'
                 ? <Link to='/admin/studentDelete'>Delete student</Link>
                 : <em></em>} &nbsp;
-            </Nav.Link>            
+            </Nav.Link>
 
             <Nav.Link href='#' as='span'>
               {loggedUser && loggedUser.user.role === 'student' && loggedUser.user.email

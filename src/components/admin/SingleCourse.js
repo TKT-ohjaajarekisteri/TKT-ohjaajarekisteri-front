@@ -210,20 +210,20 @@ export const SingleCourse = ({
               </td>
               <td className='centerColumn'>
                 <Checkbox
-                  className='emailTo listCheckbox'
-                  name={student.student_number}
-                  checked={student.email_to_checked}
-                  id={student.student_id}
-                  onChange={handleEmailToChange}
-                />
-              </td>
-              <td className='centerColumn'>
-                <Checkbox
                   className='accepted listCheckbox'
                   name={student.student_number}
                   checked={student.accepted_checked}
                   id={student.student_id}
                   onChange={handleAcceptedChange}
+                />
+              </td>
+              <td className='centerColumn'>
+                <Checkbox
+                  className='emailTo listCheckbox'
+                  name={student.student_number}
+                  checked={student.email_to_checked}
+                  id={student.student_id}
+                  onChange={handleEmailToChange}
                 />
               </td>
             </tr>

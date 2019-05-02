@@ -78,7 +78,7 @@ describe('<SingleCourse />', () => {
   })
 
   it('renders self', () => {
-    wrapper = mount( <Router><SingleCourse {...props} /></Router>)
+    wrapper = mount(<Router><SingleCourse {...props} /></Router>)
     let table = wrapper.find('.courseHeader')
     expect(table.length).toBe(1)
     expect(wrapper.find('.Student').length).toBe(3)
