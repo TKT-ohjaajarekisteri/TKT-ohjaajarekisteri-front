@@ -9,6 +9,7 @@ import ContactDetailsForm from './components/student/ContactDetailsForm'
 import ContactDetailsUpdateForm from './components/student/ContactDetailsUpdateForm'
 import AdminCourseList from './components/admin/CourseList'
 import Summary from './components/admin/Summary'
+import StudentDelete from './components/admin/StudentDelete'
 import UpdatePasswordForm from './components/admin/UpdatePasswordForm'
 import CourseApplicationList from './components/student/CourseApplicationList'
 import SingleCourse from './components/admin/SingleCourse'
@@ -66,6 +67,7 @@ const App = (props) => {
               >
                 <Route exact path="/admin/courses" render={() => <AdminCourseList />} />
                 <Route exact path="/admin/summary" render={() => <Summary />} />
+                <Route exact path="/admin/studentDelete" render={() => <StudentDelete />} />
                 <Route
                   exact path="/admin/courses/:id"
                   render={({ match }) => <SingleCourse courseId={match.params.id} />}

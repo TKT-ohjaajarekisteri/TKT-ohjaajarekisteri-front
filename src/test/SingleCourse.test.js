@@ -102,7 +102,7 @@ describe('<SingleCourse />', () => {
       const checkbox = wrapper.find('input[type="checkbox"]').filterWhere((item) => {
         return item.prop('name') === '012345679'
       })
-      expect(checkbox.get(1).props.checked).toBe(true)
+      expect(checkbox.get(0).props.checked).toBe(true)
     })
   })
 

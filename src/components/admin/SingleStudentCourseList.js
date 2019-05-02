@@ -7,7 +7,7 @@ export const SingleStudentCourseList = ({ courses }) => {
 
   return (
     <div className="courseList">
-      <h2>Course assistance history</h2>
+      <h2>Student history</h2>
       <Table bordered hover>
         <thead>
           <tr>

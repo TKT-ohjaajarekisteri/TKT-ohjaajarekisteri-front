@@ -111,6 +111,16 @@ const deleteApplication = async (student_id, course_id) => {
   }
 }
 
+//Deletes a student from database by student number. Only for admin!
+const deleteStudent = async (studentNumber) => {
+  try {
+    const response = await axios.delete(baseUrl + `/admin/${studentNumber}`, getConfig())
+    return response.data
+  } catch (error) {
+    return { error: 'Student with student number "' + studentNumber + '" not found!' }
+  }
+}
+
 export default {
-  getAll, setToken, update, apply, getCourses, deleteApplication, getStudent, getSingleStudent, getSingleStudentCourses
+  getAll, setToken, update, apply, getCourses, deleteApplication, getStudent, getSingleStudent, getSingleStudentCourses, deleteStudent
 }

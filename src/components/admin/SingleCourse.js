@@ -70,7 +70,15 @@ export const SingleCourse = ({
     })
   }
 
-  const href = `https://outlook.office.com/?path=/mail/action/compose&to=${email.to}&subject=${email.subject}&body=${email.body}`
+  const checkNotAcceptedEmailBoxes = (e) => {
+    e.preventDefault()
+    applicants.forEach(applicant => {
+      setEmail(applicant.student_id, !applicant.accepted_checked)
+    })
+  }
+
+  const hrefAccept = `https://outlook.office.com/?path=/mail/action/compose&to=${email.to}&subject=${email.subject}&body=${email.bodyAccepted}`
+  const hrefNotAccept = `https://outlook.office.com/?path=/mail/action/compose&to=${email.to}&subject=${email.subject}&body=${email.bodyNotAccepted}`
 
   return (
     <div>
@@ -118,18 +126,30 @@ export const SingleCourse = ({
 
 
         {getModified(applicants).length === 0 ?
-          <Button
-            className='button float-right'
-            target="_blank"
-            rel="noopener noreferrer"
-            href={href}
-            variant='dark'
-            style= {{ float: 'right', margin: 5 }}
-          >
-            Send email
-          </Button>
+          <div>
+            <Button
+              className='button float-right'
+              target="_blank"
+              rel="noopener noreferrer"
+              href={hrefAccept}
+              variant='dark'
+              style={{ float: 'right', margin: 5 }}
+            >
+              Send acceptance email
+            </Button>
+            <Button
+              className='float-right'
+              target="_blank"
+              rel="noopener noreferrer"
+              href={hrefNotAccept}
+              variant='outline-secondary'
+              style={{ float: 'right', margin: 5 }}
+            >
+              Send refusal email
+            </Button>
+          </div>
           :
-          <div className='emailHidden'>Save changes to Send email</div>
+          <div className='emailHidden'>Save changes to send email</div>
         }
         <Button className='button float-right' style={{ float: 'right', margin: 5 }} id='saveApplied' onClick={handleAcceptedSubmit}>Save</Button>
 
@@ -144,8 +164,8 @@ export const SingleCourse = ({
             <th>Language</th>
             <th>Email</th>
             <th>Groups</th>
-            <th className='emailToCol' >Email to</th>
             <th className='acceptedCol' >Accepted</th>
+            <th className='emailToCol' >Email to</th>
           </tr>
         </thead>
         <tbody>
@@ -158,7 +178,23 @@ export const SingleCourse = ({
               </td>
               <td>{student.first_names}</td>
               <td>{student.last_name}</td>
-              <td>{student.no_english ? '' : 'English'}</td>
+              <td width='50'>
+                {student.no_english ?
+                  <img
+                    src={require('../../Images/finnishFlag.png')}
+                    width='30'
+                    height='20'
+                    alt="Finnish Flag"
+                  />
+                  :
+                  <img
+                    src={require('../../Images/englishFlag.svg')}
+                    width='30'
+                    height='20'
+                    alt="English Flag"
+                  />
+                }
+              </td>
               <td>{student.email}</td>
               <td>
                 <input
@@ -172,15 +208,6 @@ export const SingleCourse = ({
               </td>
               <td className='centerColumn'>
                 <Checkbox
-                  className='emailTo listCheckbox'
-                  name={student.student_number}
-                  checked={student.email_to_checked}
-                  id={student.student_id}
-                  onChange={handleEmailToChange}
-                />
-              </td>
-              <td className='centerColumn'>
-                <Checkbox
                   className='accepted listCheckbox'
                   name={student.student_number}
                   checked={student.accepted_checked}
@@ -188,12 +215,25 @@ export const SingleCourse = ({
                   onChange={handleAcceptedChange}
                 />
               </td>
+              <td className='centerColumn'>
+                <Checkbox
+                  className='emailTo listCheckbox'
+                  name={student.student_number}
+                  checked={student.email_to_checked}
+                  id={student.student_id}
+                  onChange={handleEmailToChange}
+                />
+              </td>
             </tr>
           )}
           <tr>
             <td style={{ visibility: 'hidden', borderLeftStyle: 'hidden', borderBottomStyle: 'hidden' }} colSpan='6'></td>
-            <td className='centerColumn' ><Button id='selectEmails' variant="outline-secondary" onClick={checkAllEmailBoxes}>Check for accepted</Button></td>
-            <td className='centerColumn' ><Button id='selectAccepted' variant="outline-secondary" onClick={checkAllAcceptedBoxes}>Check all</Button></td>
+            <td className='centerColumn' ><Button className='button' id='selectAccepted' variant="outline-secondary" onClick={checkAllAcceptedBoxes}>Check all</Button></td>
+            <td className='centerColumn' ><Button className='button' id='selectEmails' style={{ width: '110px' }} variant="outline-secondary" onClick={checkAllEmailBoxes}>Check accepted</Button></td>
+          </tr>
+          <tr>
+            <td style={{ visibility: 'hidden', borderLeftStyle: 'hidden', borderBottomStyle: 'hidden' }} colSpan='7'></td>
+            <td className='centerColumn' ><Button id='selectEmailsUnaccepted' style={{ width: '110px' }} variant="outline-secondary" onClick={checkNotAcceptedEmailBoxes}>Check not accepted</Button></td>
           </tr>
         </tbody>
       </Table>
