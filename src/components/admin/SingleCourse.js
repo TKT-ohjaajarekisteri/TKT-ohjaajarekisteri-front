@@ -210,15 +210,6 @@ export const SingleCourse = ({
               </td>
               <td className='centerColumn'>
                 <Checkbox
-                  className='accepted listCheckbox'
-                  name={student.student_number}
-                  checked={student.accepted_checked}
-                  id={student.student_id}
-                  onChange={handleAcceptedChange}
-                />
-              </td>
-              <td className='centerColumn'>
-                <Checkbox
                   className='emailTo listCheckbox'
                   name={student.student_number}
                   checked={student.email_to_checked}
@@ -226,15 +217,24 @@ export const SingleCourse = ({
                   onChange={handleEmailToChange}
                 />
               </td>
+              <td className='centerColumn'>
+                <Checkbox
+                  className='accepted listCheckbox'
+                  name={student.student_number}
+                  checked={student.accepted_checked}
+                  id={student.student_id}
+                  onChange={handleAcceptedChange}
+                />
+              </td>
             </tr>
           )}
           <tr>
-            <td style={{ visibility: 'hidden', borderLeftStyle: 'hidden', borderBottomStyle: 'hidden' }} colSpan='6'></td>
+            <td style={{ visibility: 'hidden', borderLeftStyle: 'hidden', borderBottomStyle: 'hidden' }} colSpan='7'></td>
             <td className='centerColumn' ><Button className='button' id='selectAccepted' variant="outline-secondary" onClick={checkAllAcceptedBoxes}>Check all</Button></td>
             <td className='centerColumn' ><Button className='button' id='selectEmails' style={{ width: '110px' }} variant="outline-secondary" onClick={checkAllEmailBoxes}>Check accepted</Button></td>
           </tr>
           <tr>
-            <td style={{ visibility: 'hidden', borderLeftStyle: 'hidden', borderBottomStyle: 'hidden' }} colSpan='7'></td>
+            <td style={{ visibility: 'hidden', borderLeftStyle: 'hidden', borderBottomStyle: 'hidden' }} colSpan='8'></td>
             <td className='centerColumn' ><Button id='selectEmailsUnaccepted' style={{ width: '110px' }} variant="outline-secondary" onClick={checkNotAcceptedEmailBoxes}>Check not accepted</Button></td>
           </tr>
         </tbody>
