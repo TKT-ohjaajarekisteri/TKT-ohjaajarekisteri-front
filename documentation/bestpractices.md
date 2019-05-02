@@ -6,19 +6,15 @@
 
 `npm run lint`
 
-
 2. Run tests:
 
 `CI=true npm test`
 
 3. AND TEST MANUALLY THAT API STILL WORKS FOR
 
--Old student
-
--New student 
-
--Admin
-
+* Old student
+* New student 
+* Admin
 
 ## Naming
 
@@ -49,25 +45,9 @@ Seeding creates and removes data from the database. This can be used in testing 
 
 Migration commands are [here](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-back/blob/master/MIGRATION_INFO.md).
 
-
-## Deleting user's contactinformation
-
-Go to back and 
-
-open: visualstudiocode requests   and 
-
-choose: put_students_deleteCD.rest and send request
-
-Now you can log in user without contactdetails :)
-
-
-## When you wanna test new user in front, nuking database 
-
-
-Database can be emptied by undoing all migrations 
-<br>or with code:
-```
-sequelize.sync({ force:true })
-
-```
-For example: Uncomment line 43 at [sequelize index](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-back/blob/master/models/index.js) and run backend.
+## Definition of done
+* Features are planned in sprint planning
+* Features documented and tested in appropriate detail
+* Feature passes Jest tests and ESlint
+* Branch is approved by another team member before merging to master
+* Feature passes Travis CI Server
