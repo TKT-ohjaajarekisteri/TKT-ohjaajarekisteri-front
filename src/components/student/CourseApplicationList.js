@@ -15,7 +15,6 @@ export const CourseApplicationList = (props) => {
     if (props.courses.length === 0) {
       props.initializeCourseApplication()
     }
-    props.initializeFilter()
     props.getStudentCourseIds(props.id)
   }, [])
 

@@ -154,3 +154,7 @@
   th {
     vertical-align: middle !important;
   }
+
+  .GDPRInfo h4 {
+    padding-top: 18px;
+  }

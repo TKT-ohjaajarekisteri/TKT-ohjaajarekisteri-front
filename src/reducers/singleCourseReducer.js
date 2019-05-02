@@ -1,9 +1,9 @@
-const emailBody = (course, applicantsToEmail) => {
-  const applicantRows = applicantsToEmail.map(a => a.first_names+' '+a.last_name+', ('+a.groups+')').join('%0D%0A')
+const emailBodyAccepted = (course, applicantsToEmail) => {
+  const applicantRows = applicantsToEmail.map(a => a.first_names + ' ' + a.last_name + ', (' + a.groups + ')').join('%0D%0A')
   const bodyParts = [
     'Hei,%0D%0A%0D%0AOlet hakenut opetusavustajaksi kurssille:%0D%0A',
-    course.learningopportunity_id+' '+course.course_name+' '+course.year+', ',
-    'joka alkaa periodilla '+course.periods[0]+'.%0D%0A%0D%0A',
+    course.learningopportunity_id + ' ' + course.course_name + ' ' + course.year + ', ',
+    'joka alkaa periodilla ' + course.periods[0] + '.%0D%0A%0D%0A',
     'Kurssille valitut opetusavustajat (sekä ohjattavien ',
     'ryhmien määrä):%0D%0A',
     applicantRows,
@@ -14,8 +14,8 @@ const emailBody = (course, applicantsToEmail) => {
     '---------------------',
     '%0D%0A%0D%0A',
     'Hello,%0D%0A%0D%0AYou have applied the role of teaching assistant for the course:%0D%0A',
-    course.learningopportunity_id+' '+course.course_name+' '+course.year+' ',
-    'beginning on period '+course.periods[0]+'.%0D%0A%0D%0A',
+    course.learningopportunity_id + ' ' + course.course_name + ' ' + course.year + ' ',
+    'beginning on period ' + course.periods[0] + '.%0D%0A%0D%0A',
     'The chosen teaching assistants (and their allocated number of groups) are:%0D%0A',
     applicantRows,
     '%0D%0A%0D%0APlease respond, whether or not you accept this position.%0D%0A%0D%0A',
@@ -24,8 +24,27 @@ const emailBody = (course, applicantsToEmail) => {
   return bodyParts.join('')
 }
 
+const emailBodyNotAccepted = (course) => {
+  const bodyParts = [
+    'Hei,%0D%0A%0D%0AOlet hakenut opetusavustajaksi kurssille:%0D%0A',
+    course.learningopportunity_id + ' ' + course.course_name + ' ' + course.year + ', ',
+    'joka alkaa periodilla ' + course.periods[0] + '.%0D%0A%0D%0A',
+    'Valitettavasti valintamme ei tällä kertaa kohdistunut sinuun.%0D%0A',
+    'Terveisin, Reijo',
+    '%0D%0A%0D%0A',
+    '---------------------',
+    '%0D%0A%0D%0A',
+    'Hello,%0D%0A%0D%0AYou have applied the role of teaching assistant for the course:%0D%0A',
+    course.learningopportunity_id + ' ' + course.course_name + ' ' + course.year + ' ',
+    'beginning on period ' + course.periods[0] + '.%0D%0A%0D%0A',
+    'Thank you for your application. Unfortunately, at this time we are not able to offer you this position.%0D%0A%0D%0A',
+    'BR, Reijo',
+  ]
+  return bodyParts.join('')
+}
+
 const subject = (course) => {
-  const subject = 'Your Application for: '+course.learningopportunity_id+' - '+course.course_name
+  const subject = 'Your Application for: ' + course.learningopportunity_id + ' - ' + course.course_name
   return subject
 }
 
@@ -36,7 +55,8 @@ const initialState = {
     cc: '',
     to: '',
     subject: 'Subject template',
-    body: 'Body template'
+    bodyAccepted: 'Body template',
+    bodyNotAccepted: 'Body template'
   }
 }
 
@@ -94,10 +114,12 @@ const singleCourseReducer = (state = initialState, action) => {
     return {
       ...state,
       applicants: modifiedApplicants,
-      email: { ...state.email,
+      email: {
+        ...state.email,
         to: newEmailToField,
         subject: subject(state.course),
-        body: emailBody(state.course, applicantsToEmail)
+        bodyAccepted: emailBodyAccepted(state.course, applicantsToEmail),
+        bodyNotAccepted: emailBodyNotAccepted(state.course),
       }
     }
   }

@@ -9,6 +9,7 @@ import ContactDetailsForm from './components/student/ContactDetailsForm'
 import ContactDetailsUpdateForm from './components/student/ContactDetailsUpdateForm'
 import AdminCourseList from './components/admin/CourseList'
 import Summary from './components/admin/Summary'
+import StudentDelete from './components/admin/StudentDelete'
 import UpdatePasswordForm from './components/admin/UpdatePasswordForm'
 import CourseApplicationList from './components/student/CourseApplicationList'
 import SingleCourse from './components/admin/SingleCourse'
@@ -16,6 +17,7 @@ import SingleStudent from './components/admin/SingleStudent'
 import PrivateRoute from './components/common/PrivateRoute'
 import Notification from './components/common/Notification'
 import StudentCourseList from './components/student/StudentCourseList'
+import GDPRInfo from './components/student/GDPRInfo'
 
 // Actions
 import { logout, initLoggedUser } from './reducers/actionCreators/loginActions'
@@ -65,6 +67,7 @@ const App = (props) => {
               >
                 <Route exact path="/admin/courses" render={() => <AdminCourseList />} />
                 <Route exact path="/admin/summary" render={() => <Summary />} />
+                <Route exact path="/admin/studentDelete" render={() => <StudentDelete />} />
                 <Route
                   exact path="/admin/courses/:id"
                   render={({ match }) => <SingleCourse courseId={match.params.id} />}
@@ -117,6 +120,11 @@ const App = (props) => {
                     <Route
                       exact path="/applications"
                       render={() => <StudentCourseList id={loggedUser.user.user_id} />}
+                    />
+                    {/* GDPR INFORMATION VIEW */}
+                    <Route
+                      exact path="/privacy"
+                      render={() => <GDPRInfo />}
                     />
                   </PrivateRoute>
                 </PrivateRoute>
