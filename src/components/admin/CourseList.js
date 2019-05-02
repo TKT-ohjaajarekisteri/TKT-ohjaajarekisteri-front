@@ -9,7 +9,6 @@ import { Form } from 'react-bootstrap'
 
 export const CourseList = ({
   initializeCourses,
-  initializeFilter,
   setProgramme,
   setPeriod,
   setCourseName,
@@ -20,7 +19,6 @@ export const CourseList = ({
 
   useEffect(() => {
     initializeCourses()
-    initializeFilter()
   }, [])
 
   const handleProgrammeChange = (event) => {
