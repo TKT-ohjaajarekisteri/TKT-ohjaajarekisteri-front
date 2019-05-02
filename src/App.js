@@ -17,6 +17,7 @@ import SingleStudent from './components/admin/SingleStudent'
 import PrivateRoute from './components/common/PrivateRoute'
 import Notification from './components/common/Notification'
 import StudentCourseList from './components/student/StudentCourseList'
+import GDPRInfo from './components/student/GDPRInfo'
 
 // Actions
 import { logout, initLoggedUser } from './reducers/actionCreators/loginActions'
@@ -119,6 +120,11 @@ const App = (props) => {
                     <Route
                       exact path="/applications"
                       render={() => <StudentCourseList id={loggedUser.user.user_id} />}
+                    />
+                    {/* GDPR INFORMATION VIEW */}
+                    <Route
+                      exact path="/privacy"
+                      render={() => <GDPRInfo />}
                     />
                   </PrivateRoute>
                 </PrivateRoute>
