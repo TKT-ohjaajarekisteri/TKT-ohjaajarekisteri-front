@@ -67,4 +67,5 @@ Front end uses redux states to store information for application. Services use a
 
 ![dataflow chart](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/dataflow.png)
 Component SingleCourse.js creates the page layout. Course applicants are initialized via initializeSingleCourse, which gets them from database using course Service. Course Service uses axios to connect to backend API. After courses are returned to courseService.js from API, they are passed back to initializeSingleCourse, which creates a new set of applicants. This set is forwarded to Single Course Reducer. Reducer updates the old state by creating a new state with the new set of applicants. 
+
 When admin clicks checkbox to accept a student as a assistant, SetStudentAccepted passes new student to state via reducer. When modifications are saved, setAcceptedModified is called to update database via course service. Then list of updated students is passed to reducer, which creates a new state for singleCourse component. 
