@@ -176,7 +176,7 @@ export const Summary = ({
                     <tbody>
                       {course.students.map(s =>
                         <tr key={s.student_id} >
-                          <td width='80'>
+                          <td width='80' shrink-to-fit='no' >
                             <Link to={`/admin/students/${s.student_id}/info`}>
                               {s.student_number}
                             </Link>
