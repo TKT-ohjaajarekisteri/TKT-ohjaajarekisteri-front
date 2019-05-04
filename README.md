@@ -28,7 +28,9 @@ This registry will be used by students to express their interest to assist on co
 ### Installation / Docker
 - [Docker configuration and use tips](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/docker.md)
 - [Test database configuration](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/test_db_configuration.md)
-- [How to set up the staging / production server](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/production_and_staging_deployment_guide.md)
+- How to...
+    - [set up the staging / production server](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/production_and_staging_deployment_guide.md)
+    - [set up the development environment (using Docker-compose and .ENV)](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/docker.md#test-your-docker-locally)
 
 ### Contributing
 * [Harri Mehtälä](https://github.com/hajame)
