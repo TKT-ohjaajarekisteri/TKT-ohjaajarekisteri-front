@@ -4,7 +4,7 @@ import { notify, setError } from './../reducers/actionCreators/notificationActio
 import { login } from './../reducers/actionCreators/loginActions'
 import { Form, Button, Col, Container, Row } from 'react-bootstrap'
 
-export const LoginForm = ({ login }) => { //for future: history, setError
+export const LoginForm = ({ login }) => {
 
   const [input, setInput] = useState({ username: '', password: '' })
 
@@ -13,7 +13,6 @@ export const LoginForm = ({ login }) => { //for future: history, setError
     const { username, password } = input
 
     login(username, password)
-    // notify('this is a notification', 5)
 
     setInput({ username: '', password: '' })
   }
@@ -68,7 +67,6 @@ export const LoginForm = ({ login }) => { //for future: history, setError
     </div >
   )
 }
-
 
 const mapStateToProps = (state) => {
   return {
