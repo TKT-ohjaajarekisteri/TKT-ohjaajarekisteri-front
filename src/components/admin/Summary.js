@@ -168,7 +168,7 @@ export const Summary = ({
             .map(course =>
               <tr key={course.course_id}>
                 <td><Link to={`courses/${course.course_id}`}>{course.learningopportunity_id}</Link></td>
-                <td className="courseName">{course.course_name}</td>
+                <td width='400' className="courseName">{course.course_name}</td>
                 <td className='centerColumn' >{course.year}</td>
                 <td className='centerColumn' >{course.periods[0]}</td>
                 <td>
