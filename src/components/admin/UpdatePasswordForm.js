@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { notify, setError } from '../../reducers/actionCreators/notificationActions'
 import adminService from '../../services/admins'
-import { Form, Button, Col } from 'react-bootstrap'
+import { Form, Button, Col, Container, Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 
@@ -31,36 +31,46 @@ export const UpdatePasswordForm = ({ notify, setError }) => {
 
   return (
     <div className='updatePasswordForm'>
-      <h2>Change password</h2>
-      <Form onSubmit={handlePasswordChange}>
-        <Form.Group as={Col} md="4">
-          <Form.Label>Old Password </Form.Label>
-          <Form.Control
-            type="password"
-            name="oldPassword"
-            value={input.oldPassword}
-            onChange={handleChange}
-            autoFocus />
+      <Container>
+        <Row>
+          <Col>
+            <div className='logHeader'>
+              <h3>Change password</h3>
+            </div>
+          </Col>
+        </Row>
+        <Col md={{ span: 6, offset: 3 }}>
+          <Form onSubmit={handlePasswordChange}>
+            <Form.Group>
+              <Form.Label>Old Password </Form.Label>
+              <Form.Control
+                type="password"
+                name="oldPassword"
+                value={input.oldPassword}
+                onChange={handleChange}
+                autoFocus />
 
-          <Form.Label>New Password </Form.Label>
-          <Form.Control
-            type="password"
-            name="newPassword"
-            value={input.newPassword}
-            onChange={handleChange} />
+              <Form.Label>New Password </Form.Label>
+              <Form.Control
+                type="password"
+                name="newPassword"
+                value={input.newPassword}
+                onChange={handleChange} />
 
-          <Form.Label>Confirm Password </Form.Label>
-          <Form.Control
-            type="password"
-            name="confirm"
-            value={input.confirm}
-            onChange={handleChange} />
-        </Form.Group>
+              <Form.Label>Confirm Password </Form.Label>
+              <Form.Control
+                type="password"
+                name="confirm"
+                value={input.confirm}
+                onChange={handleChange} />
+            </Form.Group>
 
-        <Button className="button btnLogin" type="submit" >
+            <Button className="button btnLogin" type="submit" >
           Update Password
-        </Button>
-      </Form>
+            </Button>
+          </Form>
+        </Col>
+      </Container>
     </div>
   )
 }

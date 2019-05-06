@@ -168,7 +168,7 @@ export const Summary = ({
             .map(course =>
               <tr key={course.course_id}>
                 <td><Link to={`courses/${course.course_id}`}>{course.learningopportunity_id}</Link></td>
-                <td className="courseName">{course.course_name}</td>
+                <td width='400' className="courseName">{course.course_name}</td>
                 <td className='centerColumn' >{course.year}</td>
                 <td className='centerColumn' >{course.periods[0]}</td>
                 <td>
@@ -176,7 +176,7 @@ export const Summary = ({
                     <tbody>
                       {course.students.map(s =>
                         <tr key={s.student_id} >
-                          <td width='80'>
+                          <td width='80' shrink-to-fit='no' >
                             <Link to={`/admin/students/${s.student_id}/info`}>
                               {s.student_number}
                             </Link>
