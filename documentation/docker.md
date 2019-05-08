@@ -41,7 +41,7 @@ Example of a tag is `v0.1.0`
 
 			DEV_DATABASE_URL= postgres://POSTGRES_USER:POSTGRES_PASSWORD@db:5432/POSTGRES_DB
 
-5. (If you were using SSL before) sequelize.js: in the development part comment away the rows for ssl:
+5. (If you were using SSL before) sequelize.js: in the development part comment out the rows for ssl:
 
 		'ssl': true,
 		'dialectOptions': {
