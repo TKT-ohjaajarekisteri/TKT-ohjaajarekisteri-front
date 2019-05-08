@@ -64,9 +64,9 @@ typing in student number and clicking "Delete Student". This will remove all dat
 ### Summary view
 
 By seleting "Summary" from navigation panel, user can see all courses with applications and/or assistants in a single page, with
-students list.Pending means that the student has applied, but has not been accepted. When student is accepted, status will change
+students list. Pending means that the student has applied, but has not been accepted. When student is accepted, status will change
 to "Accepted". It is possible for student to apply to assist in courses in both English and Finnish or only Finnish. Language status is represented
-by a flag in the Summary view. UK flag means that student is prepared to assist in English aswell, Finnish flag means that only in Finnish.
+by a flag in the Summary view. UK flag means that student is prepared to assist in English as well, Finnish flag means that only in Finnish.
 
 ![Summary](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/pictures/Näyttökuva%202019-5-6%20kello%2020.41.16.png)
 
@@ -75,7 +75,7 @@ the typed letters.
 
 ![Summary with word filter](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/pictures/Näyttökuva%202019-5-6%20kello%2020.42.57.png)
 
-### Chaning password
+### Changing password
 
 Changing password is done by Selecting "Change password" from navigation panel. Type in old password and new password in both
 fields to change it. Password can be recovered ONLY by system administration. 
