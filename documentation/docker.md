@@ -52,9 +52,9 @@ Example of a tag is `v0.1.0`
 
 		nano /etc/hosts
 
-Add a row to the first row of the file `hosts`: 
+   Add a row to the first row of the file `hosts`: 
 
-	127.0.0.1       db
+   	    127.0.0.1       db
 
 7. Now when the back end is started in the development mode (npm run watch), you are using a local Postgres with Docker.
 
