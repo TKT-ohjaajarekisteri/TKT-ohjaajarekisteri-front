@@ -23,8 +23,6 @@ Admin can see ongoing and future courses and filter them by period and study pro
 
 * Admin can add a new course via application
 * Admin has a link to a students' transcript of study records
-* Admin can search for a course by its name
-* Admin can gray out selected courses
 * Admin can edit number of groups in a course
 * Admin can edit students' information
 * Admin can see the number of registered students and the number of sent applications
