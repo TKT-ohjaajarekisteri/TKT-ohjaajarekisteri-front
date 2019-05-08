@@ -1,5 +1,11 @@
 # Usage
 
+## DB setup
+
+The development environment uses a [postgres database in Docker](https://github.com/TKT-ohjaajarekisteri/TKT-ohjaajarekisteri-front/blob/master/documentation/docker.md#how-to-use-postgresql-with-docker-in-development-mode).
+
+The docker-compose YAML file for this project can be acquired from the project group Slack.
+
 ## Command line scripts for Front
 
 You can run these commands in the project directory
