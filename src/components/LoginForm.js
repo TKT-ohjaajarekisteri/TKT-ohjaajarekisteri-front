@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { notify, setError } from './../reducers/actionCreators/notificationActions'
 import { login } from './../reducers/actionCreators/loginActions'
-import { Form, Button, Col, Container, Row } from 'react-bootstrap'
+import { Form, Button, Col, Container, Row, Spinner } from 'react-bootstrap'
 
-export const LoginForm = ({ login }) => {
+export const LoginForm = ({ login, loadingUser }) => {
 
   const [input, setInput] = useState({ username: '', password: '' })
 
@@ -57,8 +57,19 @@ export const LoginForm = ({ login }) => {
                   onChange={handleChange}
                 />
               </Form.Group>
-              <Button className="btnLogin" variant="dark" type="submit" >
-                Login
+              <Button className="btnLogin" variant="dark" type="submit" disabled={loadingUser}>
+                {
+                  loadingUser ?
+                    <Spinner
+                      animation="border"
+                      size="sm"
+                      role="status"
+                    >
+                      <span className="sr-only">Loading...</span>
+                    </Spinner>
+                    :
+                    'Login'
+                }
               </Button>
             </Form>
           </Col>
@@ -70,7 +81,7 @@ export const LoginForm = ({ login }) => {
 
 const mapStateToProps = (state) => {
   return {
-    loggedUser: state.loggedUser
+    loadingUser: state.loggedUser.loadingUser
   }
 }
 

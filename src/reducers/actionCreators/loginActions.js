@@ -61,8 +61,10 @@ export const updateLoggedUser = (content, id) => {
 
 export const login = (username, password) => {
   return async (dispatch) => {
+    dispatch({ type: 'LOGIN' })
     const response = await loginService.login({ username: username, password: password })
     if (response.error) {
+      dispatch({ type: 'LOGIN_FAILURE' })
       dispatch({
         type: 'NOTIFY',
         data: response.error
@@ -78,7 +80,7 @@ export const login = (username, password) => {
       await studentService.setToken(response.token)
       await adminService.setToken(response.token)
       dispatch({
-        type: 'LOGIN',
+        type: 'LOGIN_SUCCESFUL',
         data: { ...response }
       })
       dispatch({
