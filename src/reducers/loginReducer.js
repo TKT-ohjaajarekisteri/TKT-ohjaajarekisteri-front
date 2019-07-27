@@ -1,6 +1,6 @@
 const initialState = {
   loggedUser: null,
-  loadingUser: true
+  loadingUser: false,
 }
 
 const loginReducer = (state = initialState, action) => {
@@ -12,14 +12,25 @@ const loginReducer = (state = initialState, action) => {
       loadingUser: false
     }
   }
-
   case 'LOGIN': {
     return {
       ...state,
-      loggedUser: action.data
+      loadingUser: true
     }
   }
-
+  case 'LOGIN_SUCCESFUL': {
+    return {
+      ...state,
+      loggedUser: action.data,
+      loadingUser: false
+    }
+  }
+  case 'LOGIN_FAILURE': {
+    return {
+      ...state,
+      loadingUser: false
+    }
+  }
   case 'LOGOUT': {
     return {
       ...state,

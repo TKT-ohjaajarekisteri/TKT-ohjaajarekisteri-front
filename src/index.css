@@ -22,10 +22,10 @@
 
 /* adjust buttons */
 .btn{
-     margin: 0px;
+  margin: 0px;
 }
 .btnLogin{
-     margin: 0px 0px 0px 15px;
+  width: 100px;
 }
   .buttonApply {
     float:right;
