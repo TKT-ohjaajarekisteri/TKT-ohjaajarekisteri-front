@@ -5,7 +5,7 @@
   "homepage": "http://svm-45.cs.helsinki.fi/ohjaajarekisteri",
   "proxy": "http://localhost:8001",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "json-server": "^0.14.2",
     "react": "^16.8.0-alpha.1",
     "react-bootstrap": "^1.0.0-beta.10",
